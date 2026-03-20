@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Explorar Guías — Ejekat Nemi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--t:#B84A2F;--tl:#D4623D;--c:#2D6A4F;--cl:#3D8A65;--k:#E9A824;--o:#0D1B14;--ol:#152318;--a:#F4ECD6;--tx:rgba(244,236,214,.85);--ts:rgba(244,236,214,.45);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
+body{background:var(--o);color:var(--a);font-family:"Outfit",sans-serif;overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:10px;height:10px;background:var(--k);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:difference;}
+.cring{position:fixed;width:36px;height:36px;border:1px solid rgba(233,168,36,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;background:rgba(13,27,20,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,236,214,.06);}
+.lw{display:flex;flex-direction:column;line-height:1;text-decoration:none;}
+.lm{font-family:"Cormorant Garamond",serif;font-size:1.5rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--a);}
+.lm span{color:var(--k);}
+.ls{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--ts);}
+nav ul{list-style:none;display:flex;gap:2rem;align-items:center;}
+nav ul a{text-decoration:none;color:var(--ts);font-size:.78rem;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
+nav ul a:hover,nav ul a.act{color:var(--a);}
+.ncta{border:1px solid var(--t)!important;color:var(--t)!important;padding:.45rem 1.2rem!important;}
+.ncta:hover{background:var(--t)!important;color:var(--a)!important;}
+.exp-hdr{padding:8rem 4rem 2.5rem;position:relative;overflow:hidden;}
+.exp-hdr::before{content:"";position:absolute;top:0;right:0;width:500px;height:500px;background:radial-gradient(circle,rgba(184,74,47,.1) 0%,transparent 70%);pointer-events:none;}
+.ey{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.edot{width:6px;height:6px;border-radius:50%;background:var(--k);}
+.elbl{font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--k);}
+.exp-hdr h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,3.5vw,3rem);font-weight:300;line-height:1.1;margin-bottom:.6rem;}
+.exp-hdr h1 em{font-style:italic;color:var(--tl);}
+.exp-hdr p{font-size:.88rem;font-weight:300;color:var(--ts);max-width:500px;line-height:1.7;}
+.estados-bar{padding:0 4rem 1.5rem;display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;}
+.epill{display:flex;align-items:center;gap:.5rem;padding:.55rem 1.1rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.08);cursor:pointer;transition:all .3s;font-size:.75rem;letter-spacing:1px;text-transform:uppercase;color:var(--ts);}
+.epill:hover,.epill.on{color:var(--a);}
+.epill[data-e="todos"].on,.epill[data-e="todos"]:hover{border-color:var(--k);background:rgba(233,168,36,.07);}
+.epill[data-e="pakini"].on{border-color:var(--k);background:rgba(233,168,36,.07);}
+.epill[data-e="musewi"].on{border-color:var(--cl);background:rgba(61,138,101,.07);}
+.epill[data-e="kuxtal"].on{border-color:var(--t);background:rgba(184,74,47,.07);}
+.epill[data-e="nejnemi"].on{border-color:#7BC8F6;background:rgba(123,200,246,.07);}
+.psep{width:1px;height:18px;background:rgba(244,236,214,.08);}
+.filtros{padding:0 4rem 2.5rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;}
+.fsel{background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.08);color:var(--ts);font-family:"Outfit",sans-serif;font-size:.75rem;padding:.5rem .9rem;appearance:none;cursor:pointer;transition:border-color .3s;min-width:155px;}
+.fsel:focus{outline:none;border-color:var(--k);}
+.fsel option{background:var(--o);}
+.rcount{margin-left:auto;font-size:.72rem;color:var(--ts);letter-spacing:1px;}
+.rcount span{color:var(--k);}
+.ggrid{padding:0 4rem 6rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,214,.05);}
+.gcard{background:var(--o);cursor:pointer;transition:background .3s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+.gcard:hover{background:var(--ol);}
+.gcard.hid{display:none;}
+.gimg{width:100%;aspect-ratio:4/3;object-fit:cover;filter:grayscale(25%);transition:filter .4s;}
+.gcard:hover .gimg{filter:grayscale(0%);}
+.gph{width:100%;aspect-ratio:4/3;background:linear-gradient(135deg,var(--ol),rgba(184,74,47,.18));display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;}
+.gbadge{position:absolute;top:1rem;right:1rem;background:var(--k);color:var(--o);font-size:.58rem;letter-spacing:2px;text-transform:uppercase;padding:.28rem .65rem;font-weight:700;}
+.gbody{padding:1.6rem;flex:1;display:flex;flex-direction:column;}
+.getags{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.7rem;}
+.getag{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;padding:.22rem .55rem;border:1px solid;}
+.tp{color:var(--k);border-color:rgba(233,168,36,.25);}
+.tm{color:var(--cl);border-color:rgba(61,138,101,.25);}
+.tk{color:var(--tl);border-color:rgba(184,74,47,.25);}
+.tn{color:#7BC8F6;border-color:rgba(123,200,246,.25);}
+.gnombre{font-family:"Cormorant Garamond",serif;font-size:1.35rem;font-weight:600;color:var(--a);margin-bottom:.15rem;}
+.grol{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--ts);margin-bottom:.7rem;}
+.gdesc{font-size:.8rem;font-weight:300;color:var(--ts);line-height:1.6;margin-bottom:1rem;flex:1;}
+.gmeta{display:flex;flex-direction:column;gap:.35rem;margin-bottom:1rem;}
+.gmi{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:var(--ts);}
+.gmi span:first-child{font-size:.88rem;}
+.gdisponib{background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);padding:.65rem .85rem;margin-bottom:1rem;}
+.dlbl{font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--k);margin-bottom:.25rem;}
+.ddias{font-size:.75rem;color:var(--ts);line-height:1.4;}
+.gfoot{display:flex;align-items:center;justify-content:space-between;}
+.gprecio{font-family:"Cormorant Garamond",serif;font-size:1.15rem;font-weight:600;color:var(--a);}
+.gprecio small{font-family:"Outfit",sans-serif;font-size:.62rem;color:var(--ts);font-weight:300;}
+.gbtn{background:var(--t);color:var(--a);padding:.5rem 1rem;font-size:.7rem;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
+.gbtn:hover{background:var(--tl);}
+.empty{grid-column:1/-1;padding:6rem 2rem;text-align:center;}
+.empty-ico{font-size:3rem;margin-bottom:1rem;}
+.empty-tit{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-style:italic;color:var(--ts);margin-bottom:.4rem;}
+.empty-txt{font-size:.82rem;color:var(--ts);}
+
+/* MODAL */
+.moverlay{position:fixed;inset:0;background:rgba(13,27,20,.96);z-index:200;display:none;overflow-y:auto;backdrop-filter:blur(8px);}
+.moverlay.op{display:block;}
+.modal{max-width:920px;margin:3.5rem auto 5rem;background:var(--ol);border:1px solid rgba(244,236,214,.08);position:relative;}
+.mclose{position:absolute;top:1.2rem;right:1.2rem;background:none;border:1px solid rgba(244,236,214,.1);color:var(--ts);font-size:.72rem;cursor:pointer;z-index:10;letter-spacing:2px;text-transform:uppercase;padding:.35rem .75rem;transition:all .3s;font-family:"Outfit",sans-serif;}
+.mclose:hover{color:var(--a);border-color:var(--a);}
+.mhero{display:grid;grid-template-columns:1fr 1fr;}
+.mimgwrap{position:relative;overflow:hidden;}
+.mimg{width:100%;height:100%;object-fit:cover;filter:grayscale(15%);}
+.mph{width:100%;aspect-ratio:1;background:linear-gradient(135deg,rgba(184,74,47,.2),rgba(45,106,79,.2));display:flex;align-items:center;justify-content:center;font-size:7rem;}
+
+/* Upload foto en modal admin */
+.foto-upload-wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:1.2rem;background:linear-gradient(transparent 50%,rgba(13,27,20,.8));opacity:0;transition:opacity .3s;}
+.mimgwrap:hover .foto-upload-wrap{opacity:1;}
+.foto-upload-btn{display:inline-flex;align-items:center;gap:.4rem;background:var(--k);color:var(--o);border:none;padding:.5rem 1rem;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:"Outfit",sans-serif;font-weight:600;}
+.foto-input{display:none;}
+.foto-hint{font-size:.62rem;color:rgba(244,236,214,.5);margin-top:.3rem;text-align:center;}
+
+.mintro{padding:2.2rem;display:flex;flex-direction:column;justify-content:center;}
+.mestados{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.8rem;}
+.mnombre{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:300;color:var(--a);line-height:1;margin-bottom:.25rem;}
+.mrol{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--k);margin-bottom:.9rem;}
+.mbio{font-size:.84rem;font-weight:300;color:var(--ts);line-height:1.8;margin-bottom:1.2rem;white-space:pre-line;}
+.mmetas{display:flex;flex-direction:column;gap:.45rem;}
+.mmeta{display:flex;align-items:flex-start;gap:.6rem;font-size:.78rem;color:var(--ts);}
+.mbody{padding:2.2rem;border-top:1px solid rgba(244,236,214,.07);}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem;}
+.mstit{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--k);margin-bottom:.9rem;}
+.sitem{display:flex;align-items:flex-start;gap:.65rem;margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid rgba(244,236,214,.05);}
+.sitem:last-child{border:none;margin-bottom:0;padding-bottom:0;}
+.sico{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.snom{font-size:.84rem;font-weight:500;color:var(--a);margin-bottom:.1rem;}
+.sdet{font-size:.72rem;color:var(--ts);line-height:1.4;}
+.sprecio{font-size:.72rem;color:var(--k);margin-top:.2rem;}
+.dblock{background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);padding:1.1rem;}
+.drow{display:flex;justify-content:space-between;align-items:center;padding:.38rem 0;border-bottom:1px solid rgba(244,236,214,.05);font-size:.78rem;}
+.drow:last-child{border:none;}
+.ddia{color:var(--ts);}
+.dhora{color:var(--a);}
+.mquevar{margin-top:1rem;font-size:.72rem;color:var(--ts);line-height:1.6;}
+.mquevar strong{color:var(--a);display:block;margin-bottom:.2rem;}
+.mcta{background:rgba(184,74,47,.07);border:1px solid rgba(184,74,47,.15);padding:1.8rem 2.2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
+.mprecio{font-family:"Cormorant Garamond",serif;font-size:2.3rem;font-weight:300;color:var(--a);}
+.mpdet{font-size:.7rem;color:var(--ts);margin-top:.2rem;}
+.mbtns{display:flex;flex-direction:column;gap:.6rem;align-items:flex-end;}
+.bwa{display:inline-flex;align-items:center;gap:.5rem;background:#25D366;color:white;padding:.75rem 1.5rem;font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:background .3s;border:none;cursor:pointer;}
+.bwa:hover{background:#1da851;}
+.bint{display:inline-flex;align-items:center;gap:.5rem;background:var(--t);color:var(--a);padding:.75rem 1.5rem;font-size:.74rem;letter-spacing:1.5px;text-transform:uppercase;border:none;cursor:pointer;transition:background .3s;}
+.bint:hover{background:var(--tl);}
+.mnota{font-size:.67rem;color:var(--ts);text-align:right;margin-top:.3rem;line-height:1.5;}
+
+/* MINI FORM */
+.foverlay{position:fixed;inset:0;background:rgba(13,27,20,.97);z-index:300;display:none;align-items:center;justify-content:center;}
+.foverlay.op{display:flex;}
+.mform{background:var(--ol);border:1px solid rgba(244,236,214,.08);padding:2.8rem;width:100%;max-width:480px;position:relative;}
+.fclose{position:absolute;top:1rem;right:1rem;background:none;border:1px solid rgba(244,236,214,.1);color:var(--ts);cursor:pointer;font-size:.72rem;text-transform:uppercase;letter-spacing:2px;padding:.3rem .6rem;transition:all .3s;font-family:"Outfit",sans-serif;}
+.fclose:hover{color:var(--a);border-color:var(--a);}
+.ftit{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:300;margin-bottom:.25rem;}
+.fguia{font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--k);margin-bottom:1.6rem;}
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--ts);margin-bottom:.38rem;}
+.fg input,.fg textarea,.fg select{width:100%;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:var(--a);font-family:"Outfit",sans-serif;font-size:.86rem;font-weight:300;padding:.72rem .95rem;transition:border-color .3s;appearance:none;resize:none;}
+.fg input:focus,.fg textarea:focus,.fg select:focus{outline:none;border-color:var(--k);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(244,236,214,.18);}
+.fg select option{background:var(--o);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+.fbtn{width:100%;background:var(--t);color:var(--a);border:none;padding:.88rem;font-family:"Outfit",sans-serif;font-size:.76rem;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background .3s;margin-top:.4rem;position:relative;overflow:hidden;}
+.fbtn::before{content:"";position:absolute;inset:0;background:var(--tl);transform:translateX(-100%);transition:transform .3s;}
+.fbtn:hover::before{transform:translateX(0);}
+.fbtn span{position:relative;z-index:1;}
+.ferr{color:var(--tl);font-size:.73rem;text-align:center;margin-top:.4rem;display:none;}
+.fsuc{display:none;text-align:center;padding:2rem 0;}
+.fsuc.op{display:block;}
+.fsuc-ico{font-size:2.5rem;margin-bottom:.7rem;}
+.fsuc-tit{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-style:italic;color:var(--cl);margin-bottom:.4rem;}
+.fsuc-txt{font-size:.8rem;color:var(--ts);line-height:1.7;}
+
+@media(max-width:900px){nav{padding:1rem 1.5rem;}nav ul{display:none;}.exp-hdr,.filtros,.estados-bar{padding-left:1.5rem;padding-right:1.5rem;}.ggrid{grid-template-columns:1fr;padding:0 1.5rem 4rem;}.mhero{grid-template-columns:1fr;}.mgrid{grid-template-columns:1fr;}.mcta{grid-template-columns:1fr;}.mbtns{align-items:stretch;}.frow{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cring" id="crng"></div>
+
+<nav>
+  <a href="index.html" class="lw">
+    <div class="lm">Ejekat <span>Nemi</span></div>
+    <div class="ls">El viento que vive</div>
+  </a>
+  <ul>
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="explorar.html" class="act">Explorar</a></li>
+    <li><a href="index.html#precios">Planes</a></li>
+    <li><a href="index.html#registro" class="ncta">Comenzar gratis</a></li>
+  </ul>
+</nav>
+
+<div class="exp-hdr">
+  <div class="ey"><div class="edot"></div><div class="elbl">Explorar caminos</div></div>
+  <h1>Encuentra tu <em>guía.</em><br>Elige cómo quieres <em>sentirte hoy.</em></h1>
+  <p>Maestros de movimiento, guías de aventura y espacios de bienestar en El Salvador y Centroamérica — presencial y en línea.</p>
+</div>
+
+<div class="estados-bar">
+  <div class="epill on" data-e="todos"><span>🌬️</span> Todos</div>
+  <div class="psep"></div>
+  <div class="epill" data-e="pakini"><span>🔥</span> Pakini — Alegría</div>
+  <div class="epill" data-e="musewi"><span>🌊</span> Musewi — Calma</div>
+  <div class="epill" data-e="kuxtal"><span>🌿</span> Kuxtal — Sanar</div>
+  <div class="epill" data-e="nejnemi"><span>🏔️</span> Nejnemi — Aventura</div>
+</div>
+
+<div class="filtros">
+  <select class="fsel" id="f-modal">
+    <option value="todos">Presencial + En línea</option>
+    <option value="presencial">Solo presencial</option>
+    <option value="online">Solo en línea</option>
+  </select>
+  <select class="fsel" id="f-ciudad">
+    <option value="todos">Todas las ciudades</option>
+    <option value="san-salvador">San Salvador</option>
+    <option value="santa-ana">Santa Ana</option>
+    <option value="online">En línea</option>
+  </select>
+  <select class="fsel" id="f-disp">
+    <option value="todos">Cualquier día</option>
+    <option value="semana">Lunes a viernes</option>
+    <option value="finde">Fines de semana</option>
+  </select>
+  <div class="rcount">Mostrando <span id="cnt">0</span> guía(s)</div>
+</div>
+
+<div class="ggrid" id="ggrid">
+  <div class="empty" id="empty" style="display:none;">
+    <div class="empty-ico">🌬️</div>
+    <div class="empty-tit">El viento sopla hacia otros caminos</div>
+    <p class="empty-txt">No encontramos guías con esos filtros todavía.<br>Pronto habrá más Cantera disponible.</p>
+  </div>
+</div>
+
+<!-- MODAL PERFIL -->
+<div class="moverlay" id="moverlay" onclick="cM(event)">
+  <div class="modal" id="modal-contenido">
+    <button class="mclose" onclick="cMb()">✕ Cerrar</button>
+    <div id="modal-inner"></div>
+  </div>
+</div>
+
+<!-- MINI FORM -->
+<div class="foverlay" id="foverlay">
+  <div class="mform">
+    <button class="fclose" onclick="cF()">✕ Cerrar</button>
+    <div id="fc">
+      <div class="ftit">Registra tu interés</div>
+      <div class="fguia" id="fguia-lbl">Cargando...</div>
+      <div class="fg"><label>Tu nombre</label><input type="text" id="fn" placeholder="¿Cómo te llamas?"/></div>
+      <div class="frow">
+        <div class="fg"><label>Correo</label><input type="email" id="fe" placeholder="tu@correo.com"/></div>
+        <div class="fg"><label>WhatsApp</label><input type="tel" id="fw" placeholder="+503 7000 0000"/></div>
+      </div>
+      <div class="fg"><label>¿Qué camino te interesa?</label>
+        <select id="fs"><option value="">Selecciona...</option></select>
+      </div>
+      <div class="fg"><label>Fecha o días preferidos</label><input type="text" id="ff" placeholder="Ej: próximo sábado, entre semana..."/></div>
+      <div class="fg"><label>Mensaje para el guía (opcional)</label><textarea id="fm" rows="3" placeholder="Cuéntale algo — nivel, experiencia, lo que buscas..."></textarea></div>
+      <button class="fbtn" onclick="enviar()"><span>Enviar → El guía te contactará pronto</span></button>
+      <div class="ferr" id="ferr"></div>
+    </div>
+    <div class="fsuc" id="fsuc">
+      <div class="fsuc-ico">🌬️</div>
+      <div class="fsuc-tit">Ejekat Nemi.</div>
+      <p class="fsuc-txt">Tu interés fue registrado.<br>Mauricio te contactará por WhatsApp pronto.<br><br><strong style="color:var(--cl)">El viento ya sopla hacia tu camino.</strong></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── Cursor ──
+const cur=document.getElementById("cur"),crng=document.getElementById("crng");
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+"px";cur.style.top=my+"px";});
+(function a(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;crng.style.left=rx+"px";crng.style.top=ry+"px";requestAnimationFrame(a);})();
+function hov(el){el.addEventListener("mouseenter",()=>{cur.style.width="20px";cur.style.height="20px";crng.style.width="56px";crng.style.height="56px";});el.addEventListener("mouseleave",()=>{cur.style.width="10px";cur.style.height="10px";crng.style.width="36px";crng.style.height="36px";});}
+
+// ── Estado de la app ──
+let DB = null;
+let guiaActual = null;
+let fotoCache = {}; // {guia_id: dataURL}
+let estadoActivo = "todos";
+
+// ── Tags HTML por estado ──
+const tagClass = {pakini:"tp",musewi:"tm",kuxtal:"tk",nejnemi:"tn"};
+const tagLabel = {pakini:"🔥 Pakini",musewi:"🌊 Musewi",kuxtal:"🌿 Kuxtal",nejnemi:"🏔️ Nejnemi"};
+
+// ── Cargar DB ──
+async function cargarDB(){
+  try{
+    const r = await fetch("guias-db.json");
+    DB = await r.json();
+    renderCards();
+  }catch(e){
+    document.getElementById("ggrid").innerHTML = '<div class="empty" style="display:block"><div class="empty-ico">⚠️</div><div class="empty-tit">No se pudo cargar la base de datos</div><p class="empty-txt">Asegúrate de que guias-db.json esté en la misma carpeta.</p></div>';
+  }
+}
+
+// ── Render tarjetas ──
+function renderCards(){
+  const grid = document.getElementById("ggrid");
+  const empty = document.getElementById("empty");
+  if(!empty) return;
+  // Limpiar cards anteriores (no el empty)
+  grid.querySelectorAll(".gcard").forEach(c=>c.remove());
+
+  const modal    = document.getElementById("f-modal").value;
+  const ciudad   = document.getElementById("f-ciudad").value;
+  const disp     = document.getElementById("f-disp").value;
+
+  let visible = 0;
+  DB.guias.filter(g=>g.activo).forEach(g=>{
+    const okE = estadoActivo==="todos" || g.estados.includes(estadoActivo);
+    const okM = modal==="todos" || g.modalidad.includes(modal);
+    const okC = ciudad==="todos" || g.ciudades.includes(ciudad) || (ciudad==="online" && g.modalidad.includes("online"));
+    const okD = disp==="todos" ||
+                (disp==="semana" && g.disponibilidad.lunes_viernes?.activo) ||
+                (disp==="finde" && (g.disponibilidad.sabados?.activo || g.disponibilidad.domingos?.activo));
+
+    const card = document.createElement("div");
+    card.className = "gcard";
+    card.onclick = ()=>abrirModal(g.id);
+
+    const diasDisp = [];
+    if(g.disponibilidad.lunes_viernes?.activo) diasDisp.push("Lunes–Viernes");
+    if(g.disponibilidad.sabados?.activo) diasDisp.push("Sábados");
+    if(g.disponibilidad.domingos?.activo) diasDisp.push("Domingos");
+    if(g.disponibilidad.online?.activo) diasDisp.push("En línea");
+
+    const fotoHTML = fotoCache[g.id]
+      ? `<img class="gimg" src="${fotoCache[g.id]}" alt="${g.nombre}"/>`
+      : `<div class="gph">${g.foto_placeholder || "🌬️"}${g.fundador?'<div class="gbadge">✦ Fundador</div>':''}</div>`;
+
+    card.innerHTML = `
+      ${fotoHTML}
+      <div class="gbody">
+        <div class="getags">${g.estados.map(e=>`<span class="getag ${tagClass[e]}">${tagLabel[e]}</span>`).join("")}</div>
+        <div class="gnombre">${g.nombre}</div>
+        <div class="grol">${g.rol_display}</div>
+        <div class="gdesc">${g.bio_corta}</div>
+        <div class="gmeta">
+          <div class="gmi"><span>📍</span><span>${g.ciudad_display}</span></div>
+          <div class="gmi"><span>🌐</span><span>${g.modalidad.map(m=>m==="presencial"?"Presencial":"En línea").join(" · ")}</span></div>
+        </div>
+        <div class="gdisponib">
+          <div class="dlbl">Disponibilidad</div>
+          <div class="ddias">${diasDisp.join(" · ")} · Bajo demanda para tours</div>
+        </div>
+        <div class="gfoot">
+          <div class="gprecio">${g.precio_display} <small>/ sesión</small></div>
+          <button class="gbtn">Ver camino →</button>
+        </div>
+      </div>`;
+
+    if(okE && okM && okC && okD){ visible++; grid.insertBefore(card, empty); }
+    hov(card);
+  });
+
+  document.getElementById("cnt").textContent = visible;
+  empty.style.display = visible===0 ? "block" : "none";
+}
+
+// ── Filtros ──
+document.querySelectorAll(".epill").forEach(p=>{
+  p.addEventListener("click",()=>{
+    document.querySelectorAll(".epill").forEach(x=>x.classList.remove("on"));
+    p.classList.add("on");
+    estadoActivo = p.dataset.e;
+    renderCards();
+  });
+  hov(p);
+});
+document.querySelectorAll(".fsel").forEach(s=>{s.addEventListener("change",renderCards);});
+
+// ── Modal perfil ──
+function abrirModal(id){
+  const g = DB.guias.find(x=>x.id===id);
+  if(!g) return;
+  guiaActual = g;
+
+  const fotoHTML = fotoCache[g.id]
+    ? `<img class="mimg" src="${fotoCache[g.id]}" alt="${g.nombre}"/>`
+    : `<div class="mph">${g.foto_placeholder||"🌬️"}</div>`;
+
+  const esAdmin = g.rol_plataforma === "admin";
+  const uploadHTML = esAdmin ? `
+    <div class="foto-upload-wrap">
+      <button class="foto-upload-btn" onclick="triggerFoto(event,'${g.id}')">📷 Cambiar foto</button>
+      <div class="foto-hint">JPG o PNG · máx. 5MB</div>
+    </div>
+    <input type="file" class="foto-input" id="foto-input-${g.id}" accept="image/jpeg,image/png,image/webp" onchange="cargarFoto(event,'${g.id}')"/>
+  ` : "";
+
+  const serviciosHTML = g.servicios.map(s=>`
+    <div class="sitem">
+      <span class="sico">${s.icono}</span>
+      <div>
+        <div class="snom">${s.nombre}</div>
+        <div class="sdet">${s.descripcion}</div>
+        <div class="sdet">${s.modalidad.map(m=>m==="presencial"?"📍 Presencial":"🌐 En línea").join(" · ")} · ${s.duracion_min} min</div>
+        <div class="sprecio">Desde $${s.precio_desde} ${s.precio_moneda}</div>
+      </div>
+    </div>`).join("");
+
+  const dispHTML = Object.entries({
+    "Lunes — Viernes": g.disponibilidad.lunes_viernes,
+    "Sábados":         g.disponibilidad.sabados,
+    "Domingos":        g.disponibilidad.domingos,
+    "Tours / Senderismo": g.disponibilidad.tours_senderismo,
+    "En línea":        g.disponibilidad.online
+  }).filter(([,v])=>v?.activo).map(([d,v])=>`
+    <div class="drow"><span class="ddia">${d}</span><span class="dhora">${v.horario}</span></div>`).join("");
+
+  document.getElementById("modal-inner").innerHTML = `
+    <div class="mhero">
+      <div class="mimgwrap">
+        ${fotoHTML}
+        ${uploadHTML}
+      </div>
+      <div class="mintro">
+        <div class="mestados">${g.estados.map(e=>`<span class="getag ${tagClass[e]}">${tagLabel[e]}</span>`).join("")}</div>
+        <div class="mnombre">${g.nombre}</div>
+        <div class="mrol">${g.rol_display}</div>
+        <div class="mbio">${g.bio_completa}</div>
+        <div class="mmetas">
+          <div class="mmeta"><span>📍</span><span>${g.ciudad_display}</span></div>
+          <div class="mmeta"><span>🌐</span><span>${g.modalidad.map(m=>m==="presencial"?"Presencial":"En línea").join(" · ")}</span></div>
+          <div class="mmeta"><span>🗣️</span><span>${g.idiomas.join(" · ")}</span></div>
+          ${g.fundador?'<div class="mmeta"><span>✦</span><span>Guía fundador de Ejekat Nemi</span></div>':''}
+        </div>
+      </div>
+    </div>
+    <div class="mbody">
+      <div class="mgrid">
+        <div>
+          <div class="mstit">Caminos que ofrezco</div>
+          ${serviciosHTML}
+        </div>
+        <div>
+          <div class="mstit">Disponibilidad general</div>
+          <div class="dblock">${dispHTML}</div>
+          ${g.nota_disponibilidad?`<p style="font-size:.72rem;color:var(--ts);margin-top:.8rem;line-height:1.6;">📋 ${g.nota_disponibilidad}</p>`:""}
+          <div class="mquevar">
+            <strong>¿Qué llevar a clases de baile?</strong>Ropa cómoda, tenis o zapatos de baile, agua.
+            <br><br>
+            <strong>¿Qué llevar a senderismo o deportes extremos?</strong>Zapatos cerrados, ropa deportiva, agua, protector solar. Equipo de seguridad incluido.
+          </div>
+        </div>
+      </div>
+      <div class="mcta">
+        <div>
+          <div class="mprecio">${g.precio_display}</div>
+          <div class="mpdet">${g.precio_nota}</div>
+        </div>
+        <div class="mbtns">
+          <button class="bwa" onclick="waDirecto('${g.whatsapp}','${g.nombre}')">💬 Contactar por WhatsApp</button>
+          <button class="bint" onclick="abrirForm('${g.id}')">Registrar mi interés →</button>
+          <div class="mnota">Coordinas fecha, lugar y pago directamente con el guía</div>
+        </div>
+      </div>
+    </div>`;
+
+  document.getElementById("moverlay").classList.add("op");
+  document.body.style.overflow="hidden";
+  document.querySelectorAll(".bwa,.bint,.foto-upload-btn").forEach(hov);
+}
+
+function cM(e){if(e.target===document.getElementById("moverlay")){cMb();}}
+function cMb(){document.getElementById("moverlay").classList.remove("op");document.body.style.overflow="";}
+
+// ── Upload de foto ──
+function triggerFoto(e, id){
+  e.stopPropagation();
+  document.getElementById("foto-input-"+id)?.click();
+}
+function cargarFoto(e, id){
+  const file = e.target.files[0];
+  if(!file) return;
+  if(file.size > 5*1024*1024){alert("La foto no debe superar 5MB."); return;}
+  const reader = new FileReader();
+  reader.onload = ev => {
+    fotoCache[id] = ev.target.result;
+    // Actualizar imagen en modal sin cerrarlo
+    const wrap = document.querySelector(".mimgwrap");
+    if(wrap){
+      const old = wrap.querySelector(".mph, .mimg");
+      if(old){
+        const img = document.createElement("img");
+        img.className="mimg"; img.src=fotoCache[id]; img.alt="Foto";
+        old.replaceWith(img);
+      }
+    }
+    // Re-render cards para reflejar foto
+    renderCards();
+    alert("Foto cargada correctamente. Para guardarla permanentemente, comparte este archivo con tu desarrollador.");
+  };
+  reader.readAsDataURL(file);
+}
+
+// ── WhatsApp directo ──
+function waDirecto(num, nombre){
+  const msg = encodeURIComponent("Hola "+nombre+", vi tu perfil en Ejekat Nemi y me interesa conocer más sobre tus sesiones. ¿Podemos coordinar?");
+  window.open("https://wa.me/"+num+"?text="+msg,"_blank");
+}
+
+// ── Mini form ──
+function abrirForm(id){
+  const g = DB.guias.find(x=>x.id===id);
+  if(!g) return;
+  guiaActual = g;
+  document.getElementById("fguia-lbl").textContent = "Para: "+g.nombre;
+  const sel = document.getElementById("fs");
+  sel.innerHTML = '<option value="">Selecciona el camino...</option>';
+  g.servicios.forEach(s=>{
+    const o = document.createElement("option");
+    o.value=s.id; o.textContent=s.nombre;
+    sel.appendChild(o);
+  });
+  document.getElementById("fc").style.display="block";
+  document.getElementById("fsuc").classList.remove("op");
+  document.getElementById("foverlay").classList.add("op");
+  document.body.style.overflow="hidden";
+}
+function cF(){document.getElementById("foverlay").classList.remove("op");document.body.style.overflow="";}
+
+const WORKER="https://api.ejekatnemi.com/leads";
+async function enviar(){
+  const n=document.getElementById("fn").value.trim();
+  const e=document.getElementById("fe").value.trim();
+  const w=document.getElementById("fw").value.trim();
+  const s=document.getElementById("fs").value;
+  const f=document.getElementById("ff").value.trim();
+  const m=document.getElementById("fm").value.trim();
+  const btn=document.querySelector(".fbtn");
+  const err=document.getElementById("ferr");
+  err.style.display="none";
+  if(!n||!e||!s){err.textContent="Nombre, correo y camino son requeridos.";err.style.display="block";return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent="Correo inválido.";err.style.display="block";return;}
+  btn.disabled=true; btn.querySelector("span").textContent="Enviando...";
+  try{
+    await fetch(WORKER,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({nombre:n,email:e,whatsapp:w,negocio:"Interés en guía",servicio:s,colaboradores:"N/A",guia:guiaActual?.nombre,fecha_preferida:f,mensaje:m,origen:"explorar"})});
+    document.getElementById("fc").style.display="none";
+    document.getElementById("fsuc").classList.add("op");
+    // Abrir WhatsApp del guía también
+    if(guiaActual?.whatsapp){
+      const msg=encodeURIComponent("Hola "+guiaActual.nombre+", registré mi interés en Ejekat Nemi para "+s+". ¿Podemos coordinar?");
+      setTimeout(()=>window.open("https://wa.me/"+guiaActual.whatsapp+"?text="+msg,"_blank"),1500);
+    }
+  }catch(er){
+    err.textContent="Algo salió mal. Escríbenos por WhatsApp.";err.style.display="block";
+    btn.disabled=false; btn.querySelector("span").textContent="Enviar → El guía te contactará pronto";
+  }
+}
+
+// ── Reveal scroll ──
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";}},{threshold:.08}));
+
+// ── Init ──
+cargarDB();
+</script>
+</body>
+</html>

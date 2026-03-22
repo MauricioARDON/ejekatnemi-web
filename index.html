@@ -536,7 +536,7 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
   <p>© 2025 Ejekat Nemi · Hecho con raíces en El Salvador · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cca4a3a0ad8ca9a6a9a7adb8a2a9a1a5e2afa3a1">[email&#160;protected]</a></p>
   <div class="fcred">Nombre derivado del náhuat-pipil,<br>lengua de los pueblos originarios de Cuscatlán.<br><span style="color:var(--copal)">Apoyamos su revitalización.</span></div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const cursor=document.getElementById("cursor"),crng=document.getElementById("crng");
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+"px";cursor.style.top=my+"px";});
@@ -570,4 +570,24 @@ async function handleSubmit(){
     document.getElementById("fcon").style.display="none";
     document.getElementById("sucmsg").classList.add("show");
     if(typeof fbq!=="undefined")fbq("track","Lead");
-    if(typeof gtag!=="undefined")gtag(
+    if(typeof gtag!=="undefined")gtag('event','generate_lead');
+  }catch(er){
+    err.textContent="Algo salió mal. Intenta de nuevo o escríbenos por WhatsApp.";err.style.display="block";
+    btn.disabled=false;btn.querySelector("span").textContent="Comenzar mi camino →";
+  }
+}
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";}},{threshold:.1}));
+document.querySelectorAll(".fcard,.fstep,.tier,.ecard,.cant-arq,.fil-item,.stat-card,.contraste-col").forEach(el=>{el.style.opacity="0";el.style.transform="translateY(20px)";el.style.transition="opacity .6s ease,transform .6s ease";obs.observe(el);});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if(window.scrollY > 50){
+    nav.style.background = 'rgba(13,27,20,0.97)';
+  } else {
+    nav.style.background = 'rgba(13,27,20,0.85)';
+  }
+});
+</script>
+</body>
+</html>

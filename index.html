@@ -461,13 +461,13 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
       <li class="titem"><span>🔒</span>Tus datos protegidos — siempre</li>
       <li class="titem"><span>💬</span>Soporte por WhatsApp incluido</li>
       <li class="titem"><span>🌱</span>Sin tarjeta de crédito requerida</li>
-      <li class="titem"><span>🤝</span>Te orientamos hacia el guía ideal para ti</li>
+      <li class="titem"><span>🧭</span>Te guiamos hacia el camino que necesitas</li>
     </ul>
   </div>
   <div class="fwrap">
     <div id="fcon">
-      <div class="ftitle">Empieza tu camino</div>
-      <div class="fsubt">Cuéntanos cómo quieres sentirte — te conectamos con el guía ideal</div>
+      <div class="ftitle">Elige tu camino</div>
+      <div class="fsubt">Dinos qué camino quieres experimentar — te conectamos con el guía ideal</div>
 
       <div class="fg">
         <label>Tu nombre</label>
@@ -486,18 +486,19 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
       </div>
 
       <div class="fg">
-        <label>¿Cómo quieres sentirte?</label>
+        <label>¿Qué camino quieres experimentar?</label>
         <select id="estado">
-          <option value="">Selecciona tu estado...</option>
-          <option value="Pakini — Alegría">🔥 Pakini — Alegría (Baile, movimiento, energía)</option>
-          <option value="Musewi — Calma">🌊 Musewi — Calma (Yoga, meditación, respiración)</option>
-          <option value="Kuxtal — Sanar">🌿 Kuxtal — Sanar (Masajes, terapias, movilidad)</option>
-          <option value="Nejnemi — Aventura">🏔️ Nejnemi — Aventura (Senderismo, tours, deportes extremos)</option>
+          <option value="">Elige tu camino...</option>
+          <option value="Pakini — Alegría">🔥 Pakini — Alegría · Baile, movimiento y energía</option>
+          <option value="Musewi — Calma">🌊 Musewi — Calma · Yoga, meditación y respiración</option>
+          <option value="Kuxtal — Sanar">🌿 Kuxtal — Sanar · Masajes, terapias y movilidad</option>
+          <option value="Nejnemi — Aventura">🏔️ Nejnemi — Aventura · Senderismo, tours y deportes extremos</option>
+          <option value="Aún no sé">🌬️ Aún no sé · Quiero que me orienten</option>
         </select>
       </div>
 
       <div class="fg">
-        <label>¿Qué experiencia te interesa?</label>
+        <label>¿Qué experiencia quieres vivir?</label>
         <select id="servicio">
           <option value="">Selecciona...</option>
           <option>Salsa — Clases Grupales</option>
@@ -512,13 +513,13 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
       </div>
 
       <div class="fg">
-        <label>¿Tienes experiencia previa? (opcional)</label>
+        <label>¿Cuál es tu punto de partida? (opcional)</label>
         <select id="nivel">
           <option value="">Selecciona...</option>
-          <option>Sin experiencia — es mi primera vez</option>
-          <option>Principiante — algo de experiencia</option>
-          <option>Intermedio — practico regularmente</option>
-          <option>Avanzado — busco perfeccionar</option>
+          <option value="Primera vez — nunca lo he intentado">✨ Primera vez — nunca lo he intentado</option>
+          <option value="Principiante — algo de experiencia">🌱 Principiante — algo de experiencia</option>
+          <option value="Intermedio — practico regularmente">🌿 Intermedio — practico regularmente</option>
+          <option value="Avanzado — busco perfeccionar">🔥 Avanzado — busco perfeccionar</option>
         </select>
       </div>
 
@@ -612,7 +613,7 @@ async function handleSubmit(){
         negocio:"Usuario Final",
         servicio:s,
         colaboradores:"N/A",
-        estado_emocional:estado,
+        camino:estado,
         nivel_experiencia:nivel,
         origen:"landing_registro"
       })});

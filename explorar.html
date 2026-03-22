@@ -231,7 +231,7 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
   <div class="mform">
     <button class="fclose" onclick="cF()">✕ Cerrar</button>
     <div id="fc">
-      <div class="ftit">Registra tu interés</div>
+      <div class="ftit">Elige tu camino</div>
       <div class="fguia" id="fguia-lbl">Cargando...</div>
       <div class="fg"><label>Tu nombre</label><input type="text" id="fn" placeholder="¿Cómo te llamas?"/></div>
       <div class="frow">
@@ -249,7 +249,7 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
     <div class="fsuc" id="fsuc">
       <div class="fsuc-ico">🌬️</div>
       <div class="fsuc-tit">Ejekat Nemi.</div>
-      <p class="fsuc-txt">Tu interés fue registrado.<br>Mauricio te contactará por WhatsApp pronto.<br><br><strong style="color:var(--cl)">El viento ya sopla hacia tu camino.</strong></p>
+      <p class="fsuc-txt">Tu guía te contactará pronto por WhatsApp para coordinar tu camino.<br><br><strong style="color:var(--cl)">El viento ya sopla hacia ti.</strong></p>
     </div>
   </div>
 </div>
@@ -526,7 +526,7 @@ async function enviar(){
   btn.disabled=true; btn.querySelector("span").textContent="Enviando...";
   try{
     await fetch(WORKER,{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({nombre:n,email:e,whatsapp:w,negocio:"Interés en guía",servicio:s,colaboradores:"N/A",guia:guiaActual?.nombre,fecha_preferida:f,mensaje:m,origen:"explorar"})});
+      body:JSON.stringify({nombre:n,email:e,whatsapp:w,negocio:"Usuario Final",servicio:s,colaboradores:"N/A",camino:guiaActual?.estados?.map(e=>e).join(", ")||"",guia:guiaActual?.nombre,fecha_preferida:f,mensaje:m,origen:"explorar_guias",tipo_usuario:"Alumno / Usuario Final"})});
     document.getElementById("fc").style.display="none";
     document.getElementById("fsuc").classList.add("op");
     // Abrir WhatsApp del guía también

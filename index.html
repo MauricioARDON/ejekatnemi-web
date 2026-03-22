@@ -514,7 +514,7 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
           <div class="cant-arq-txt"><strong>Guía de aventura y naturaleza</strong>Senderismo, camping, deportes extremos, turismo vivencial</div>
         </div>
       </div>
-      <a href="mailto:guias@ejekatnemi.com" class="cant-cta">
+      <a href="/cdn-cgi/l/email-protection#eb8c9e828a98ab8e818e808a9f858e8682c5888486" class="cant-cta">
         Quiero ser parte de La Cantera →
       </a>
     </div>
@@ -533,10 +533,10 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 </section>
 <footer>
   <div><div class="flogo">Ejekat <span>Nemi</span></div><div class="fnah">El viento que vive · Náhuat-Pipil · Cuscatlán</div></div>
-  <p>© 2025 Ejekat Nemi · Hecho con raíces en El Salvador · hola@ejekatnemi.com</p>
+  <p>© 2025 Ejekat Nemi · Hecho con raíces en El Salvador · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cca4a3a0ad8ca9a6a9a7adb8a2a9a1a5e2afa3a1">[email&#160;protected]</a></p>
   <div class="fcred">Nombre derivado del náhuat-pipil,<br>lengua de los pueblos originarios de Cuscatlán.<br><span style="color:var(--copal)">Apoyamos su revitalización.</span></div>
 </footer>
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const cursor=document.getElementById("cursor"),crng=document.getElementById("crng");
 let mx=0,my=0,rx=0,ry=0;
 document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+"px";cursor.style.top=my+"px";});
@@ -545,7 +545,7 @@ document.querySelectorAll("a,button,.ecard,.arq").forEach(el=>{
   el.addEventListener("mouseenter",()=>{cursor.style.width="20px";cursor.style.height="20px";crng.style.width="56px";crng.style.height="56px";});
   el.addEventListener("mouseleave",()=>{cursor.style.width="10px";cursor.style.height="10px";crng.style.width="36px";crng.style.height="36px";});
 });
-const WORKER_URL="https://api.ejekatnemi.com/leads";
+const WORKER_URL="https://ejekatnemi-leads.mauricio-ardon.workers.dev/";
 async function crearContacto(d){
   const r=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
   const j=await r.json();
@@ -570,10 +570,4 @@ async function handleSubmit(){
     document.getElementById("fcon").style.display="none";
     document.getElementById("sucmsg").classList.add("show");
     if(typeof fbq!=="undefined")fbq("track","Lead");
-    if(typeof gtag!=="undefined")gtag("event","generate_lead");
-  }catch(er){
-    err.textContent="Algo salió mal. Intenta de nuevo o escríbenos por WhatsApp.";err.style.display="block";
-    btn.disabled=false;btn.querySelector("span").textContent="Comenzar mi camino →";
-  }
-}
-const obs=new IntersectionObs
+    if(typeof gtag!=="undefined")gtag(

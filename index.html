@@ -455,36 +455,76 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
   <div class="regl">
     <div class="sec-ey" style="margin-bottom:1.5rem;"><div class="edot"></div><div class="elbl">Empieza hoy</div></div>
     <h2>Tu camino<br>comienza con<br><em>un paso.</em></h2>
-    <p>Crea tu cuenta en 2 minutos. 8 sesiones gratis. Sin compromisos. El viento te espera.</p>
+    <p>Cuéntanos cómo quieres sentirte y te conectamos con el guía ideal. Sin compromisos. Tu primera orientación es gratis.</p>
     <ul class="tlist">
       <li class="titem"><span>⚡</span>Activo en menos de 5 minutos</li>
       <li class="titem"><span>🔒</span>Tus datos protegidos — siempre</li>
       <li class="titem"><span>💬</span>Soporte por WhatsApp incluido</li>
       <li class="titem"><span>🌱</span>Sin tarjeta de crédito requerida</li>
-      <li class="titem"><span>🤝</span>Parte de La Cantera desde el día 1</li>
+      <li class="titem"><span>🤝</span>Te orientamos hacia el guía ideal para ti</li>
     </ul>
   </div>
   <div class="fwrap">
     <div id="fcon">
-      <div class="ftitle">Únete al camino</div>
-      <div class="fsubt">Empieza con el plan Semilla — gratuito para siempre</div>
-      <div class="fg"><label>Nombre completo</label><input type="text" id="nombre" placeholder="Tu nombre"/></div>
-      <div class="frow">
-        <div class="fg"><label>Correo electrónico</label><input type="email" id="email" placeholder="tu@correo.com"/></div>
-        <div class="fg"><label>WhatsApp</label><input type="tel" id="whatsapp" placeholder="+503 7000 0000"/></div>
+      <div class="ftitle">Empieza tu camino</div>
+      <div class="fsubt">Cuéntanos cómo quieres sentirte — te conectamos con el guía ideal</div>
+
+      <div class="fg">
+        <label>Tu nombre</label>
+        <input type="text" id="nombre" placeholder="¿Cómo te llamas?"/>
       </div>
-      <div class="fg"><label>Nombre de tu espacio o proyecto</label><input type="text" id="negocio" placeholder="Estudio / Tu nombre"/></div>
+
       <div class="frow">
-        <div class="fg"><label>Disciplina principal</label>
-          <select id="servicio"><option value="">Selecciona...</option><option>Yoga / Meditación</option><option>Baile / Movimiento</option><option>Entrenamiento Funcional</option><option>Masajes / Terapias</option><option>Sauna / Respiración</option><option>Prácticas Espirituales</option><option>Movilidad</option><option>Senderismo / Aventura</option><option>Múltiples disciplinas</option></select>
+        <div class="fg">
+          <label>Correo electrónico</label>
+          <input type="email" id="email" placeholder="tu@correo.com"/>
         </div>
-        <div class="fg"><label>Colaboradores</label>
-          <select id="colaboradores"><option value="">Selecciona...</option><option>Solo yo</option><option>2–3</option><option>4–10</option><option>Más de 10</option></select>
+        <div class="fg">
+          <label>WhatsApp</label>
+          <input type="tel" id="whatsapp" placeholder="+503 7000 0000"/>
         </div>
       </div>
+
+      <div class="fg">
+        <label>¿Cómo quieres sentirte?</label>
+        <select id="estado">
+          <option value="">Selecciona tu estado...</option>
+          <option value="Pakini — Alegría">🔥 Pakini — Alegría (Baile, movimiento, energía)</option>
+          <option value="Musewi — Calma">🌊 Musewi — Calma (Yoga, meditación, respiración)</option>
+          <option value="Kuxtal — Sanar">🌿 Kuxtal — Sanar (Masajes, terapias, movilidad)</option>
+          <option value="Nejnemi — Aventura">🏔️ Nejnemi — Aventura (Senderismo, tours, deportes extremos)</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>¿Qué experiencia te interesa?</label>
+        <select id="servicio">
+          <option value="">Selecciona...</option>
+          <option>Salsa — Clases Grupales</option>
+          <option>Bachata — Clases Grupales</option>
+          <option>Salsa / Bachata — Individual</option>
+          <option>Tour Volcán Santa Ana + Cerro Verde</option>
+          <option>Tour Lago Coatepeque + Playa El Tunco</option>
+          <option>Tour Cultural Suchitoto</option>
+          <option>Deportes Extremos — Bungee / Canopy / Rapel</option>
+          <option>Aún no sé — quiero que me orienten</option>
+        </select>
+      </div>
+
+      <div class="fg">
+        <label>¿Tienes experiencia previa? (opcional)</label>
+        <select id="nivel">
+          <option value="">Selecciona...</option>
+          <option>Sin experiencia — es mi primera vez</option>
+          <option>Principiante — algo de experiencia</option>
+          <option>Intermedio — practico regularmente</option>
+          <option>Avanzado — busco perfeccionar</option>
+        </select>
+      </div>
+
       <button class="fbtn" onclick="handleSubmit()"><span>Comenzar mi camino →</span></button>
       <p id="ferr"></p>
-      <p class="fleg">Al registrarte reconoces el origen náhuat-pipil de este proyecto y aceptas nuestros Términos y Política de privacidad.</p>
+      <p class="fleg">Sin compromisos. Te contactamos para coordinar tu primera sesión. Nunca compartimos tu información.</p>
     </div>
     <div class="sucmsg" id="sucmsg">
       <div class="sucg">🌬️</div>
@@ -556,23 +596,32 @@ async function handleSubmit(){
   const n=document.getElementById("nombre").value.trim();
   const e=document.getElementById("email").value.trim();
   const w=document.getElementById("whatsapp").value.trim();
-  const ng=document.getElementById("negocio").value.trim();
+  const estado=document.getElementById("estado").value;
   const s=document.getElementById("servicio").value;
-  const c=document.getElementById("colaboradores").value;
+  const nivel=document.getElementById("nivel")?.value||"";
   const btn=document.querySelector(".fbtn");
   const err=document.getElementById("ferr");
   err.style.display="none";
-  if(!n||!e||!ng||!s||!c){err.textContent="Por favor completa todos los campos.";err.style.display="block";return;}
+  if(!n||!e||!estado||!s){err.textContent="Por favor completa nombre, correo, estado y experiencia de interés.";err.style.display="block";return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent="Ingresa un correo electrónico válido.";err.style.display="block";return;}
   btn.disabled=true;btn.querySelector("span").textContent="El viento se mueve...";
   try{
-    await crearContacto({nombre:n,email:e,whatsapp:w,negocio:ng,servicio:s,colaboradores:c});
+    await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({
+        nombre:n, email:e, whatsapp:w,
+        negocio:"Usuario Final",
+        servicio:s,
+        colaboradores:"N/A",
+        estado_emocional:estado,
+        nivel_experiencia:nivel,
+        origen:"landing_registro"
+      })});
     document.getElementById("fcon").style.display="none";
     document.getElementById("sucmsg").classList.add("show");
     if(typeof fbq!=="undefined")fbq("track","Lead");
-    if(typeof gtag!=="undefined")gtag('event','generate_lead');
+    if(typeof gtag!=="undefined")gtag("event","generate_lead");
   }catch(er){
-    err.textContent="Algo salió mal. Intenta de nuevo o escríbenos por WhatsApp.";err.style.display="block";
+    err.textContent="Algo salió mal. Escríbenos directo por WhatsApp.";err.style.display="block";
     btn.disabled=false;btn.querySelector("span").textContent="Comenzar mi camino →";
   }
 }

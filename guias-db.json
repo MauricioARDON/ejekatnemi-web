@@ -226,7 +226,7 @@
       ],
       "google_workspace": {
         "email_profesional": "administrador@ejekatnemi.com",
-        "google_calendar_id": "",
+        "google_calendar_id": "c_83a7a4733bb7078ffeea54ee86b6500600b0f5217ae454a7e9346689411e394c@group.calendar.google.com",
         "google_meet_activo": true,
         "google_drive_carpeta": "",
         "aliases": [
@@ -234,7 +234,8 @@
           "guias@ejekatnemi.com",
           "info@ejekatnemi.com",
           "tours@ejekatnemi.com"
-        ]
+        ],
+        "google_calendar_tours_id": "c_b41dfdf7baea72450c4ae26e25677280c1728703538ef8dc5f10aa63f2cf0b16@group.calendar.google.com"
       }
     }
   ]

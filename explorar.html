@@ -117,6 +117,14 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
 .drow:last-child{border:none;}
 .ddia{color:var(--ts);}
 .dhora{color:var(--a);}
+
+.cal-loading{font-size:.75rem;color:var(--ts);font-style:italic;margin-top:.5rem;}
+.cal-error{font-size:.72rem;color:var(--tl);margin-top:.5rem;}
+.cal-dia{display:flex;justify-content:space-between;align-items:flex-start;padding:.35rem 0;border-bottom:1px solid rgba(244,236,214,.05);font-size:.78rem;}
+.cal-dia:last-child{border:none;}
+.cal-dia-nom{color:var(--ts);text-transform:capitalize;}
+.cal-dia-hrs{color:var(--a);text-align:right;font-size:.72rem;}
+.cal-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(0,201,123,.1);border:1px solid rgba(0,201,123,.2);color:#00C97B;font-size:.62rem;letter-spacing:1px;text-transform:uppercase;padding:.2rem .6rem;margin-bottom:.6rem;}
 .mquevar{margin-top:1rem;font-size:.72rem;color:var(--ts);line-height:1.6;}
 .mquevar strong{color:var(--a);display:block;margin-bottom:.2rem;}
 .mcta{background:rgba(184,74,47,.07);border:1px solid rgba(184,74,47,.15);padding:1.8rem 2.2rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
@@ -424,8 +432,8 @@ function abrirModal(id){
           ${serviciosHTML}
         </div>
         <div>
-          <div class="mstit">Disponibilidad general</div>
-          <div class="dblock">${dispHTML}</div>
+          <div class="mstit">Disponibilidad en tiempo real</div>
+          <div id="cal-disponib-${g.id}"><p class="cal-loading">Cargando...</p></div>
           ${g.nota_disponibilidad?`<p style="font-size:.72rem;color:var(--ts);margin-top:.8rem;line-height:1.6;">📋 ${g.nota_disponibilidad}</p>`:""}
           <div class="mquevar">
             <strong>¿Qué llevar a clases de baile?</strong>Ropa cómoda, tenis o zapatos de baile, agua.
@@ -448,6 +456,7 @@ function abrirModal(id){
     </div>`;
 
   document.getElementById("moverlay").classList.add("op");
+  if(g.slug || g.id) cargarDisponibilidad(g.id || g.slug, `cal-disponib-${g.id}`);
   document.body.style.overflow="hidden";
   document.querySelectorAll(".bwa,.bint,.foto-upload-btn").forEach(hov);
 }
@@ -542,6 +551,65 @@ async function enviar(){
 
 // ── Reveal scroll ──
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";}},{threshold:.08}));
+
+
+// ── Google Calendar API ──
+const CALENDAR_WORKER = 'https://ejekatnemi-calendar.mauricio-ardon.workers.dev';
+
+async function cargarDisponibilidad(guiaId, containerId) {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+
+  el.innerHTML = '<p class="cal-loading">Cargando disponibilidad en tiempo real...</p>';
+
+  try {
+    const res  = await fetch(`${CALENDAR_WORKER}/disponibilidad?guia=${guiaId}`);
+    const data = await res.json();
+
+    if (!res.ok || data.error) {
+      el.innerHTML = '<p class="cal-error">No se pudo cargar la disponibilidad. Coordina por WhatsApp.</p>';
+      return;
+    }
+
+    let html = '<div class="cal-badge">📅 Disponibilidad en tiempo real</div>';
+
+    // Clases de Baile
+    if (data.calendarios?.baile?.disponibilidad) {
+      html += '<div class="mstit" style="margin-top:.8rem;margin-bottom:.5rem;">Clases de Baile</div>';
+      html += '<div class="dblock">';
+      const dias = data.calendarios.baile.disponibilidad;
+      if (Object.keys(dias).length === 0) {
+        html += '<p style="font-size:.75rem;color:var(--ts);">Sin disponibilidad próxima configurada</p>';
+      } else {
+        Object.entries(dias).forEach(([dia, horas]) => {
+          html += `<div class="cal-dia"><span class="cal-dia-nom">${dia}</span><span class="cal-dia-hrs">${horas.join('<br>')}</span></div>`;
+        });
+      }
+      html += '</div>';
+    }
+
+    // Tours y Aventura
+    if (data.calendarios?.tours?.disponibilidad) {
+      html += '<div class="mstit" style="margin-top:1rem;margin-bottom:.5rem;">Tours y Aventura</div>';
+      html += '<div class="dblock">';
+      const dias = data.calendarios.tours.disponibilidad;
+      if (Object.keys(dias).length === 0) {
+        html += '<p style="font-size:.75rem;color:var(--ts);">Sin disponibilidad próxima configurada</p>';
+      } else {
+        Object.entries(dias).forEach(([dia, horas]) => {
+          html += `<div class="cal-dia"><span class="cal-dia-nom">${dia}</span><span class="cal-dia-hrs">${horas.join('<br>')}</span></div>`;
+        });
+      }
+      html += '</div>';
+    }
+
+    html += `<p style="font-size:.65rem;color:var(--ts);margin-top:.8rem;">Actualizado: ${new Date(data.actualizado).toLocaleString('es-SV')}</p>`;
+    el.innerHTML = html;
+
+  } catch(err) {
+    el.innerHTML = '<p class="cal-error">Error de conexión. Coordina por WhatsApp.</p>';
+  }
+}
 
 // ── Init ──
 cargarDB();

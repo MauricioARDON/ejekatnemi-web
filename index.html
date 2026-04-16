@@ -177,8 +177,8 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
 @media(max-width:1024px){nav{padding:1.2rem 2rem;}nav ul{display:none;}#hero,#filosofia,#registro{grid-template-columns:1fr;padding:7rem 2rem 4rem;}.hero-right,.hero-glyph{display:none;}.fright{grid-template-columns:1fr;}.ghead{grid-template-columns:1fr;}.arqs{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr 1fr;}.fsteps::before{display:none;}.tiers{grid-template-columns:1fr 1fr;}#flujo,#guias,#precios{padding:5rem 2rem;}footer{flex-direction:column;gap:1rem;text-align:center;}.fcred{text-align:center;}}
 @media(max-width:600px){.tiers{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}.egrid{display:none;}}
-#acto1{padding:7rem 5rem;position:relative;z-index:1;overflow:hidden;color:rgba(244,236,214,0.90);}
-#acto1::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--obsidiana) 0%,rgba(45,106,79,.03) 50%,var(--obsidiana) 100%);pointer-events:none;}
+#acto1{padding:7rem 5rem;position:relative;z-index:1;overflow:hidden;--texto-suave:rgba(244,236,214,0.88);--texto:rgba(244,236,214,0.95);color:var(--texto);}
+#acto1::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--obsidiana) 0%,transparent 30%,transparent 70%,var(--obsidiana) 100%);pointer-events:none;}
 .a1-intro{text-align:center;max-width:680px;margin:0 auto 5rem;}
 .a1-intro .sec-ey{justify-content:center;margin-bottom:1.2rem;} #acto1 h2{color:var(--arena);} #acto1 h2 em{color:var(--terracota-l);}
 .a1-intro h2{margin-bottom:1.2rem;}

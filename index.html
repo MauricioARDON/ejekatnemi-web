@@ -222,8 +222,44 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 .fil-item-tit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;font-style:italic;color:#FFFFFF;margin-bottom:.3rem;}
 .fil-item-txt{font-size:.8rem;font-weight:300;color:#EDE8DE;line-height:1.6;}
 
+
+.fil-item-v2{background:var(--obsidiana);padding:2rem 1.8rem 1.2rem;border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .25s;border-bottom:3px solid transparent;margin-bottom:2px;}
+.fil-item-v2:hover,.fil-item-v2.open{border-bottom-color:var(--copal);background:var(--obsidiana-l);}
+.fil-v2-ico{font-size:3rem;display:block;margin-bottom:.8rem;}
+.fil-v2-nahuat{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:400;font-style:italic;color:#FFFFFF;line-height:1;margin-bottom:.3rem;}
+.fil-v2-trad{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
+.fil-item-v2[data-c="pakini"] .fil-v2-trad{color:#E8A070;}
+.fil-item-v2[data-c="musewi"] .fil-v2-trad{color:#5AAA80;}
+.fil-item-v2[data-c="kuxtal"] .fil-v2-trad{color:#4A9A6A;}
+.fil-item-v2[data-c="nejnemi"] .fil-v2-trad{color:#EBB840;}
+.fil-v2-disc{font-size:.78rem;color:#C0B8A8;margin-bottom:.8rem;}
+.fil-v2-discs{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fil-item-v2.open .fil-v2-discs{max-height:300px;}
+.fil-v2-disc-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);margin-bottom:.3rem;cursor:pointer;transition:all .2s;font-size:.8rem;color:#F0EBE0;}
+.fil-v2-disc-item:hover{background:rgba(244,236,214,.08);border-color:rgba(244,236,214,.18);}
+.fil-v2-disc-item span{color:#A09880;font-size:.72rem;}
+.fil-v2-disc-item:hover span{color:var(--copal);}
+.fil-v2-hint{font-size:.65rem;color:#706860;margin-top:.5rem;text-align:right;}
 .fil-discs{display:none;margin-top:.8rem;border-top:1px solid rgba(244,236,214,.08);padding-top:.8rem;display:flex;flex-direction:column;gap:.3rem;max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.fil-item-click.open .fil-discs{max-height:300px;}
+.fil-item-click.open 
+.fil-item-v2{background:var(--obsidiana);padding:2rem 1.8rem 1.2rem;border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .25s;border-bottom:3px solid transparent;margin-bottom:2px;}
+.fil-item-v2:hover,.fil-item-v2.open{border-bottom-color:var(--copal);background:var(--obsidiana-l);}
+.fil-v2-ico{font-size:3rem;display:block;margin-bottom:.8rem;}
+.fil-v2-nahuat{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:400;font-style:italic;color:#FFFFFF;line-height:1;margin-bottom:.3rem;}
+.fil-v2-trad{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
+.fil-item-v2[data-c="pakini"] .fil-v2-trad{color:#E8A070;}
+.fil-item-v2[data-c="musewi"] .fil-v2-trad{color:#5AAA80;}
+.fil-item-v2[data-c="kuxtal"] .fil-v2-trad{color:#4A9A6A;}
+.fil-item-v2[data-c="nejnemi"] .fil-v2-trad{color:#EBB840;}
+.fil-v2-disc{font-size:.78rem;color:#C0B8A8;margin-bottom:.8rem;}
+.fil-v2-discs{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fil-item-v2.open .fil-v2-discs{max-height:300px;}
+.fil-v2-disc-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);margin-bottom:.3rem;cursor:pointer;transition:all .2s;font-size:.8rem;color:#F0EBE0;}
+.fil-v2-disc-item:hover{background:rgba(244,236,214,.08);border-color:rgba(244,236,214,.18);}
+.fil-v2-disc-item span{color:#A09880;font-size:.72rem;}
+.fil-v2-disc-item:hover span{color:var(--copal);}
+.fil-v2-hint{font-size:.65rem;color:#706860;margin-top:.5rem;text-align:right;}
+.fil-discs{max-height:300px;}
 .fil-disc{font-size:.78rem;color:#D4CFC4;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .2s;display:flex;justify-content:space-between;}
 .fil-disc:hover{background:rgba(244,236,214,.08);color:#F0EBE0;border-color:rgba(244,236,214,.18);}
 .fil-disc span{color:#A09880;font-size:.72rem;}
@@ -342,13 +378,6 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
     <p class="hdesc">Sabemos que la vida no para. Por eso Ejekat Nemi existe: para que en medio de la ocupación, el movimiento, el descanso y la aventura tengan su lugar — con maestros reales, en horarios que sí funcionan.</p><p class="hdesc" style="margin-top:.8rem;font-style:italic;opacity:.85;">¿Qué quieres explorar primero?</p>
     <p class="hnote">✓ Sin tarjeta de crédito &nbsp;·&nbsp; <span>8 sesiones gratis</span> &nbsp;·&nbsp; Cancela cuando quieras</p>
   </div>
-  <div class="hero-right">
-    <div class="egrid">
-      <div class="ecard" data-e="pakini"><span class="eicon">🔥</span><div class="enahuat">Pakini</div><div class="ees">Alegría</div><div class="edis">Baile · Funcional · Deportes en grupo</div></div>
-      <div class="ecard" data-e="musewi"><span class="eicon">🌊</span><div class="enahuat">Musewi</div><div class="ees">Calma</div><div class="edis">Yoga · Meditación · Sauna · Respiración</div></div>
-      <div class="ecard" data-e="kuxtal"><span class="eicon">🌿</span><div class="enahuat">Kuxtal</div><div class="ees">Sanar</div><div class="edis">Masajes · Terapias · Movilidad · Espiritual</div></div>
-      <div class="ecard" data-e="nejnemi"><span class="eicon">🏔️</span><div class="enahuat">Nejnemi</div><div class="ees">Aventura</div><div class="edis">Senderismo · Camping · Deportes extremos</div></div>
-    </div>
   </div>
 </section>
 <div class="franja">
@@ -363,7 +392,7 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 
   
   <div class="a1-intro">
-    <div class="sec-ey">
+    <div class="sec-ey" style="justify-content:center;">
       <div class="edot"></div>
       <div class="elbl">Por qué moverse importa</div>
     </div>
@@ -425,18 +454,62 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
       <p>Cuando te mueves con intención, con un guía, con otros — estás haciendo lo que los pueblos de Cuscatlán hacían en cada danza ceremonial, en cada caminata hacia el volcán, en cada práctica colectiva: <strong style="color:#FFFFFF">activar el viento interior.</strong></p>
       <p style="font-size:.8rem;color:#A09880;margin-top:1rem;">Toca cada camino para explorar sus disciplinas.</p>
     </div>
-    <div class="a1-fil-right">
-      <div class="fil-item fil-item-click" data-camino="pakini" style="cursor:pointer;">
-        <div class="fil-item-ico">🔥</div>
-        <div class="fil-item-tit">Pakini — Alegría</div>
-        <div class="fil-item-txt">Del náhuat <em>pakini</em>: sentir alegría. Baile, movimiento grupal, energía compartida.</div>
-        <div class="fil-discs" id="fd-pakini">
-          <div class="fil-disc" onclick="elegirDisc('Salsa — Clases Grupales','pakini')">💃 Salsa — Clases Grupales · <span>$45 USD</span></div>
-          <div class="fil-disc" onclick="elegirDisc('Bachata — Clases Grupales','pakini')">🎶 Bachata — Clases Grupales · <span>$45 USD</span></div>
-          <div class="fil-disc" onclick="elegirDisc('Salsa / Bachata — Individual','pakini')">🕺 Salsa / Bachata — Individual · <span>$35 USD</span></div>
-          <div class="fil-disc" onclick="elegirDisc('2x1 Salsa y Bachata Grupal','pakini')">🔥 2x1 Salsa &amp; Bachata Grupal · <span>$70 USD</span></div>
+    <div class="a1-fil-right" style="display:flex;flex-direction:column;gap:2px;">
+
+      <div class="fil-item-v2 fil-item-click" data-c="pakini">
+        <span class="fil-v2-ico">🔥</span>
+        <div class="fil-v2-nahuat">Pakini</div>
+        <div class="fil-v2-trad">Alegría · Baile · Movimiento · Energía</div>
+        <div class="fil-v2-disc">Baile · Funcional · Deportes en grupo</div>
+        <div class="fil-v2-discs">
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Salsa — Clases Grupales','pakini')">💃 Salsa — Clases Grupales<span>$45 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Bachata — Clases Grupales','pakini')">🎶 Bachata — Clases Grupales<span>$45 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Salsa / Bachata — Individual','pakini')">🕺 Salsa / Bachata — Individual<span>$35 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('2x1 Salsa y Bachata Grupal','pakini')">🔥 2x1 Salsa &amp; Bachata Grupal<span>$70 USD</span></div>
+          <div class="fil-v2-hint">Toca para inscribirte →</div>
         </div>
       </div>
+
+      <div class="fil-item-v2 fil-item-click" data-c="musewi">
+        <span class="fil-v2-ico">🌊</span>
+        <div class="fil-v2-nahuat">Musewi</div>
+        <div class="fil-v2-trad">Calma · Descanso · Respiración</div>
+        <div class="fil-v2-disc">Yoga · Meditación · Sauna · Respiración</div>
+        <div class="fil-v2-discs">
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Yoga — Práctica Grupal','musewi')">🧘 Yoga — Práctica Grupal<span>Próximamente</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Meditación Guiada','musewi')">🌿 Meditación Guiada<span>Próximamente</span></div>
+          <div class="fil-v2-hint">Toca para registrar interés →</div>
+        </div>
+      </div>
+
+      <div class="fil-item-v2 fil-item-click" data-c="kuxtal">
+        <span class="fil-v2-ico">🌿</span>
+        <div class="fil-v2-nahuat">Kuxtal</div>
+        <div class="fil-v2-trad">Vida plena · Sanar · Existir</div>
+        <div class="fil-v2-disc">Masajes · Terapias · Movilidad · Espiritual</div>
+        <div class="fil-v2-discs">
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Masaje Terapéutico','kuxtal')">💆 Masaje Terapéutico<span>Próximamente</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Movilidad y Flexibilidad','kuxtal')">🌱 Movilidad y Flexibilidad<span>Próximamente</span></div>
+          <div class="fil-v2-hint">Toca para registrar interés →</div>
+        </div>
+      </div>
+
+      <div class="fil-item-v2 fil-item-click" data-c="nejnemi">
+        <span class="fil-v2-ico">🏔️</span>
+        <div class="fil-v2-nahuat">Nejnemi</div>
+        <div class="fil-v2-trad">Aventura · Andar lejos · Explorar</div>
+        <div class="fil-v2-disc">Senderismo · Camping · Deportes extremos</div>
+        <div class="fil-v2-discs">
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Volcán Santa Ana + Cerro Verde','nejnemi')">🌋 Tour Volcán Santa Ana + Cerro Verde<span>$35 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Lago Coatepeque + Playa El Tunco','nejnemi')">💧 Tour Lago Coatepeque + El Tunco<span>$40 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Cultural Suchitoto','nejnemi')">🏛️ Tour Cultural Suchitoto<span>$30 USD</span></div>
+          <div class="fil-v2-disc-item" onclick="elegirDisc('Deportes Extremos — Bungee / Canopy / Rapel','nejnemi')">🪂 Deportes Extremos<span>$45 USD</span></div>
+          <div class="fil-v2-hint">Toca para inscribirte →</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
       <div class="fil-item fil-item-click" data-camino="musewi" style="cursor:pointer;">
         <div class="fil-item-ico">🌊</div>
         <div class="fil-item-tit">Musewi — Calma</div>
@@ -693,7 +766,7 @@ window.addEventListener('scroll', () => {
 
 
 // Toggle disciplinas en sabiduría
-document.querySelectorAll(".fil-item-click").forEach(function(item){
+document.querySelectorAll(".fil-item-click, .fil-item-v2").forEach(function(item){
   item.addEventListener("click", function(e){
     if(e.target.classList.contains("fil-disc") || e.target.closest(".fil-disc")) return;
     var wasOpen = item.classList.contains("open");

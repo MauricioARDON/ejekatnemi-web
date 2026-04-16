@@ -49,7 +49,7 @@
             "presencial"
           ],
           "estado": "pakini",
-          "precio_desde": 15,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 60,
           "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
@@ -63,7 +63,7 @@
             "presencial"
           ],
           "estado": "pakini",
-          "precio_desde": 15,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 60,
           "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
@@ -78,7 +78,7 @@
             "online"
           ],
           "estado": "pakini",
-          "precio_desde": 25,
+          "precio_desde": 35,
           "precio_moneda": "USD",
           "duracion_min": 60,
           "que_llevar": "Presencial: ropa cómoda y zapatos. En línea: espacio de al menos 2x2 metros y conexión estable."
@@ -138,6 +138,20 @@
           "precio_moneda": "USD",
           "duracion_min": 180,
           "que_llevar": "Ropa deportiva ajustada, zapatos cerrados, sin accesorios sueltos. Equipo de seguridad 100% incluido."
+        },
+        {
+          "id": "salsa-bachata-2x1",
+          "nombre": "2x1 Salsa & Bachata — Clases Grupales",
+          "descripcion": "El mejor valor: accede a las clases grupales de Salsa Y Bachata por un solo precio. Aprende los dos estilos más bailados de Latinoamérica en un paquete especial.",
+          "icono": "🔥",
+          "modalidad": [
+            "presencial"
+          ],
+          "estado": "pakini",
+          "precio_desde": 70,
+          "precio_moneda": "USD",
+          "duracion_min": 120,
+          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
         }
       ],
       "modalidad": [

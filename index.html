@@ -221,11 +221,58 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 .fil-item-ico{font-size:1.3rem;margin-bottom:.5rem;}
 .fil-item-tit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;font-style:italic;color:#FFFFFF;margin-bottom:.3rem;}
 .fil-item-txt{font-size:.8rem;font-weight:300;color:#EDE8DE;line-height:1.6;}
+
+.fil-discs{display:none;margin-top:.8rem;border-top:1px solid rgba(244,236,214,.08);padding-top:.8rem;display:flex;flex-direction:column;gap:.3rem;max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fil-item-click.open .fil-discs{max-height:300px;}
+.fil-disc{font-size:.78rem;color:#D4CFC4;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .2s;display:flex;justify-content:space-between;}
+.fil-disc:hover{background:rgba(244,236,214,.08);color:#F0EBE0;border-color:rgba(244,236,214,.18);}
+.fil-disc span{color:#A09880;font-size:.72rem;}
+.fil-disc:hover span{color:var(--copal);}
+.fil-item-click{transition:border-left .25s;}
+.fil-item-click.open{border-left:2px solid var(--copal)!important;}
 .a1-cta{text-align:center;padding:4rem 2rem;background:rgba(244,236,214,.02);border:1px solid rgba(244,236,214,.06);}
 .a1-cta-titulo{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--arena);margin-bottom:.8rem;line-height:1.2;}
 .a1-cta-titulo em{font-style:italic;color:var(--terracota-l);}
 .a1-cta-sub{font-size:.9rem;font-weight:300;color:#F0EBE0;margin-bottom:2rem;}
 .a1-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+.caminos-section{padding:0 0 2rem;}
+.caminos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(244,236,214,.04);}
+.camino-card{background:var(--obsidiana);padding:2rem 1.8rem;cursor:pointer;transition:background .25s;border-left:3px solid transparent;position:relative;}
+.camino-card:hover{background:var(--obsidiana-l);}
+.camino-card.activo{background:var(--obsidiana-l);}
+.camino-card[data-c="pakini"].activo{border-left-color:#D4623D;}
+.camino-card[data-c="musewi"].activo{border-left-color:#3D8A65;}
+.camino-card[data-c="kuxtal"].activo{border-left-color:#2D6A4F;}
+.camino-card[data-c="nejnemi"].activo{border-left-color:#E9A824;}
+.camino-ico{font-size:2rem;margin-bottom:.8rem;display:block;}
+.camino-nombre{font-size:1.25rem;font-weight:400;font-style:italic;font-family:"Cormorant Garamond",serif;color:#F5F0E8;margin-bottom:.15rem;}
+.camino-sub{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem;}
+.camino-card[data-c="pakini"] .camino-sub{color:#E8A070;}
+.camino-card[data-c="musewi"] .camino-sub{color:#5AAA80;}
+.camino-card[data-c="kuxtal"] .camino-sub{color:#4A9A6A;}
+.camino-card[data-c="nejnemi"] .camino-sub{color:#EBB840;}
+.camino-tags{font-size:.78rem;color:#C0B8A8;line-height:1.6;}
+.camino-panel{overflow:hidden;max-height:0;transition:max-height .45s ease;background:var(--obsidiana-l);grid-column:1/-1;}
+.camino-panel.abierto{max-height:900px;}
+.camino-panel-inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;padding:2.5rem 2rem;}
+.cp-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
+.cp-titulo{font-size:1.3rem;font-family:"Cormorant Garamond",serif;font-style:italic;color:#F5F0E8;margin-bottom:.8rem;font-weight:400;}
+.cp-desc{font-size:.88rem;color:#D4CFC4;line-height:1.78;margin-bottom:1.2rem;}
+.cp-bens{display:flex;flex-direction:column;gap:.5rem;}
+.cp-ben{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:#C4BFB4;line-height:1.6;}
+.cp-ben-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:.45rem;}
+.cp-disc-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:#A09880;margin-bottom:1rem;}
+.cp-disc-list{display:flex;flex-direction:column;gap:.4rem;}
+.cp-disc-item{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.07);cursor:pointer;transition:all .2s;}
+.cp-disc-item:hover{background:rgba(244,236,214,.07);border-color:rgba(244,236,214,.2);}
+.cp-disc-nom{font-size:.84rem;color:#F0EBE0;}
+.cp-disc-precio{font-size:.7rem;color:#A09880;}
+.cp-disc-arr{font-size:.8rem;color:#A09880;transition:transform .2s;}
+.cp-disc-item:hover .cp-disc-arr{transform:translateX(4px);}
+.cp-cta{margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;background:transparent;width:100%;transition:all .2s;color:#F0EBE0;}
+.cp-cta:hover{background:rgba(244,236,214,.06);}
+@media(max-width:768px){.caminos-grid{grid-template-columns:1fr;}.camino-panel-inner{grid-template-columns:1fr;gap:1.5rem;}.camino-panel-inner{padding:1.8rem 1.2rem;}}
 @media(max-width:1024px){#acto1{padding:5rem 2rem;}.stats-row{grid-template-columns:1fr;}.a1-contraste{grid-template-columns:1fr;}.a1-filosofia{grid-template-columns:1fr;gap:3rem;}}
 
 #cantera{padding:7rem 5rem;background:linear-gradient(135deg,rgba(184,74,47,.08) 0%,rgba(45,106,79,.08) 100%);border-top:1px solid rgba(244,236,214,.06);position:relative;z-index:1;overflow:hidden;}
@@ -247,6 +294,14 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
 .cant-benefits{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem;}
 .cant-ben{display:flex;gap:.8rem;align-items:flex-start;font-size:.82rem;font-weight:300;color:var(--texto-suave);line-height:1.5;}
 .cant-ben::before{content:"→";color:var(--copal);flex-shrink:0;font-weight:600;}
+
+.cant-pilares{margin:2rem 0 1.5rem;border-top:1px solid rgba(244,236,214,.08);padding-top:1.5rem;}
+.cant-pilar-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);margin-bottom:1rem;}
+.cant-pilar-grid{display:flex;flex-direction:column;gap:.8rem;}
+.cant-pilar{display:flex;align-items:flex-start;gap:.8rem;}
+.cant-pilar-ico{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.cant-pilar strong{font-size:.82rem;color:#F0EBE0;display:block;margin-bottom:.2rem;}
+.cant-raiz-quote{margin:1rem 0 1.5rem;padding-left:1rem;border-left:1px solid rgba(233,168,36,.3);} .cant-raiz-quote em{font-size:.88rem;color:#D4CFC4;display:block;margin-bottom:.3rem;} .cant-raiz-quote cite{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:#A09880;}.cant-pilar p{font-size:.75rem;color:#C0B8A8;line-height:1.6;margin:0;}
 .cant-note{font-size:.72rem;letter-spacing:1px;color:var(--texto-suave);border-top:1px solid rgba(244,236,214,.07);padding-top:1rem;line-height:1.6;}
 .cant-note span{color:var(--ceiba-l);}
 @media(max-width:1024px){.cant-inner{grid-template-columns:1fr;}#cantera{padding:5rem 2rem;}}
@@ -284,11 +339,7 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
     <div class="eyebrow"><div class="eline"></div><div class="etxt">Náhuat-Pipil · El Salvador · Cuscatlán</div></div>
     <h1><em>Ejekat</em><strong>Nemi</strong></h1>
     <p class="transl"><span>Ejekat</span> = viento &nbsp;·&nbsp; <span>Nemi</span> = vivir, andar en el mundo</p>
-    <p class="hdesc">La plataforma que conecta caminantes con guías de bienestar, maestros de movimiento y exploradores de naturaleza — según cómo quieres sentirte hoy.</p>
-    <div class="hact">
-      <a href="#registro" class="btn-p"><span>Empieza tu camino</span></a>
-      <a href="explorar.html" class="btn-g">Explorar guías →</a>
-    </div>
+    <p class="hdesc">Sabemos que la vida no para. Por eso Ejekat Nemi existe: para que en medio de la ocupación, el movimiento, el descanso y la aventura tengan su lugar — con maestros reales, en horarios que sí funcionan.</p><p class="hdesc" style="margin-top:.8rem;font-style:italic;opacity:.85;">¿Qué quieres explorar primero?</p>
     <p class="hnote">✓ Sin tarjeta de crédito &nbsp;·&nbsp; <span>8 sesiones gratis</span> &nbsp;·&nbsp; Cancela cuando quieras</p>
   </div>
   <div class="hero-right">
@@ -364,67 +415,63 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
   </div>
 
   
+  
+  <!-- Caminos interactivos -->
   <div class="a1-filosofia">
     <div class="a1-fil-left">
       <div class="sec-ey" style="margin-bottom:1.2rem;"><div class="edot"></div><div class="elbl">La sabiduría de Cuscatlán</div></div>
       <h2>Los pipiles lo<br>sabían hace<br><em>siglos.</em></h2>
       <p>En la cosmovisión náhuat-pipil, el cuerpo no está separado del espíritu ni de la comunidad. <em>Nemi</em> — vivir — implica movimiento constante. No como ejercicio, sino como forma de estar en el mundo.</p>
-      <p>Cuando te mueves con intención, con un guía, con otros — estás haciendo lo que los pueblos de Cuscatlán hacían en cada danza ceremonial, en cada caminata hacia el volcán, en cada práctica colectiva: <strong style="color:var(--arena)">activar el viento interior.</strong></p>
+      <p>Cuando te mueves con intención, con un guía, con otros — estás haciendo lo que los pueblos de Cuscatlán hacían en cada danza ceremonial, en cada caminata hacia el volcán, en cada práctica colectiva: <strong style="color:#FFFFFF">activar el viento interior.</strong></p>
+      <p style="font-size:.8rem;color:#A09880;margin-top:1rem;">Toca cada camino para explorar sus disciplinas.</p>
     </div>
     <div class="a1-fil-right">
-      <div class="fil-item">
-        <div class="fil-item-ico">🌬️</div>
-        <div class="fil-item-tit">Ejekat — El viento</div>
-        <div class="fil-item-txt">El movimiento que no se ve pero que todo lo transforma. Cada sesión es viento que limpia, que mueve, que renueva.</div>
-      </div>
-      <div class="fil-item">
+      <div class="fil-item fil-item-click" data-camino="pakini" style="cursor:pointer;">
         <div class="fil-item-ico">🔥</div>
-        <div class="fil-item-tit">Pakini — La alegría</div>
-        <div class="fil-item-txt">El baile y el movimiento colectivo como acto sagrado de celebración. Tu cuerpo merece alegría, no solo rendimiento.</div>
+        <div class="fil-item-tit">Pakini — Alegría</div>
+        <div class="fil-item-txt">Del náhuat <em>pakini</em>: sentir alegría. Baile, movimiento grupal, energía compartida.</div>
+        <div class="fil-discs" id="fd-pakini">
+          <div class="fil-disc" onclick="elegirDisc('Salsa — Clases Grupales','pakini')">💃 Salsa — Clases Grupales · <span>$45 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Bachata — Clases Grupales','pakini')">🎶 Bachata — Clases Grupales · <span>$45 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Salsa / Bachata — Individual','pakini')">🕺 Salsa / Bachata — Individual · <span>$35 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('2x1 Salsa y Bachata Grupal','pakini')">🔥 2x1 Salsa &amp; Bachata Grupal · <span>$70 USD</span></div>
+        </div>
       </div>
-      <div class="fil-item">
+      <div class="fil-item fil-item-click" data-camino="musewi" style="cursor:pointer;">
+        <div class="fil-item-ico">🌊</div>
+        <div class="fil-item-tit">Musewi — Calma</div>
+        <div class="fil-item-txt">Del náhuat <em>musewi</em>: descansar, calmarse. Yoga, meditación, respiración consciente.</div>
+        <div class="fil-discs" id="fd-musewi">
+          <div class="fil-disc" onclick="elegirDisc('Yoga — Práctica Grupal','musewi')">🧘 Yoga — Práctica Grupal · <span>Próximamente</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Meditación Guiada','musewi')">🌿 Meditación Guiada · <span>Próximamente</span></div>
+        </div>
+      </div>
+      <div class="fil-item fil-item-click" data-camino="kuxtal" style="cursor:pointer;">
         <div class="fil-item-ico">🌿</div>
-        <div class="fil-item-tit">Kuxtal — La vida plena</div>
-        <div class="fil-item-txt">Sanar el cuerpo es sanar el espíritu. Cada masaje, cada práctica de movilidad, cada respiración consciente es un acto de vida.</div>
+        <div class="fil-item-tit">Kuxtal — Vida plena</div>
+        <div class="fil-item-txt">Del náhuat <em>kuxtal</em>: vida, existencia. Sanar desde adentro — terapias y movilidad.</div>
+        <div class="fil-discs" id="fd-kuxtal">
+          <div class="fil-disc" onclick="elegirDisc('Masaje Terapéutico','kuxtal')">💆 Masaje Terapéutico · <span>Próximamente</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Movilidad y Flexibilidad','kuxtal')">🌱 Movilidad y Flexibilidad · <span>Próximamente</span></div>
+        </div>
       </div>
-      <div class="fil-item">
+      <div class="fil-item fil-item-click" data-camino="nejnemi" style="cursor:pointer;">
         <div class="fil-item-ico">🏔️</div>
-        <div class="fil-item-tit">Nejnemi — El caminar lejos</div>
-        <div class="fil-item-txt">Los volcanes, las selvas y los ríos de El Salvador son aulas sin paredes. La naturaleza es el maestro más antiguo.</div>
+        <div class="fil-item-tit">Nejnemi — Andar lejos</div>
+        <div class="fil-item-txt">Del náhuat <em>nejnemi</em>: andar, caminar. Volcanes, ríos y horizontes de Cuscatlán.</div>
+        <div class="fil-discs" id="fd-nejnemi">
+          <div class="fil-disc" onclick="elegirDisc('Tour Volcán Santa Ana + Cerro Verde','nejnemi')">🌋 Tour Volcán Santa Ana + Cerro Verde · <span>$35 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Tour Lago Coatepeque + Playa El Tunco','nejnemi')">💧 Tour Lago Coatepeque + El Tunco · <span>$40 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Tour Cultural Suchitoto','nejnemi')">🏛️ Tour Cultural Suchitoto · <span>$30 USD</span></div>
+          <div class="fil-disc" onclick="elegirDisc('Deportes Extremos — Bungee / Canopy / Rapel','nejnemi')">🪂 Deportes Extremos · <span>$45 USD</span></div>
+        </div>
       </div>
     </div>
   </div>
 
   
-  <div class="a1-cta">
-    <div class="a1-cta-titulo">
-      Tu cuerpo ya sabe.<br>Solo necesita <em>el viento correcto.</em>
-    </div>
-    <div class="a1-cta-sub">Elige cómo quieres sentirte hoy — encuentra tu guía en Ejekat Nemi.</div>
-    <div class="a1-cta-btns">
-      <a href="explorar.html" class="btn-p"><span>Explorar guías ahora</span></a>
-      <a href="#registro" class="btn-g">Empezar gratis →</a>
-    </div>
-  </div>
-
 </section>
 
-<section id="filosofia">
-  <div style="display:flex;flex-direction:column;gap:1.5rem;">
-    <div class="sec-ey"><div class="edot"></div><div class="elbl">La raíz</div></div>
-    <h2>Vivir es<br><em>moverse.</em><br>Moverse es<br><em>sanar.</em></h2>
-    <div class="fquote">
-      <p>"En náhuat-pipil, <em>nemi</em> no es existir — es andar en el mundo con propósito. El ser vivo es el ser que se mueve."</p>
-      <cite>Filosofía Náhuat · Cuscatlán, El Salvador</cite>
-    </div>
-  </div>
-  <div class="fright">
-    <div class="fcard"><div class="fcnum">01</div><div class="fcico">🌬️</div><div class="fctit">El viento no pregunta</div><div class="fcn">Ejekat</div><p class="fcd">No necesitas saber exactamente qué necesitas. Solo dinos cómo quieres sentirte — el viento hace el resto.</p></div>
-    <div class="fcard"><div class="fcnum">02</div><div class="fcico">🧭</div><div class="fctit">El guía nace del camino</div><div class="fcn">La Cantera</div><p class="fcd">Nuestros maestros y guías son parte de la comunidad. No son proveedores — son portadores de un saber vivido.</p></div>
-    <div class="fcard"><div class="fcnum">03</div><div class="fcico">🌿</div><div class="fctit">La naturaleza es el aula</div><div class="fcn">Nejnemi</div><p class="fcd">Desde volcanes y selvas hasta estudios y spas — el camino puede estar donde el cuerpo despierte.</p></div>
-    <div class="fcard"><div class="fcnum">04</div><div class="fcico">🤝</div><div class="fctit">La comunidad sostiene</div><div class="fcn">Minka</div><p class="fcd">Cada sesión agendada nutre al guía, al caminante y a la plataforma. Un ciclo que se sostiene desde adentro.</p></div>
-  </div>
-</section>
 <section id="flujo">
   <div class="flujoH">
     <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">El proceso</div></div>
@@ -438,19 +485,7 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
     <div class="fstep"><div class="fnum">5</div><div class="fico">🌱</div><div class="ftit">Muévete. Vive.</div><p class="fdesc">Asiste. Deja tu huella. Regresa cuando el viento te llame de nuevo.</p></div>
   </div>
 </section>
-<section id="precios">
-  <div class="precH">
-    <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">Planes</div></div>
-    <h2>Crece a tu<br><em>propio ritmo</em></h2>
-    <p>Empieza gratis. Escala cuando tu comunidad crezca. El viento no cobra por soplar.</p>
-  </div>
-  <div class="tiers">
-    <div class="tier"><div class="ttag">Comienza aquí</div><div class="tname">Semilla</div><div class="tsub">Para conocer el camino</div><div class="tprice"><div class="tpnum gr">$0</div><div class="tpdet">Para siempre · Sin tarjeta</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>1 colaborador</li><li class="tfeat"><span class="fck">✓</span>8 sesiones por mes</li><li class="tfeat"><span class="fck">✓</span>Link WhatsApp directo</li><li class="tfeat"><span class="fck">✓</span>Confirmación por correo</li><li class="tfeat"><span class="fcx">✗</span>Sesiones grupales</li><li class="tfeat"><span class="fcx">✗</span>WhatsApp automatizado</li><li class="tfeat"><span class="fcx">✗</span>Reportes</li></ul><a href="#registro" class="tcta co">Empezar gratis</a></div>
-    <div class="tier"><div class="ttag">Independiente</div><div class="tname">Raíz</div><div class="tsub">Para el maestro en movimiento</div><div class="tprice"><div class="tpnum">$15</div><div class="tpdet">USD/mes · +$8 por colaborador · máx. 3</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Hasta 3 colaboradores</li><li class="tfeat"><span class="fck">✓</span>Sesiones individuales ilimitadas</li><li class="tfeat"><span class="fck">✓</span>WhatsApp: confirmación + recordatorio</li><li class="tfeat"><span class="fck">✓</span>3 servicios configurables</li><li class="tfeat"><span class="fcx">✗</span>Sesiones grupales</li><li class="tfeat"><span class="fcx">✗</span>Lista de espera</li></ul><a href="#registro" class="tcta co">Comenzar</a></div>
-    <div class="tier feat"><div class="tbadge">Más elegido</div><div class="ttag">Estudio · Casa Ejekat</div><div class="tname">Ceiba</div><div class="tsub">Para equipos con raíces</div><div class="tprice"><div class="tpnum">$35</div><div class="tpdet">USD/mes · +$12 por colaborador · máx. 10</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Hasta 10 colaboradores</li><li class="tfeat"><span class="fck">✓</span>Sesiones grupales (hasta 30 cupos)</li><li class="tfeat"><span class="fck">✓</span>WhatsApp completo — cliente y guía</li><li class="tfeat"><span class="fck">✓</span>Lista de espera automática</li><li class="tfeat"><span class="fck">✓</span>15 servicios configurables</li><li class="tfeat"><span class="fck">✓</span>Historial de caminantes</li><li class="tfeat"><span class="fck">✓</span>Reporte mensual</li></ul><a href="#registro" class="tcta cf">Comenzar ahora</a></div>
-    <div class="tier"><div class="ttag">Multi-sede · Centro</div><div class="tname">Volcán</div><div class="tsub">Para comunidades sin límite</div><div class="tprice"><div class="tpnum">$80</div><div class="tpdet">USD/mes · +$15 por colaborador · ilimitados</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Colaboradores ilimitados</li><li class="tfeat"><span class="fck">✓</span>Multi-sede</li><li class="tfeat"><span class="fck">✓</span>Membresías y paquetes prepagados</li><li class="tfeat"><span class="fck">✓</span>WhatsApp con flujos automatizados</li><li class="tfeat"><span class="fck">✓</span>Push notifications (PWA)</li><li class="tfeat"><span class="fck">✓</span>CRM integrado · Reportes avanzados</li><li class="tfeat"><span class="fck">✓</span>Soporte prioritario</li></ul><a href="#registro" class="tcta cc">Contactar</a></div>
-  </div>
-</section>
+
 <section id="registro">
   <div class="regl">
     <div class="sec-ey" style="margin-bottom:1.5rem;"><div class="edot"></div><div class="elbl">Empieza hoy</div></div>
@@ -555,12 +590,18 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
           <div class="cant-arq-txt"><strong>Guía de aventura y naturaleza</strong>Senderismo, camping, deportes extremos, turismo vivencial</div>
         </div>
       </div>
-      <a href="mailto:guias@ejekatnemi.com" class="cant-cta">
-        Quiero ser parte de La Cantera →
-      </a>
+      <div style="display:flex;flex-direction:column;gap:.8rem;">
+        <a href="guias.html" class="cant-cta">
+          Ver planes y unirme a La Cantera →
+        </a>
+        <a href="mailto:guias@ejekatnemi.com" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);text-decoration:none;padding:.5rem 0;">
+          O escríbenos directo → guias@ejekatnemi.com
+        </a>
+      </div>
     </div>
     <div class="cant-right">
       <div class="cant-quote-big">"Los mejores<br>guías no<br>encuentran el<br>camino. <span>Lo son.</span>"</div>
+      <div class="cant-raiz-quote"><em>"Vivir es moverse. Moverse es sanar."</em><cite>Filosofía Náhuat · Cuscatlán</cite></div>
       <ul class="cant-benefits">
         <li class="cant-ben">Tu perfil visible para caminantes que ya buscan lo que tú ofreces</li>
         <li class="cant-ben">Coordinas fechas, lugar y pago directamente por WhatsApp — sin intermediarios</li>
@@ -568,6 +609,17 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
         <li class="cant-ben">Formas parte de una red curada — no un directorio genérico</li>
         <li class="cant-ben">Crecemos juntos: parte de los ingresos sostiene la revitalización del náhuat-pipil</li>
       </ul>
+      
+      <div class="cant-pilares">
+        <div class="cant-pilar-label">Los pilares de Ejekat Nemi</div>
+        <div class="cant-pilar-grid">
+          <div class="cant-pilar"><span class="cant-pilar-ico">🌬️</span><div><strong>El viento no pregunta</strong><p>No necesitas saber qué necesitas. Solo dinos cómo quieres sentirte — el viento hace el resto.</p></div></div>
+          <div class="cant-pilar"><span class="cant-pilar-ico">🧭</span><div><strong>El guía nace del camino</strong><p>Nuestros maestros no son proveedores — son portadores de un saber vivido.</p></div></div>
+          <div class="cant-pilar"><span class="cant-pilar-ico">🤝</span><div><strong>La comunidad sostiene</strong><p>Cada sesión nutre al guía, al caminante y a la plataforma. Un ciclo que se sostiene desde adentro.</p></div></div>
+          <div class="cant-pilar"><span class="cant-pilar-ico">🌱</span><div><strong>El movimiento es la raíz</strong><p>En náhuat-pipil, <em>nemi</em> es vivir. Cada vez que te mueves con propósito, honras esa raíz.</p></div></div>
+        </div>
+      </div>
+
       <p class="cant-note">Actualmente aceptamos guías por invitación y postulación. <span>Los primeros 50 guías entran sin costo.</span></p>
     </div>
   </div>
@@ -638,6 +690,49 @@ window.addEventListener('scroll', () => {
     nav.style.background = 'rgba(13,27,20,0.85)';
   }
 });
+
+
+// Toggle disciplinas en sabiduría
+document.querySelectorAll(".fil-item-click").forEach(function(item){
+  item.addEventListener("click", function(e){
+    if(e.target.classList.contains("fil-disc") || e.target.closest(".fil-disc")) return;
+    var wasOpen = item.classList.contains("open");
+    document.querySelectorAll(".fil-item-click").forEach(function(i){i.classList.remove("open");});
+    if(!wasOpen) item.classList.add("open");
+  });
+});
+
+// Caminos interactivos
+var caminoActivo=null;
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll(".camino-card").forEach(function(card){
+    card.addEventListener("click",function(){
+      var c=card.dataset.c;
+      var panel=document.getElementById("panel-"+c);
+      if(!panel)return;
+      if(caminoActivo===c){card.classList.remove("activo");panel.classList.remove("abierto");caminoActivo=null;return;}
+      document.querySelectorAll(".camino-card").forEach(function(d){d.classList.remove("activo");});
+      document.querySelectorAll(".camino-panel").forEach(function(p){p.classList.remove("abierto");});
+      card.classList.add("activo");panel.classList.add("abierto");caminoActivo=c;
+      setTimeout(function(){panel.scrollIntoView({behavior:"smooth",block:"nearest"});},150);
+    });
+  });
+});
+function elegirDisc(disciplina,camino){
+  var sel=document.getElementById("estado");
+  if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value.toLowerCase().indexOf(camino)>=0){sel.value=sel.options[i].value;break;}}}
+  var selS=document.getElementById("servicio");
+  if(selS){var d0=disciplina.split("—")[0].trim().toLowerCase();for(var j=0;j<selS.options.length;j++){if(selS.options[j].text.toLowerCase().indexOf(d0)>=0){selS.value=selS.options[j].value||selS.options[j].text;break;}}}
+  var reg=document.getElementById("registro");
+  if(reg){reg.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(function(){var n=document.getElementById("nombre");if(n)n.focus();},800);}
+}
+function elegirCamino(camino){
+  var sel=document.getElementById("estado");
+  if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value.toLowerCase().indexOf(camino)>=0){sel.value=sel.options[i].value;break;}}}
+  var reg=document.getElementById("registro");
+  if(reg)reg.scrollIntoView({behavior:"smooth",block:"start"});
+}
+
 </script>
 </body>
 </html>

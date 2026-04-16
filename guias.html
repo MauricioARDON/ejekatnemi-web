@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Guías y Maestros — Ejekat Nemi · La Cantera</title>
+<meta name="description" content="Únete a La Cantera de Ejekat Nemi. Plataforma para instructores de baile, guías turísticos y maestros de bienestar en El Salvador. Empieza gratis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --terracota:#B84A2F;--terracota-l:#D4623D;--ceiba:#2D6A4F;--ceiba-l:#3D8A65;
+  --copal:#E9A824;--obsidiana:#0D1B14;--obsidiana-l:#152318;
+  --arena:#F4ECD6;--arena-d:#E8D9BB;--texto:rgba(244,236,214,0.85);--texto-suave:rgba(244,236,214,0.45);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--obsidiana);color:var(--arena);font-family:"Outfit",sans-serif;overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:10px;height:10px;background:var(--copal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(233,168,36,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
+body::before{content:"";position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;opacity:.6;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5rem;background:rgba(13,27,20,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,236,214,.06);}
+.logo-wrap{display:flex;flex-direction:column;line-height:1;}
+.logo-main{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
+.logo-main span{color:var(--copal);}
+.logo-sub{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--texto-suave);font-weight:300;}
+nav ul{list-style:none;display:flex;gap:2.5rem;align-items:center;}
+nav ul a{text-decoration:none;color:var(--texto-suave);font-size:.82rem;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
+nav ul a:hover{color:var(--arena);}
+.nav-cta{border:1px solid var(--terracota)!important;color:var(--terracota)!important;padding:.5rem 1.4rem!important;transition:all .3s!important;}
+.nav-cta:hover{background:var(--terracota)!important;color:var(--arena)!important;}
+#hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 5rem 5rem;overflow:hidden;}
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(184,74,47,.18) 0%,transparent 70%);top:-100px;right:-100px;animation:orbF 8s ease-in-out infinite;}
+.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(45,106,79,.15) 0%,transparent 70%);bottom:0;left:10%;animation:orbF 10s 2s ease-in-out infinite reverse;}
+.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(233,168,36,.08) 0%,transparent 70%);top:40%;left:40%;animation:orbF 12s 4s ease-in-out infinite;}
+@keyframes orbF{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(20px,-30px) scale(1.05);}66%{transform:translate(-15px,20px) scale(.97);}}
+.hero-glyph{position:absolute;right:5%;top:15%;width:340px;height:340px;opacity:.06;animation:spin 30s linear infinite;}
+@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+.hero-left{position:relative;z-index:1;}
+.eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;animation:fadeUp .8s ease both;}
+.eline{width:40px;height:1px;background:var(--copal);}
+.etxt{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);font-weight:500;}
+h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.8rem,6.5vw,6rem);font-weight:300;line-height:1;letter-spacing:2px;margin-bottom:1rem;animation:fadeUp .8s .1s ease both;}
+h1 em{font-style:italic;color:var(--terracota-l);display:block;}
+h1 strong{font-weight:700;color:var(--arena);display:block;}
+.transl{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);margin-bottom:2rem;animation:fadeUp .8s .2s ease both;}
+.transl span{color:var(--copal);}
+.hdesc{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--texto);max-width:440px;margin-bottom:3rem;animation:fadeUp .8s .3s ease both;}
+.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;animation:fadeUp .8s .4s ease both;}
+.btn-p{display:inline-flex;align-items:center;gap:.6rem;background:var(--terracota);color:var(--arena);padding:1rem 2.2rem;font-size:.85rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;}
+.btn-p::before{content:"";position:absolute;inset:0;background:var(--terracota-l);transform:translateX(-100%);transition:transform .3s ease;}
+.btn-p:hover::before{transform:translateX(0);}
+.btn-p span{position:relative;z-index:1;}
+.btn-g{font-size:.82rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);text-decoration:none;border-bottom:1px solid rgba(244,236,214,.2);padding-bottom:2px;transition:all .3s;}
+.btn-g:hover{color:var(--arena);border-color:var(--arena);}
+.hnote{margin-top:1.5rem;font-size:.75rem;color:var(--texto-suave);letter-spacing:1px;animation:fadeUp .8s .5s ease both;}
+.hnote span{color:var(--ceiba-l);}
+.hero-right{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;animation:fadeUp 1s .3s ease both;}
+.egrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.06);border:1px solid rgba(244,236,214,.06);width:380px;}
+.ecard{background:var(--obsidiana-l);padding:2rem 1.5rem;cursor:pointer;transition:background .4s;position:relative;overflow:hidden;}
+.ecard::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .4s;transform-origin:left;}
+.ecard:hover{background:rgba(244,236,214,.04);}
+.ecard:hover::after{transform:scaleX(1);}
+.ecard[data-e="pakini"]::after{background:var(--copal);}
+.ecard[data-e="musewi"]::after{background:var(--ceiba-l);}
+.ecard[data-e="kuxtal"]::after{background:var(--terracota);}
+.ecard[data-e="nejnemi"]::after{background:#7BC8F6;}
+.eicon{font-size:1.8rem;margin-bottom:.8rem;display:block;}
+.enahuat{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;font-style:italic;color:var(--arena);margin-bottom:.2rem;}
+.ees{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);}
+.edis{font-size:.75rem;color:var(--texto-suave);margin-top:.6rem;line-height:1.5;}
+.franja{border-top:1px solid rgba(244,236,214,.06);border-bottom:1px solid rgba(244,236,214,.06);padding:1.2rem 5rem;display:flex;align-items:center;gap:2rem;overflow:hidden;position:relative;z-index:1;}
+.fl{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);white-space:nowrap;}
+.fscroll{display:flex;gap:3rem;align-items:center;animation:scrollL 25s linear infinite;white-space:nowrap;}
+.fi{font-family:"Cormorant Garamond",serif;font-size:.95rem;font-style:italic;color:rgba(244,236,214,.25);}
+.fs{color:var(--copal);opacity:.4;}
+@keyframes scrollL{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+#filosofia{padding:8rem 5rem;display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:center;position:relative;z-index:1;}
+.sec-ey{display:flex;align-items:center;gap:.8rem;}
+.edot{width:6px;height:6px;border-radius:50%;background:var(--copal);}
+.elbl{font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);}
+h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.5rem,4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:1px;}
+h2 em{font-style:italic;color:var(--terracota-l);}
+.fquote{border-left:1px solid var(--copal);padding-left:1.5rem;margin-top:1rem;}
+.fquote p{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-style:italic;font-weight:300;color:var(--texto-suave);line-height:1.7;}
+.fquote cite{display:block;margin-top:.5rem;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);font-style:normal;}
+.fright{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.05);}
+.fcard{background:var(--obsidiana);padding:2.5rem 2rem;transition:background .3s;}
+.fcard:hover{background:var(--obsidiana-l);}
+.fcnum{font-family:"Cormorant Garamond",serif;font-size:3.5rem;font-weight:300;color:rgba(244,236,214,.06);line-height:1;margin-bottom:.5rem;}
+.fcico{font-size:1.6rem;margin-bottom:1rem;}
+.fctit{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;font-style:italic;color:var(--arena);margin-bottom:.3rem;}
+.fcn{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);margin-bottom:.8rem;}
+.fcd{font-size:.85rem;font-weight:300;color:var(--texto-suave);line-height:1.7;}
+#guias{padding:8rem 5rem;background:var(--obsidiana-l);border-top:1px solid rgba(244,236,214,.05);position:relative;z-index:1;}
+.ghead{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
+.ghead p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;}
+.arqs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,214,.05);}
+.arq{background:var(--obsidiana);padding:2.5rem 2rem;border-bottom:2px solid transparent;transition:all .3s;}
+.arq:hover{background:rgba(244,236,214,.02);border-bottom-color:var(--terracota);}
+.aico{font-size:2rem;margin-bottom:1.2rem;}
+.atag{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:.5rem;}
+.atit{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600;color:var(--arena);margin-bottom:.8rem;}
+.adesc{font-size:.83rem;font-weight:300;color:var(--texto-suave);line-height:1.7;margin-bottom:1.2rem;}
+.alist{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.alist li{font-size:.78rem;color:var(--texto-suave);display:flex;gap:.6rem;}
+.alist li::before{content:"—";color:var(--copal);}
+#flujo{padding:8rem 5rem;position:relative;z-index:1;}
+.flujoH{text-align:center;margin-bottom:5rem;}
+.fsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;align-items:start;}
+.fsteps::before{content:"";position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(244,236,214,.1) 20%,var(--copal) 50%,rgba(244,236,214,.1) 80%,transparent);}
+.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1rem;position:relative;z-index:1;}
+.fnum{width:56px;height:56px;border-radius:50%;background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.1);display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--copal);margin-bottom:1.5rem;transition:all .3s;}
+.fstep:hover .fnum{background:var(--terracota);border-color:var(--terracota);color:var(--arena);}
+.fico{font-size:1.5rem;margin-bottom:.8rem;}
+.ftit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;color:var(--arena);margin-bottom:.5rem;}
+.fdesc{font-size:.78rem;font-weight:300;color:var(--texto-suave);line-height:1.6;}
+.fwa{margin-top:.6rem;padding:.4rem .8rem;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:#25D366;}
+#precios{padding:8rem 5rem;background:var(--obsidiana-l);border-top:1px solid rgba(244,236,214,.05);position:relative;z-index:1;}
+.precH{text-align:center;margin-bottom:4rem;}
+.precH p{font-size:.92rem;font-weight:300;color:var(--texto-suave);max-width:480px;margin:1rem auto 0;line-height:1.7;}
+.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,236,214,.05);}
+.tier{background:var(--obsidiana);padding:2.5rem 1.8rem;position:relative;transition:background .3s;}
+.tier:hover{background:rgba(244,236,214,.02);}
+.tier.feat{background:rgba(184,74,47,.08);border-top:2px solid var(--terracota);}
+.tbadge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--terracota);color:var(--arena);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:.3rem 1rem;white-space:nowrap;}
+.ttag{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);margin-bottom:.5rem;}
+.tname{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:600;color:var(--arena);margin-bottom:.2rem;}
+.tsub{font-size:.75rem;font-weight:300;color:var(--texto-suave);margin-bottom:1.5rem;}
+.tprice{margin-bottom:1.5rem;}
+.tpnum{font-family:"Cormorant Garamond",serif;font-size:3.2rem;font-weight:300;color:var(--arena);line-height:1;}
+.tpnum.gr{color:var(--ceiba-l);}
+.tpdet{font-size:.72rem;font-weight:300;color:var(--texto-suave);margin-top:.3rem;line-height:1.4;}
+.tdiv{border:none;border-top:1px solid rgba(244,236,214,.07);margin:1.2rem 0;}
+.tfeats{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;}
+.tfeat{display:flex;gap:.7rem;align-items:flex-start;font-size:.8rem;font-weight:300;color:var(--texto-suave);line-height:1.4;}
+.fck{color:var(--ceiba-l);flex-shrink:0;font-weight:600;}
+.fcx{color:rgba(244,236,214,.15);flex-shrink:0;}
+.tcta{display:block;text-align:center;text-decoration:none;padding:.85rem;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
+.co{border:1px solid rgba(244,236,214,.2);color:var(--texto-suave);}
+.co:hover{border-color:var(--arena);color:var(--arena);}
+.cf{background:var(--terracota);color:var(--arena);}
+.cf:hover{background:var(--terracota-l);}
+.cc{background:var(--ceiba);color:var(--arena);}
+.cc:hover{background:var(--ceiba-l);}
+#registro{padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;}
+.regl p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;margin-bottom:2.5rem;}
+.regl h2{margin-bottom:1.5rem;}
+.tlist{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+.titem{display:flex;align-items:center;gap:1rem;font-size:.82rem;font-weight:300;color:var(--texto-suave);}
+.fwrap{background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.07);padding:2.8rem;}
+.ftitle{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;color:var(--arena);margin-bottom:.3rem;}
+.fsubt{font-size:.78rem;font-weight:300;color:var(--texto-suave);margin-bottom:2rem;letter-spacing:1px;}
+.fg{margin-bottom:1.2rem;}
+.fg label{display:block;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.5rem;}
+.fg input,.fg select{width:100%;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:var(--arena);font-family:"Outfit",sans-serif;font-size:.9rem;font-weight:300;padding:.85rem 1rem;transition:border-color .3s;appearance:none;}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--copal);}
+.fg input::placeholder{color:rgba(244,236,214,.2);}
+.fg select option{background:var(--obsidiana);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.fbtn{width:100%;background:var(--terracota);color:var(--arena);border:none;padding:1rem;font-family:"Outfit",sans-serif;font-size:.8rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:.5rem;position:relative;overflow:hidden;}
+.fbtn::before{content:"";position:absolute;inset:0;background:var(--terracota-l);transform:translateX(-100%);transition:transform .3s;}
+.fbtn:hover::before{transform:translateX(0);}
+.fbtn span{position:relative;z-index:1;}
+.fleg{font-size:.68rem;font-weight:300;color:var(--texto-suave);text-align:center;margin-top:1rem;line-height:1.6;}
+#ferr{color:var(--terracota-l);font-size:.78rem;text-align:center;margin-top:.5rem;display:none;}
+.sucmsg{display:none;text-align:center;padding:3rem 1rem;}
+.sucmsg.show{display:block;}
+.sucg{font-size:3rem;margin-bottom:1rem;}
+.suctit{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:300;font-style:italic;color:var(--ceiba-l);margin-bottom:.5rem;}
+.sucd{font-size:.85rem;font-weight:300;color:var(--texto-suave);line-height:1.7;}
+footer{border-top:1px solid rgba(244,236,214,.06);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
+.flogo{font-family:"Cormorant Garamond",serif;font-size:1.3rem;letter-spacing:3px;}
+.flogo span{color:var(--copal);}
+.fnah{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);}
+footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
+.fcred{font-size:.68rem;color:rgba(244,236,214,.2);text-align:right;line-height:1.6;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:1024px){nav{padding:1.2rem 2rem;}nav ul{display:none;}#hero,#filosofia,#registro{grid-template-columns:1fr;padding:7rem 2rem 4rem;}.hero-right,.hero-glyph{display:none;}.fright{grid-template-columns:1fr;}.ghead{grid-template-columns:1fr;}.arqs{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr 1fr;}.fsteps::before{display:none;}.tiers{grid-template-columns:1fr 1fr;}#flujo,#guias,#precios{padding:5rem 2rem;}footer{flex-direction:column;gap:1rem;text-align:center;}.fcred{text-align:center;}}
+@media(max-width:600px){.tiers{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}.egrid{display:none;}}
+#acto1{padding:7rem 5rem;position:relative;z-index:1;overflow:hidden;--texto-suave:rgba(244,236,214,0.88);--texto:rgba(244,236,214,0.95);color:var(--texto);}
+#acto1::before{display:none;}
+.a1-intro{text-align:center;max-width:680px;margin:0 auto 5rem;}
+.a1-intro .sec-ey{justify-content:center;margin-bottom:1.2rem;} #acto1 h2{color:var(--arena);} #acto1 h2 em{color:var(--terracota-l);}
+.a1-intro h2{margin-bottom:1.2rem;}
+.a1-intro p{font-size:1rem;font-weight:300;color:#F5F0E8;line-height:1.8;}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,214,.05);margin-bottom:5rem;}
+.stat-card{background:var(--obsidiana);padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;transition:background .3s;}
+.stat-card:hover{background:var(--obsidiana-l);}
+.stat-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .5s ease;transform-origin:center;}
+.stat-card:nth-child(1)::after{background:var(--copal);}
+.stat-card:nth-child(2)::after{background:var(--ceiba-l);}
+.stat-card:nth-child(3)::after{background:var(--terracota);}
+.stat-card:hover::after{transform:scaleX(1);}
+.stat-num{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;color:var(--arena);line-height:1;margin-bottom:.3rem;}
+.stat-num span{color:var(--copal);}
+.stat-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#F0EBE0;line-height:1.5;margin-bottom:.6rem;}
+.stat-source{font-size:.62rem;color:#C8C0B0;font-style:italic;}
+.a1-contraste{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.05);margin-bottom:5rem;}
+.contraste-col{padding:3rem 2.5rem;}
+.contraste-col.sin{background:rgba(184,74,47,.04);}
+.contraste-col.con{background:rgba(45,106,79,.04);}
+.contraste-label{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
+.contraste-label.sin{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;color:#E07050;}
+.contraste-label.con{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;color:#5AAA80;}
+.contraste-ico{font-size:1rem;}
+.contraste-items{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
+.contraste-item{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem;font-weight:300;color:#F0EBE0;line-height:1.6;}
+.contraste-item::before{flex-shrink:0;font-size:.9rem;}
+.contraste-col.sin .contraste-item::before{content:"—";color:var(--terracota-l);}
+.contraste-col.con .contraste-item::before{content:"→";color:var(--ceiba-l);}
+.contraste-item strong{color:#FFFFFF;}
+.a1-filosofia{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:5rem;}
+.a1-fil-left{}
+.a1-fil-left h2{margin-bottom:1.5rem;}
+.a1-fil-left p{font-size:.92rem;font-weight:300;color:#F0EBE0;line-height:1.8;margin-bottom:1rem;}
+.a1-fil-right{display:flex;flex-direction:column;gap:1px;background:rgba(244,236,214,.05);}
+.fil-item{background:var(--obsidiana);padding:1.8rem;transition:background .3s;position:relative;padding-left:2.5rem;}
+.fil-item:hover{background:var(--obsidiana-l);}
+.fil-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .3s;}
+.fil-item:hover::before{background:var(--copal);}
+.fil-item-ico{font-size:1.3rem;margin-bottom:.5rem;}
+.fil-item-tit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;font-style:italic;color:#FFFFFF;margin-bottom:.3rem;}
+.fil-item-txt{font-size:.8rem;font-weight:300;color:#EDE8DE;line-height:1.6;}
+.a1-cta{text-align:center;padding:4rem 2rem;background:rgba(244,236,214,.02);border:1px solid rgba(244,236,214,.06);}
+.a1-cta-titulo{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--arena);margin-bottom:.8rem;line-height:1.2;}
+.a1-cta-titulo em{font-style:italic;color:var(--terracota-l);}
+.a1-cta-sub{font-size:.9rem;font-weight:300;color:#F0EBE0;margin-bottom:2rem;}
+.a1-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+.caminos-section{padding:0 0 2rem;}
+.caminos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(244,236,214,.04);}
+.camino-card{background:var(--obsidiana);padding:2rem 1.8rem;cursor:pointer;transition:background .25s;border-left:3px solid transparent;position:relative;}
+.camino-card:hover{background:var(--obsidiana-l);}
+.camino-card.activo{background:var(--obsidiana-l);}
+.camino-card[data-c="pakini"].activo{border-left-color:#D4623D;}
+.camino-card[data-c="musewi"].activo{border-left-color:#3D8A65;}
+.camino-card[data-c="kuxtal"].activo{border-left-color:#2D6A4F;}
+.camino-card[data-c="nejnemi"].activo{border-left-color:#E9A824;}
+.camino-ico{font-size:2rem;margin-bottom:.8rem;display:block;}
+.camino-nombre{font-size:1.25rem;font-weight:400;font-style:italic;font-family:"Cormorant Garamond",serif;color:#F5F0E8;margin-bottom:.15rem;}
+.camino-sub{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem;}
+.camino-card[data-c="pakini"] .camino-sub{color:#E8A070;}
+.camino-card[data-c="musewi"] .camino-sub{color:#5AAA80;}
+.camino-card[data-c="kuxtal"] .camino-sub{color:#4A9A6A;}
+.camino-card[data-c="nejnemi"] .camino-sub{color:#EBB840;}
+.camino-tags{font-size:.78rem;color:#C0B8A8;line-height:1.6;}
+.camino-panel{overflow:hidden;max-height:0;transition:max-height .45s ease;background:var(--obsidiana-l);grid-column:1/-1;}
+.camino-panel.abierto{max-height:900px;}
+.camino-panel-inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;padding:2.5rem 2rem;}
+.cp-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
+.cp-titulo{font-size:1.3rem;font-family:"Cormorant Garamond",serif;font-style:italic;color:#F5F0E8;margin-bottom:.8rem;font-weight:400;}
+.cp-desc{font-size:.88rem;color:#D4CFC4;line-height:1.78;margin-bottom:1.2rem;}
+.cp-bens{display:flex;flex-direction:column;gap:.5rem;}
+.cp-ben{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:#C4BFB4;line-height:1.6;}
+.cp-ben-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:.45rem;}
+.cp-disc-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:#A09880;margin-bottom:1rem;}
+.cp-disc-list{display:flex;flex-direction:column;gap:.4rem;}
+.cp-disc-item{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.07);cursor:pointer;transition:all .2s;}
+.cp-disc-item:hover{background:rgba(244,236,214,.07);border-color:rgba(244,236,214,.2);}
+.cp-disc-nom{font-size:.84rem;color:#F0EBE0;}
+.cp-disc-precio{font-size:.7rem;color:#A09880;}
+.cp-disc-arr{font-size:.8rem;color:#A09880;transition:transform .2s;}
+.cp-disc-item:hover .cp-disc-arr{transform:translateX(4px);}
+.cp-cta{margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;background:transparent;width:100%;transition:all .2s;color:#F0EBE0;}
+.cp-cta:hover{background:rgba(244,236,214,.06);}
+@media(max-width:768px){.caminos-grid{grid-template-columns:1fr;}.camino-panel-inner{grid-template-columns:1fr;gap:1.5rem;}.camino-panel-inner{padding:1.8rem 1.2rem;}}
+@media(max-width:1024px){#acto1{padding:5rem 2rem;}.stats-row{grid-template-columns:1fr;}.a1-contraste{grid-template-columns:1fr;}.a1-filosofia{grid-template-columns:1fr;gap:3rem;}}
+
+#cantera{padding:7rem 5rem;background:linear-gradient(135deg,rgba(184,74,47,.08) 0%,rgba(45,106,79,.08) 100%);border-top:1px solid rgba(244,236,214,.06);position:relative;z-index:1;overflow:hidden;}
+#cantera::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(233,168,36,.07) 0%,transparent 70%);pointer-events:none;}
+.cant-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
+.cant-left h2{margin-bottom:1.2rem;}
+.cant-left p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;margin-bottom:2rem;}
+.cant-arqs{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2.5rem;}
+.cant-arq{display:flex;align-items:center;gap:1rem;padding:.8rem 1.2rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.07);transition:border-color .3s;}
+.cant-arq:hover{border-color:rgba(233,168,36,.3);}
+.cant-arq-ico{font-size:1.4rem;flex-shrink:0;}
+.cant-arq-txt{font-size:.82rem;font-weight:300;color:var(--texto-suave);line-height:1.4;}
+.cant-arq-txt strong{color:var(--arena);font-weight:500;display:block;margin-bottom:.1rem;}
+.cant-cta{display:inline-flex;align-items:center;gap:.8rem;border:1px solid var(--copal);color:var(--copal);padding:.9rem 2rem;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
+.cant-cta:hover{background:var(--copal);color:var(--obsidiana);}
+.cant-right{background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.07);padding:3rem;}
+.cant-quote-big{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--arena);line-height:1.2;margin-bottom:1.5rem;}
+.cant-quote-big span{color:var(--copal);}
+.cant-benefits{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem;}
+.cant-ben{display:flex;gap:.8rem;align-items:flex-start;font-size:.82rem;font-weight:300;color:var(--texto-suave);line-height:1.5;}
+.cant-ben::before{content:"→";color:var(--copal);flex-shrink:0;font-weight:600;}
+
+.cant-pilares{margin:2rem 0 1.5rem;border-top:1px solid rgba(244,236,214,.08);padding-top:1.5rem;}
+.cant-pilar-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);margin-bottom:1rem;}
+.cant-pilar-grid{display:flex;flex-direction:column;gap:.8rem;}
+.cant-pilar{display:flex;align-items:flex-start;gap:.8rem;}
+.cant-pilar-ico{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
+.cant-pilar strong{font-size:.82rem;color:#F0EBE0;display:block;margin-bottom:.2rem;}
+.cant-raiz-quote{margin:1rem 0 1.5rem;padding-left:1rem;border-left:1px solid rgba(233,168,36,.3);} .cant-raiz-quote em{font-size:.88rem;color:#D4CFC4;display:block;margin-bottom:.3rem;} .cant-raiz-quote cite{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:#A09880;}.cant-pilar p{font-size:.75rem;color:#C0B8A8;line-height:1.6;margin:0;}
+.cant-note{font-size:.72rem;letter-spacing:1px;color:var(--texto-suave);border-top:1px solid rgba(244,236,214,.07);padding-top:1rem;line-height:1.6;}
+.cant-note span{color:var(--ceiba-l);}
+@media(max-width:1024px){.cant-inner{grid-template-columns:1fr;}#cantera{padding:5rem 2rem;}}
+
+</style>
+<style>
+.guias-hero{padding:8rem 5rem 5rem;text-align:center;position:relative;}
+.guias-hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,6vw,5rem);font-weight:300;color:var(--arena);line-height:1.1;margin-bottom:1rem;}
+.guias-hero h1 em{font-style:italic;color:var(--terracota-l);}
+.guias-hero p{font-size:1rem;color:#F0EBE0;max-width:600px;margin:0 auto 2rem;line-height:1.8;}
+.guias-hero .hnote{font-size:.75rem;color:rgba(244,236,214,.6);}
+.guias-como{padding:5rem;background:var(--obsidiana-l);}
+.guias-como-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:960px;margin:0 auto;}
+.gcomo-item{text-align:center;padding:2rem 1.5rem;}
+.gcomo-ico{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.gcomo-tit{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-style:italic;color:var(--arena);margin-bottom:.5rem;}
+.gcomo-txt{font-size:.82rem;color:#D4CFC4;line-height:1.7;}
+.guias-testimonial{padding:4rem 5rem;text-align:center;border-top:1px solid rgba(244,236,214,.06);border-bottom:1px solid rgba(244,236,214,.06);}
+.guias-testimonial blockquote{font-family:"Cormorant Garamond",serif;font-size:clamp(1.4rem,2.5vw,2rem);font-style:italic;color:var(--arena);font-weight:300;max-width:700px;margin:0 auto .8rem;line-height:1.4;}
+.guias-testimonial cite{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);}
+.guias-faq{padding:5rem;max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid rgba(244,236,214,.07);padding:1.5rem 0;}
+.faq-q{font-size:.92rem;color:#F0EBE0;font-weight:400;margin-bottom:.6rem;}
+.faq-a{font-size:.82rem;color:#C4BFB4;line-height:1.7;}
+.guias-cta-final{padding:5rem;text-align:center;background:var(--obsidiana-l);}
+.guias-cta-final h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--arena);margin-bottom:1rem;}
+.guias-cta-final h2 em{color:var(--terracota-l);font-style:italic;}
+.guias-cta-final p{font-size:.9rem;color:#D4CFC4;max-width:500px;margin:0 auto 2rem;line-height:1.7;}
+.gcta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+@media(max-width:768px){.guias-hero{padding:6rem 2rem 3rem;}.guias-como{padding:3rem 2rem;}.guias-como-grid{grid-template-columns:1fr;}.guias-testimonial{padding:3rem 2rem;}.guias-faq{padding:3rem 2rem;}.guias-cta-final{padding:3rem 2rem;}}
+</style>
+</head>
+<body>
+
+<nav id="gnav">
+  <div class="logo-wrap">
+    <div class="logo-main">Ejekat <span>Nemi</span></div>
+    <div class="logo-sub">El viento que vive</div>
+  </div>
+  <ul>
+    <li><a href="index.html#filosofia">Filosofía</a></li>
+    <li><a href="explorar.html">Explorar guías</a></li>
+    <li><a href="#precios-guias">Planes</a></li>
+    <li><a href="#precios-guias">Planes</a></li>
+    <li><a href="#registro" class="nav-cta">Comenzar</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="guias-hero">
+  <div class="sec-ey" style="justify-content:center;margin-bottom:1.5rem;">
+    <div class="edot" style="background:var(--copal)"></div>
+    <div class="elbl">La Cantera — Para instructores</div>
+  </div>
+  <h1>Tu conocimiento<br>merece un <em>hogar.</em></h1>
+  <p>Ejekat Nemi es la plataforma para maestros de movimiento, guías turísticos y espacios de bienestar en El Salvador que quieren crecer con propósito — sin perder su esencia.</p>
+  <p class="hnote">✓ Empieza gratis · Sin comisiones en pagos directos · Los primeros 50 guías entran sin costo</p>
+</section>
+
+<!-- ══ CÓMO FUNCIONA PARA GUÍAS ══ -->
+<section class="guias-como">
+  <div style="text-align:center;margin-bottom:3rem;">
+    <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">El proceso</div></div>
+    <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--arena);">Tan simple como <em style="font-style:italic;color:var(--terracota-l)">saber tu camino.</em></h2>
+  </div>
+  <div class="guias-como-grid">
+    <div class="gcomo-item">
+      <span class="gcomo-ico">📋</span>
+      <div class="gcomo-tit">1. Postula o regístrate</div>
+      <div class="gcomo-txt">Completa tu perfil con tus disciplinas, disponibilidad, ubicación y precios. En menos de 10 minutos estás visible para caminantes en tu área.</div>
+    </div>
+    <div class="gcomo-item">
+      <span class="gcomo-ico">📅</span>
+      <div class="gcomo-tit">2. Recibe reservas</div>
+      <div class="gcomo-txt">Los alumnos te encuentran por disciplina, camino o ciudad. Coordinan directamente por WhatsApp — sin intermediarios en la comunicación.</div>
+    </div>
+    <div class="gcomo-item">
+      <span class="gcomo-ico">🌱</span>
+      <div class="gcomo-tit">3. Crece con tu comunidad</div>
+      <div class="gcomo-txt">Las Huellas — reseñas de tus alumnos — construyen tu reputación. Tu perfil mejora con cada sesión. Tu comunidad crece sola.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TESTIMONIAL ══ -->
+<section class="guias-testimonial">
+  <blockquote>"Los mejores guías no encuentran el camino. Lo son."</blockquote>
+  <cite>Filosofía Ejekat Nemi · Cuscatlán, El Salvador</cite>
+</section>
+
+<!-- ══ PLANES ══ -->
+<section id="precios-guias">
+  <div class="precH">
+    <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">Planes</div></div>
+    <h2>Elige tu <em>plan de crecimiento</em></h2>
+    <p>Empieza sin costo. Escala cuando tu comunidad lo pida. Cambia de plan cuando quieras.</p>
+  </div>
+  <div class="tiers">
+    <div class="tier"><div class="ttag">Comienza aquí</div><div class="tname">Semilla</div><div class="tsub">Para conocer el camino</div><div class="tprice"><div class="tpnum gr">$0</div><div class="tpdet">Para siempre · Sin tarjeta</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>1 colaborador</li><li class="tfeat"><span class="fck">✓</span>8 sesiones por mes</li><li class="tfeat"><span class="fck">✓</span>Link WhatsApp directo</li><li class="tfeat"><span class="fck">✓</span>Confirmación por correo</li><li class="tfeat"><span class="fcx">✗</span>Sesiones grupales</li><li class="tfeat"><span class="fcx">✗</span>WhatsApp automatizado</li><li class="tfeat"><span class="fcx">✗</span>Reportes</li></ul><a href="index.html#registro" class="tcta co">Empezar gratis</a></div>
+    <div class="tier"><div class="ttag">Independiente</div><div class="tname">Raíz</div><div class="tsub">Para el maestro en movimiento</div><div class="tprice"><div class="tpnum">$15</div><div class="tpdet">USD/mes · +$8 por colaborador · máx. 3</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Hasta 3 colaboradores</li><li class="tfeat"><span class="fck">✓</span>Sesiones individuales ilimitadas</li><li class="tfeat"><span class="fck">✓</span>WhatsApp: confirmación + recordatorio</li><li class="tfeat"><span class="fck">✓</span>3 servicios configurables</li><li class="tfeat"><span class="fcx">✗</span>Sesiones grupales</li><li class="tfeat"><span class="fcx">✗</span>Lista de espera</li></ul><a href="index.html#registro" class="tcta co">Comenzar</a></div>
+    <div class="tier feat"><div class="tbadge">Más elegido</div><div class="ttag">Estudio · Casa Ejekat</div><div class="tname">Ceiba</div><div class="tsub">Para equipos con raíces</div><div class="tprice"><div class="tpnum">$35</div><div class="tpdet">USD/mes · +$12 por colaborador · máx. 10</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Hasta 10 colaboradores</li><li class="tfeat"><span class="fck">✓</span>Sesiones grupales (hasta 30 cupos)</li><li class="tfeat"><span class="fck">✓</span>WhatsApp completo — cliente y guía</li><li class="tfeat"><span class="fck">✓</span>Lista de espera automática</li><li class="tfeat"><span class="fck">✓</span>15 servicios configurables</li><li class="tfeat"><span class="fck">✓</span>Historial de caminantes</li><li class="tfeat"><span class="fck">✓</span>Reporte mensual</li></ul><a href="index.html#registro" class="tcta cf">Comenzar ahora</a></div>
+    <div class="tier"><div class="ttag">Multi-sede · Centro</div><div class="tname">Volcán</div><div class="tsub">Para comunidades sin límite</div><div class="tprice"><div class="tpnum">$80</div><div class="tpdet">USD/mes · +$15 por colaborador · ilimitados</div></div><hr class="tdiv"><ul class="tfeats"><li class="tfeat"><span class="fck">✓</span>Colaboradores ilimitados</li><li class="tfeat"><span class="fck">✓</span>Multi-sede</li><li class="tfeat"><span class="fck">✓</span>Membresías y paquetes prepagados</li><li class="tfeat"><span class="fck">✓</span>WhatsApp con flujos automatizados</li><li class="tfeat"><span class="fck">✓</span>Push notifications (PWA)</li><li class="tfeat"><span class="fck">✓</span>CRM integrado · Reportes avanzados</li><li class="tfeat"><span class="fck">✓</span>Soporte prioritario</li></ul><a href="index.html#registro" class="tcta cc">Contactar</a></div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══ -->
+<section class="guias-faq">
+  <div class="sec-ey" style="margin-bottom:2rem;"><div class="edot"></div><div class="elbl">Preguntas frecuentes</div></div>
+
+  <div class="faq-item">
+    <div class="faq-q">¿Necesito experiencia técnica para usar la plataforma?</div>
+    <div class="faq-a">No. Tu perfil se configura en menos de 10 minutos. Solo necesitas tu información básica, una foto y tus horarios. Nosotros hacemos el resto.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Cómo se gestionan los pagos con los alumnos?</div>
+    <div class="faq-a">Los pagos se coordinan directamente entre tú y el alumno — sin comisiones de la plataforma. Tú decides tu precio y tu método de pago. Ejekat Nemi no retiene ningún porcentaje de tus sesiones.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Puedo tener múltiples disciplinas en mi perfil?</div>
+    <div class="faq-a">Sí. Puedes ofrecer hasta 15 servicios en el plan Ceiba y servicios ilimitados en el plan Volcán. Cada servicio tiene su propio precio, duración y descripción.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Qué es La Cantera?</div>
+    <div class="faq-a">La Cantera es la comunidad de guías de Ejekat Nemi — maestros de movimiento, instructores de baile, guías turísticos y especialistas en bienestar que comparten una misma filosofía: el movimiento como forma de vivir con propósito.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q">¿Cómo funciona la revitalización del náhuat-pipil?</div>
+    <div class="faq-a">Parte de los ingresos de la plataforma se destina a proyectos de documentación y enseñanza del náhuat-pipil, la lengua ancestral de los pueblos de Cuscatlán. Al ser parte de Ejekat Nemi, contribuyes a mantener viva esa raíz cultural.</div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ══ -->
+<section class="guias-cta-final">
+  <div class="sec-ey" style="justify-content:center;margin-bottom:1.5rem;"><div class="edot" style="background:var(--copal)"></div><div class="elbl">Empieza hoy</div></div>
+  <h2>El viento ya<br>sopla hacia <em>tu camino.</em></h2>
+  <p>Los primeros 50 guías entran sin costo y con acceso completo al plan Raíz durante 3 meses. No necesitas tarjeta de crédito.</p>
+  <div class="gcta-btns">
+    <a href="mailto:guias@ejekatnemi.com" class="btn-p"><span>Postularme a La Cantera →</span></a>
+    <a href="index.html" class="btn-g">← Volver al inicio</a>
+  </div>
+</section>
+
+<footer>
+  <div><div class="flogo">Ejekat <span>Nemi</span></div><div class="fnah">El viento que vive · Náhuat-Pipil · Cuscatlán</div></div>
+  <p>© 2025 Ejekat Nemi · Hecho con raíces en El Salvador · hola@ejekatnemi.com</p>
+  <div class="fcred">Nombre derivado del náhuat-pipil,<br>lengua de los pueblos originarios de Cuscatlán.<br><span style="color:var(--copal)">Apoyamos su revitalización.</span></div>
+</footer>
+
+<script data-cfasync="false">
+const cursor=document.getElementById("cursor"),crng=document.getElementById("crng");
+if(cursor){
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+"px";cursor.style.top=my+"px";});
+  document.querySelectorAll("a,button,.tier,.faq-item").forEach(el=>{
+    el.addEventListener("mouseenter",()=>{crng.style.width="36px";crng.style.height="36px";});
+    el.addEventListener("mouseleave",()=>{crng.style.width="10px";crng.style.height="10px";});
+  });
+}
+window.addEventListener("scroll",()=>{
+  const nav=document.querySelector("nav");
+  if(nav)nav.style.background=window.scrollY>50?"rgba(13,27,20,0.97)":"rgba(13,27,20,0.85)";
+});
+</script>
+</body>
+</html>

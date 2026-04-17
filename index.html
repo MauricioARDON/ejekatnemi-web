@@ -161,6 +161,17 @@ h2 em{font-style:italic;color:var(--terracota-l);}
 .fbtn::before{content:"";position:absolute;inset:0;background:var(--terracota-l);transform:translateX(-100%);transition:transform .3s;}
 .fbtn:hover::before{transform:translateX(0);}
 .fbtn span{position:relative;z-index:1;}
+
+.fexp-caminos{display:flex;gap:.4rem;flex-wrap:wrap;margin:.8rem 0 .5rem;}
+.fexp-btn{font-size:.7rem;padding:.35rem .8rem;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:#C0B8A8;cursor:pointer;transition:all .2s;letter-spacing:1px;}
+.fexp-btn:hover,.fexp-btn.active{background:rgba(244,236,214,.1);border-color:rgba(233,168,36,.5);color:var(--copal);}
+.fexp-panel{display:none;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.08);border-left:2px solid var(--copal);padding:.9rem 1rem;margin-top:.4rem;}
+.fexp-panel.open{display:block;}
+.fexp-tit{font-size:.82rem;color:#FFFFFF;font-weight:500;margin-bottom:.4rem;}
+.fexp-txt{font-size:.75rem;color:#D4CFC4;line-height:1.6;margin-bottom:.5rem;}
+.fexp-discs{font-size:.68rem;color:#A09880;margin-bottom:.6rem;}
+.fexp-link{font-size:.72rem;color:var(--copal);text-decoration:none;letter-spacing:1px;border-bottom:1px solid rgba(233,168,36,.3);}
+.fexp-link:hover{border-bottom-color:var(--copal);}
 .fleg{font-size:.68rem;font-weight:300;color:var(--texto-suave);text-align:center;margin-top:1rem;line-height:1.6;}
 #ferr{color:var(--terracota-l);font-size:.78rem;text-align:center;margin-top:.5rem;display:none;}
 .sucmsg{display:none;text-align:center;padding:3rem 1rem;}
@@ -523,8 +534,38 @@ footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
     <h2>Así de <em>simple</em><br>es empezar a moverte</h2>
   </div>
   <div class="fsteps">
-    <div class="fstep"><div class="fnum">1</div><div class="fico">🌬️</div><div class="ftit">¿Cómo quieres sentirte?</div><p class="fdesc">Elige tu estado: Pakini, Musewi, Kuxtal o Nejnemi. El viento hace el resto.</p></div>
-    <div class="fstep"><div class="fnum">2</div><div class="fico">🗺️</div><div class="ftit">Explora caminos</div><p class="fdesc">Ve perfiles de guías con su historia, disciplina, lugar y disponibilidad. <a href="explorar.html" style="color:var(--copal);text-decoration:none;border-bottom:1px solid rgba(233,168,36,.3);">Ir a explorar →</a></p></div>
+    <div class="fstep"><div class="fnum">1</div><div class="fico">🗓️</div><div class="ftit">Programa tiempo para ti</div><p class="fdesc">Elige la disciplina o actividad que quieres practicar — presencial, virtual o al aire libre. Un momento tuyo, en tu horario.</p></div>
+    <div class="fstep"><div class="fnum">2</div><div class="fico">🗺️</div><div class="ftit">Explora tu camino</div><p class="fdesc">Conoce cada disciplina antes de decidir. Toca el camino que más te llama.</p>
+      <div class="fexp-caminos">
+        <button class="fexp-btn" data-camino="pakini" onclick="toggleFexp('pakini')">🔥 Pakini</button>
+        <button class="fexp-btn" data-camino="musewi" onclick="toggleFexp('musewi')">🌊 Musewi</button>
+        <button class="fexp-btn" data-camino="kuxtal" onclick="toggleFexp('kuxtal')">🌿 Kuxtal</button>
+        <button class="fexp-btn" data-camino="nejnemi" onclick="toggleFexp('nejnemi')">🏔️ Nejnemi</button>
+      </div>
+      <div class="fexp-panel" id="fexp-pakini">
+        <div class="fexp-tit">🔥 Pakini — Alegría</div>
+        <div class="fexp-txt">Baile, movimiento grupal y energía compartida. Salsa, Bachata y clases individuales con Mauricio Ardón en San Salvador.</div>
+        <div class="fexp-discs">💃 Salsa · 🎶 Bachata · 🕺 Individual · 🔥 2x1</div>
+        <a href="explorar.html" class="fexp-link">Ver guías disponibles →</a>
+      </div>
+      <div class="fexp-panel" id="fexp-musewi">
+        <div class="fexp-tit">🌊 Musewi — Calma</div>
+        <div class="fexp-txt">Yoga, meditación y respiración consciente. Movimiento que restaura el sistema nervioso y mejora la calidad del sueño.</div>
+        <div class="fexp-discs">🧘 Yoga · 🌿 Meditación · 💨 Respiración</div>
+        <a href="explorar.html" class="fexp-link">Ver guías disponibles →</a>
+      </div>
+      <div class="fexp-panel" id="fexp-kuxtal">
+        <div class="fexp-tit">🌿 Kuxtal — Vida plena</div>
+        <div class="fexp-txt">Masajes terapéuticos, movilidad y terapias de movimiento. Sanar el cuerpo desde el cuidado, no desde la exigencia.</div>
+        <div class="fexp-discs">💆 Masajes · 🌱 Movilidad · 🙏 Terapias</div>
+        <a href="explorar.html" class="fexp-link">Ver guías disponibles →</a>
+      </div>
+      <div class="fexp-panel" id="fexp-nejnemi">
+        <div class="fexp-tit">🏔️ Nejnemi — Aventura</div>
+        <div class="fexp-txt">Tours al Volcán Santa Ana, Lago Coatepeque, Suchitoto y deportes extremos — bungee, canopy y rapel — con guía certificado.</div>
+        <div class="fexp-discs">🌋 Volcán · 💧 Coatepeque · 🏛️ Suchitoto · 🪂 Extremos</div>
+        <a href="explorar.html" class="fexp-link">Ver guías disponibles →</a>
+      </div></div>
     <div class="fstep"><div class="fnum">3</div><div class="fico">🤝</div><div class="ftit">Elige tu guía</div><p class="fdesc">El maestro que resuena contigo. Lee las huellas — reseñas de quienes caminaron antes.</p></div>
     <div class="fstep"><div class="fnum">4</div><div class="fico">💬</div><div class="ftit">Coordina por WhatsApp</div><p class="fdesc">Un mensaje preformateado abre la conversación. Fecha, lugar y pago se confirman directamente.</p><div class="fwa">WhatsApp directo</div></div>
     <div class="fstep"><div class="fnum">5</div><div class="fico">🌱</div><div class="ftit">Muévete. Vive.</div><p class="fdesc">Asiste. Deja tu huella. Regresa cuando el viento te llame de nuevo.</p></div>
@@ -746,6 +787,20 @@ document.querySelectorAll(".fil-item-click, .fil-item-v2").forEach(function(item
     if(!wasOpen) item.classList.add("open");
   });
 });
+
+
+function toggleFexp(camino) {
+  var panels = document.querySelectorAll(".fexp-panel");
+  var btns = document.querySelectorAll(".fexp-btn");
+  var panel = document.getElementById("fexp-" + camino);
+  var isOpen = panel.classList.contains("open");
+  panels.forEach(function(p){ p.classList.remove("open"); });
+  btns.forEach(function(b){ b.classList.remove("active"); });
+  if(!isOpen) {
+    panel.classList.add("open");
+    document.querySelector(".fexp-btn[data-camino='" + camino + "']").classList.add("active");
+  }
+}
 
 // Caminos interactivos
 var caminoActivo=null;

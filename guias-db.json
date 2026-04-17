@@ -163,17 +163,34 @@
       ],
       "ciudad_display": "San Salvador, El Salvador",
       "disponibilidad": {
-        "lunes_viernes": {
+        "salsa_principiantes": {
           "activo": true,
-          "horario": "7:00am – 12:00pm · 4:00pm – 8:00pm"
+          "dias": "Lunes y Miércoles",
+          "horario": "7:00pm – 8:00pm",
+          "tipo": "grupal"
+        },
+        "bachata_principiantes": {
+          "activo": true,
+          "dias": "Lunes y Miércoles",
+          "horario": "8:00pm – 9:00pm",
+          "tipo": "grupal"
+        },
+        "clases_individuales": {
+          "activo": true,
+          "dias": "Martes, Jueves y Viernes",
+          "horario": "7:00pm – 9:00pm",
+          "tipo": "individual",
+          "nota": "Sábados y domingos disponibles si no hay tours de aventura"
         },
         "sabados": {
           "activo": true,
-          "horario": "7:00am – 6:00pm"
+          "horario": "7:00am – 6:00pm",
+          "nota": "Clases individuales disponibles si no hay tours"
         },
         "domingos": {
           "activo": true,
-          "horario": "7:00am – 2:00pm"
+          "horario": "7:00am – 6:00pm",
+          "nota": "Clases individuales disponibles si no hay tours"
         },
         "tours_senderismo": {
           "activo": true,
@@ -193,9 +210,9 @@
         "Español",
         "Inglés básico"
       ],
-      "precio_base": 15,
+      "precio_base": 25,
       "precio_moneda": "USD",
-      "precio_display": "Desde $15 USD",
+      "precio_display": "Desde $25 USD",
       "precio_nota": "Precio final según servicio, duración y tamaño del grupo",
       "huellas_count": 0,
       "rating": null,

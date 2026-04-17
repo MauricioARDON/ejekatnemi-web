@@ -391,13 +391,12 @@ function abrirModal(id){
   ` : "";
 
   const serviciosHTML = g.servicios.map(s=>`
-    <div class="sitem">
+    <div class="sitem" onclick="elegirServicio('${s.nombre}','${g.id}')" style="cursor:pointer;">
       <span class="sico">${s.icono}</span>
       <div>
         <div class="snom">${s.nombre}</div>
-        <div class="sdet">${s.descripcion}</div>
         <div class="sdet">${s.modalidad.map(m=>m==="presencial"?"📍 Presencial":"🌐 En línea").join(" · ")} · ${s.duracion_min} min</div>
-        <div class="sprecio">Desde $${s.precio_desde} ${s.precio_moneda}</div>
+        <div class="sprecio">Desde $${s.precio_desde} ${s.precio_moneda} <span style="font-size:.65rem;color:#706860;margin-left:.5rem;">Toca para reservar →</span></div>
       </div>
     </div>`).join("");
 
@@ -427,38 +426,23 @@ function abrirModal(id){
           <div class="mmeta"><span>🗣️</span><span>${g.idiomas.join(" · ")}</span></div>
           ${g.fundador?'<div class="mmeta"><span>✦</span><span>Guía fundador de Ejekat Nemi</span></div>':''}
         </div>
+        <button class="mwa" onclick="waDirecto('${g.whatsapp}','${g.nombre}')">💬 Contactar por WhatsApp</button>
+        <button class="mint" onclick="abrirForm('${g.id}')">📋 Registrar interés</button>
       </div>
     </div>
     <div class="mbody">
       <div class="mgrid">
         <div>
-          <div class="mstit">Caminos que ofrezco</div>
+          <div class="mstit">Disciplinas disponibles</div>
           ${serviciosHTML}
         </div>
         <div>
-          <div class="mstit">Disponibilidad en tiempo real</div>
+          <div class="mstit">Horarios</div>
           <div id="cal-disponib-${g.id}"><p class="cal-loading">Cargando...</p></div>
-          ${g.nota_disponibilidad?`<p style="font-size:.72rem;color:var(--ts);margin-top:.8rem;line-height:1.6;">📋 ${g.nota_disponibilidad}</p>`:""}
-          <div class="mquevar">
-            <strong>¿Qué llevar a clases de baile?</strong>Ropa cómoda, tenis o zapatos de baile, agua.
-            <br><br>
-            <strong>¿Qué llevar a senderismo o deportes extremos?</strong>Zapatos cerrados, ropa deportiva, agua, protector solar. Equipo de seguridad incluido.
-          </div>
         </div>
       </div>
-      <div class="mcta">
-        <div>
-          <div class="mprecio">${g.precio_display}</div>
-          <div class="mpdet">${g.precio_nota}</div>
-        </div>
-        <div class="mbtns">
-          <button class="bwa" onclick="waDirecto('${g.whatsapp}','${g.nombre}')">💬 Contactar por WhatsApp</button>
-          <button class="bint" onclick="abrirForm('${g.id}')">Registrar mi interés →</button>
-          <div class="mnota">Coordinas fecha, lugar y pago directamente con el guía</div>
-        </div>
-      </div>
-    </div>`;
-
+    </div>
+  `;
   document.getElementById("moverlay").classList.add("op");
   if(g.slug || g.id) cargarDisponibilidad(g.id || g.slug, `cal-disponib-${g.id}`);
   document.body.style.overflow="hidden";
@@ -498,6 +482,22 @@ function cargarFoto(e, id){
 }
 
 // ── WhatsApp directo ──
+
+function elegirServicio(servicio, guiaId){
+  abrirForm(guiaId);
+  setTimeout(function(){
+    var sel = document.getElementById("fs");
+    if(sel){
+      for(var i=0;i<sel.options.length;i++){
+        if(sel.options[i].text.indexOf(servicio.split("—")[0].trim())>=0){
+          sel.value = sel.options[i].value||sel.options[i].text;
+          break;
+        }
+      }
+    }
+  }, 300);
+}
+
 function waDirecto(num, nombre){
   const msg = encodeURIComponent("Hola "+nombre+", vi tu perfil en Ejekat Nemi y me interesa conocer más sobre tus sesiones. ¿Podemos coordinar?");
   window.open("https://wa.me/"+num+"?text="+msg,"_blank");

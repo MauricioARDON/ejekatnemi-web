@@ -2,836 +2,505 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ejekat Nemi | Plataforma de Bienestar Corporativo</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta name="description" content="Ejekat Nemi | Plataforma de Bienestar Corporativo. Reduce el burnout, mejora la retención y activa a tus equipos en El Salvador. Para empresas de 2 a 100 colaboradores.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
 <style>
-:root {
+:root{
   --terracota:#B84A2F;--terracota-l:#D4623D;--ceiba:#2D6A4F;--ceiba-l:#3D8A65;
   --copal:#E9A824;--obsidiana:#0D1B14;--obsidiana-l:#152318;
-  --arena:#F4ECD6;--arena-d:#E8D9BB;--texto:rgba(244,236,214,0.85);--texto-suave:rgba(244,236,214,0.45);
+  --arena:#F4ECD6;--arena-d:#E8D9BB;
+  --texto:rgba(244,236,214,0.90);--texto-suave:rgba(244,236,214,0.70);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--obsidiana);color:var(--arena);font-family:"Outfit",sans-serif;overflow-x:hidden;cursor:none;}
-.cursor{position:fixed;width:10px;height:10px;background:var(--copal);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:difference;}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(233,168,36,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
-body::before{content:"";position:fixed;inset:0;z-index:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");pointer-events:none;opacity:.6;}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5rem;background:rgba(13,27,20,.85);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,236,214,.06);}
-.logo-wrap{display:flex;flex-direction:column;line-height:1;}
-.logo-main{font-family:"Cormorant Garamond",serif;font-size:1.7rem;font-weight:700;letter-spacing:4px;text-transform:uppercase;}
+body{background:var(--obsidiana);color:var(--arena);font-family:"Outfit",sans-serif;overflow-x:hidden;}
+
+/* ── Nav ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:.9rem 3rem;background:rgba(13,27,20,0.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(244,236,214,.06);}
+.logo-wrap{display:flex;flex-direction:column;}
+.logo-main{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;color:var(--arena);letter-spacing:2px;}
 .logo-main span{color:var(--copal);}
-.logo-sub{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--texto-suave);font-weight:300;}
-nav ul{list-style:none;display:flex;gap:2.5rem;align-items:center;}
-nav ul a{text-decoration:none;color:var(--texto-suave);font-size:.82rem;font-weight:400;letter-spacing:1px;text-transform:uppercase;transition:color .3s;}
-nav ul a:hover{color:var(--arena);}
-.nav-active{color:var(--copal)!important;} .nav-cta{border:1px solid var(--terracota)!important;color:var(--terracota)!important;padding:.5rem 1.4rem!important;transition:all .3s!important;}
-.nav-cta:hover{background:var(--terracota)!important;color:var(--arena)!important;}
-#hero{min-height:100vh;position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:8rem 5rem 5rem;overflow:hidden;}
-.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
-.orb1{width:500px;height:500px;background:radial-gradient(circle,rgba(184,74,47,.18) 0%,transparent 70%);top:-100px;right:-100px;animation:orbF 8s ease-in-out infinite;}
-.orb2{width:400px;height:400px;background:radial-gradient(circle,rgba(45,106,79,.15) 0%,transparent 70%);bottom:0;left:10%;animation:orbF 10s 2s ease-in-out infinite reverse;}
-.orb3{width:300px;height:300px;background:radial-gradient(circle,rgba(233,168,36,.08) 0%,transparent 70%);top:40%;left:40%;animation:orbF 12s 4s ease-in-out infinite;}
-@keyframes orbF{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(20px,-30px) scale(1.05);}66%{transform:translate(-15px,20px) scale(.97);}}
-.hero-glyph{position:absolute;right:5%;top:15%;width:340px;height:340px;opacity:.06;animation:spin 30s linear infinite;}
-@keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
-.hero-left{position:relative;z-index:1;}
-.eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:2rem;animation:fadeUp .8s ease both;}
-.eline{width:40px;height:1px;background:var(--copal);}
-.etxt{font-size:.72rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);font-weight:500;}
-h1{font-family:"Cormorant Garamond",serif;font-size:clamp(3.8rem,6.5vw,6rem);font-weight:300;line-height:1;letter-spacing:2px;margin-bottom:1rem;animation:fadeUp .8s .1s ease both;}
-h1 em{font-style:italic;color:var(--terracota-l);display:block;}
-h1 strong{font-weight:700;color:var(--arena);display:block;}
-.transl{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);margin-bottom:2rem;animation:fadeUp .8s .2s ease both;}
-.transl span{color:var(--copal);}
-.hdesc{font-size:1.05rem;font-weight:300;line-height:1.8;color:var(--texto);max-width:440px;margin-bottom:3rem;animation:fadeUp .8s .3s ease both;}
-.hact{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;animation:fadeUp .8s .4s ease both;}
-.btn-p{display:inline-flex;align-items:center;gap:.6rem;background:var(--terracota);color:var(--arena);padding:1rem 2.2rem;font-size:.85rem;font-weight:500;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;position:relative;overflow:hidden;}
-.btn-p::before{content:"";position:absolute;inset:0;background:var(--terracota-l);transform:translateX(-100%);transition:transform .3s ease;}
-.btn-p:hover::before{transform:translateX(0);}
-.btn-p span{position:relative;z-index:1;}
-.btn-g{font-size:.82rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);text-decoration:none;border-bottom:1px solid rgba(244,236,214,.2);padding-bottom:2px;transition:all .3s;}
-.btn-g:hover{color:var(--arena);border-color:var(--arena);}
-.hnote{margin-top:1.5rem;font-size:.75rem;color:var(--texto-suave);letter-spacing:1px;animation:fadeUp .8s .5s ease both;}
-.hnote span{color:var(--ceiba-l);}
-.hero-right{position:relative;z-index:1;display:flex;justify-content:center;align-items:center;animation:fadeUp 1s .3s ease both;}
-.egrid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.06);border:1px solid rgba(244,236,214,.06);width:380px;}
-.ecard{background:var(--obsidiana-l);padding:2rem 1.5rem;cursor:pointer;transition:background .4s;position:relative;overflow:hidden;}
-.ecard::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .4s;transform-origin:left;}
-.ecard:hover{background:rgba(244,236,214,.04);}
-.ecard:hover::after{transform:scaleX(1);}
-.ecard[data-e="pakini"]::after{background:var(--copal);}
-.ecard[data-e="musewi"]::after{background:var(--ceiba-l);}
-.ecard[data-e="kuxtal"]::after{background:var(--terracota);}
-.ecard[data-e="nejnemi"]::after{background:#7BC8F6;}
-.eicon{font-size:1.8rem;margin-bottom:.8rem;display:block;}
-.enahuat{font-family:"Cormorant Garamond",serif;font-size:1.2rem;font-weight:600;font-style:italic;color:var(--arena);margin-bottom:.2rem;}
-.ees{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);}
-.edis{font-size:.75rem;color:var(--texto-suave);margin-top:.6rem;line-height:1.5;}
-.franja{border-top:1px solid rgba(244,236,214,.06);border-bottom:1px solid rgba(244,236,214,.06);padding:1.2rem 5rem;display:flex;align-items:center;gap:2rem;overflow:hidden;position:relative;z-index:1;}
-.fl{font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);white-space:nowrap;}
-.fscroll{display:flex;gap:3rem;align-items:center;animation:scrollL 25s linear infinite;white-space:nowrap;}
-.fi{font-family:"Cormorant Garamond",serif;font-size:.95rem;font-style:italic;color:rgba(244,236,214,.25);}
-.fs{color:var(--copal);opacity:.4;}
-@keyframes scrollL{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-#filosofia{padding:8rem 5rem;display:grid;grid-template-columns:1fr 2fr;gap:6rem;align-items:center;position:relative;z-index:1;}
-.sec-ey{display:flex;align-items:center;gap:.8rem;}
+.logo-sub{font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:var(--texto-suave);}
+nav ul{list-style:none;display:flex;gap:2rem;align-items:center;}
+nav ul li a{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);text-decoration:none;transition:color .2s;}
+nav ul li a:hover{color:var(--arena);}
+.nav-cta{background:var(--terracota);color:var(--arena)!important;padding:.45rem 1.1rem;font-size:.68rem!important;letter-spacing:2px;text-transform:uppercase;transition:background .2s!important;}
+.nav-cta:hover{background:var(--terracota-l)!important;}
+.nav-badge{background:rgba(233,168,36,.15);border:1px solid rgba(233,168,36,.3);color:var(--copal)!important;padding:.2rem .6rem;font-size:.6rem!important;letter-spacing:2px;margin-left:.5rem;}
+
+/* ── Utilidades ── */
+.sec-ey{display:flex;align-items:center;gap:.6rem;margin-bottom:1rem;}
 .edot{width:6px;height:6px;border-radius:50%;background:var(--copal);}
-.elbl{font-size:.68rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);}
-h2{font-family:"Cormorant Garamond",serif;font-size:clamp(2.5rem,4vw,3.8rem);font-weight:300;line-height:1.1;letter-spacing:1px;}
-h2 em{font-style:italic;color:var(--terracota-l);}
-.fquote{border-left:1px solid var(--copal);padding-left:1.5rem;margin-top:1rem;}
-.fquote p{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-style:italic;font-weight:300;color:var(--texto-suave);line-height:1.7;}
-.fquote cite{display:block;margin-top:.5rem;font-size:.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);font-style:normal;}
-.fright{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.05);}
-.fcard{background:var(--obsidiana);padding:2.5rem 2rem;transition:background .3s;}
-.fcard:hover{background:var(--obsidiana-l);}
-.fcnum{font-family:"Cormorant Garamond",serif;font-size:3.5rem;font-weight:300;color:rgba(244,236,214,.06);line-height:1;margin-bottom:.5rem;}
-.fcico{font-size:1.6rem;margin-bottom:1rem;}
-.fctit{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;font-style:italic;color:var(--arena);margin-bottom:.3rem;}
-.fcn{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);margin-bottom:.8rem;}
-.fcd{font-size:.85rem;font-weight:300;color:var(--texto-suave);line-height:1.7;}
-#guias{padding:8rem 5rem;background:var(--obsidiana-l);border-top:1px solid rgba(244,236,214,.05);position:relative;z-index:1;}
-.ghead{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:4rem;}
-.ghead p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;}
-.arqs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,214,.05);}
-.arq{background:var(--obsidiana);padding:2.5rem 2rem;border-bottom:2px solid transparent;transition:all .3s;}
-.arq:hover{background:rgba(244,236,214,.02);border-bottom-color:var(--terracota);}
-.aico{font-size:2rem;margin-bottom:1.2rem;}
-.atag{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--terracota);margin-bottom:.5rem;}
-.atit{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-weight:600;color:var(--arena);margin-bottom:.8rem;}
-.adesc{font-size:.83rem;font-weight:300;color:var(--texto-suave);line-height:1.7;margin-bottom:1.2rem;}
-.alist{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
-.alist li{font-size:.78rem;color:var(--texto-suave);display:flex;gap:.6rem;}
-.alist li::before{content:"—";color:var(--copal);}
-#flujo{padding:8rem 5rem;position:relative;z-index:1;}
-.flujoH{text-align:center;margin-bottom:5rem;}
-.fsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;align-items:start;}
-.fsteps::before{content:"";position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(244,236,214,.1) 20%,var(--copal) 50%,rgba(244,236,214,.1) 80%,transparent);}
-.fstep{display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 1rem;position:relative;z-index:1;}
-.fnum{width:56px;height:56px;border-radius:50%;background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.1);display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-weight:600;color:var(--copal);margin-bottom:1.5rem;transition:all .3s;}
-.fstep:hover .fnum{background:var(--terracota);border-color:var(--terracota);color:var(--arena);}
-.fico{font-size:1.5rem;margin-bottom:.8rem;}
-.ftit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;color:var(--arena);margin-bottom:.5rem;}
-.fdesc{font-size:.78rem;font-weight:300;color:var(--texto-suave);line-height:1.6;}
-.fwa{margin-top:.6rem;padding:.4rem .8rem;background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);font-size:.68rem;letter-spacing:1px;text-transform:uppercase;color:#25D366;}
-#precios{padding:8rem 5rem;background:var(--obsidiana-l);border-top:1px solid rgba(244,236,214,.05);position:relative;z-index:1;}
-.precH{text-align:center;margin-bottom:4rem;}
-.precH p{font-size:.92rem;font-weight:300;color:var(--texto-suave);max-width:480px;margin:1rem auto 0;line-height:1.7;}
-.tiers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,236,214,.05);}
-.tier{background:var(--obsidiana);padding:2.5rem 1.8rem;position:relative;transition:background .3s;}
-.tier:hover{background:rgba(244,236,214,.02);}
-.tier.feat{background:rgba(184,74,47,.08);border-top:2px solid var(--terracota);}
-.tbadge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--terracota);color:var(--arena);font-size:.62rem;letter-spacing:2px;text-transform:uppercase;padding:.3rem 1rem;white-space:nowrap;}
-.ttag{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);margin-bottom:.5rem;}
-.tname{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:600;color:var(--arena);margin-bottom:.2rem;}
-.tsub{font-size:.75rem;font-weight:300;color:var(--texto-suave);margin-bottom:1.5rem;}
-.tprice{margin-bottom:1.5rem;}
-.tpnum{font-family:"Cormorant Garamond",serif;font-size:3.2rem;font-weight:300;color:var(--arena);line-height:1;}
-.tpnum.gr{color:var(--ceiba-l);}
-.tpdet{font-size:.72rem;font-weight:300;color:var(--texto-suave);margin-top:.3rem;line-height:1.4;}
-.tdiv{border:none;border-top:1px solid rgba(244,236,214,.07);margin:1.2rem 0;}
-.tfeats{list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;}
-.tfeat{display:flex;gap:.7rem;align-items:flex-start;font-size:.8rem;font-weight:300;color:var(--texto-suave);line-height:1.4;}
-.fck{color:var(--ceiba-l);flex-shrink:0;font-weight:600;}
-.fcx{color:rgba(244,236,214,.15);flex-shrink:0;}
-.tcta{display:block;text-align:center;text-decoration:none;padding:.85rem;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
-.co{border:1px solid rgba(244,236,214,.2);color:var(--texto-suave);}
-.co:hover{border-color:var(--arena);color:var(--arena);}
-.cf{background:var(--terracota);color:var(--arena);}
-.cf:hover{background:var(--terracota-l);}
-.cc{background:var(--ceiba);color:var(--arena);}
-.cc:hover{background:var(--ceiba-l);}
-#registro{padding:8rem 5rem;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;position:relative;z-index:1;}
-.regl p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;margin-bottom:2.5rem;}
-.regl h2{margin-bottom:1.5rem;}
-.tlist{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
-.titem{display:flex;align-items:center;gap:1rem;font-size:.82rem;font-weight:300;color:var(--texto-suave);}
-.fwrap{background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.07);padding:2.8rem;}
-.ftitle{font-family:"Cormorant Garamond",serif;font-size:1.8rem;font-weight:600;color:var(--arena);margin-bottom:.3rem;}
-.fsubt{font-size:.78rem;font-weight:300;color:var(--texto-suave);margin-bottom:2rem;letter-spacing:1px;}
-.fg{margin-bottom:1.2rem;}
-.fg label{display:block;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);margin-bottom:.5rem;}
-.fg input,.fg select{width:100%;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:var(--arena);font-family:"Outfit",sans-serif;font-size:.9rem;font-weight:300;padding:.85rem 1rem;transition:border-color .3s;appearance:none;}
-.fg input:focus,.fg select:focus{outline:none;border-color:var(--copal);}
-.fg input::placeholder{color:rgba(244,236,214,.2);}
-.fg select option{background:var(--obsidiana);}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
-.fbtn{width:100%;background:var(--terracota);color:var(--arena);border:none;padding:1rem;font-family:"Outfit",sans-serif;font-size:.8rem;font-weight:500;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;margin-top:.5rem;position:relative;overflow:hidden;}
-.fbtn::before{content:"";position:absolute;inset:0;background:var(--terracota-l);transform:translateX(-100%);transition:transform .3s;}
-.fbtn:hover::before{transform:translateX(0);}
-.fbtn span{position:relative;z-index:1;}
+.elbl{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);}
 
-.fexp-caminos{display:flex;gap:.4rem;flex-wrap:wrap;margin:.8rem 0 .5rem;}
-.fexp-btn{font-size:.7rem;padding:.35rem .8rem;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:#C0B8A8;cursor:pointer;transition:all .2s;letter-spacing:1px;}
-.fexp-btn:hover,.fexp-btn.active{background:rgba(244,236,214,.1);border-color:rgba(233,168,36,.5);color:var(--copal);}
-.fexp-panel{display:none;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.08);border-left:2px solid var(--copal);padding:.9rem 1rem;margin-top:.4rem;}
-.fexp-panel.open{display:block;}
-.fexp-tit{font-size:.82rem;color:#FFFFFF;font-weight:500;margin-bottom:.4rem;}
-.fexp-txt{font-size:.75rem;color:#D4CFC4;line-height:1.6;margin-bottom:.5rem;}
-.fexp-discs{font-size:.68rem;color:#A09880;margin-bottom:.6rem;}
-.fexp-link{font-size:.72rem;color:var(--copal);text-decoration:none;letter-spacing:1px;border-bottom:1px solid rgba(233,168,36,.3);}
-.fexp-link:hover{border-bottom-color:var(--copal);}
-.fleg{font-size:.68rem;font-weight:300;color:var(--texto-suave);text-align:center;margin-top:1rem;line-height:1.6;}
-#ferr{color:var(--terracota-l);font-size:.78rem;text-align:center;margin-top:.5rem;display:none;}
-.sucmsg{display:none;text-align:center;padding:3rem 1rem;}
-.sucmsg.show{display:block;}
-.sucg{font-size:3rem;margin-bottom:1rem;}
-.suctit{font-family:"Cormorant Garamond",serif;font-size:2.2rem;font-weight:300;font-style:italic;color:var(--ceiba-l);margin-bottom:.5rem;}
-.sucd{font-size:.85rem;font-weight:300;color:var(--texto-suave);line-height:1.7;}
-footer{border-top:1px solid rgba(244,236,214,.06);padding:2.5rem 5rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1;}
-.flogo{font-family:"Cormorant Garamond",serif;font-size:1.3rem;letter-spacing:3px;}
-.flogo span{color:var(--copal);}
-.fnah{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);}
-footer p{font-size:.72rem;font-weight:300;color:var(--texto-suave);}
-.fcred{font-size:.68rem;color:rgba(244,236,214,.2);text-align:right;line-height:1.6;}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-@media(max-width:1024px){nav{padding:1.2rem 2rem;}nav ul{display:none;}#hero,#filosofia,#registro{grid-template-columns:1fr;padding:7rem 2rem 4rem;}.hero-right,.hero-glyph{display:none;}.fright{grid-template-columns:1fr;}.ghead{grid-template-columns:1fr;}.arqs{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr 1fr;}.fsteps::before{display:none;}.tiers{grid-template-columns:1fr 1fr;}#flujo,#guias,#precios{padding:5rem 2rem;}footer{flex-direction:column;gap:1rem;text-align:center;}.fcred{text-align:center;}}
-@media(max-width:600px){.tiers{grid-template-columns:1fr;}.fsteps{grid-template-columns:1fr;}.frow{grid-template-columns:1fr;}.egrid{display:none;}}
-#acto1{padding:7rem 5rem;position:relative;z-index:1;overflow:hidden;--texto-suave:rgba(244,236,214,0.88);--texto:rgba(244,236,214,0.95);color:var(--texto);}
-#acto1::before{display:none;}
-.a1-intro{text-align:center;max-width:680px;margin:0 auto 5rem;}
-.a1-intro .sec-ey{justify-content:center;margin-bottom:1.2rem;} #acto1 h2{color:var(--arena);} #acto1 h2 em{color:var(--terracota-l);}
-.a1-intro h2{margin-bottom:1.2rem;}
-.a1-intro p{font-size:1rem;font-weight:300;color:#F5F0E8;line-height:1.8;}
-.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(244,236,214,.05);margin-bottom:5rem;}
-.stat-card{background:var(--obsidiana);padding:2.5rem 2rem;text-align:center;position:relative;overflow:hidden;transition:background .3s;}
-.stat-card:hover{background:var(--obsidiana-l);}
-.stat-card::after{content:"";position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transition:transform .5s ease;transform-origin:center;}
-.stat-card:nth-child(1)::after{background:var(--copal);}
-.stat-card:nth-child(2)::after{background:var(--ceiba-l);}
-.stat-card:nth-child(3)::after{background:var(--terracota);}
-.stat-card:hover::after{transform:scaleX(1);}
-.stat-num{font-family:"Cormorant Garamond",serif;font-size:clamp(3rem,5vw,4.5rem);font-weight:300;color:var(--arena);line-height:1;margin-bottom:.3rem;}
+/* ── Hero ── */
+.hero-emp{min-height:100vh;display:flex;align-items:center;padding:8rem 5rem 5rem;position:relative;overflow:hidden;}
+.hero-emp::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(45,106,79,.08) 0%,transparent 60%);pointer-events:none;}
+.hero-emp-inner{max-width:760px;}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(233,168,36,.08);border:1px solid rgba(233,168,36,.2);padding:.3rem .8rem;margin-bottom:2rem;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--copal);}
+.hero-emp h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.6rem,5vw,4.2rem);font-weight:300;color:#FFFFFF;line-height:1.1;margin-bottom:1.2rem;}
+.hero-emp h1 em{font-style:italic;color:var(--terracota-l);}
+.hero-emp h2{font-size:1rem;font-weight:300;color:var(--texto);line-height:1.8;max-width:620px;margin-bottom:2.5rem;}
+.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.btn-b2b-p{background:var(--terracota);color:var(--arena);padding:.85rem 1.8rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:background .2s;display:inline-flex;align-items:center;gap:.5rem;}
+.btn-b2b-p:hover{background:var(--terracota-l);}
+.btn-b2b-s{background:transparent;color:var(--arena);padding:.85rem 1.8rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:1px solid rgba(244,236,214,.25);transition:all .2s;}
+.btn-b2b-s:hover{border-color:var(--arena);}
+.hero-trust{display:flex;gap:2rem;flex-wrap:wrap;}
+.htrust{font-size:.72rem;color:var(--texto-suave);display:flex;align-items:center;gap:.4rem;}
+.htrust::before{content:"✓";color:var(--ceiba-l);}
+
+/* ── Stat bar ── */
+.stat-bar{background:var(--obsidiana-l);border-top:1px solid rgba(244,236,214,.06);border-bottom:1px solid rgba(244,236,214,.06);padding:2.5rem 5rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:linear-gradient(rgba(21,35,24,1),rgba(21,35,24,1)) padding-box,rgba(244,236,214,.06) border-box;}
+.stat-item{text-align:center;padding:1.5rem 2rem;}
+.stat-num{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:300;color:#FFFFFF;line-height:1;margin-bottom:.3rem;}
 .stat-num span{color:var(--copal);}
-.stat-label{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:#F0EBE0;line-height:1.5;margin-bottom:.6rem;}
-.stat-source{font-size:.62rem;color:#C8C0B0;font-style:italic;}
-.a1-contraste{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.05);margin-bottom:5rem;}
-.contraste-col{padding:3rem 2.5rem;}
-.contraste-col.sin{background:rgba(184,74,47,.04);}
-.contraste-col.con{background:rgba(45,106,79,.04);}
-.contraste-label{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;}
-.contraste-label.sin{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;color:#E07050;}
-.contraste-label.con{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.6rem;color:#5AAA80;}
-.contraste-ico{font-size:1rem;}
-.contraste-items{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
-.contraste-item{display:flex;align-items:flex-start;gap:.8rem;font-size:.88rem;font-weight:300;color:#F0EBE0;line-height:1.6;}
-.contraste-item::before{flex-shrink:0;font-size:.9rem;}
-.contraste-col.sin .contraste-item::before{content:"—";color:var(--terracota-l);}
-.contraste-col.con .contraste-item::before{content:"→";color:var(--ceiba-l);}
-.contraste-item strong{color:#FFFFFF;}
-.a1-filosofia{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;margin-bottom:5rem;}
-.a1-fil-left{}
-.a1-fil-left h2{margin-bottom:1.5rem;}
-.a1-fil-left p{font-size:.92rem;font-weight:300;color:#F0EBE0;line-height:1.8;margin-bottom:1rem;}
-.a1-fil-right{display:flex;flex-direction:column;gap:1px;background:rgba(244,236,214,.05);}
-.fil-item{background:var(--obsidiana);padding:1.8rem;transition:background .3s;position:relative;padding-left:2.5rem;}
-.fil-item:hover{background:var(--obsidiana-l);}
-.fil-item::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;background:transparent;transition:background .3s;}
-.fil-item:hover::before{background:var(--copal);}
-.fil-item-ico{font-size:1.3rem;margin-bottom:.5rem;}
-.fil-item-tit{font-family:"Cormorant Garamond",serif;font-size:1.1rem;font-weight:600;font-style:italic;color:#FFFFFF;margin-bottom:.3rem;}
-.fil-item-txt{font-size:.8rem;font-weight:300;color:#EDE8DE;line-height:1.6;}
+.stat-lbl{font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);line-height:1.5;}
+.stat-src{font-size:.6rem;color:rgba(244,236,214,.2);margin-top:.3rem;font-style:italic;}
 
+/* ── Problema ── */
+.problema{padding:6rem 5rem;}
+.problema-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;margin-top:3rem;}
+.prob-left h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#FFFFFF;line-height:1.2;margin-bottom:1.5rem;}
+.prob-left h2 em{color:var(--terracota-l);font-style:italic;}
+.prob-left p{font-size:.9rem;color:var(--texto);line-height:1.8;}
+.prob-cards{display:flex;flex-direction:column;gap:1px;background:rgba(244,236,214,.04);}
+.prob-card{background:var(--obsidiana);padding:2rem 1.8rem;border-left:3px solid transparent;transition:all .3s;}
+.prob-card:hover{background:var(--obsidiana-l);}
+.prob-card:nth-child(1):hover{border-left-color:var(--terracota);}
+.prob-card:nth-child(2):hover{border-left-color:var(--copal);}
+.prob-card:nth-child(3):hover{border-left-color:var(--ceiba-l);}
+.prob-card-num{font-family:"Cormorant Garamond",serif;font-size:3rem;font-weight:300;color:rgba(244,236,214,.06);line-height:1;margin-bottom:.5rem;}
+.prob-card-tit{font-size:.88rem;font-weight:500;color:#FFFFFF;margin-bottom:.6rem;letter-spacing:.5px;}
+.prob-card-txt{font-size:.80rem;color:var(--texto);line-height:1.7;}
 
-.fil-item-v2{background:var(--obsidiana);padding:2rem 1.8rem 1.2rem;border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .25s;border-bottom:3px solid transparent;margin-bottom:2px;}
-.fil-item-v2:hover,.fil-item-v2.open{border-bottom-color:var(--copal);background:var(--obsidiana-l);}
-.fil-v2-ico{font-size:3rem;display:block;margin-bottom:.8rem;}
-.fil-v2-nahuat{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:400;font-style:italic;color:#FFFFFF;line-height:1;margin-bottom:.3rem;}
-.fil-v2-trad{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
-.fil-item-v2[data-c="pakini"] .fil-v2-trad{color:#E8A070;}
-.fil-item-v2[data-c="musewi"] .fil-v2-trad{color:#5AAA80;}
-.fil-item-v2[data-c="kuxtal"] .fil-v2-trad{color:#4A9A6A;}
-.fil-item-v2[data-c="nejnemi"] .fil-v2-trad{color:#EBB840;}
-.fil-v2-disc{font-size:.78rem;color:#C0B8A8;margin-bottom:.8rem;}
-.fil-v2-discs{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.fil-item-v2.open .fil-v2-discs{max-height:300px;}
-.fil-v2-disc-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);margin-bottom:.3rem;cursor:pointer;transition:all .2s;font-size:.8rem;color:#F0EBE0;}
-.fil-v2-disc-item:hover{background:rgba(244,236,214,.08);border-color:rgba(244,236,214,.18);}
-.fil-v2-disc-item span{color:#A09880;font-size:.72rem;}
-.fil-v2-disc-item:hover span{color:var(--copal);}
-.fil-v2-hint{font-size:.65rem;color:#706860;margin-top:.5rem;text-align:right;}
-.fil-discs{display:none;margin-top:.8rem;border-top:1px solid rgba(244,236,214,.08);padding-top:.8rem;display:flex;flex-direction:column;gap:.3rem;max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.fil-item-click.open 
-.fil-item-v2{background:var(--obsidiana);padding:2rem 1.8rem 1.2rem;border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .25s;border-bottom:3px solid transparent;margin-bottom:2px;}
-.fil-item-v2:hover,.fil-item-v2.open{border-bottom-color:var(--copal);background:var(--obsidiana-l);}
-.fil-v2-ico{font-size:3rem;display:block;margin-bottom:.8rem;}
-.fil-v2-nahuat{font-family:"Cormorant Garamond",serif;font-size:2rem;font-weight:400;font-style:italic;color:#FFFFFF;line-height:1;margin-bottom:.3rem;}
-.fil-v2-trad{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
-.fil-item-v2[data-c="pakini"] .fil-v2-trad{color:#E8A070;}
-.fil-item-v2[data-c="musewi"] .fil-v2-trad{color:#5AAA80;}
-.fil-item-v2[data-c="kuxtal"] .fil-v2-trad{color:#4A9A6A;}
-.fil-item-v2[data-c="nejnemi"] .fil-v2-trad{color:#EBB840;}
-.fil-v2-disc{font-size:.78rem;color:#C0B8A8;margin-bottom:.8rem;}
-.fil-v2-discs{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.fil-item-v2.open .fil-v2-discs{max-height:300px;}
-.fil-v2-disc-item{display:flex;justify-content:space-between;align-items:center;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);margin-bottom:.3rem;cursor:pointer;transition:all .2s;font-size:.8rem;color:#F0EBE0;}
-.fil-v2-disc-item:hover{background:rgba(244,236,214,.08);border-color:rgba(244,236,214,.18);}
-.fil-v2-disc-item span{color:#A09880;font-size:.72rem;}
-.fil-v2-disc-item:hover span{color:var(--copal);}
-.fil-v2-hint{font-size:.65rem;color:#706860;margin-top:.5rem;text-align:right;}
-.fil-discs{max-height:300px;}
-.fil-disc{font-size:.78rem;color:#D4CFC4;padding:.5rem .8rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.06);cursor:pointer;transition:all .2s;display:flex;justify-content:space-between;}
-.fil-disc:hover{background:rgba(244,236,214,.08);color:#F0EBE0;border-color:rgba(244,236,214,.18);}
-.fil-disc span{color:#A09880;font-size:.72rem;}
-.fil-disc:hover span{color:var(--copal);}
-.fil-item-click{transition:border-left .25s;}
-.fil-item-click.open{border-left:2px solid var(--copal)!important;}
+/* ── Solución — 4 pilares ── */
+.solucion{padding:6rem 5rem;background:var(--obsidiana-l);}
+.sol-header{text-align:center;max-width:680px;margin:0 auto 4rem;}
+.sol-header h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#FFFFFF;line-height:1.2;margin-bottom:1rem;}
+.sol-header h2 em{color:var(--terracota-l);font-style:italic;}
+.sol-header p{font-size:.9rem;color:var(--texto);line-height:1.8;}
+.pilares{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(244,236,214,.04);}
+.pilar{background:var(--obsidiana);padding:2.5rem 2rem;position:relative;overflow:hidden;transition:background .3s;}
+.pilar:hover{background:#111e18;}
+.pilar-accent{position:absolute;top:0;left:0;right:0;height:3px;}
+.pilar-ico{font-size:2.5rem;margin-bottom:1rem;display:block;}
+.pilar-num{font-family:"Cormorant Garamond",serif;font-size:4rem;font-weight:300;color:rgba(244,236,214,.04);line-height:1;position:absolute;top:1rem;right:1.5rem;}
+.pilar-nahuat{font-family:"Cormorant Garamond",serif;font-size:1.6rem;font-weight:400;font-style:italic;color:#FFFFFF;margin-bottom:.2rem;}
+.pilar-subtit{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem;}
+.pilar-desc{font-size:.82rem;color:var(--texto);line-height:1.75;margin-bottom:1.2rem;}
+.pilar-impacto{font-size:.72rem;color:rgba(244,236,214,.4);border-top:1px solid rgba(244,236,214,.06);padding-top:.8rem;letter-spacing:.5px;}
+.pilar-impacto strong{color:rgba(244,236,214,.7);}
 
+/* ── Proceso ── */
+.proceso{padding:6rem 5rem;}
+.proceso-header{text-align:center;margin-bottom:4rem;}
+.proceso-header h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#FFFFFF;margin-bottom:1rem;}
+.proceso-header h2 em{color:var(--terracota-l);font-style:italic;}
+.proceso-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(244,236,214,.04);}
+.pstep{background:var(--obsidiana);padding:2rem 1.5rem;text-align:center;}
+.pstep-num{font-family:"Cormorant Garamond",serif;font-size:3.5rem;font-weight:300;color:rgba(233,168,36,.15);line-height:1;margin-bottom:.5rem;}
+.pstep-ico{font-size:1.8rem;margin-bottom:.8rem;display:block;}
+.pstep-tit{font-size:.82rem;font-weight:500;color:#FFFFFF;margin-bottom:.5rem;}
+.pstep-txt{font-size:.75rem;color:var(--texto-suave);line-height:1.6;}
 
-.a1-cta{text-align:center;padding:4rem 2rem;background:rgba(244,236,214,.02);border:1px solid rgba(244,236,214,.06);}
-.a1-cta-titulo{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--arena);margin-bottom:.8rem;line-height:1.2;}
-.a1-cta-titulo em{font-style:italic;color:var(--terracota-l);}
-.a1-cta-sub{font-size:.9rem;font-weight:300;color:#F0EBE0;margin-bottom:2rem;}
-.a1-cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+/* ── Cierre ── */
+.cierre{padding:6rem 5rem;background:var(--obsidiana-l);}
+.cierre-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+.cierre-left h2{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#FFFFFF;line-height:1.2;margin-bottom:1.2rem;}
+.cierre-left h2 em{color:var(--terracota-l);font-style:italic;}
+.cierre-left p{font-size:.88rem;color:var(--texto);line-height:1.8;margin-bottom:1rem;}
+.cierre-left .quote{border-left:2px solid var(--copal);padding-left:1.2rem;margin:1.5rem 0;}
+.cierre-left .quote p{font-size:.8rem;color:var(--texto-suave);font-style:italic;}
+.cierre-left .quote cite{font-size:.65rem;color:var(--copal);letter-spacing:2px;text-transform:uppercase;}
+.cierre-right{background:var(--obsidiana);padding:2.5rem;border:1px solid rgba(244,236,214,.08);}
+.cierre-right h3{font-family:"Cormorant Garamond",serif;font-size:1.4rem;font-style:italic;color:#FFFFFF;margin-bottom:1.5rem;}
+.form-grupo{margin-bottom:1rem;}
+.form-grupo label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--texto-suave);display:block;margin-bottom:.4rem;}
+.form-grupo input,.form-grupo select{width:100%;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.12);color:var(--arena);font-family:"Outfit",sans-serif;font-size:.82rem;padding:.65rem .9rem;}
+.form-grupo input::placeholder{color:rgba(244,236,214,.3);}
+.form-grupo input:focus,.form-grupo select:focus{outline:none;border-color:rgba(233,168,36,.4);}
+.form-grupo select option{background:var(--obsidiana);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+.btn-form{width:100%;background:var(--terracota);color:var(--arena);border:none;padding:.9rem;font-family:"Outfit",sans-serif;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s;margin-top:.5rem;}
+.btn-form:hover{background:var(--terracota-l);}
+.form-nota{font-size:.65rem;color:rgba(244,236,214,.3);text-align:center;margin-top:.8rem;}
+.fsuc-emp{display:none;text-align:center;padding:2rem;}
+.fsuc-emp .ico{font-size:3rem;margin-bottom:1rem;}
+.fsuc-emp h4{font-family:"Cormorant Garamond",serif;font-size:1.5rem;color:#FFFFFF;margin-bottom:.5rem;}
+.fsuc-emp p{font-size:.82rem;color:var(--texto);line-height:1.7;}
 
-.caminos-section{padding:0 0 2rem;}
-.caminos-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(244,236,214,.04);}
-.camino-card{background:var(--obsidiana);padding:2rem 1.8rem;cursor:pointer;transition:background .25s;border-left:3px solid transparent;position:relative;}
-.camino-card:hover{background:var(--obsidiana-l);}
-.camino-card.activo{background:var(--obsidiana-l);}
-.camino-card[data-c="pakini"].activo{border-left-color:#D4623D;}
-.camino-card[data-c="musewi"].activo{border-left-color:#3D8A65;}
-.camino-card[data-c="kuxtal"].activo{border-left-color:#2D6A4F;}
-.camino-card[data-c="nejnemi"].activo{border-left-color:#E9A824;}
-.camino-ico{font-size:2rem;margin-bottom:.8rem;display:block;}
-.camino-nombre{font-size:1.25rem;font-weight:400;font-style:italic;font-family:"Cormorant Garamond",serif;color:#F5F0E8;margin-bottom:.15rem;}
-.camino-sub{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem;}
-.camino-card[data-c="pakini"] .camino-sub{color:#E8A070;}
-.camino-card[data-c="musewi"] .camino-sub{color:#5AAA80;}
-.camino-card[data-c="kuxtal"] .camino-sub{color:#4A9A6A;}
-.camino-card[data-c="nejnemi"] .camino-sub{color:#EBB840;}
-.camino-tags{font-size:.78rem;color:#C0B8A8;line-height:1.6;}
-.camino-panel{overflow:hidden;max-height:0;transition:max-height .45s ease;background:var(--obsidiana-l);grid-column:1/-1;}
-.camino-panel.abierto{max-height:900px;}
-.camino-panel-inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;padding:2.5rem 2rem;}
-.cp-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:.6rem;}
-.cp-titulo{font-size:1.3rem;font-family:"Cormorant Garamond",serif;font-style:italic;color:#F5F0E8;margin-bottom:.8rem;font-weight:400;}
-.cp-desc{font-size:.88rem;color:#D4CFC4;line-height:1.78;margin-bottom:1.2rem;}
-.cp-bens{display:flex;flex-direction:column;gap:.5rem;}
-.cp-ben{display:flex;align-items:flex-start;gap:.6rem;font-size:.8rem;color:#C4BFB4;line-height:1.6;}
-.cp-ben-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:.45rem;}
-.cp-disc-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:#A09880;margin-bottom:1rem;}
-.cp-disc-list{display:flex;flex-direction:column;gap:.4rem;}
-.cp-disc-item{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.07);cursor:pointer;transition:all .2s;}
-.cp-disc-item:hover{background:rgba(244,236,214,.07);border-color:rgba(244,236,214,.2);}
-.cp-disc-nom{font-size:.84rem;color:#F0EBE0;}
-.cp-disc-precio{font-size:.7rem;color:#A09880;}
-.cp-disc-arr{font-size:.8rem;color:#A09880;transition:transform .2s;}
-.cp-disc-item:hover .cp-disc-arr{transform:translateX(4px);}
-.cp-cta{margin-top:1.2rem;padding:.75rem 1.2rem;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;background:transparent;width:100%;transition:all .2s;color:#F0EBE0;}
-.cp-cta:hover{background:rgba(244,236,214,.06);}
-@media(max-width:768px){.caminos-grid{grid-template-columns:1fr;}.camino-panel-inner{grid-template-columns:1fr;gap:1.5rem;}.camino-panel-inner{padding:1.8rem 1.2rem;}}
-@media(max-width:1024px){#acto1{padding:5rem 2rem;}.stats-row{grid-template-columns:1fr;}.a1-contraste{grid-template-columns:1fr;}.a1-filosofia{grid-template-columns:1fr;gap:3rem;}}
+/* ── Footer ── */
+footer{padding:2.5rem 5rem;border-top:1px solid rgba(244,236,214,.06);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.foot-brand{font-family:"Cormorant Garamond",serif;font-size:1rem;color:var(--arena);}
+.foot-brand span{color:var(--copal);}
+.foot-txt{font-size:.65rem;color:rgba(244,236,214,.3);line-height:1.6;text-align:center;}
+.foot-links{display:flex;gap:1.5rem;}
+.foot-links a{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:rgba(244,236,214,.3);text-decoration:none;}
+.foot-links a:hover{color:var(--arena);}
 
-#cantera{padding:7rem 5rem;background:linear-gradient(135deg,rgba(184,74,47,.08) 0%,rgba(45,106,79,.08) 100%);border-top:1px solid rgba(244,236,214,.06);position:relative;z-index:1;overflow:hidden;}
-#cantera::before{content:"";position:absolute;top:-80px;right:-80px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(233,168,36,.07) 0%,transparent 70%);pointer-events:none;}
-.cant-inner{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center;}
-.cant-left h2{margin-bottom:1.2rem;}
-.cant-left p{font-size:.95rem;font-weight:300;color:var(--texto-suave);line-height:1.8;margin-bottom:2rem;}
-.cant-arqs{display:flex;flex-direction:column;gap:.8rem;margin-bottom:2.5rem;}
-.cant-arq{display:flex;align-items:center;gap:1rem;padding:.8rem 1.2rem;background:rgba(244,236,214,.03);border:1px solid rgba(244,236,214,.07);transition:border-color .3s;}
-.cant-arq:hover{border-color:rgba(233,168,36,.3);}
-.cant-arq-ico{font-size:1.4rem;flex-shrink:0;}
-.cant-arq-txt{font-size:.82rem;font-weight:300;color:var(--texto-suave);line-height:1.4;}
-.cant-arq-txt strong{color:var(--arena);font-weight:500;display:block;margin-bottom:.1rem;}
-.cant-cta{display:inline-flex;align-items:center;gap:.8rem;border:1px solid var(--copal);color:var(--copal);padding:.9rem 2rem;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;transition:all .3s;}
-.cant-cta:hover{background:var(--copal);color:var(--obsidiana);}
-.cant-right{background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.07);padding:3rem;}
-.cant-quote-big{font-family:"Cormorant Garamond",serif;font-size:clamp(2rem,3.5vw,3rem);font-weight:300;font-style:italic;color:var(--arena);line-height:1.2;margin-bottom:1.5rem;}
-.cant-quote-big span{color:var(--copal);}
-.cant-benefits{list-style:none;display:flex;flex-direction:column;gap:.8rem;margin-bottom:2rem;}
-.cant-ben{display:flex;gap:.8rem;align-items:flex-start;font-size:.82rem;font-weight:300;color:var(--texto-suave);line-height:1.5;}
-.cant-ben::before{content:"→";color:var(--copal);flex-shrink:0;font-weight:600;}
-
-.cant-pilares{margin:2rem 0 1.5rem;border-top:1px solid rgba(244,236,214,.08);padding-top:1.5rem;}
-.cant-pilar-label{font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--copal);margin-bottom:1rem;}
-.cant-pilar-grid{display:flex;flex-direction:column;gap:.8rem;}
-.cant-pilar{display:flex;align-items:flex-start;gap:.8rem;}
-.cant-pilar-ico{font-size:1.1rem;flex-shrink:0;margin-top:.1rem;}
-.cant-pilar strong{font-size:.82rem;color:#F0EBE0;display:block;margin-bottom:.2rem;}
-.cant-raiz-quote{margin:1rem 0 1.5rem;padding-left:1rem;border-left:1px solid rgba(233,168,36,.3);} .cant-raiz-quote em{font-size:.88rem;color:#D4CFC4;display:block;margin-bottom:.3rem;} .cant-raiz-quote cite{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:#A09880;}.cant-pilar p{font-size:.75rem;color:#C0B8A8;line-height:1.6;margin:0;}
-.cant-note{font-size:.72rem;letter-spacing:1px;color:var(--texto-suave);border-top:1px solid rgba(244,236,214,.07);padding-top:1rem;line-height:1.6;}
-.cant-note span{color:var(--ceiba-l);}
-@media(max-width:1024px){.cant-inner{grid-template-columns:1fr;}#cantera{padding:5rem 2rem;}}
-
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .hero-emp,.problema,.solucion,.proceso,.cierre{padding:5rem 2rem;}
+  .problema-grid,.cierre-inner{grid-template-columns:1fr;gap:2.5rem;}
+  .pilares,.proceso-steps{grid-template-columns:1fr;}
+  .stat-bar{padding:2rem;}
+  nav{padding:.9rem 1.5rem;}
+  nav ul{gap:1rem;}
+  .hero-ctas{flex-direction:column;max-width:280px;}
+}
+@media(max-width:600px){
+  .stat-bar{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  nav ul li:not(:last-child){display:none;}
+  footer{flex-direction:column;text-align:center;}
+}
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="crng"></div>
+
+<!-- ── NAV ── -->
 <nav>
   <div class="logo-wrap">
     <div class="logo-main">Ejekat <span>Nemi</span></div>
     <div class="logo-sub">Plataforma de Bienestar Corporativo</div>
   </div>
   <ul>
+    <li><a href="#problema">El problema</a></li>
+    <li><a href="#pilares">Metodología</a></li>
+    <li><a href="#proceso">Cómo funciona</a></li>
     <li><a href="explorar.html">Explorar guías</a></li>
-    <li><a href="#flujo">Cómo funciona</a></li>
-    <li><a href="#registro">Reservar sesión</a></li>
-    <li><a href="#registro" class="nav-cta">Comenzar →</a></li>
+    <li><a href="#contacto" class="nav-cta">Agendar piloto →</a></li>
   </ul>
 </nav>
-<section id="hero">
-  <div class="orb orb1"></div><div class="orb orb2"></div><div class="orb orb3"></div>
-  <svg class="hero-glyph" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="90" stroke="#E9A824" stroke-width=".5"/>
-    <circle cx="100" cy="100" r="70" stroke="#E9A824" stroke-width=".3"/>
-    <path d="M100 10 Q130 50 100 100 Q70 50 100 10" stroke="#E9A824" stroke-width=".5" fill="none"/>
-    <path d="M100 190 Q130 150 100 100 Q70 150 100 190" stroke="#E9A824" stroke-width=".5" fill="none"/>
-    <path d="M10 100 Q50 130 100 100 Q50 70 10 100" stroke="#E9A824" stroke-width=".5" fill="none"/>
-    <path d="M190 100 Q150 130 100 100 Q150 70 190 100" stroke="#E9A824" stroke-width=".5" fill="none"/>
-    <circle cx="100" cy="100" r="4" fill="#E9A824" opacity=".5"/>
-  </svg>
-  <div class="hero-left">
-    <div class="eyebrow"><div class="eline"></div><div class="etxt">Náhuat-Pipil · El Salvador · Cuscatlán</div></div>
-    <h1><em>Ejekat</em><strong>Nemi</strong></h1>
-    <p class="transl"><span>Ejekat</span> = viento &nbsp;·&nbsp; <span>Nemi</span> = vivir, andar en el mundo</p>
-    <p class="hdesc">Sabemos que la vida no para. Por eso Ejekat Nemi existe: para que en medio de la ocupación, el movimiento, el descanso y la aventura tengan su lugar — con maestros reales, en horarios que sí funcionan.</p><p class="hdesc" style="margin-top:.8rem;font-style:italic;opacity:.85;">¿Qué quieres explorar primero?</p>
-    <p class="hnote">✓ Sin tarjeta de crédito &nbsp;·&nbsp; <span>8 sesiones gratis</span> &nbsp;·&nbsp; Cancela cuando quieras</p>
-  </div>
+
+<!-- ── HERO ── -->
+<section class="hero-emp">
+  <div class="hero-emp-inner">
+    <div class="hero-tag">✦ Plataforma de bienestar corporativo · El Salvador</div>
+    <h1>Cada colaborador que pierdes<br>te cuesta entre <em>6 y 9 meses</em><br>de su salario.</h1>
+    <h2>Ejekat Nemi es la plataforma gestionada de beneficios corporativos que conecta a tus equipos con experiencias de activación física, regulación del estrés y exploración en la naturaleza — sin carga operativa para RR.HH.</h2>
+    <div class="hero-ctas">
+      <a href="#contacto" class="btn-b2b-p">→ Calcular el costo del burnout en mi empresa</a>
+      <a href="#contacto" class="btn-b2b-s">Agendar piloto corporativo gratuito</a>
+      <a href="#pilares" class="btn-b2b-s">Ver metodología</a>
+    </div>
+    <div class="hero-trust">
+      <span class="htrust">Servicio llave en mano</span>
+      <span class="htrust">Sin carga para RR.HH.</span>
+      <span class="htrust">Empresas de 2 a 100 colaboradores</span>
+      <span class="htrust">El Salvador</span>
+    </div>
   </div>
 </section>
-<div class="franja">
-  <div class="fl">Para quien busca →</div>
-  <div class="fscroll">
-    <span class="fi">Yoga</span><span class="fs">·</span><span class="fi">Baile</span><span class="fs">·</span><span class="fi">Senderismo</span><span class="fs">·</span><span class="fi">Masajes</span><span class="fs">·</span><span class="fi">Meditación</span><span class="fs">·</span><span class="fi">Funcional</span><span class="fs">·</span><span class="fi">Sauna</span><span class="fs">·</span><span class="fi">Rapel</span><span class="fs">·</span><span class="fi">Movilidad</span><span class="fs">·</span><span class="fi">Espiritual</span><span class="fs">·</span><span class="fi">Camping</span><span class="fs">·</span><span class="fi">Respiración</span><span class="fs">·</span>
-    <span class="fi">Yoga</span><span class="fs">·</span><span class="fi">Baile</span><span class="fs">·</span><span class="fi">Senderismo</span><span class="fs">·</span><span class="fi">Masajes</span><span class="fs">·</span><span class="fi">Meditación</span><span class="fs">·</span><span class="fi">Funcional</span><span class="fs">·</span><span class="fi">Sauna</span><span class="fs">·</span><span class="fi">Rapel</span><span class="fs">·</span><span class="fi">Movilidad</span><span class="fs">·</span><span class="fi">Espiritual</span><span class="fs">·</span><span class="fi">Camping</span><span class="fs">·</span><span class="fi">Respiración</span>
+
+<!-- ── STAT BAR ── -->
+<div class="stat-bar">
+  <div class="stat-item">
+    <div class="stat-num">6–9<span>x</span></div>
+    <div class="stat-lbl">Meses de salario cuesta reemplazar a un colaborador</div>
+    <div class="stat-src">SHRM · Society for Human Resource Management</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">25<span>%</span></div>
+    <div class="stat-lbl">Menos rotación en empresas con iniciativas de bienestar estructuradas</div>
+    <div class="stat-src">Organización Mundial de la Salud · 2023</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">40<span>%</span></div>
+    <div class="stat-lbl">Reducción en días de ausentismo con programas de activación física</div>
+    <div class="stat-src">Harvard Business Review · 2022</div>
   </div>
 </div>
 
-<section id="acto1">
-
-  
-  <div class="a1-intro">
-    <div class="sec-ey" style="justify-content:center;">
-      <div class="edot"></div>
-      <div class="elbl">Por qué moverse importa</div>
+<!-- ── PROBLEMA ── -->
+<section class="problema" id="problema">
+  <div class="sec-ey"><div class="edot"></div><div class="elbl">El problema</div></div>
+  <div class="problema-grid">
+    <div class="prob-left">
+      <h2><em>Tu empresa puede estar enferma</em><br>y los reportes<br>no te lo están diciendo.</h2>
+      <p>El burnout, los silos de comunicación y la fatiga crónica no aparecen en el balance general. Aparecen en la reunión de los lunes, en el colaborador que ya no propone nada y en la carta de renuncia que nadie esperaba.</p>
     </div>
-    <h2>Tu cuerpo sabe lo que<br>tu mente <em>aún no ha aceptado.</em></h2>
-    <p>El movimiento no es una rutina ni una obligación. Es el lenguaje más antiguo del ser humano — el que usamos antes de tener palabras para nombrar lo que sentimos. Cuando te mueves, algo en ti se reorganiza. La ciencia lo confirma. Los pueblos ancestrales lo sabían.</p>
-  </div>
-
-  
-  <div class="stats-row">
-    <div class="stat-card">
-      <div class="stat-num">30<span>min</span></div>
-      <div class="stat-label">Es suficiente para reducir significativamente ansiedad, estrés y depresión</div>
-      <div class="stat-source">Revista Iberoamericana de Psicología del Ejercicio · 2024</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">31<span>%</span></div>
-      <div class="stat-label">De los adultos en el mundo no alcanza el nivel mínimo de movimiento recomendado</div>
-      <div class="stat-source">Organización Mundial de la Salud · 2024</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-num">20<span>–30%</span></div>
-      <div class="stat-label">Mayor riesgo de mortalidad en personas que no se mueven lo suficiente</div>
-      <div class="stat-source">OMS · Actividad física y salud · 2024</div>
-    </div>
-  </div>
-
-  
-  <div class="a1-contraste">
-    <div class="contraste-col sin">
-      <div class="contraste-label sin"><span class="contraste-ico">🔴</span> Cuando el cuerpo se detiene</div>
-      <ul class="contraste-items">
-        <li class="contraste-item"><strong>La mente se nubla.</strong> El estrés acumula sin salida.</li>
-        <li class="contraste-item"><strong>El cuerpo avejenta más rápido.</strong> La inactividad acelera el deterioro físico y cognitivo.</li>
-        <li class="contraste-item"><strong>La conexión social se debilita.</strong> El aislamiento crece sin que lo notemos.</li>
-        <li class="contraste-item"><strong>La autoestima cae.</strong> Sin logros físicos, la confianza se erosiona silenciosamente.</li>
-        <li class="contraste-item"><strong>El sueño se fragmenta.</strong> Sin movimiento, el cuerpo no sabe cuándo descansar.</li>
-      </ul>
-    </div>
-    <div class="contraste-col con">
-      <div class="contraste-label con"><span class="contraste-ico">🟢</span> Cuando el cuerpo se mueve</div>
-      <ul class="contraste-items">
-        <li class="contraste-item"><strong>Las endorfinas fluyen.</strong> Analgésicos naturales que generan bienestar inmediato.</li>
-        <li class="contraste-item"><strong>El cerebro se fortalece.</strong> Nuevas conexiones neuronales, mejor memoria y concentración.</li>
-        <li class="contraste-item"><strong>La comunidad aparece.</strong> El movimiento grupal reduce la soledad y fortalece la pertenencia.</li>
-        <li class="contraste-item"><strong>La confianza regresa.</strong> Cada sesión completada reconstruye la autoestima desde adentro.</li>
-        <li class="contraste-item"><strong>El descanso mejora.</strong> El cuerpo activo duerme profundo y se restaura completo.</li>
-      </ul>
-    </div>
-  </div>
-
-  
-  
-  <!-- Caminos interactivos -->
-  
-
-  <div class="a1-filosofia">
-    <div class="a1-fil-left">
-      <div class="sec-ey" style="margin-bottom:1.2rem;"><div class="edot"></div><div class="elbl">La sabiduría de Cuscatlán</div></div>
-      <h2>Los pipiles lo<br>sabían hace<br><em>siglos.</em></h2>
-      <p>En la cosmovisión náhuat-pipil, el cuerpo no está separado del espíritu ni de la comunidad. <em>Nemi</em> — vivir — implica movimiento constante. No como ejercicio, sino como forma de estar en el mundo.</p>
-      <p>Cuando te mueves con intención, con un guía, con otros — estás haciendo lo que los pueblos de Cuscatlán hacían en cada danza ceremonial, en cada caminata hacia el volcán, en cada práctica colectiva: <strong style="color:#FFFFFF">activar el viento interior.</strong></p>
-      <p style="font-size:.8rem;color:#A09880;margin-top:1rem;">Toca cada camino para explorar sus disciplinas.</p>
-    </div>
-    <div class="a1-fil-right" style="display:flex;flex-direction:column;gap:2px;">
-
-      <div class="fil-item-v2 fil-item-click" data-c="pakini">
-        <span class="fil-v2-ico">🔥</span>
-        <div class="fil-v2-nahuat">Pakini</div>
-        <div class="fil-v2-trad">Alegría · Baile · Movimiento · Energía</div>
-        <div class="fil-v2-disc">Baile · Funcional · Deportes en grupo</div>
-        <div class="fil-v2-discs">
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Salsa — Clases Grupales','pakini')">💃 Salsa — Clases Grupales<span>$45 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Bachata — Clases Grupales','pakini')">🎶 Bachata — Clases Grupales<span>$45 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Salsa / Bachata — Individual','pakini')">🕺 Salsa / Bachata — Individual<span>$35 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('2x1 Salsa y Bachata Grupal','pakini')">🔥 2x1 Salsa &amp; Bachata Grupal<span>$70 USD</span></div>
-          <div class="fil-v2-hint">Toca para inscribirte →</div>
-        </div>
+    <div class="prob-cards">
+      <div class="prob-card">
+        <div class="prob-card-num">01</div>
+        <div class="prob-card-tit">Silos que frenan tu operación</div>
+        <div class="prob-card-txt">Cuando los equipos no se conocen fuera del organigrama, la colaboración se vuelve lenta y los proyectos se estancan. El problema no es la estructura — es la falta de contexto humano entre las personas.</div>
       </div>
-
-      <div class="fil-item-v2 fil-item-click" data-c="musewi">
-        <span class="fil-v2-ico">🌊</span>
-        <div class="fil-v2-nahuat">Musewi</div>
-        <div class="fil-v2-trad">Calma · Descanso · Respiración</div>
-        <div class="fil-v2-disc">Yoga · Meditación · Sauna · Respiración</div>
-        <div class="fil-v2-discs">
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Yoga — Práctica Grupal','musewi')">🧘 Yoga — Práctica Grupal<span>Próximamente</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Meditación Guiada','musewi')">🌿 Meditación Guiada<span>Próximamente</span></div>
-          <div class="fil-v2-hint">Toca para registrar interés →</div>
-        </div>
+      <div class="prob-card">
+        <div class="prob-card-num">02</div>
+        <div class="prob-card-tit">Fatiga crónica que no aparece en el expediente médico</div>
+        <div class="prob-card-txt">El burnout llega en forma de personas que están presentes pero ausentes, y de resultados que bajan sin que nadie pueda explicar por qué. Cuando el sistema nervioso de tu equipo está agotado, ninguna metodología de productividad lo compensa.</div>
       </div>
-
-      <div class="fil-item-v2 fil-item-click" data-c="kuxtal">
-        <span class="fil-v2-ico">🌿</span>
-        <div class="fil-v2-nahuat">Kuxtal</div>
-        <div class="fil-v2-trad">Vida plena · Sanar · Existir</div>
-        <div class="fil-v2-disc">Masajes · Terapias · Movilidad · Espiritual</div>
-        <div class="fil-v2-discs">
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Masaje Terapéutico','kuxtal')">💆 Masaje Terapéutico<span>Próximamente</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Movilidad y Flexibilidad','kuxtal')">🌱 Movilidad y Flexibilidad<span>Próximamente</span></div>
-          <div class="fil-v2-hint">Toca para registrar interés →</div>
-        </div>
+      <div class="prob-card">
+        <div class="prob-card-num">03</div>
+        <div class="prob-card-tit">El costo invisible de reemplazar talento</div>
+        <div class="prob-card-txt">Reclutar, contratar, onboardear y esperar a que un nuevo colaborador alcance el rendimiento del anterior toma entre 6 y 9 meses de su salario. La mayoría de empresas no tienen una sola iniciativa estructurada para retener al talento que ya tienen.</div>
       </div>
-
-      <div class="fil-item-v2 fil-item-click" data-c="nejnemi">
-        <span class="fil-v2-ico">🏔️</span>
-        <div class="fil-v2-nahuat">Nejnemi</div>
-        <div class="fil-v2-trad">Aventura · Andar lejos · Explorar</div>
-        <div class="fil-v2-disc">Senderismo · Camping · Deportes extremos</div>
-        <div class="fil-v2-discs">
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Volcán Santa Ana + Cerro Verde','nejnemi')">🌋 Tour Volcán Santa Ana + Cerro Verde<span>$35 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Lago Coatepeque + Playa El Tunco','nejnemi')">💧 Tour Lago Coatepeque + El Tunco<span>$40 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Tour Cultural Suchitoto','nejnemi')">🏛️ Tour Cultural Suchitoto<span>$30 USD</span></div>
-          <div class="fil-v2-disc-item" onclick="elegirDisc('Deportes Extremos — Bungee / Canopy / Rapel','nejnemi')">🪂 Deportes Extremos<span>$45 USD</span></div>
-          <div class="fil-v2-hint">Toca para inscribirte →</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  
-</section>
-
-<section id="flujo">
-  <div class="flujoH">
-    <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">El proceso</div></div>
-    <h2>Así de <em>simple</em><br>es empezar a moverte</h2>
-  </div>
-  <div class="fsteps">
-    <div class="fstep"><div class="fnum">1</div><div class="fico">🗓️</div><div class="ftit">Programa tiempo para ti</div><p class="fdesc">Elige la disciplina o actividad que quieres practicar — presencial, virtual o al aire libre. Un momento tuyo, en tu horario.</p></div>
-    <div class="fstep"><div class="fnum">2</div><div class="fico">🗺️</div><div class="ftit">Explora tu camino</div><p class="fdesc">Conoce cada disciplina antes de decidir. Toca el camino que más te llama.</p>
-      <div class="fexp-caminos">
-        <button class="fexp-btn" data-camino="pakini" onclick="toggleFexp('pakini')">🔥 Pakini</button>
-        <button class="fexp-btn" data-camino="musewi" onclick="toggleFexp('musewi')">🌊 Musewi</button>
-        <button class="fexp-btn" data-camino="kuxtal" onclick="toggleFexp('kuxtal')">🌿 Kuxtal</button>
-        <button class="fexp-btn" data-camino="nejnemi" onclick="toggleFexp('nejnemi')">🏔️ Nejnemi</button>
-      </div>
-      <div class="fexp-panel" id="fexp-pakini">
-        <div class="fexp-tit">🔥 Pakini — Alegría</div>
-        <div class="fexp-txt">Baile, movimiento grupal y energía compartida. Salsa, Bachata y clases individuales con Mauricio Ardón en San Salvador.</div>
-        <div class="fexp-discs">💃 Salsa · 🎶 Bachata · 🕺 Individual · 🔥 2x1</div>
-        <a href="explorar.html" class="fexp-link">Ver actividades disponibles →</a>
-      </div>
-      <div class="fexp-panel" id="fexp-musewi">
-        <div class="fexp-tit">🌊 Musewi — Calma</div>
-        <div class="fexp-txt">Yoga, meditación y respiración consciente. Movimiento que restaura el sistema nervioso y mejora la calidad del sueño.</div>
-        <div class="fexp-discs">🧘 Yoga · 🌿 Meditación · 💨 Respiración</div>
-        <a href="explorar.html" class="fexp-link">Ver actividades disponibles →</a>
-      </div>
-      <div class="fexp-panel" id="fexp-kuxtal">
-        <div class="fexp-tit">🌿 Kuxtal — Vida plena</div>
-        <div class="fexp-txt">Masajes terapéuticos, movilidad y terapias de movimiento. Sanar el cuerpo desde el cuidado, no desde la exigencia.</div>
-        <div class="fexp-discs">💆 Masajes · 🌱 Movilidad · 🙏 Terapias</div>
-        <a href="explorar.html" class="fexp-link">Ver actividades disponibles →</a>
-      </div>
-      <div class="fexp-panel" id="fexp-nejnemi">
-        <div class="fexp-tit">🏔️ Nejnemi — Aventura</div>
-        <div class="fexp-txt">Tours al Volcán Santa Ana, Lago Coatepeque, Suchitoto y deportes extremos — bungee, canopy y rapel — con guía certificado.</div>
-        <div class="fexp-discs">🌋 Volcán · 💧 Coatepeque · 🏛️ Suchitoto · 🪂 Extremos</div>
-        <a href="explorar.html" class="fexp-link">Ver actividades disponibles →</a>
-      </div></div>
-    <div class="fstep"><div class="fnum">3</div><div class="fico">📋</div><div class="ftit">Reserva tu actividad</div><p class="fdesc">Selecciona fecha, horario y modalidad — presencial, virtual o tour. El guía se asigna automáticamente según tu elección. <span style="font-size:.7rem;color:#A09880;display:block;margin-top:.4rem;">Si prefieres elegir tu guía directamente, puedes hacerlo en <a href="explorar.html" style="color:var(--copal);text-decoration:none;">Explorar →</a></span></p></div>
-    <div class="fstep"><div class="fnum">4</div><div class="fico">🌱</div><div class="ftit">Muévete. Vive.</div><p class="fdesc">Asiste a tu sesión. Deja tu huella — una reseña que ayuda a otros caminantes. Regresa cuando el viento te llame.</p></div>
-  </div>
-</section>
-
-<section id="registro">
-  <div class="regl">
-    <div class="sec-ey" style="margin-bottom:1.5rem;"><div class="edot"></div><div class="elbl">Empieza hoy</div></div>
-    <h2>Tu camino<br>comienza con<br><em>un paso.</em></h2>
-    <p>Cuéntanos cómo quieres sentirte y te conectamos con el guía ideal. Sin compromisos. Tu primera orientación es gratis.</p>
-    <ul class="tlist">
-      <li class="titem"><span>⚡</span>Activo en menos de 5 minutos</li>
-      <li class="titem"><span>🔒</span>Tus datos protegidos — siempre</li>
-      <li class="titem"><span>💬</span>Soporte por WhatsApp incluido</li>
-      <li class="titem"><span>🌱</span>Sin tarjeta de crédito requerida</li>
-      <li class="titem"><span>🧭</span>Te guiamos hacia el camino que necesitas</li>
-    </ul>
-  </div>
-  <div class="fwrap">
-    <div id="fcon">
-      <div class="ftitle">Elige tu camino</div>
-      <div class="fsubt">Dinos qué camino quieres experimentar — te conectamos con el guía ideal</div>
-
-      <div class="fg">
-        <label>Tu nombre</label>
-        <input type="text" id="nombre" placeholder="¿Cómo te llamas?"/>
-      </div>
-
-      <div class="frow">
-        <div class="fg">
-          <label>Correo electrónico</label>
-          <input type="email" id="email" placeholder="tu@correo.com"/>
-        </div>
-        <div class="fg">
-          <label>WhatsApp</label>
-          <input type="tel" id="whatsapp" placeholder="+503 7000 0000"/>
-        </div>
-      </div>
-
-      <div class="fg">
-        <label>¿Qué camino quieres experimentar?</label>
-        <select id="estado">
-          <option value="">Elige tu camino...</option>
-          <option value="Pakini — Alegría">🔥 Pakini — Alegría · Baile, movimiento y energía</option>
-          <option value="Musewi — Calma">🌊 Musewi — Calma · Yoga, meditación y respiración</option>
-          <option value="Kuxtal — Sanar">🌿 Kuxtal — Sanar · Masajes, terapias y movilidad</option>
-          <option value="Nejnemi — Aventura">🏔️ Nejnemi — Aventura · Senderismo, tours y deportes extremos</option>
-          <option value="Aún no sé">🌬️ Aún no sé · Quiero que me orienten</option>
-        </select>
-      </div>
-
-      <div class="fg">
-        <label>¿Qué experiencia quieres vivir?</label>
-        <select id="servicio">
-          <option value="">Selecciona...</option>
-          <option>Salsa — Clases Grupales</option>
-          <option>Bachata — Clases Grupales</option>
-          <option>Salsa / Bachata — Individual</option>
-          <option>Tour Volcán Santa Ana + Cerro Verde</option>
-          <option>Tour Lago Coatepeque + Playa El Tunco</option>
-          <option>Tour Cultural Suchitoto</option>
-          <option>Deportes Extremos — Bungee / Canopy / Rapel</option>
-          <option>Aún no sé — quiero que me orienten</option>
-        </select>
-      </div>
-
-      <div class="fg">
-        <label>¿Cuál es tu punto de partida? (opcional)</label>
-        <select id="nivel">
-          <option value="">Selecciona...</option>
-          <option value="Primera vez — nunca lo he intentado">✨ Primera vez — nunca lo he intentado</option>
-          <option value="Principiante — algo de experiencia">🌱 Principiante — algo de experiencia</option>
-          <option value="Intermedio — practico regularmente">🌿 Intermedio — practico regularmente</option>
-          <option value="Avanzado — busco perfeccionar">🔥 Avanzado — busco perfeccionar</option>
-        </select>
-      </div>
-
-      <button class="fbtn" onclick="handleSubmit()"><span>Comenzar mi camino →</span></button>
-      <p id="ferr"></p>
-      <p class="fleg">Sin compromisos. Te contactamos para coordinar tu primera sesión. Nunca compartimos tu información.</p>
-    </div>
-    <div class="sucmsg" id="sucmsg">
-      <div class="sucg">🌬️</div>
-      <div class="suctit">Ejekat Nemi.</div>
-      <p class="sucd">Tu guía te contactará pronto por WhatsApp para coordinar tu primera sesión.<br><br><strong style="color:var(--ceiba-l)">El viento ya sopla hacia ti.</strong></p>
     </div>
   </div>
 </section>
 
-<section id="cantera">
-  <div class="cant-inner">
-    <div class="cant-left">
-      <div class="sec-ey" style="margin-bottom:1.2rem;"><div class="edot" style="background:var(--copal)"></div><div class="elbl">La Cantera</div></div>
-      <h2>¿Eres guía,<br>maestro o<br><em>tienes un espacio?</em></h2>
-      <p>Ejekat Nemi existe porque hay personas que ya saben el camino y están listas para guiar a otros. Si tú eres una de ellas, este es tu lugar.</p>
-      <div class="cant-arqs">
-        <div class="cant-arq">
-          <div class="cant-arq-ico">🧘</div>
-          <div class="cant-arq-txt"><strong>Maestro independiente</strong>Yoga, danza, masajes, meditación, movilidad, prácticas espirituales</div>
-        </div>
-        <div class="cant-arq">
-          <div class="cant-arq-ico">🏠</div>
-          <div class="cant-arq-txt"><strong>Estudio o centro de bienestar</strong>Casa Ejekat — múltiples maestros, un solo calendario</div>
-        </div>
-        <div class="cant-arq">
-          <div class="cant-arq-ico">🏔️</div>
-          <div class="cant-arq-txt"><strong>Guía de aventura y naturaleza</strong>Senderismo, camping, deportes extremos, turismo vivencial</div>
-        </div>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:.8rem;">
-        <a href="guias.html" class="cant-cta">
-          Ver planes y unirme a La Cantera →
-        </a>
-        <a href="mailto:guias@ejekatnemi.com" style="font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texto-suave);text-decoration:none;padding:.5rem 0;">
-          O escríbenos directo → guias@ejekatnemi.com
-        </a>
-      </div>
-    </div>
-    <div class="cant-right">
-      <div class="cant-quote-big">"Los mejores<br>guías no<br>encuentran el<br>camino. <span>Lo son.</span>"</div>
-      <div class="cant-raiz-quote"><em>"Vivir es moverse. Moverse es sanar."</em><cite>Filosofía Náhuat · Cuscatlán</cite></div>
-      <ul class="cant-benefits">
-        <li class="cant-ben">Tu perfil visible para caminantes que ya buscan lo que tú ofreces</li>
-        <li class="cant-ben">Coordinas fechas, lugar y pago directamente por WhatsApp — sin intermediarios</li>
-        <li class="cant-ben">Construyes tu comunidad desde una plataforma con identidad y propósito</li>
-        <li class="cant-ben">Formas parte de una red curada — no un directorio genérico</li>
-        <li class="cant-ben">Crecemos juntos: parte de los ingresos sostiene la revitalización del náhuat-pipil</li>
-      </ul>
-      
-      <div class="cant-pilares">
-        <div class="cant-pilar-label">Los pilares de Ejekat Nemi</div>
-        <div class="cant-pilar-grid">
-          <div class="cant-pilar"><span class="cant-pilar-ico">🌬️</span><div><strong>El viento no pregunta</strong><p>No necesitas saber qué necesitas. Solo dinos cómo quieres sentirte — el viento hace el resto.</p></div></div>
-          <div class="cant-pilar"><span class="cant-pilar-ico">🧭</span><div><strong>El guía nace del camino</strong><p>Nuestros maestros no son proveedores — son portadores de un saber vivido.</p></div></div>
-          <div class="cant-pilar"><span class="cant-pilar-ico">🤝</span><div><strong>La comunidad sostiene</strong><p>Cada sesión nutre al guía, al caminante y a la plataforma. Un ciclo que se sostiene desde adentro.</p></div></div>
-          <div class="cant-pilar"><span class="cant-pilar-ico">🌱</span><div><strong>El movimiento es la raíz</strong><p>En náhuat-pipil, <em>nemi</em> es vivir. Cada vez que te mueves con propósito, honras esa raíz.</p></div></div>
-        </div>
-      </div>
+<!-- ── SOLUCIÓN — 4 PILARES ── -->
+<section class="solucion" id="pilares">
+  <div class="sol-header">
+    <div class="sec-ey" style="justify-content:center;"><div class="edot"></div><div class="elbl">Metodología</div></div>
+    <h2>No vendemos actividades.<br><em>Resolvemos los problemas</em><br>que esas actividades atacan.</h2>
+    <p>Ejekat Nemi opera sobre cuatro pilares de desarrollo humano, cada uno diseñado para impactar un indicador específico de salud organizacional.</p>
+  </div>
+  <div class="pilares">
 
-      <p class="cant-note">Actualmente aceptamos guías por invitación y postulación. <span>Los primeros 50 guías entran sin costo.</span></p>
+    <div class="pilar">
+      <div class="pilar-accent" style="background:var(--terracota);"></div>
+      <div class="pilar-num">01</div>
+      <span class="pilar-ico">🔥</span>
+      <div class="pilar-nahuat">Pakini</div>
+      <div class="pilar-subtit" style="color:#E8A070;">Activación física</div>
+      <div class="pilar-desc">El sedentarismo en entornos de oficina reduce la concentración y deteriora el estado de ánimo colectivo. Las experiencias de activación de Ejekat Nemi rompen el ciclo del cuerpo inmóvil: más energía disponible, mayor capacidad de atención y equipos que llegan a sus responsabilidades con recursos — no agotados.</div>
+      <div class="pilar-impacto"><strong>Impacto medible:</strong> Reducción de ausentismo por fatiga física · Mejora en indicadores de concentración</div>
+    </div>
+
+    <div class="pilar">
+      <div class="pilar-accent" style="background:var(--ceiba-l);"></div>
+      <div class="pilar-num">02</div>
+      <span class="pilar-ico">🌊</span>
+      <div class="pilar-nahuat">Musewi</div>
+      <div class="pilar-subtit" style="color:#5AAA80;">Regulación del estrés</div>
+      <div class="pilar-desc">El estrés sostenido no es un problema de actitud — es fisiológico. El estrés sostenido no es un problema de actitud — es un problema fisiológico. Cuando el sistema nervioso de tu equipo opera en modo de alerta permanente, la creatividad, la toma de decisiones y la tolerancia a la frustración colapsan. Las experiencias de regulación de Ejekat Nemi reducen el cortisol, restauran el equilibrio emocional y devuelven a tus colaboradores la capacidad de responder en lugar de reaccionar.</div>
+      <div class="pilar-impacto"><strong>Impacto medible:</strong> Reducción de incidentes por estrés · Mejora del clima laboral</div>
+    </div>
+
+    <div class="pilar">
+      <div class="pilar-accent" style="background:var(--ceiba);"></div>
+      <div class="pilar-num">03</div>
+      <span class="pilar-ico">🌿</span>
+      <div class="pilar-nahuat">Kuxtal</div>
+      <div class="pilar-subtit" style="color:#4A9A6A;">Prevención y salud corporal</div>
+      <div class="pilar-desc">El ausentismo médico relacionado con tensión muscular y fatiga física tiene solución preventiva — y esa solución es significativamente más barata que el tratamiento. Las experiencias de salud corporal de Ejekat Nemi intervienen antes de que el problema llegue a la clínica: movilidad, recuperación y mantenimiento como parte del beneficio laboral.</div>
+      <div class="pilar-impacto"><strong>Impacto medible:</strong> Reducción de días de baja médica · Menor costo en salud ocupacional</div>
+    </div>
+
+    <div class="pilar">
+      <div class="pilar-accent" style="background:var(--copal);"></div>
+      <div class="pilar-num">04</div>
+      <span class="pilar-ico">🏔️</span>
+      <div class="pilar-nahuat">Nejnemi</div>
+      <div class="pilar-subtit" style="color:#EBB840;">Cohesión de equipos</div>
+      <div class="pilar-desc">Las barreras interdepartamentales no se derriban en talleres genéricos. Se derriban cuando personas de distintas áreas comparten una experiencia real fuera del entorno corporativo. Las experiencias de exploración en la naturaleza salvadoreña crean el contexto humano que la operación diaria no puede generar: confianza y comunicación que trascienden el organigrama.</div>
+      <div class="pilar-impacto"><strong>Impacto medible:</strong> Reducción de silos · Mejora en métricas de colaboración entre áreas</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── PROCESO ── -->
+<section class="proceso" id="proceso">
+  <div class="proceso-header">
+    <div class="sec-ey" style="justify-content:center;"><div class="edot"></div><div class="elbl">Cómo funciona</div></div>
+    <h2>Implementación sin fricción<br><em>para tu equipo de RR.HH.</em></h2>
+  </div>
+  <div class="proceso-steps">
+    <div class="pstep">
+      <div class="pstep-num">01</div>
+      <span class="pstep-ico">📋</span>
+      <div class="pstep-tit">La empresa suscribe su plan</div>
+      <div class="pstep-txt">Eliges el número de colaboradores y el nivel de acceso según tu presupuesto de bienestar. Sin contratos anuales obligatorios.</div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">02</div>
+      <span class="pstep-ico">🔑</span>
+      <div class="pstep-tit">Cada colaborador recibe acceso</div>
+      <div class="pstep-txt">Con autonomía para organizar sus experiencias según su horario y preferencias — sin que RR.HH. tenga que coordinar uno a uno.</div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">03</div>
+      <span class="pstep-ico">📊</span>
+      <div class="pstep-tit">RR.HH. monitorea la participación</div>
+      <div class="pstep-txt">Reportes de uso, actividades más elegidas y nivel de activación por área. Visibilidad sin gestión manual.</div>
+    </div>
+    <div class="pstep">
+      <div class="pstep-num">04</div>
+      <span class="pstep-ico">📈</span>
+      <div class="pstep-tit">Los resultados se miden</div>
+      <div class="pstep-txt">Reducción del ausentismo, mejora del clima laboral y retención como indicadores clave del retorno de inversión.</div>
     </div>
   </div>
 </section>
+
+<!-- ── CIERRE + FORMULARIO ── -->
+<section class="cierre" id="contacto">
+  <div class="cierre-inner">
+    <div class="cierre-left">
+      <div class="sec-ey"><div class="edot"></div><div class="elbl">Seguridad y gestión</div></div>
+      <h2>Llave en mano.<br><em>Sin carga</em> para<br>tu equipo de RR.HH.</h2>
+      <p>Ejekat Nemi es un servicio completamente gestionado. Nosotros nos encargamos de la logística de cada experiencia, de la coordinación con los facilitadores y del seguimiento de participación de tus colaboradores.</p>
+      <p>La confidencialidad de tus equipos es una prioridad operativa, no una cláusula de contrato. Ningún dato de participación individual se comparte fuera del entorno de gestión de la empresa.</p>
+      <p>Trabajamos con empresas de 2 a 100 colaboradores en El Salvador. No necesitas un departamento de bienestar ni un presupuesto de empresa grande — necesitas la decisión de que tu capital humano merece un sistema.</p>
+      <div class="quote">
+        <p>"Las empresas que invierten en bienestar corporativo reportan hasta un 25% menos de rotación y un 40% de reducción en días de ausentismo en el primer año."</p>
+        <cite>Organización Mundial de la Salud · 2023</cite>
+      </div>
+    </div>
+    <div class="cierre-right">
+      <div id="form-emp">
+        <h3>Agenda tu piloto corporativo gratuito</h3>
+        <div class="form-grupo">
+          <label>Nombre completo</label>
+          <input type="text" id="emp-nombre" placeholder="Tu nombre">
+        </div>
+        <div class="form-row">
+          <div class="form-grupo">
+            <label>Correo corporativo</label>
+            <input type="email" id="emp-email" placeholder="tu@empresa.com">
+          </div>
+          <div class="form-grupo">
+            <label>WhatsApp</label>
+            <input type="tel" id="emp-wa" placeholder="+503 7000 0000">
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label>Empresa</label>
+          <input type="text" id="emp-empresa" placeholder="Nombre de tu empresa">
+        </div>
+        <div class="form-row">
+          <div class="form-grupo">
+            <label>Cargo</label>
+            <select id="emp-cargo">
+              <option value="">Selecciona...</option>
+              <option>Gerente de RR.HH.</option>
+              <option>Director de Operaciones</option>
+              <option>Dueño / CEO</option>
+              <option>Director General</option>
+              <option>Otro cargo directivo</option>
+            </select>
+          </div>
+          <div class="form-grupo">
+            <label>Número de colaboradores</label>
+            <select id="emp-colaboradores">
+              <option value="">Selecciona...</option>
+              <option>2 – 10 colaboradores</option>
+              <option>11 – 30 colaboradores</option>
+              <option>31 – 60 colaboradores</option>
+              <option>61 – 100 colaboradores</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-grupo">
+          <label>¿Cuál es tu mayor desafío actual con el equipo?</label>
+          <select id="emp-desafio">
+            <option value="">Selecciona...</option>
+            <option>Alta rotación de personal</option>
+            <option>Burnout y fatiga crónica</option>
+            <option>Silos de comunicación</option>
+            <option>Ausentismo médico elevado</option>
+            <option>Clima laboral deteriorado</option>
+            <option>Varios de los anteriores</option>
+          </select>
+        </div>
+        <button class="btn-form" onclick="enviarEmpresa()">Agendar piloto gratuito →</button>
+        <p class="form-nota">Sin compromiso. Te contactamos en menos de 24 horas hábiles.</p>
+        <p id="emp-err" style="font-size:.72rem;color:#D4623D;margin-top:.5rem;display:none;"></p>
+      </div>
+      <div class="fsuc-emp" id="fsuc-emp">
+        <div class="ico">🌬️</div>
+        <h4>Recibimos tu solicitud.</h4>
+        <p>Un especialista de Ejekat Nemi te contactará en menos de 24 horas hábiles para coordinar el piloto corporativo con tu equipo.<br><br>El viento ya sopla hacia tu empresa.</p>
+      </div>
+    </div>
+  </div>
+<section style="padding:4rem 5rem;text-align:center;background:var(--obsidiana);">
+  <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:#FFFFFF;margin-bottom:.8rem;">Tu próxima iniciativa de bienestar <em style="color:var(--terracota-l);font-style:italic;">ya está lista.</em></h2>
+  <p style="font-size:.88rem;color:var(--texto);font-style:italic;margin-bottom:1.5rem;">Sin logística. Sin improvisación. Con resultados medibles.</p>
+  <a href="#contacto" style="display:inline-block;background:var(--terracota);color:var(--arena);padding:.9rem 2rem;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;">→ Agendar piloto corporativo gratuito ←</a>
+</section>
+
+<!-- ── FOOTER ── -->
 <footer>
-  <div><div class="flogo">Ejekat <span>Nemi</span></div><div class="fnah">Plataforma de Bienestar Corporativo · Náhuat-Pipil · Cuscatlán</div></div>
-  <p>© 2025 Ejekat Nemi · Hecho con raíces en El Salvador · hola@ejekatnemi.com</p>
-  <div class="fcred">Nombre derivado del náhuat-pipil,<br>lengua de los pueblos originarios de Cuscatlán.<br><span style="color:var(--copal)">Apoyamos su revitalización.</span></div>
+  <div class="foot-brand">Ejekat <span>Nemi</span></div>
+  <div class="foot-txt">
+    Plataforma de Bienestar Corporativo · El Salvador<br>
+    administrador@ejekatnemi.com · ejekatnemi.com
+  </div>
+  <div class="foot-links">
+    <a href="portal.html">Portal del empleado</a>
+    <a href="guias.html">Para instructores</a>
+    <a href="explorar.html">Explorar guías</a>
+  </div>
 </footer>
+
 <script data-cfasync="false">
-const cursor=document.getElementById("cursor"),crng=document.getElementById("crng");
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener("mousemove",e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+"px";cursor.style.top=my+"px";});
-(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;crng.style.left=rx+"px";crng.style.top=ry+"px";requestAnimationFrame(anim);})();
-document.querySelectorAll("a,button,.ecard,.arq").forEach(el=>{
-  el.addEventListener("mouseenter",()=>{cursor.style.width="20px";cursor.style.height="20px";crng.style.width="56px";crng.style.height="56px";});
-  el.addEventListener("mouseleave",()=>{cursor.style.width="10px";cursor.style.height="10px";crng.style.width="36px";crng.style.height="36px";});
-});
-const WORKER_URL="https://ejekatnemi-leads.mauricio-ardon.workers.dev/";
-async function crearContacto(d){
-  const r=await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
-  const j=await r.json();
-  if(!r.ok)throw new Error(j.error||"Error "+r.status);
-  return j;
-}
-async function handleSubmit(){
-  const n=document.getElementById("nombre").value.trim();
-  const e=document.getElementById("email").value.trim();
-  const w=document.getElementById("whatsapp").value.trim();
-  const estado=document.getElementById("estado").value;
-  const s=document.getElementById("servicio").value;
-  const nivel=document.getElementById("nivel")?.value||"";
-  const btn=document.querySelector(".fbtn");
-  const err=document.getElementById("ferr");
-  err.style.display="none";
-  if(!n||!e||!estado||!s){err.textContent="Por favor completa nombre, correo, estado y experiencia de interés.";err.style.display="block";return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent="Ingresa un correo electrónico válido.";err.style.display="block";return;}
-  btn.disabled=true;btn.querySelector("span").textContent="El viento se mueve...";
+const WORKER = 'https://ejekatnemi-leads.mauricio-ardon.workers.dev/';
+
+async function enviarEmpresa(){
+  var nombre = document.getElementById('emp-nombre').value.trim();
+  var email  = document.getElementById('emp-email').value.trim();
+  var wa     = document.getElementById('emp-wa').value.trim();
+  var empresa= document.getElementById('emp-empresa').value.trim();
+  var cargo  = document.getElementById('emp-cargo').value;
+  var colab  = document.getElementById('emp-colaboradores').value;
+  var desafio= document.getElementById('emp-desafio').value;
+  var err    = document.getElementById('emp-err');
+
+  err.style.display = 'none';
+
+  if(!nombre || !email || !empresa){
+    err.textContent = 'Por favor completa nombre, correo y empresa.';
+    err.style.display = 'block';
+    return;
+  }
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    err.textContent = 'Ingresa un correo electrónico válido.';
+    err.style.display = 'block';
+    return;
+  }
+
+  var btn = document.querySelector('.btn-form');
+  btn.textContent = 'Enviando...';
+  btn.disabled = true;
+
   try{
-    await fetch(WORKER_URL,{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({
-        nombre:n, email:e, whatsapp:w,
-        negocio:"Usuario Final",
-        servicio:s,
-        colaboradores:"N/A",
-        camino:estado,
-        nivel_experiencia:nivel,
-        origen:"landing_registro"
-      })});
-    document.getElementById("fcon").style.display="none";
-    document.getElementById("sucmsg").classList.add("show");
-    if(typeof fbq!=="undefined")fbq("track","Lead");
-    if(typeof gtag!=="undefined")gtag("event","generate_lead");
-  }catch(er){
-    err.textContent="Algo salió mal. Escríbenos directo por WhatsApp.";err.style.display="block";
-    btn.disabled=false;btn.querySelector("span").textContent="Comenzar mi camino →";
-  }
-}
-
-const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.style.opacity="1";e.target.style.transform="translateY(0)";}},{threshold:.1}));
-document.querySelectorAll(".fcard,.fstep,.tier,.ecard,.cant-arq,.fil-item,.stat-card,.contraste-col").forEach(el=>{el.style.opacity="0";el.style.transform="translateY(20px)";el.style.transition="opacity .6s ease,transform .6s ease";obs.observe(el);});
-
-window.addEventListener('scroll', () => {
-  const nav = document.querySelector('nav');
-  if(window.scrollY > 50){
-    nav.style.background = 'rgba(13,27,20,0.97)';
-  } else {
-    nav.style.background = 'rgba(13,27,20,0.85)';
-  }
-});
-
-
-// Toggle disciplinas en sabiduría
-document.querySelectorAll(".fil-item-click, .fil-item-v2").forEach(function(item){
-  item.addEventListener("click", function(e){
-    if(e.target.classList.contains("fil-disc") || e.target.closest(".fil-disc")) return;
-    var wasOpen = item.classList.contains("open");
-    document.querySelectorAll(".fil-item-click").forEach(function(i){i.classList.remove("open");});
-    if(!wasOpen) item.classList.add("open");
-  });
-});
-
-
-function toggleFexp(camino) {
-  var panels = document.querySelectorAll(".fexp-panel");
-  var btns = document.querySelectorAll(".fexp-btn");
-  var panel = document.getElementById("fexp-" + camino);
-  var isOpen = panel.classList.contains("open");
-  panels.forEach(function(p){ p.classList.remove("open"); });
-  btns.forEach(function(b){ b.classList.remove("active"); });
-  if(!isOpen) {
-    panel.classList.add("open");
-    document.querySelector(".fexp-btn[data-camino='" + camino + "']").classList.add("active");
-  }
-}
-
-// Caminos interactivos
-var caminoActivo=null;
-document.addEventListener("DOMContentLoaded",function(){
-  document.querySelectorAll(".camino-card").forEach(function(card){
-    card.addEventListener("click",function(){
-      var c=card.dataset.c;
-      var panel=document.getElementById("panel-"+c);
-      if(!panel)return;
-      if(caminoActivo===c){card.classList.remove("activo");panel.classList.remove("abierto");caminoActivo=null;return;}
-      document.querySelectorAll(".camino-card").forEach(function(d){d.classList.remove("activo");});
-      document.querySelectorAll(".camino-panel").forEach(function(p){p.classList.remove("abierto");});
-      card.classList.add("activo");panel.classList.add("abierto");caminoActivo=c;
-      setTimeout(function(){panel.scrollIntoView({behavior:"smooth",block:"nearest"});},150);
+    await fetch(WORKER, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        nombre:    nombre,
+        email:     email,
+        whatsapp:  wa,
+        negocio:   empresa,
+        servicio:  desafio || 'Piloto corporativo',
+        colaboradores: colab || 'No especificado',
+        camino:    'B2B Corporativo',
+        nivel_experiencia: cargo,
+        origen:    'empresas_landing',
+        guia:      'Ejekat Nemi Empresas',
+        tipo_usuario: 'Empresa B2B'
+      })
     });
-  });
-});
-function elegirDisc(disciplina,camino){
-  var sel=document.getElementById("estado");
-  if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value.toLowerCase().indexOf(camino)>=0){sel.value=sel.options[i].value;break;}}}
-  var selS=document.getElementById("servicio");
-  if(selS){var d0=disciplina.split("—")[0].trim().toLowerCase();for(var j=0;j<selS.options.length;j++){if(selS.options[j].text.toLowerCase().indexOf(d0)>=0){selS.value=selS.options[j].value||selS.options[j].text;break;}}}
-  var reg=document.getElementById("registro");
-  if(reg){reg.scrollIntoView({behavior:"smooth",block:"start"});setTimeout(function(){var n=document.getElementById("nombre");if(n)n.focus();},800);}
-}
-function elegirCamino(camino){
-  var sel=document.getElementById("estado");
-  if(sel){for(var i=0;i<sel.options.length;i++){if(sel.options[i].value.toLowerCase().indexOf(camino)>=0){sel.value=sel.options[i].value;break;}}}
-  var reg=document.getElementById("registro");
-  if(reg)reg.scrollIntoView({behavior:"smooth",block:"start"});
+    document.getElementById('form-emp').style.display = 'none';
+    document.getElementById('fsuc-emp').style.display = 'block';
+  } catch(e){
+    err.textContent = 'Error al enviar. Escríbenos directo a administrador@ejekatnemi.com';
+    err.style.display = 'block';
+    btn.textContent = 'Agendar piloto gratuito →';
+    btn.disabled = false;
+  }
 }
 
+// Nav scroll
+window.addEventListener('scroll', function(){
+  var nav = document.querySelector('nav');
+  if(nav) nav.style.background = window.scrollY > 50
+    ? 'rgba(13,27,20,0.97)'
+    : 'rgba(13,27,20,0.92)';
+});
+
+// Smooth hover en pilares
+document.querySelectorAll('.pilar,.prob-card,.pstep').forEach(function(el){
+  el.style.transition = 'background .3s';
+});
 </script>
 </body>
 </html>

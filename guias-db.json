@@ -52,7 +52,11 @@
           "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 60,
-          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
+          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua",
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual",
+          "mostrar_precio_empleado": false
         },
         {
           "id": "bachata-grupal",
@@ -66,7 +70,11 @@
           "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 60,
-          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
+          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua",
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual",
+          "mostrar_precio_empleado": false
         },
         {
           "id": "baile-individual",
@@ -78,10 +86,14 @@
             "online"
           ],
           "estado": "pakini",
-          "precio_desde": 35,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 60,
-          "que_llevar": "Presencial: ropa cómoda y zapatos. En línea: espacio de al menos 2x2 metros y conexión estable."
+          "que_llevar": "Presencial: ropa cómoda y zapatos. En línea: espacio de al menos 2x2 metros y conexión estable.",
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual",
+          "mostrar_precio_empleado": false
         },
         {
           "id": "tour-volcan-santa-ana",
@@ -92,10 +104,14 @@
             "presencial"
           ],
           "estado": "nejnemi",
-          "precio_desde": 35,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 480,
-          "que_llevar": "Zapatos cerrados de montaña, ropa deportiva en capas, agua 2L mínimo, snack, protector solar, documentos de identidad"
+          "que_llevar": "Zapatos cerrados de montaña, ropa deportiva en capas, agua 2L mínimo, snack, protector solar, documentos de identidad",
+          "mostrar_precio_empleado": false,
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual"
         },
         {
           "id": "tour-coatepeque-tunco",
@@ -106,10 +122,14 @@
             "presencial"
           ],
           "estado": "nejnemi",
-          "precio_desde": 40,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 600,
-          "que_llevar": "Traje de baño, ropa de playa, protector solar, agua, efectivo para gastronomía local"
+          "que_llevar": "Traje de baño, ropa de playa, protector solar, agua, efectivo para gastronomía local",
+          "mostrar_precio_empleado": false,
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual"
         },
         {
           "id": "tour-suchitoto-cultural",
@@ -120,10 +140,14 @@
             "presencial"
           ],
           "estado": "nejnemi",
-          "precio_desde": 30,
+          "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 480,
-          "que_llevar": "Ropa cómoda, calzado para caminar, cámara, efectivo para artesanías y comida local"
+          "que_llevar": "Ropa cómoda, calzado para caminar, cámara, efectivo para artesanías y comida local",
+          "mostrar_precio_empleado": false,
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual"
         },
         {
           "id": "deportes-extremos",
@@ -137,7 +161,11 @@
           "precio_desde": 45,
           "precio_moneda": "USD",
           "duracion_min": 180,
-          "que_llevar": "Ropa deportiva ajustada, zapatos cerrados, sin accesorios sueltos. Equipo de seguridad 100% incluido."
+          "que_llevar": "Ropa deportiva ajustada, zapatos cerrados, sin accesorios sueltos. Equipo de seguridad 100% incluido.",
+          "precio_publico": 45,
+          "precio_empresa": 30,
+          "tipo_precio": "individual",
+          "mostrar_precio_empleado": false
         },
         {
           "id": "salsa-bachata-2x1",
@@ -151,7 +179,11 @@
           "precio_desde": 70,
           "precio_moneda": "USD",
           "duracion_min": 120,
-          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua"
+          "que_llevar": "Ropa cómoda, zapatos de baile o tenis con suela lisa, agua",
+          "precio_publico": 70,
+          "precio_empresa": 60,
+          "tipo_precio": "2x1",
+          "mostrar_precio_empleado": false
         }
       ],
       "modalidad": [
@@ -210,9 +242,9 @@
         "Español",
         "Inglés básico"
       ],
-      "precio_base": 25,
+      "precio_base": 30,
       "precio_moneda": "USD",
-      "precio_display": "Desde $25 USD",
+      "precio_display": "Reservar sesión",
       "precio_nota": "Precio final según servicio, duración y tamaño del grupo",
       "huellas_count": 0,
       "rating": null,
@@ -267,7 +299,9 @@
           "tours@ejekatnemi.com"
         ],
         "google_calendar_tours_id": "c_b41dfdf7baea72450c4ae26e25677280c1728703538ef8dc5f10aa63f2cf0b16@group.calendar.google.com"
-      }
+      },
+      "precio_publico": 45,
+      "precio_empresa": 30
     }
   ]
 }

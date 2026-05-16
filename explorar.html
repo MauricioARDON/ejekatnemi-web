@@ -177,6 +177,73 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
 .benef-nota{background:rgba(45,106,79,.12);border-left:3px solid var(--ceiba-l);padding:.7rem 1.2rem;font-size:.875rem;color:rgba(61,138,101,.9);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
 .benef-nota::before{content:"✓";font-weight:600;}
 
+
+/* ── NUEVO HERO explorar ── */
+.exp-hero{background:linear-gradient(135deg,var(--obsidiana) 0%,#1A2E20 100%);padding:5.5rem 1.5rem 2.5rem;text-align:center;border-bottom:1px solid rgba(244,236,214,.06);}
+.exp-hero-inner{max-width:680px;margin:0 auto;}
+.exp-eyelet{display:flex;align-items:center;justify-content:center;gap:.6rem;margin-bottom:1.2rem;}
+.exp-dot{width:6px;height:6px;border-radius:50%;background:var(--copal);}
+.exp-ey{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--copal);font-weight:500;}
+.exp-h1{font-family:"Cormorant Garamond",serif;font-size:clamp(2.2rem,6vw,3.5rem);font-weight:300;color:#fff;line-height:1.15;margin-bottom:1rem;}
+.exp-h1 em{font-style:italic;color:var(--copal);}
+.exp-desc{font-size:1rem;color:rgba(244,236,214,.68);line-height:1.78;max-width:560px;margin:0 auto 1.8rem;}
+.exp-chips{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:1.8rem;}
+.chip{font-size:.8rem;padding:.4rem .9rem;border-radius:100px;font-weight:400;cursor:pointer;transition:all .2s;border:1px solid transparent;}
+.chip-baile{background:rgba(184,74,47,.15);color:#E8A070;border-color:rgba(184,74,47,.25);}
+.chip-baile:hover{background:rgba(184,74,47,.28);}
+.chip-tour{background:rgba(45,106,79,.15);color:#5AAA80;border-color:rgba(45,106,79,.25);}
+.chip-tour:hover{background:rgba(45,106,79,.28);}
+.chip-mente{background:rgba(61,138,101,.15);color:#4A9A6A;border-color:rgba(61,138,101,.25);}
+.chip-mente:hover{background:rgba(61,138,101,.28);}
+.chip-fest{background:rgba(233,168,36,.12);color:var(--copal);border-color:rgba(233,168,36,.25);}
+.chip-fest:hover{background:rgba(233,168,36,.22);}
+.exp-pasos{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;}
+.exp-paso{display:flex;align-items:center;gap:.4rem;font-size:.8rem;color:rgba(244,236,214,.5);}
+.ep-n{width:22px;height:22px;border-radius:50%;background:rgba(233,168,36,.15);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--copal);font-weight:500;flex-shrink:0;}
+.ep-arr{color:rgba(244,236,214,.2);font-size:.8rem;}
+
+/* ── TARJETAS ── */
+.exgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:rgba(244,236,214,.04);padding:2rem 1.5rem;max-width:1180px;margin:0 auto;}
+.gcard{background:var(--obsidiana-l);border:1px solid rgba(244,236,214,.06);transition:border-color .2s,transform .2s;cursor:pointer;overflow:hidden;}
+.gcard:hover{border-color:rgba(244,236,214,.18);transform:translateY(-2px);}
+.gcard-img{height:180px;background:var(--obsidiana);overflow:hidden;position:relative;}
+.gcard-img img{width:100%;height:100%;object-fit:cover;}
+.gcard-body{padding:1.2rem 1.2rem 1rem;}
+.gcard-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.6rem;}
+.gcard-nombre{font-family:"Cormorant Garamond",serif;font-size:1.3rem;font-style:italic;color:#fff;margin-bottom:.3rem;}
+.gcard-rol{font-size:.75rem;color:rgba(244,236,214,.5);margin-bottom:.8rem;}
+.gcard-precio{font-size:.82rem;color:var(--copal);font-weight:500;}
+.gcard-cta{display:block;text-align:center;padding:.65rem;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;background:var(--terracota);color:#fff;border:none;cursor:pointer;font-family:"Outfit",sans-serif;width:100%;margin-top:1rem;transition:background .2s;}
+.gcard-cta:hover{background:#D4623D;}
+
+/* ── NOTA BENEFICIO ── */
+.benef-banner{background:rgba(45,106,79,.1);border-bottom:1px solid rgba(45,106,79,.15);padding:.75rem 1.5rem;text-align:center;font-size:.875rem;color:rgba(61,138,101,.9);display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.benef-banner::before{content:"✓";font-weight:600;color:var(--ceiba-l);}
+
+/* ── FILTROS ── */
+.exfiltros-wrap{background:var(--obsidiana);position:sticky;top:60px;z-index:90;border-bottom:1px solid rgba(244,236,214,.06);}
+.exfiltros{max-width:1180px;margin:0 auto;padding:.8rem 1.5rem;display:flex;gap:.4rem;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+.exfiltros::-webkit-scrollbar{display:none;}
+.efbtn{font-size:.75rem;padding:.4rem .9rem;background:rgba(244,236,214,.04);border:1px solid rgba(244,236,214,.1);color:rgba(244,236,214,.6);cursor:pointer;white-space:nowrap;transition:all .2s;font-family:"Outfit",sans-serif;border-radius:100px;}
+.efbtn:hover,.efbtn.activo{background:var(--copal);border-color:var(--copal);color:var(--obsidiana);font-weight:500;}
+
+/* ── MOBILE FIRST ── */
+@media(max-width:480px){
+  .exp-hero{padding:5rem 1.2rem 2rem;}
+  .exp-h1{font-size:2.2rem;}
+  .exp-desc{font-size:.9375rem;}
+  .exp-chips{gap:.4rem;}
+  .chip{font-size:.75rem;padding:.35rem .75rem;}
+  .exp-pasos{gap:.3rem;}
+  .ep-arr{display:none;}
+  .exp-paso{background:rgba(244,236,214,.04);padding:.3rem .6rem;border-radius:4px;}
+  .exgrid{grid-template-columns:1fr;padding:1rem;}
+  .gcard-img{height:160px;}
+}
+@media(min-width:481px) and (max-width:768px){
+  .exgrid{grid-template-columns:1fr 1fr;}
+}
+
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLFY5VD2JY"></script>
@@ -204,7 +271,36 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
   </ul>
 </nav>
 <div class="exp-hero">
-  <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">Portal del colaborador</div></div>
+  <div class="exp-hero-inner">
+    <div class="exp-eyelet">
+      <span class="exp-dot"></span>
+      <span class="exp-ey">Tu tiempo. Tu bienestar. El Salvador.</span>
+    </div>
+    <h1 class="exp-h1">
+      &iquest;Qu&eacute; quieres<br>
+      <em>explorar hoy?</em>
+    </h1>
+    <p class="exp-desc">
+      Tienes acceso a experiencias reales en El Salvador &mdash; aprende a bailar Salsa o Bachata para la pr&oacute;xima fiesta,
+      descubre volcanes y lagos, o simplemente mueve el cuerpo y despeja la mente.
+      Todo coordinado. Todo disponible como beneficio de tu empresa.
+    </p>
+    <div class="exp-chips">
+      <span class="chip chip-baile">&#x1F483; Aprende a bailar</span>
+      <span class="chip chip-tour">&#x1F30B; Explora El Salvador</span>
+      <span class="chip chip-mente">&#x1F9D8; Despeja la mente</span>
+      <span class="chip chip-fest">&#x1F389; Prepara la fiesta de fin de a&ntilde;o</span>
+    </div>
+    <div class="exp-pasos">
+      <div class="exp-paso"><div class="ep-n">1</div><span>Elige tu experiencia</span></div>
+      <div class="ep-arr">&#x2192;</div>
+      <div class="exp-paso"><div class="ep-n">2</div><span>Reserva en 2 clics</span></div>
+      <div class="ep-arr">&#x2192;</div>
+      <div class="exp-paso"><div class="ep-n">3</div><span>Tu instructor te contacta</span></div>
+    </div>
+  </div>
+</div>
+
   <h1>Encuentra tu actividad.<br><em>Reserva en 2 clics.</em></h1>
   <p>Explora todas las experiencias disponibles para ti como beneficio de tu empresa &mdash; baile, aventura, bienestar y m&aacute;s.</p>
   <div class="exp-steps">
@@ -631,6 +727,27 @@ async function cargarDisponibilidad(guiaId, containerId){
   }
   el.innerHTML = html;
 }
+
+
+// Chips del hero — filtrar por camino
+document.querySelectorAll('.chip').forEach(function(chip){
+  chip.addEventListener('click', function(){
+    var map = {
+      'chip-baile':'pakini',
+      'chip-tour':'nejnemi',
+      'chip-mente':'musewi',
+      'chip-fest':'pakini'
+    };
+    var clases = Array.from(chip.classList);
+    var camino = null;
+    clases.forEach(function(c){ if(map[c]) camino = map[c]; });
+    if(camino){
+      estadoActivo = camino;
+      renderCards();
+      document.querySelector('.exfiltros-wrap') && document.querySelector('.exfiltros-wrap').scrollIntoView({behavior:'smooth'});
+    }
+  });
+});
 
 // ── Init ──
 if(document.readyState === "loading"){

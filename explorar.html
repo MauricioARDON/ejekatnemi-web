@@ -164,6 +164,19 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
 .fsuc-txt{font-size:.8rem;color:var(--ts);line-height:1.7;}
 
 @media(max-width:900px){nav{padding:1rem 1.5rem;}nav ul{display:none;}.exp-hdr,.filtros,.estados-bar{padding-left:1.5rem;padding-right:1.5rem;}.ggrid{grid-template-columns:1fr;padding:0 1.5rem 4rem;}.mhero{grid-template-columns:1fr;}.mgrid{grid-template-columns:1fr;}.mcta{grid-template-columns:1fr;}.mbtns{align-items:stretch;}.frow{grid-template-columns:1fr;}}
+
+/* ── UX improvements ── */
+.exp-hero{background:var(--obsidiana);padding:6rem 3rem 3rem;text-align:center;border-bottom:1px solid rgba(244,236,214,.06);}
+.exp-hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:300;color:#fff;margin-bottom:.6rem;}
+.exp-hero h1 em{font-style:italic;color:var(--copal);}
+.exp-hero p{font-size:.95rem;color:rgba(244,236,214,.6);max-width:500px;margin:0 auto 1.5rem;}
+.exp-steps{display:flex;justify-content:center;gap:0;margin-bottom:0;flex-wrap:wrap;}
+.exp-step{display:flex;align-items:center;gap:.5rem;font-size:.75rem;color:rgba(244,236,214,.4);padding:.5rem 1rem;}
+.exp-step .sn{width:20px;height:20px;border-radius:50%;background:rgba(233,168,36,.15);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--copal);flex-shrink:0;}
+.exp-step .sa{color:rgba(244,236,214,.2);margin:0 .3rem;}
+.benef-nota{background:rgba(45,106,79,.12);border-left:3px solid var(--ceiba-l);padding:.7rem 1.2rem;font-size:.875rem;color:rgba(61,138,101,.9);margin-bottom:1.5rem;display:flex;align-items:center;gap:.5rem;}
+.benef-nota::before{content:"✓";font-weight:600;}
+
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLFY5VD2JY"></script>
@@ -190,6 +203,17 @@ nav ul a:hover,nav ul a.act{color:var(--a);}
     <li><a href="index.html" class="nav-cta">Para empresas →</a></li>
   </ul>
 </nav>
+<div class="exp-hero">
+  <div class="sec-ey" style="justify-content:center;margin-bottom:1rem;"><div class="edot"></div><div class="elbl">Portal del colaborador</div></div>
+  <h1>Encuentra tu actividad.<br><em>Reserva en 2 clics.</em></h1>
+  <p>Explora todas las experiencias disponibles para ti como beneficio de tu empresa &mdash; baile, aventura, bienestar y m&aacute;s.</p>
+  <div class="exp-steps">
+    <div class="exp-step"><div class="sn">1</div>Explora<span class="sa">&#x2192;</span></div>
+    <div class="exp-step"><div class="sn">2</div>Elige horario<span class="sa">&#x2192;</span></div>
+    <div class="exp-step"><div class="sn">3</div>Coordina por WhatsApp</div>
+  </div>
+</div>
+
 
 <div class="exp-hdr">
   <div class="ey"><div class="edot"></div><div class="elbl">Explorar caminos</div></div>

@@ -4,1006 +4,630 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Ejekat Nemi | Plataforma de Bienestar Corporativo</title>
-<meta name="description" content="Conectamos empresas en El Salvador con instructores de movimiento, bienestar y aventura. Beneficio laboral gestionado para equipos de 1 a 100 personas. Sin contrato anual.">
+<meta name="description" content="Conectamos empresas en El Salvador con instructores de bienestar y aventura. Beneficio laboral gestionado. Desde $30 por colaborador al mes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
-<!-- Google Analytics 4 -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-PLFY5VD2JY"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-PLFY5VD2JY');
-</script>
-
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-PLFY5VD2JY');</script>
 <style>
-/* ── Variables ── */
-:root{
-  --ink:    #0D1B14;
-  --ink2:   #1A2E20;
-  --forest: #2D6A4F;
-  --sage:   #3D8A65;
-  --gold:   #E9A824;
-  --clay:   #B84A2F;
-  --clay2:  #D4623D;
-  --cream:  #F7F3EC;
-  --white:  #FFFFFF;
-  --gray:   #F2F0EB;
-  --mid:    #8A8A8A;
-  --dark:   #1C1C1C;
-  --r: .5rem;
-}
-
-/* ── Reset ── */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;}
-img{display:block;max-width:100%;}
-a{text-decoration:none;}
+html{scroll-behavior:smooth;font-size:18px;}
+body{font-family:'DM Sans',sans-serif;color:#1A1A1A;overflow-x:hidden;line-height:1.7;}
+:root{--v:#0D1B14;--v2:#152318;--v3:#1E3A2A;--v4:#2D6A4F;--K:#E9A824;--T:#B84A2F;--Tl:#D4623D;--A:#F4ECD6;--W:#FFFFFF;--G:#F7F6F3;--G2:#EEECE8;--txt:#1A1A1A;--txt2:#4A4A4A;--txt3:#888;--bd:rgba(0,0,0,.08);}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:300;line-height:1.15;}
+h1{font-size:clamp(2.4rem,5vw,3.8rem);}
+h2{font-size:clamp(1.9rem,3.5vw,2.8rem);}
+h3{font-size:clamp(1.2rem,2vw,1.5rem);}
+p{font-size:1.0625rem;line-height:1.78;}
+.ey{font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;font-weight:500;}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(13,27,20,.96);backdrop-filter:blur(16px);border-bottom:1px solid rgba(244,236,214,.06);}
+.ni{max-width:1180px;margin:0 auto;padding:.85rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+.logo-n{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--A);}
+.logo-n span{color:var(--K);}
+.logo-s{font-size:.55rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(244,236,214,.35);}
+.nl{display:flex;align-items:center;gap:2rem;}
+.nl a{font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;color:rgba(244,236,214,.55);text-decoration:none;transition:color .2s;font-weight:500;}
+.nl a:hover{color:var(--A);}
+.nc{background:var(--T)!important;color:#fff!important;padding:.45rem 1.1rem;}
+.nc:hover{background:var(--Tl)!important;}
+@media(max-width:768px){.nl a:not(.nc){display:none;}}
 
-/* ── Nav ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:100;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.9rem 3rem;
-  background:rgba(13,27,20,.96);
-  backdrop-filter:blur(16px);
-  border-bottom:1px solid rgba(255,255,255,.06);
-  transition:padding .3s;
-}
-nav.scrolled{padding:.7rem 3rem;box-shadow:0 4px 24px rgba(0,0,0,.3);}
-.nav-brand{display:flex;flex-direction:column;line-height:1.1;}
-.nav-name{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:400;color:var(--white);letter-spacing:.5px;}
-.nav-name span{color:var(--gold);}
-.nav-tag{font-size:.55rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.nav-links{display:flex;gap:2rem;align-items:center;list-style:none;}
-.nav-links a{font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.55);transition:color .2s;}
-.nav-links a:hover{color:var(--white);}
-.nav-cta{
-  background:var(--clay);color:var(--white)!important;
-  padding:.45rem 1.1rem;font-size:.7rem!important;
-  letter-spacing:1.5px;transition:background .2s!important;
-}
-.nav-cta:hover{background:var(--clay2)!important;}
-@media(max-width:768px){
-  nav{padding:.8rem 1.2rem;}
-  .nav-links{gap:.8rem;}
-  .nav-links li:not(:last-child){display:none;}
-}
+/* HERO */
+.hero{min-height:100vh;background:var(--v);display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;}
+.hl{display:flex;flex-direction:column;justify-content:center;padding:8rem 4rem 4rem 6rem;position:relative;z-index:2;}
+.he{display:flex;align-items:center;gap:.6rem;margin-bottom:1.8rem;}
+.he .ln{width:28px;height:1px;background:var(--K);}
+.hero h1{color:#fff;margin-bottom:1.2rem;}
+.hero h1 em{font-style:italic;color:var(--K);}
+.hdesc{color:rgba(244,236,214,.75);max-width:460px;margin-bottom:2rem;}
+.hctas{display:flex;flex-direction:column;gap:.8rem;max-width:300px;}
+.bp{display:flex;align-items:center;justify-content:center;gap:.4rem;background:var(--T);color:#fff;padding:.9rem 1.8rem;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:background .2s;}
+.bp:hover{background:var(--Tl);}
+.bw{display:flex;align-items:center;justify-content:center;gap:.4rem;background:transparent;color:rgba(244,236,214,.65);padding:.7rem 1.8rem;font-size:.8rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(244,236,214,.18);width:100%;transition:all .2s;}
+.bw:hover{border-color:rgba(244,236,214,.4);color:var(--A);}
+.htrust{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.4rem;}
+.ht{font-size:.8rem;color:rgba(244,236,214,.4);display:flex;align-items:center;gap:.3rem;}
+.ht::before{content:"✓";color:var(--v4);}
+.hr{position:relative;overflow:hidden;}
+.hr img{width:100%;height:100%;object-fit:cover;filter:brightness(.72);}
+.hr::after{content:"";position:absolute;inset:0;background:linear-gradient(to right,var(--v) 0%,transparent 45%);}
+.hbadge{position:absolute;bottom:2rem;right:2rem;background:rgba(13,27,20,.92);border:1px solid rgba(233,168,36,.3);padding:1rem 1.2rem;z-index:3;}
+.hbn{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;color:var(--K);line-height:1;}
+.hbt{font-size:.72rem;color:rgba(244,236,214,.55);margin-top:.2rem;max-width:120px;line-height:1.4;}
+@media(max-width:900px){.hero{grid-template-columns:1fr;min-height:auto;}.hl{padding:7rem 1.5rem 3rem;}.hr{height:260px;}.hr::after{background:linear-gradient(to top,var(--v) 0%,transparent 55%);}.hbadge{bottom:1rem;right:1rem;}}
 
-/* ── Hero ── */
-.hero{
-  min-height:100vh;
-  display:grid;grid-template-columns:1fr 1fr;
-  background:var(--ink);
-  position:relative;overflow:hidden;
-}
-.hero-left{
-  display:flex;flex-direction:column;justify-content:center;
-  padding:8rem 4rem 4rem 4rem;
-  position:relative;z-index:2;
-}
-.hero-eyelet{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:rgba(233,168,36,.1);border:1px solid rgba(233,168,36,.25);
-  padding:.3rem .8rem;margin-bottom:2rem;
-  font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);
-  width:fit-content;
-}
-.hero h1{
-  font-family:'Fraunces',serif;
-  font-size:clamp(2.4rem,4vw,3.6rem);
-  font-weight:300;line-height:1.1;
-  color:var(--white);margin-bottom:1.5rem;
-}
-.hero h1 em{font-style:italic;color:var(--clay2);}
-.hero-sub{
-  font-size:1rem;color:rgba(255,255,255,.65);
-  line-height:1.8;max-width:440px;margin-bottom:2rem;
-  font-weight:300;
-}
-.hero-pill{
-  display:inline-flex;align-items:center;gap:.6rem;
-  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);
-  padding:.7rem 1rem;margin-bottom:2rem;font-size:.82rem;
-  color:rgba(255,255,255,.75);max-width:440px;line-height:1.5;
-}
-.hero-pill strong{color:var(--white);}
-.hero-cta{
-  display:inline-flex;align-items:center;gap:.5rem;
-  background:var(--clay);color:var(--white);
-  padding:.9rem 1.8rem;font-size:.8rem;
-  letter-spacing:1.5px;text-transform:uppercase;
-  transition:background .2s,transform .15s;
-  width:fit-content;
-}
-.hero-cta:hover{background:var(--clay2);transform:translateX(3px);}
-.hero-checks{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.5rem;}
-.hcheck{font-size:.75rem;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:.35rem;}
-.hcheck::before{content:"✓";color:var(--sage);}
-.hero-right{position:relative;overflow:hidden;}
-.hero-img{width:100%;height:100%;object-fit:cover;opacity:.75;filter:saturate(.9);}
-.hero-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to right,var(--ink) 0%,transparent 40%);
-}
-.hero-stat{
-  position:absolute;bottom:2.5rem;right:2.5rem;
-  background:rgba(13,27,20,.92);border:1px solid rgba(233,168,36,.25);
-  padding:1rem 1.2rem;backdrop-filter:blur(12px);
-}
-.stat-n{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:var(--gold);line-height:1;}
-.stat-l{font-size:.68rem;color:rgba(255,255,255,.5);margin-top:.2rem;letter-spacing:.5px;line-height:1.4;}
-@media(max-width:900px){
-  .hero{grid-template-columns:1fr;}
-  .hero-right{display:none;}
-  .hero-left{padding:7rem 1.5rem 3rem;}
-}
+/* CONFIANZA - BLANCO */
+.conf{background:var(--W);padding:4rem 2rem;}
+.cfi{max-width:1180px;margin:0 auto;}
+.sr{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--bd);}
+.sb{background:var(--W);padding:2.5rem 2rem;text-align:center;}
+.sn{font-family:'Fraunces',serif;font-size:clamp(2.5rem,5vw,3.5rem);font-weight:300;color:var(--v);line-height:1;margin-bottom:.3rem;}
+.sn em{font-style:normal;color:var(--T);}
+.sl{font-size:1.0625rem;color:var(--txt2);line-height:1.5;}
+.ss{font-size:.7rem;color:var(--txt3);margin-top:.3rem;}
+@media(max-width:600px){.sr{grid-template-columns:1fr;}}
 
-/* ── Confianza (blanca) ── */
-.confianza{
-  background:var(--white);
-  padding:4rem 4rem;
-  border-bottom:1px solid rgba(0,0,0,.06);
-}
-.conf-label{
-  text-align:center;font-size:.65rem;letter-spacing:4px;
-  text-transform:uppercase;color:var(--mid);margin-bottom:2.5rem;
-}
-.conf-stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(0,0,0,.06);
-  max-width:780px;margin:0 auto 3rem;
-}
-.conf-stat{
-  background:var(--white);padding:2rem 1.5rem;text-align:center;
-}
-.conf-n{
-  font-family:'Fraunces',serif;font-size:3rem;font-weight:300;
-  color:var(--ink);line-height:1;margin-bottom:.3rem;
-}
-.conf-n span{color:var(--clay);}
-.conf-txt{font-size:.78rem;color:var(--mid);line-height:1.5;}
-.conf-src{font-size:.62rem;color:rgba(0,0,0,.25);margin-top:.3rem;}
-.conf-logos{
-  text-align:center;font-size:.7rem;letter-spacing:2px;
-  text-transform:uppercase;color:rgba(0,0,0,.2);
-  display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;
-}
-.logo-placeholder{
-  padding:.4rem 1.2rem;border:1px solid rgba(0,0,0,.1);
-  font-size:.68rem;color:rgba(0,0,0,.2);font-weight:500;letter-spacing:2px;
-}
-@media(max-width:768px){
-  .confianza{padding:3rem 1.2rem;}
-  .conf-stats{grid-template-columns:1fr;}
-  .conf-logos{gap:1rem;}
-}
+/* PROBLEMA - OSCURO */
+.prob{background:var(--v2);padding:6rem 2rem;}
+.pi{max-width:1180px;margin:0 auto;}
+.seo{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem;}
+.seo .dot{width:6px;height:6px;border-radius:50%;background:var(--K);}
+.prob h2{color:#fff;max-width:580px;margin-bottom:3rem;}
+.prob h2 em{font-style:italic;color:rgba(244,236,214,.45);}
+.pc{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);}
+.pcard{background:var(--v2);padding:2rem 1.8rem;}
+.pico{width:52px;height:52px;background:rgba(184,74,47,.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.pico svg{width:24px;height:24px;stroke:var(--T);fill:none;stroke-width:1.5;}
+.pcard h3{color:#fff;margin-bottom:.6rem;}
+.pcard p{color:rgba(244,236,214,.62);line-height:1.7;}
+@media(max-width:768px){.pc{grid-template-columns:1fr;}}
 
-/* ── Problema (oscura) ── */
-.problema{background:var(--ink);padding:6rem 4rem;}
-.sec-head{text-align:center;margin-bottom:4rem;}
-.sec-ey{font-size:.65rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem;display:block;}
-.sec-h2{
-  font-family:'Fraunces',serif;
-  font-size:clamp(2rem,3.5vw,2.8rem);
-  font-weight:300;line-height:1.2;
-}
-.sec-sub{font-size:.95rem;max-width:520px;margin:1rem auto 0;line-height:1.7;font-weight:300;}
-.prob-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(255,255,255,.06);
-  max-width:960px;margin:0 auto;
-}
-.prob-card{
-  background:var(--ink2);padding:2.5rem 2rem;
-  border-bottom:3px solid transparent;
-  transition:border-color .25s,background .25s;
-}
-.prob-card:hover{background:#1E3020;border-bottom-color:var(--gold);}
-.prob-ico{
-  width:52px;height:52px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:1.2rem;font-size:1.3rem;
-}
-.prob-n{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
-.prob-tit{font-size:1rem;font-weight:500;color:var(--white);margin-bottom:.7rem;line-height:1.3;}
-.prob-txt{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.7;}
-@media(max-width:768px){
-  .problema{padding:4rem 1.2rem;}
-  .prob-grid{grid-template-columns:1fr;}
-}
+/* SOLUCIÓN - GRIS */
+.sol{background:var(--G);padding:6rem 2rem;}
+.si{max-width:1180px;margin:0 auto;}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;align-items:end;}
+.sol h2{color:var(--v);}
+.sol h2 em{font-style:italic;color:var(--T);}
+.sintro{color:var(--txt2);line-height:1.8;}
+.pils{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bd);}
+.pil{background:var(--W);padding:2rem 1.5rem;transition:box-shadow .2s,transform .2s;}
+.pil:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);transform:translateY(-3px);}
+.piico{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;font-size:1.5rem;}
+.pitag{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;margin-bottom:.4rem;}
+.pil h3{font-size:1.125rem;color:var(--v);margin-bottom:.5rem;}
+.pil p{color:var(--txt2);line-height:1.65;}
+.pires{font-size:.875rem;color:var(--txt3);margin-top:.8rem;border-top:1px solid var(--bd);padding-top:.8rem;}
+.pires strong{color:var(--v4);font-weight:500;}
+@media(max-width:900px){.sh{grid-template-columns:1fr;gap:1.5rem;}.pils{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.pils{grid-template-columns:1fr;}.pil:hover{transform:none;}}
 
-/* ── Solución (blanca) ── */
-.solucion{background:var(--cream);padding:6rem 4rem;}
-.sol-intro{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:4rem;align-items:center;max-width:960px;margin:0 auto 4rem;
-}
-.sol-left .sec-h2{color:var(--ink);}
-.sol-left .sec-ey{color:var(--clay);}
-.sol-left p{font-size:.9rem;color:var(--mid);line-height:1.8;margin-top:.8rem;}
-.sol-right-img{
-  height:360px;overflow:hidden;position:relative;
-}
-.sol-right-img img{width:100%;height:100%;object-fit:cover;}
-.pilares-tabs{
-  display:flex;border-bottom:1px solid rgba(0,0,0,.1);
-  max-width:960px;margin:0 auto;
-}
-.ptab{
-  flex:1;padding:1.2rem .8rem;cursor:pointer;text-align:center;
-  border-bottom:3px solid transparent;transition:all .2s;
-  background:transparent;border-left:none;border-right:none;border-top:none;
-}
-.ptab:hover{background:rgba(0,0,0,.03);}
-.ptab.on{border-bottom-color:var(--clay);}
-.ptab-ico{font-size:1.6rem;display:block;margin-bottom:.4rem;}
-.ptab-n{font-family:'Fraunces',serif;font-size:.95rem;font-style:italic;color:var(--ink);display:block;}
-.ptab-s{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:var(--mid);display:block;margin-top:.1rem;}
-.pilar-panel{
-  display:none;max-width:960px;margin:0 auto;
-  padding:3rem 0;
-  grid-template-columns:1fr 1fr;gap:4rem;align-items:start;
-}
-.pilar-panel.on{display:grid;}
-.pp-accent{height:3px;width:48px;margin-bottom:1.2rem;}
-.pp-nahuat{font-family:'Fraunces',serif;font-size:2rem;font-style:italic;font-weight:300;color:var(--ink);margin-bottom:.3rem;}
-.pp-sub{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:1rem;}
-.pp-desc{font-size:.9rem;color:#444;line-height:1.8;margin-bottom:1.5rem;}
-.pp-imp{
-  background:var(--white);border-left:3px solid var(--gold);
-  padding:.8rem 1rem;font-size:.8rem;color:#555;line-height:1.6;
-}
-.pp-imp strong{color:var(--dark);}
-.pp-kpis{display:flex;flex-direction:column;gap:1rem;}
-.pp-kpi{display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--white);}
-.pp-kpi-n{
-  font-family:'Fraunces',serif;font-size:2rem;font-weight:300;
-  line-height:1;flex-shrink:0;width:3.5rem;
-}
-.pp-kpi-t{font-size:.78rem;color:var(--mid);line-height:1.5;}
-.pp-wa{
-  display:inline-block;margin-top:1.5rem;
-  border:1.5px solid var(--ink);color:var(--ink);
-  padding:.65rem 1.2rem;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;
-  transition:all .2s;
-}
-.pp-wa:hover{background:var(--ink);color:var(--white);}
-@media(max-width:900px){
-  .solucion{padding:4rem 1.2rem;}
-  .sol-intro{grid-template-columns:1fr;gap:2rem;}
-  .sol-right-img{height:240px;}
-  .pilar-panel.on{grid-template-columns:1fr;gap:2rem;}
-  .pilares-tabs{overflow-x:auto;}
-}
+/* TESTIMONIOS - BLANCO */
+.test{background:var(--W);padding:6rem 2rem;overflow:hidden;}
+.ti{max-width:1180px;margin:0 auto;}
+.th{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem;}
+.test h2{color:var(--v);}
+.test h2 em{font-style:italic;color:var(--T);}
+.cnav{display:flex;gap:.5rem;}
+.cnb{width:44px;height:44px;border:1px solid var(--bd);background:var(--W);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;font-size:1rem;}
+.cnb:hover{background:var(--v);color:#fff;border-color:var(--v);}
+.cw{overflow:hidden;}
+.ct{display:flex;transition:transform .45s ease;}
+.tc{min-width:calc(33.333% - 1px);padding:2rem;background:var(--G);margin-right:1px;border-bottom:3px solid transparent;transition:border-color .2s;}
+.tc:hover{border-bottom-color:var(--K);}
+.stars{display:flex;gap:3px;margin-bottom:1rem;}
+.star{width:14px;height:14px;background:var(--K);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
+.tc blockquote{color:var(--txt);line-height:1.75;margin-bottom:1.5rem;font-style:italic;}
+.ta{display:flex;align-items:center;gap:.8rem;}
+.tav{width:40px;height:40px;border-radius:50%;background:var(--v);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:500;color:var(--K);flex-shrink:0;}
+.tnm{font-size:.9375rem;font-weight:500;color:var(--txt);}
+.tcg{font-size:.8rem;color:var(--txt3);}
+.cdots{display:flex;gap:.4rem;margin-top:1.5rem;justify-content:center;}
+.cdot{width:8px;height:8px;border-radius:50%;background:var(--bd);border:none;cursor:pointer;transition:background .2s;padding:0;}
+.cdot.on{background:var(--T);}
+@media(max-width:768px){.tc{min-width:100%;}.th{flex-direction:column;align-items:flex-start;}}
 
-/* ── Calculadora (oscura) ── */
-.calculadora{background:var(--ink2);padding:6rem 4rem;}
-.calc-wrap{
-  max-width:860px;margin:0 auto;
-  display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;
-}
-.calc-l .sec-ey{color:var(--gold);}
-.calc-l .sec-h2{color:var(--white);}
-.calc-l p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.8;margin-top:.8rem;}
-.sl-group{margin-top:1.5rem;}
-.sl-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;}
-.sl-label{font-size:.72rem;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.4);}
-.sl-val{font-size:.9rem;color:var(--gold);font-weight:500;}
-input[type=range]{
-  width:100%;height:3px;
-  -webkit-appearance:none;appearance:none;
-  background:rgba(255,255,255,.15);border-radius:2px;margin-bottom:1.2rem;
-}
-input[type=range]::-webkit-slider-thumb{
-  -webkit-appearance:none;width:18px;height:18px;
-  border-radius:50%;background:var(--gold);cursor:pointer;
-}
-.calc-r{
-  background:rgba(255,255,255,.04);
-  border:1px solid rgba(255,255,255,.08);
-  padding:2.5rem 2rem;text-align:center;
-}
-.calc-r-label{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.5rem;}
-.calc-total{
-  font-family:'Fraunces',serif;font-size:3.5rem;font-weight:300;
-  color:var(--clay2);line-height:1;margin-bottom:.4rem;
-}
-.calc-sub{font-size:.78rem;color:rgba(255,255,255,.4);margin-bottom:1.5rem;line-height:1.5;}
-.calc-rows{border-top:1px solid rgba(255,255,255,.06);padding-top:1.2rem;margin-bottom:1.5rem;}
-.calc-row{display:flex;justify-content:space-between;padding:.35rem 0;font-size:.78rem;}
-.calc-row span:first-child{color:rgba(255,255,255,.4);}
-.calc-row span:last-child{color:var(--white);font-weight:500;}
-.calc-btn{
-  display:block;width:100%;background:#25D366;color:var(--white);
-  padding:.8rem;font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;
-  text-decoration:none;transition:background .2s;
-}
-.calc-btn:hover{background:#22c55e;}
-.calc-nota{font-size:.62rem;color:rgba(255,255,255,.2);margin-top:.8rem;font-style:italic;}
-@media(max-width:900px){
-  .calculadora{padding:4rem 1.2rem;}
-  .calc-wrap{grid-template-columns:1fr;gap:2rem;}
-}
+/* DIFERENCIADORES - GRIS OSCURO */
+.dif{background:#1C1C1C;padding:6rem 2rem;}
+.di{max-width:1180px;margin:0 auto;}
+.dif h2{color:#fff;max-width:500px;margin-bottom:3rem;}
+.dif h2 em{font-style:italic;color:var(--K);}
+.dg{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.05);}
+.ditem{background:#242424;padding:2rem 1.8rem;border-bottom:3px solid transparent;transition:border-color .2s;}
+.ditem:hover{border-bottom-color:var(--K);}
+.dn{font-family:'Fraunces',serif;font-size:2.5rem;font-weight:300;color:rgba(255,255,255,.05);line-height:1;margin-bottom:.5rem;}
+.ditem h3{color:#fff;margin-bottom:.5rem;}
+.ditem p{color:rgba(255,255,255,.52);line-height:1.7;}
+.dvs{font-size:.8rem;color:rgba(255,255,255,.28);margin-top:.8rem;border-top:1px solid rgba(255,255,255,.05);padding-top:.8rem;}
+.dvs strong{color:var(--T);}
+@media(max-width:900px){.dg{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.dg{grid-template-columns:1fr;}}
 
-/* ── Testimonios (gris claro) ── */
-.testimonios{background:var(--gray);padding:6rem 4rem 4rem;}
-.test-head{text-align:center;margin-bottom:3rem;}
-.test-head .sec-ey{color:var(--clay);}
-.test-head .sec-h2{color:var(--ink);}
-.carr-outer{overflow:hidden;}
-.carr-track{display:flex;transition:transform .45s ease;}
-.test-card{
-  min-width:33.333%;padding:2rem 2.5rem;
-  background:var(--white);border:1px solid rgba(0,0,0,.06);
-  display:flex;flex-direction:column;gap:1rem;
-}
-.stars{display:flex;gap:.2rem;}
-.star{width:12px;height:12px;background:var(--gold);clip-path:polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);}
-.test-q{font-size:.9rem;color:#444;line-height:1.75;font-style:italic;flex:1;}
-.test-autor{display:flex;align-items:center;gap:.8rem;padding-top:1rem;border-top:1px solid rgba(0,0,0,.06);}
-.test-av{
-  width:38px;height:38px;border-radius:50%;
-  background:var(--ink);display:flex;align-items:center;justify-content:center;
-  font-size:.75rem;font-weight:500;color:var(--gold);flex-shrink:0;
-}
-.test-n{font-size:.82rem;font-weight:500;color:var(--dark);}
-.test-c{font-size:.72rem;color:var(--mid);}
-.carr-controls{display:flex;justify-content:center;gap:.5rem;margin-top:2rem;}
-.carr-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.15);border:none;cursor:pointer;padding:0;transition:background .2s;}
-.carr-dot.on{background:var(--clay);}
-.carr-arrows{display:flex;justify-content:center;gap:.8rem;margin-top:1rem;}
-.carr-arr{
-  background:none;border:1px solid rgba(0,0,0,.15);
-  color:var(--dark);padding:.45rem 1rem;
-  font-size:.75rem;cursor:pointer;transition:all .2s;
-}
-.carr-arr:hover{background:var(--dark);color:var(--white);}
-@media(max-width:768px){
-  .testimonios{padding:4rem 1.2rem 2rem;}
-  .test-card{min-width:100%;}
-}
+/* PRECIOS - GRIS CLARO */
+.prec{background:var(--G);padding:6rem 2rem;}
+.prei{max-width:800px;margin:0 auto;text-align:center;}
+.prec h2{color:var(--v);margin-bottom:.5rem;}
+.prec h2 em{font-style:italic;color:var(--T);}
+.psub{color:var(--txt2);margin-bottom:3rem;}
+.pg{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);margin-bottom:0;}
+.plan{background:var(--W);padding:2.5rem 2rem;position:relative;text-align:left;}
+.plan.star{border:2px solid var(--K);}
+.pbadge{position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--K);color:var(--v);font-size:.62rem;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:.25rem .8rem;white-space:nowrap;}
+.ptipo{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt3);margin-bottom:.8rem;font-weight:500;}
+.pprecio{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:300;color:var(--v);line-height:1;margin-bottom:.3rem;}
+.pprecio sup{font-size:1.4rem;vertical-align:top;margin-top:.5rem;color:var(--T);}
+.pprecio sub{font-size:.78rem;color:var(--txt3);font-family:'DM Sans',sans-serif;}
+.pdesc{color:var(--txt2);margin:.8rem 0 1.5rem;line-height:1.6;}
+.pfeats{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;}
+.pfeat{color:var(--txt2);display:flex;gap:.6rem;align-items:flex-start;line-height:1.5;}
+.pfeat::before{content:"✓";color:var(--v4);font-weight:500;flex-shrink:0;}
+.pbtn{display:block;text-align:center;padding:.85rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:500;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;width:100%;transition:all .2s;}
+.plan:not(.star) .pbtn{background:transparent;border:1px solid var(--bd);color:var(--txt);}
+.plan:not(.star) .pbtn:hover{border-color:var(--v);color:var(--v);}
+.plan.star .pbtn{background:var(--T);color:#fff;}
+.plan.star .pbtn:hover{background:var(--Tl);}
+.pahorro{background:var(--v);color:#fff;padding:1.2rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.pahtxt{color:rgba(244,236,214,.65);}
+.pahnum{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:300;color:var(--K);}
+.pnota{font-size:.875rem;color:var(--txt3);margin-top:1.2rem;text-align:center;}
+@media(max-width:600px){.pg{grid-template-columns:1fr;}.pahorro{flex-direction:column;text-align:center;}}
 
-/* ── Planes (blanca) ── */
-.planes{background:var(--white);padding:6rem 4rem;}
-.planes-head{text-align:center;margin-bottom:4rem;}
-.planes-head .sec-ey{color:var(--clay);}
-.planes-head .sec-h2{color:var(--ink);}
-.planes-head p{font-size:.9rem;color:var(--mid);max-width:500px;margin:.8rem auto 0;line-height:1.7;}
-.planes-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.08);max-width:720px;margin:0 auto 2.5rem;}
-.plan{background:var(--white);padding:2.5rem 2rem;position:relative;}
-.plan.feature{background:var(--ink);border:2px solid var(--clay);}
-.plan-badge{
-  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
-  background:var(--clay);color:var(--white);
-  font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
-  padding:.25rem .8rem;white-space:nowrap;
-}
-.plan-tipo{font-size:.62rem;letter-spacing:4px;text-transform:uppercase;color:var(--mid);margin-bottom:.8rem;}
-.plan.feature .plan-tipo{color:rgba(255,255,255,.4);}
-.plan-precio{font-family:'Fraunces',serif;font-size:3.2rem;font-weight:300;color:var(--ink);line-height:1;}
-.plan.feature .plan-precio{color:var(--white);}
-.plan-precio sup{font-size:1.4rem;vertical-align:top;margin-top:.5rem;display:inline-block;color:var(--clay);}
-.plan-precio sub{font-size:.75rem;font-family:'DM Sans',sans-serif;color:var(--mid);}
-.plan.feature .plan-precio sub{color:rgba(255,255,255,.4);}
-.plan-desc{font-size:.82rem;color:var(--mid);margin:.8rem 0 1.5rem;line-height:1.6;}
-.plan.feature .plan-desc{color:rgba(255,255,255,.55);}
-.plan-feats{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin-bottom:2rem;}
-.plan-feat{font-size:.82rem;color:#444;display:flex;gap:.6rem;align-items:flex-start;line-height:1.5;}
-.plan-feat::before{content:"✓";color:var(--sage);flex-shrink:0;font-weight:600;}
-.plan.feature .plan-feat{color:rgba(255,255,255,.7);}
-.plan-cta{
-  display:block;text-align:center;padding:.8rem;
-  font-size:.72rem;letter-spacing:1.5px;text-transform:uppercase;transition:all .2s;
-}
-.plan:not(.feature) .plan-cta{border:1.5px solid var(--ink);color:var(--ink);}
-.plan:not(.feature) .plan-cta:hover{background:var(--ink);color:var(--white);}
-.plan.feature .plan-cta{background:var(--clay);color:var(--white);}
-.plan.feature .plan-cta:hover{background:var(--clay2);}
-.planes-vs{
-  max-width:720px;margin:0 auto;
-  background:var(--cream);padding:1.5rem 2rem;
-  display:grid;grid-template-columns:repeat(3,1fr);text-align:center;gap:1rem;
-}
-.vs-l{font-size:.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem;}
-.vs-v{font-size:1rem;font-weight:500;color:var(--dark);}
-.vs-v.tach{text-decoration:line-through;color:var(--mid);font-weight:400;font-size:.9rem;}
-.vs-v.dest{color:var(--clay);}
-.vs-v.green{color:var(--sage);}
-@media(max-width:768px){
-  .planes{padding:4rem 1.2rem;}
-  .planes-grid{grid-template-columns:1fr;}
-  .planes-vs{grid-template-columns:1fr;gap:.5rem;}
-}
+/* FAQ - OSCURO */
+.faq{background:var(--v);padding:6rem 2rem;}
+.fqi{max-width:720px;margin:0 auto;}
+.faq h2{color:#fff;margin-bottom:.5rem;}
+.faq h2 em{font-style:italic;color:var(--K);}
+.fsub{color:rgba(244,236,214,.45);margin-bottom:3rem;}
+.fi{border-bottom:1px solid rgba(244,236,214,.07);}
+.fq{display:flex;justify-content:space-between;align-items:center;padding:1.3rem 0;cursor:pointer;gap:1rem;}
+.fqt{color:var(--A);line-height:1.4;font-weight:400;}
+.fic{width:28px;height:28px;border:1px solid rgba(244,236,214,.18);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(244,236,214,.45);font-size:.9rem;transition:all .25s;}
+.fic.op{background:var(--K);border-color:var(--K);color:var(--v);transform:rotate(45deg);}
+.fa{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.fa.op{max-height:300px;}
+.fa p{color:rgba(244,236,214,.6);line-height:1.8;padding-bottom:1.3rem;}
 
-/* ── FAQ (oscura) ── */
-.faq{background:var(--ink);padding:6rem 4rem;}
-.faq-inner{max-width:680px;margin:0 auto;}
-.faq .sec-ey{color:var(--gold);display:block;margin-bottom:1rem;}
-.faq .sec-h2{color:var(--white);margin-bottom:.6rem;}
-.faq-sub{font-size:.88rem;color:rgba(255,255,255,.4);margin-bottom:3rem;}
-.faq-item{border-bottom:1px solid rgba(255,255,255,.08);}
-.faq-q{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:1.2rem 0;cursor:pointer;gap:1rem;
-}
-.faq-qt{font-size:.95rem;color:rgba(255,255,255,.85);line-height:1.4;}
-.faq-ico{font-size:.9rem;color:var(--gold);flex-shrink:0;transition:transform .25s;font-style:normal;}
-.faq-ico.open{transform:rotate(45deg);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
-.faq-a.open{max-height:300px;}
-.faq-a p{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.8;padding-bottom:1.2rem;}
-@media(max-width:768px){.faq{padding:4rem 1.2rem;}}
-
-/* ── Contacto (cream) ── */
-.contacto{background:var(--cream);padding:6rem 4rem;}
-.contacto-inner{max-width:860px;margin:0 auto;}
-.contacto h2{
-  font-family:'Fraunces',serif;
-  font-size:clamp(2rem,3.5vw,2.8rem);
-  font-weight:300;color:var(--ink);
-  text-align:center;margin-bottom:.5rem;
-}
-.contacto h2 em{color:var(--clay);font-style:italic;}
-.contacto-sub{text-align:center;font-size:.88rem;color:var(--mid);margin-bottom:3rem;}
-.contact-opciones{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(0,0,0,.08);margin-bottom:0;}
-.cop{
-  background:var(--white);padding:2rem 1.8rem;
-  text-align:center;cursor:pointer;
-  border-bottom:3px solid transparent;transition:all .2s;
-}
-.cop:hover,.cop.on{border-bottom-color:var(--clay);background:var(--cream);}
-.cop-ico{font-size:2rem;margin-bottom:.6rem;}
-.cop-t{font-size:.9rem;font-weight:500;color:var(--dark);margin-bottom:.3rem;}
-.cop-d{font-size:.78rem;color:var(--mid);line-height:1.5;}
-.cop-badge{
-  display:inline-block;margin-top:.6rem;
-  font-size:.62rem;padding:.2rem .7rem;
-  background:var(--cream);border:1px solid rgba(0,0,0,.1);color:var(--mid);
-}
-.panel{display:none;background:var(--white);padding:2.5rem 2rem;border:1px solid rgba(0,0,0,.08);}
+/* CONTACTO - BLANCO */
+.cont{background:var(--W);padding:6rem 2rem;}
+.coi{max-width:900px;margin:0 auto;}
+.coh{text-align:center;margin-bottom:3rem;}
+.cont h2{color:var(--v);margin-bottom:.5rem;}
+.cont h2 em{font-style:italic;color:var(--T);}
+.cosub{color:var(--txt2);}
+.copts{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);}
+.cop{background:var(--G);padding:2rem;text-align:center;cursor:pointer;border-bottom:3px solid transparent;transition:all .25s;}
+.cop:hover,.cop.on{background:var(--W);border-bottom-color:var(--K);}
+.copi{font-size:2rem;margin-bottom:.8rem;}
+.copt{font-size:1.0625rem;font-weight:500;color:var(--txt);margin-bottom:.3rem;}
+.copd{color:var(--txt2);}
+.copb{display:inline-block;font-size:.7rem;padding:.2rem .6rem;margin-top:.5rem;font-weight:500;}
+.bs{background:#FEF3C7;color:#92400E;}
+.bf{background:#D1FAE5;color:#065F46;}
+.panel{display:none;background:var(--G);padding:2.5rem;}
 .panel.on{display:block;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
-.form-g{margin-bottom:1rem;}
-.form-g label{font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--mid);display:block;margin-bottom:.4rem;}
-.form-g input,.form-g select{
-  width:100%;border:1px solid rgba(0,0,0,.12);
-  background:var(--white);color:var(--dark);
-  font-family:'DM Sans',sans-serif;font-size:.95rem;
-  padding:.65rem .9rem;transition:border-color .2s;
-}
-.form-g input:focus,.form-g select:focus{outline:none;border-color:var(--forest);}
-.form-g input::placeholder{color:rgba(0,0,0,.2);}
-.form-g select option{background:var(--white);}
-.btn-send{
-  width:100%;background:var(--clay);color:var(--white);border:none;
-  padding:.9rem;font-family:'DM Sans',sans-serif;font-size:.8rem;
-  letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:background .2s;
-  margin-top:.5rem;
-}
-.btn-send:hover{background:var(--clay2);}
-.form-nota{font-size:.65rem;color:rgba(0,0,0,.25);text-align:center;margin-top:.8rem;}
-.panel-wa{display:none;background:var(--white);padding:3rem 2rem;text-align:center;border:1px solid rgba(0,0,0,.08);}
-.panel-wa.on{display:block;}
-.wa-ico{font-size:3rem;margin-bottom:.8rem;}
-.wa-t{font-size:1.1rem;font-weight:500;color:var(--dark);margin-bottom:.4rem;}
-.wa-preview{
-  background:var(--cream);border-left:3px solid #25D366;
-  padding:.8rem 1rem;margin:1.2rem 0;font-size:.82rem;color:#444;
-  line-height:1.7;text-align:left;
-}
-.wa-preview::before{content:"Mensaje que se enviará:";display:block;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--mid);margin-bottom:.4rem;}
-.btn-wa{
-  display:inline-block;background:#25D366;color:var(--white);
-  padding:.9rem 2.5rem;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;
-  transition:background .2s;
-}
-.btn-wa:hover{background:#22c55e;}
-.wa-sub{font-size:.72rem;color:var(--mid);margin-top:.8rem;}
-.form-suc{display:none;text-align:center;padding:3rem 1rem;}
-.form-suc-ico{font-size:3rem;margin-bottom:.8rem;}
-.form-suc h4{font-family:'Fraunces',serif;font-size:1.5rem;font-style:italic;color:var(--ink);margin-bottom:.5rem;}
-.form-suc p{font-size:.88rem;color:var(--mid);line-height:1.7;}
-#f-err{font-size:.75rem;color:var(--clay);margin-top:.5rem;display:none;}
-@media(max-width:768px){
-  .contacto{padding:4rem 1.2rem;}
-  .contact-opciones{grid-template-columns:1fr;}
-  .form-row{grid-template-columns:1fr;}
-  .panel,.panel-wa{padding:1.5rem 1.2rem;}
-}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--txt2);margin-bottom:.4rem;font-weight:500;}
+.fg input,.fg select{width:100%;background:var(--W);border:1px solid var(--bd);color:var(--txt);font-family:'DM Sans',sans-serif;font-size:1.0625rem;padding:.7rem 1rem;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus{outline:none;border-color:var(--v4);}
+.fg input::placeholder{color:var(--txt3);}
+.fg select option{background:var(--W);}
+.benv{width:100%;background:var(--T);color:#fff;border:none;padding:.95rem;font-family:'DM Sans',sans-serif;font-size:.875rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;font-weight:500;transition:background .2s;margin-top:.5rem;}
+.benv:hover{background:var(--Tl);}
+.fnota{font-size:.8rem;color:var(--txt3);text-align:center;margin-top:.8rem;}
+.ferr{font-size:.875rem;color:var(--T);margin-top:.5rem;display:none;}
+.fsuc{display:none;text-align:center;padding:3rem 2rem;}
+.fsuc-i{font-size:3rem;margin-bottom:1rem;}
+.fsuc h3{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:300;color:var(--v);margin-bottom:.5rem;}
+.fsuc p{color:var(--txt2);line-height:1.7;}
+.pwa{display:none;background:var(--G);padding:3rem 2rem;text-align:center;}
+.pwa.on{display:block;}
+.wai{font-size:3rem;margin-bottom:1rem;}
+.wat{font-size:1.3rem;font-weight:500;color:var(--txt);margin-bottom:.5rem;}
+.wam{background:var(--W);border:1px solid var(--bd);border-left:3px solid #25D366;padding:1rem 1.2rem;color:var(--txt2);line-height:1.7;text-align:left;margin:1.5rem 0;font-style:italic;}
+.wam::before{content:"Mensaje pre-escrito";display:block;font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--txt3);margin-bottom:.4rem;font-style:normal;font-weight:500;}
+.bwab{display:inline-flex;align-items:center;gap:.6rem;background:#25D366;color:#fff;padding:.95rem 2.5rem;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background .2s;}
+.bwab:hover{background:#22c55e;}
+.was{font-size:.875rem;color:var(--txt3);margin-top:.8rem;}
+@media(max-width:600px){.copts{grid-template-columns:1fr;}.fr{grid-template-columns:1fr;}.panel,.pwa{padding:1.5rem;}}
 
-/* ── Footer ── */
-footer{
-  background:var(--ink);padding:2.5rem 4rem;
-  display:flex;justify-content:space-between;align-items:center;
-  flex-wrap:wrap;gap:1rem;border-top:1px solid rgba(255,255,255,.06);
-}
-.foot-brand{font-family:'Fraunces',serif;font-size:.95rem;color:var(--white);}
-.foot-brand span{color:var(--gold);}
-.foot-txt{font-size:.65rem;color:rgba(255,255,255,.2);text-align:center;line-height:1.6;}
-.foot-links{display:flex;gap:1.5rem;}
-.foot-links a{font-size:.65rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);transition:color .2s;}
-.foot-links a:hover{color:var(--white);}
-@media(max-width:768px){footer{flex-direction:column;text-align:center;padding:2rem 1.2rem;}}
+/* FOOTER */
+footer{background:var(--v2);padding:2.5rem 2rem;border-top:1px solid rgba(244,236,214,.05);}
+.fi2{max-width:1180px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+.fbn{font-family:'Fraunces',serif;font-size:1rem;color:var(--A);}
+.fbn span{color:var(--K);}
+.ftxt{font-size:.78rem;color:rgba(244,236,214,.28);text-align:center;line-height:1.6;}
+.flinks{display:flex;gap:1.5rem;}
+.flinks a{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,236,214,.28);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--A);}
+@media(max-width:600px){.fi2{flex-direction:column;text-align:center;}}
 
-/* ── Animaciones de entrada ── */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
+.flujo{background:var(--v);padding:6rem 2rem;}
+.flujo-i{max-width:1180px;margin:0 auto;}
+.flujo h2{color:#fff;margin-bottom:.5rem;}
+.flujo h2 em{font-style:italic;color:var(--K);}
+.flujo-sub{color:rgba(244,236,214,.55);margin-bottom:3.5rem;}
+.flujo-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);}
+.fstep{background:var(--v2);padding:2rem 1.8rem;position:relative;}
+.fstep-n{font-family:'Fraunces',serif;font-size:3.5rem;font-weight:300;color:rgba(233,168,36,.12);line-height:1;margin-bottom:.8rem;}
+.fstep-ico{font-size:1.8rem;margin-bottom:.8rem;display:block;}
+.fstep h3{color:#fff;font-size:1.05rem;margin-bottom:.5rem;}
+.fstep p{color:rgba(244,236,214,.58);line-height:1.7;}
+.fstep-tag{display:inline-block;font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .6rem;margin-top:.8rem;font-weight:500;}
+.tag-live{background:rgba(45,106,79,.2);color:#3D8A65;}
+.tag-soon{background:rgba(233,168,36,.12);color:var(--K);}
+.flujo-nota{margin-top:2rem;text-align:center;font-size:.875rem;color:rgba(244,236,214,.3);}
+.flujo-nota strong{color:rgba(244,236,214,.5);}
+@media(max-width:900px){.flujo-steps{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.flujo-steps{grid-template-columns:1fr;}}
+
 </style>
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
 <nav id="nav">
-  <div class="nav-brand">
-    <div class="nav-name">Ejekat <span>Nemi</span></div>
-    <div class="nav-tag">Plataforma de Bienestar Corporativo</div>
+  <div class="ni">
+    <div>
+      <div class="logo-n">Ejekat <span>Nemi</span></div>
+      <div class="logo-s">Plataforma de Bienestar Corporativo</div>
+    </div>
+    <div class="nl">
+      <a href="#prob">El problema</a>
+      <a href="#sol">Metodolog&iacute;a</a>
+      <a href="#prec">Planes</a>
+      <a href="#faq">Preguntas</a>
+      <a href="#cont" class="nc">Escribenos &rarr;</a>
+    </div>
   </div>
-  <ul class="nav-links">
-    <li><a href="#solucion">Cómo funciona</a></li>
-    <li><a href="#planes">Planes</a></li>
-    <li><a href="#faq">Preguntas</a></li>
-    <li><a href="#contacto" class="nav-cta">Escríbenos →</a></li>
-  </ul>
 </nav>
 
-<!-- ══ 1. HERO (oscuro) ══ -->
+<!-- 1. HERO - OSCURO -->
 <section class="hero" id="inicio">
-  <div class="hero-left">
-    <div class="hero-eyelet">✦ El Salvador · Bienestar corporativo</div>
-    <h1>Tu equipo necesita<br>moverse.<br><em>Tu empresa necesita<br>resultados.</em></h1>
-    <p class="hero-sub">Conectamos empresas con instructores de movimiento, bienestar y aventura en El Salvador. Tus empleados reservan solos. RR.HH. no coordina nada.</p>
-    <div class="hero-pill">
-      <strong>En una línea:</strong> Beneficio laboral gestionado — baile, yoga, senderismo, tours — desde $30 por colaborador al mes. Sin contrato.
+  <div class="hl">
+    <div class="he"><div class="ln"></div><div class="ey" style="color:var(--K);">El Salvador &middot; Bienestar corporativo</div></div>
+    <h1>Somos el asistente de bienestar<br>de tu equipo.<br><em>F&aacute;cil de encontrar. F&aacute;cil de reservar.</em></h1>
+    <p class="hdesc">Actividades para despejar la mente, mover el cuerpo y reconectar con el trabajo &mdash; para cada persona de tu organizaci&oacute;n, desde 2 colaboradores. Sin carga administrativa para RR.HH.</p>
+    <div class="hctas">
+      <button class="bp" onclick="abrirPanel('form');document.getElementById('cont').scrollIntoView({behavior:'smooth'});">Quiero saber c&oacute;mo funciona &rarr;</button>
+      <button class="bw" onclick="abrirPanel('wa');document.getElementById('cont').scrollIntoView({behavior:'smooth'});">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.122.554 4.118 1.528 5.855L0 24l6.332-1.51A11.96 11.96 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.006-1.376l-.36-.213-3.731.89.94-3.617-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+        WhatsApp directo
+      </button>
     </div>
-    <a href="#contacto" class="hero-cta" onclick="abrirPanel('form')">Quiero saber cómo funciona →</a>
-    <div class="hero-checks">
-      <span class="hcheck">Sin contrato anual</span>
-      <span class="hcheck">RR.HH. no gestiona nada</span>
-      <span class="hcheck">Desde 1 colaborador</span>
-      <span class="hcheck">El Salvador</span>
+    <div class="htrust">
+      <span class="ht">Sin contrato anual</span>
+      <span class="ht">Desde 1 colaborador</span>
+      <span class="ht">RR.HH. no coordina nada</span>
     </div>
   </div>
-  <div class="hero-right">
-    <img class="hero-img"
-      src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=900&q=80&fit=crop"
-      alt="Personas en actividad de bienestar"
-      onerror="this.parentElement.style.background='#1E3020'">
-    <div class="hero-overlay"></div>
-    <div class="hero-stat">
-      <div class="stat-n">25<span style="font-size:1.5rem;color:var(--clay);">%</span></div>
-      <div class="stat-l">Menos rotación con<br>bienestar estructurado<br><span style="color:rgba(255,255,255,.25);">OMS · 2023</span></div>
+  <div class="hr">
+    <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=900&q=80&fit=crop" alt="Equipo en actividad de bienestar" loading="eager" onerror="this.parentElement.style.background='var(--v3)';this.style.display='none';">
+    <div class="hbadge">
+      <div class="hbn">25%</div>
+      <div class="hbt">Menos rotaci&oacute;n con bienestar estructurado &middot; OMS 2023</div>
     </div>
   </div>
 </section>
 
-<!-- ══ 2. CONFIANZA (blanca) ══ -->
-<section class="confianza reveal" id="confianza">
-  <p class="conf-label">Respaldado por datos — no por intuición</p>
-  <div class="conf-stats">
-    <div class="conf-stat">
-      <div class="conf-n">6–9<span>x</span></div>
-      <div class="conf-txt">meses de salario cuesta reemplazar a un colaborador</div>
-      <div class="conf-src">SHRM · Society for Human Resource Management</div>
+<!-- 2. CONFIANZA - BLANCO -->
+<section class="conf">
+  <div class="cfi">
+    <div class="sr">
+      <div class="sb"><div class="sn">6&ndash;<em>9</em>x</div><p class="sl">Meses de salario cuesta reemplazar a un colaborador</p><div class="ss">SHRM &middot; Society for Human Resource Management</div></div>
+      <div class="sb"><div class="sn"><em>25</em>%</div><p class="sl">Menos rotaci&oacute;n en empresas con bienestar estructurado</p><div class="ss">OMS &middot; 2023</div></div>
+      <div class="sb"><div class="sn"><em>22</em>%</div><p class="sl">Rotaci&oacute;n anual en sector servicios de El Salvador</p><div class="ss">INSAFORP &middot; 2023</div></div>
     </div>
-    <div class="conf-stat">
-      <div class="conf-n"><span style="font-size:2rem;">$</span>15</div>
-      <div class="conf-txt">ahorro por sesión vs precio de mercado con plan corporativo</div>
-      <div class="conf-src">Precio público $45 · precio empresa $30</div>
-    </div>
-    <div class="conf-stat">
-      <div class="conf-n">40<span>%</span></div>
-      <div class="conf-txt">menos ausentismo con programas de activación física</div>
-      <div class="conf-src">Harvard Business Review · 2022</div>
-    </div>
-  </div>
-  <div class="conf-logos">
-    <span style="font-size:.65rem;color:rgba(0,0,0,.2);letter-spacing:3px;">EMPRESAS QUE YA LO USAN</span>
-    <span class="logo-placeholder">EMPRESA A</span>
-    <span class="logo-placeholder">EMPRESA B</span>
-    <span class="logo-placeholder">EMPRESA C</span>
-    <span class="logo-placeholder">EMPRESA D</span>
   </div>
 </section>
 
-<!-- ══ 3. PROBLEMA (oscura) ══ -->
-<section class="problema reveal" id="problema">
-  <div class="sec-head">
-    <span class="sec-ey" style="color:var(--gold);">El problema</span>
-    <h2 class="sec-h2" style="color:var(--white);">Tu empresa puede estar<br><em style="color:var(--clay2);font-style:italic;">enferma en silencio.</em></h2>
-    <p class="sec-sub" style="color:rgba(255,255,255,.5);">El burnout, los silos y la rotación no aparecen en el balance. Aparecen en la reunión de los lunes.</p>
-  </div>
-  <div class="prob-grid">
-    <div class="prob-card">
-      <div class="prob-ico" style="background:rgba(184,74,47,.15);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4623D" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<!-- 3. PROBLEMA - OSCURO -->
+<section class="prob" id="prob">
+  <div class="pi">
+    <div class="seo"><div class="dot"></div><div class="ey" style="color:var(--K);">El problema</div></div>
+    <h2>Tu empresa puede estar <em>enferma</em><br>y los reportes no te lo dicen.</h2>
+    <div class="pc">
+      <div class="pcard">
+        <div class="pico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Silos que frenan tu operaci&oacute;n</h3>
+        <p>Cuando los equipos no se conocen fuera del organigrama, la colaboraci&oacute;n se vuelve lenta y los conflictos se normalizan. No es la estructura &mdash; es la falta de contacto humano real.</p>
       </div>
-      <div class="prob-n">01</div>
-      <div class="prob-tit">Silos que frenan tu operación</div>
-      <div class="prob-txt">Cuando los equipos no se conocen fuera del organigrama, la colaboración se vuelve lenta y los conflictos se normalizan.</div>
-    </div>
-    <div class="prob-card">
-      <div class="prob-ico" style="background:rgba(233,168,36,.12);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#E9A824" stroke-width="1.5"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M12 6v6l4 2"/></svg>
+      <div class="pcard">
+        <div class="pico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Fatiga cr&oacute;nica invisible</h3>
+        <p>El burnout llega en forma de personas presentes pero ausentes y resultados que bajan sin explicaci&oacute;n. Cuando el sistema nervioso est&aacute; agotado, ninguna metodolog&iacute;a lo compensa.</p>
       </div>
-      <div class="prob-n">02</div>
-      <div class="prob-tit">Fatiga crónica invisible</div>
-      <div class="prob-txt">Personas presentes pero ausentes. Resultados que bajan sin explicación. El sistema nervioso agotado no se recupera solo.</div>
-    </div>
-    <div class="prob-card">
-      <div class="prob-ico" style="background:rgba(45,106,79,.15);">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3D8A65" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-      </div>
-      <div class="prob-n">03</div>
-      <div class="prob-tit">El costo invisible de reemplazar</div>
-      <div class="prob-txt">Entre 6 y 9 meses de salario por cada persona que sale. Sin un sistema de retención, el ciclo no para.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 4. SOLUCIÓN / PILARES (cream) ══ -->
-<section class="solucion reveal" id="solucion">
-  <div class="sol-intro">
-    <div class="sol-left">
-      <span class="sec-ey" style="color:var(--clay);">La solución</span>
-      <h2 class="sec-h2" style="color:var(--ink);">No vendemos actividades.<br><em style="color:var(--clay);font-style:italic;">Resolvemos los problemas<br>que esas actividades atacan.</em></h2>
-      <p style="color:var(--mid);">Cuatro pilares de desarrollo humano, cada uno diseñado para impactar un indicador específico de salud organizacional.</p>
-    </div>
-    <div class="sol-right-img">
-      <img src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=700&q=80&fit=crop"
-           alt="Naturaleza El Salvador"
-           onerror="this.parentElement.style.background='#2D6A4F';">
-    </div>
-  </div>
-
-  <div class="pilares-tabs">
-    <button class="ptab on" onclick="switchPilar('pakini')">
-      <span class="ptab-ico">🔥</span>
-      <span class="ptab-n">Pakini</span>
-      <span class="ptab-s">Activación</span>
-    </button>
-    <button class="ptab" onclick="switchPilar('musewi')">
-      <span class="ptab-ico">🌊</span>
-      <span class="ptab-n">Musewi</span>
-      <span class="ptab-s">Regulación</span>
-    </button>
-    <button class="ptab" onclick="switchPilar('kuxtal')">
-      <span class="ptab-ico">🌿</span>
-      <span class="ptab-n">Kuxtal</span>
-      <span class="ptab-s">Prevención</span>
-    </button>
-    <button class="ptab" onclick="switchPilar('nejnemi')">
-      <span class="ptab-ico">🏔️</span>
-      <span class="ptab-n">Nejnemi</span>
-      <span class="ptab-s">Cohesión</span>
-    </button>
-  </div>
-
-  <div class="pilar-panel on" id="panel-pakini">
-    <div>
-      <div class="pp-accent" style="background:var(--clay);"></div>
-      <div class="pp-nahuat">Pakini</div>
-      <div class="pp-sub" style="color:var(--clay);">Activación física del equipo</div>
-      <div class="pp-desc">El sedentarismo en entornos de oficina reduce la concentración y deteriora el estado de ánimo. Las experiencias de activación de Ejekat Nemi rompen el ciclo del cuerpo inmóvil — más energía, mayor atención, equipos que llegan a trabajar con recursos reales.</div>
-      <div class="pp-imp"><strong>Impacto medible:</strong> Reducción de ausentismo por fatiga · Mejora en concentración y rendimiento</div>
-      <a class="pp-wa" href="https://wa.me/19298304133?text=Quiero%20saber%20sobre%20Pakini%20para%20mi%20empresa." target="_blank">Consultar sobre Pakini →</a>
-    </div>
-    <div class="pp-kpis">
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--clay);">40%</div><div class="pp-kpi-t">Reducción en días de ausentismo con programas de activación física — Harvard Business Review, 2022</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--clay);">2h</div><div class="pp-kpi-t">De productividad recuperada por colaborador activo cada semana — Journal of Occupational Health</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--clay);">23%</div><div class="pp-kpi-t">Mayor rendimiento cognitivo en equipos con movimiento regular — Mayo Clinic, 2023</div></div>
-    </div>
-  </div>
-
-  <div class="pilar-panel" id="panel-musewi">
-    <div>
-      <div class="pp-accent" style="background:var(--forest);"></div>
-      <div class="pp-nahuat">Musewi</div>
-      <div class="pp-sub" style="color:var(--forest);">Regulación del estrés</div>
-      <div class="pp-desc">El estrés sostenido no es un problema de actitud — es fisiológico. Cuando el sistema nervioso opera en alerta permanente, la creatividad y la toma de decisiones colapsan. Las experiencias de regulación reducen el cortisol y restauran la capacidad de responder.</div>
-      <div class="pp-imp"><strong>Impacto medible:</strong> Reducción de incidentes por estrés · Mejora del clima laboral</div>
-      <a class="pp-wa" href="https://wa.me/19298304133?text=Quiero%20saber%20sobre%20Musewi%20para%20mi%20empresa." target="_blank">Consultar sobre Musewi →</a>
-    </div>
-    <div class="pp-kpis">
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--forest);">31%</div><div class="pp-kpi-t">Reducción en síntomas de burnout con técnicas de regulación del sistema nervioso aplicadas regularmente</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--forest);">4x</div><div class="pp-kpi-t">Mayor probabilidad de retener talento en empresas con iniciativas de salud mental — Deloitte, 2023</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--forest);">$1T</div><div class="pp-kpi-t">Pérdida anual global en productividad por depresión y ansiedad — Organización Mundial de la Salud</div></div>
-    </div>
-  </div>
-
-  <div class="pilar-panel" id="panel-kuxtal">
-    <div>
-      <div class="pp-accent" style="background:var(--sage);"></div>
-      <div class="pp-nahuat">Kuxtal</div>
-      <div class="pp-sub" style="color:var(--sage);">Prevención y salud corporal</div>
-      <div class="pp-desc">El ausentismo médico relacionado con tensión muscular y fatiga física tiene solución preventiva — más barata que el tratamiento. Las experiencias de Kuxtal intervienen antes de que el problema llegue a la clínica.</div>
-      <div class="pp-imp"><strong>Impacto medible:</strong> Reducción de días de baja médica · Menor costo en salud ocupacional</div>
-      <a class="pp-wa" href="https://wa.me/19298304133?text=Quiero%20saber%20sobre%20Kuxtal%20para%20mi%20empresa." target="_blank">Consultar sobre Kuxtal →</a>
-    </div>
-    <div class="pp-kpis">
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--sage);">$3</div><div class="pp-kpi-t">Retorno por cada $1 invertido en prevención de salud ocupacional — OMS</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--sage);">62%</div><div class="pp-kpi-t">De los problemas musculoesqueléticos en oficina son prevenibles con movilidad estructurada</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:var(--sage);">18%</div><div class="pp-kpi-t">Reducción promedio en días de ausentismo médico con programas preventivos activos</div></div>
-    </div>
-  </div>
-
-  <div class="pilar-panel" id="panel-nejnemi">
-    <div>
-      <div class="pp-accent" style="background:var(--gold);"></div>
-      <div class="pp-nahuat">Nejnemi</div>
-      <div class="pp-sub" style="color:#B88A00;">Cohesión de equipos</div>
-      <div class="pp-desc">Las barreras interdepartamentales no se derriban en talleres genéricos. Se derriban cuando personas de distintas áreas comparten una experiencia real fuera del entorno corporativo — volcanes, ríos, cultura salvadoreña.</div>
-      <div class="pp-imp"><strong>Impacto medible:</strong> Reducción de silos · Mejora en colaboración entre áreas</div>
-      <a class="pp-wa" href="https://wa.me/19298304133?text=Quiero%20saber%20sobre%20Nejnemi%20para%20mi%20empresa." target="_blank">Consultar sobre Nejnemi →</a>
-    </div>
-    <div class="pp-kpis">
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:#B88A00;">5x</div><div class="pp-kpi-t">Mayor probabilidad de quedarse si tiene amigos en el trabajo — Gallup State of Workplace 2023</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:#B88A00;">37%</div><div class="pp-kpi-t">Reducción en ausentismo en equipos con alto sentido de pertenencia</div></div>
-      <div class="pp-kpi"><div class="pp-kpi-n" style="color:#B88A00;">21%</div><div class="pp-kpi-t">Mayor rentabilidad en empresas con equipos altamente comprometidos — Gallup Meta-Análisis</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ 5. TESTIMONIOS (gris) ══ -->
-<section class="testimonios reveal" id="testimonios">
-  <div class="test-head">
-    <span class="sec-ey" style="color:var(--clay);display:block;margin-bottom:.8rem;">Lo que dicen</span>
-    <h2 class="sec-h2" style="color:var(--ink);">Personas reales. <em style="color:var(--clay);font-style:italic;">Resultados concretos.</em></h2>
-  </div>
-  <div class="carr-outer">
-    <div class="carr-track" id="carr-track">
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"Tenía años sin hacer ejercicio. Empecé con las sesiones de Salsa porque estaban en el horario de la empresa. Ahora voy dos veces por semana y ya lo extraño cuando no voy."</p><div class="test-autor"><div class="test-av">KM</div><div><div class="test-n">Karen M.</div><div class="test-c">Asistente administrativa · San Salvador</div></div></div></div>
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"La sesión es una forma de soltar lo del día, no de agregar más presión. Mauricio entiende que venimos cansados del trabajo."</p><div class="test-autor"><div class="test-av">RA</div><div><div class="test-n">Roberto A.</div><div class="test-c">Analista financiero · Santa Ana</div></div></div></div>
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"El tour al volcán fue lo mejor que hicimos como equipo en años. No fue una dinámica forzada — fue una experiencia real donde todos llegamos al cráter juntos."</p><div class="test-autor"><div class="test-av">PL</div><div><div class="test-n">Paola L.</div><div class="test-c">Gerente de proyectos · San Salvador</div></div></div></div>
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"Dos meses de sesiones y ya duermo mejor, llego menos tenso y tengo más energía después de las 3pm. No esperaba eso."</p><div class="test-autor"><div class="test-av">DS</div><div><div class="test-n">Diego S.</div><div class="test-c">Desarrollador · San Salvador</div></div></div></div>
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"Me sorprendió lo fácil que fue reservar. Entré, elegí mi horario, llegué. Sin formularios ni esperar confirmación de nadie."</p><div class="test-autor"><div class="test-av">MA</div><div><div class="test-n">María A.</div><div class="test-c">Coordinadora de operaciones · Soyapango</div></div></div></div>
-      <div class="test-card"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><p class="test-q">"Ejekat Nemi hace accesible el bienestar corporativo para empresas como la mía. El precio no es un obstáculo y la calidad del instructor es real."</p><div class="test-autor"><div class="test-av">JC</div><div><div class="test-n">Jorge C.</div><div class="test-c">Dueño · 18 colaboradores</div></div></div></div>
-    </div>
-  </div>
-  <div class="carr-controls" id="carr-dots"></div>
-  <div class="carr-arrows">
-    <button class="carr-arr" onclick="moverCarr(-1)">← Anterior</button>
-    <button class="carr-arr" onclick="moverCarr(1)">Siguiente →</button>
-  </div>
-</section>
-
-<!-- ══ 6. PLANES (blanca) ══ -->
-<section class="planes reveal" id="planes">
-  <div class="planes-head">
-    <span class="sec-ey" style="color:var(--clay);display:block;margin-bottom:.8rem;">Planes corporativos</span>
-    <h2 class="sec-h2" style="color:var(--ink);">Precio claro. <em style="color:var(--clay);font-style:italic;">Sin sorpresas.</em></h2>
-    <p>Tu empresa paga por colaborador activo. El empleado accede sin ver ningún costo — es su beneficio, no su gasto.</p>
-  </div>
-  <div class="planes-grid">
-    <div class="plan">
-      <div class="plan-tipo">Plan individual</div>
-      <div class="plan-precio"><sup>$</sup>30<sub>/colaborador · mes</sub></div>
-      <div class="plan-desc">1 sesión o experiencia al mes por colaborador.</div>
-      <ul class="plan-feats">
-        <li class="plan-feat">Todas las disciplinas disponibles</li>
-        <li class="plan-feat">Reserva directa sin gestión de RR.HH.</li>
-        <li class="plan-feat">Reporte mensual de participación</li>
-        <li class="plan-feat">Sin contrato anual</li>
-      </ul>
-      <a href="#contacto" class="plan-cta" onclick="abrirPanel('wa')">Consultar por WhatsApp</a>
-    </div>
-    <div class="plan feature">
-      <div class="plan-badge">Más elegido</div>
-      <div class="plan-tipo">Plan 2x1</div>
-      <div class="plan-precio"><sup>$</sup>60<sub>/colaborador · mes</sub></div>
-      <div class="plan-desc">2 sesiones o experiencias al mes. Puede combinar disciplinas.</div>
-      <ul class="plan-feats">
-        <li class="plan-feat">Baile + tour, yoga + senderismo</li>
-        <li class="plan-feat">Reserva directa sin gestión de RR.HH.</li>
-        <li class="plan-feat">Reporte mensual detallado por área</li>
-        <li class="plan-feat">Sin contrato anual</li>
-        <li class="plan-feat">Acceso preferencial a nuevas experiencias</li>
-      </ul>
-      <a href="#contacto" class="plan-cta" onclick="abrirPanel('wa')">Consultar por WhatsApp</a>
-    </div>
-  </div>
-  <div class="planes-vs">
-    <div><div class="vs-l">Precio público</div><div class="vs-v tach">$45/sesión</div></div>
-    <div><div class="vs-l">Con plan corporativo</div><div class="vs-v dest">$30/sesión</div></div>
-    <div><div class="vs-l">Ahorro por colaborador</div><div class="vs-v green">$15/sesión</div></div>
-  </div>
-  <p style="text-align:center;font-size:.78rem;color:var(--mid);margin-top:1.2rem;">Sin mínimo de colaboradores · Desde 1 persona · Factura disponible</p>
-</section>
-
-<!-- ══ 7. FAQ (oscura) ══ -->
-<section class="faq reveal" id="faq">
-  <div class="faq-inner">
-    <span class="sec-ey">Preguntas frecuentes</span>
-    <h2 class="sec-h2" style="color:var(--white);font-family:'Fraunces',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;">Lo que preguntan<br><em style="color:var(--clay2);font-style:italic;">antes de decidir.</em></h2>
-    <p class="faq-sub">Si tienes una pregunta que no está aquí, escríbenos por WhatsApp. Respondemos en menos de 2 horas.</p>
-    <div id="faq-lista"></div>
-  </div>
-</section>
-
-<!-- ══ 8. CONTACTO (cream) ══ -->
-<section class="contacto reveal" id="contacto">
-  <div class="contacto-inner">
-    <span style="display:block;text-align:center;font-size:.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--clay);margin-bottom:1rem;">Hablemos</span>
-    <h2>¿Cómo quieres <em>conversar</em><br>con nosotros?</h2>
-    <p class="contacto-sub">Elige la opción más cómoda. Respondemos en menos de 2 horas hábiles.</p>
-    <div class="contact-opciones">
-      <div class="cop" id="cop-form" onclick="abrirPanel('form')">
-        <div class="cop-ico">📋</div>
-        <div class="cop-t">Cuéntanos sobre tu empresa</div>
-        <div class="cop-d">Llena el formulario y te contactamos para explicarte cómo funciona.</div>
-        <span class="cop-badge">Respuesta en 24h hábiles</span>
-      </div>
-      <div class="cop" id="cop-wa" onclick="abrirPanel('wa')">
-        <div class="cop-ico">💬</div>
-        <div class="cop-t">WhatsApp directo</div>
-        <div class="cop-d">Conversación directa. Sin formularios. La opción más rápida.</div>
-        <span class="cop-badge" style="background:#E8F9EE;border-color:#A7DFC0;color:#166534;">Respuesta en menos de 2h</span>
+      <div class="pcard">
+        <div class="pico"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3>El costo invisible de reemplazar</h3>
+        <p>Reclutar, contratar y esperar que un nuevo colaborador alcance el rendimiento del anterior toma entre 6 y 9 meses de su salario. Sin un sistema de retenci&oacute;n, es dinero que se pierde en silencio.</p>
       </div>
     </div>
-    <div class="panel" id="panel-form">
-      <div id="form-inner">
-        <div class="form-row">
-          <div class="form-g"><label>Nombre completo</label><input type="text" id="f-nombre" placeholder="Tu nombre"></div>
-          <div class="form-g"><label>Correo corporativo</label><input type="email" id="f-email" placeholder="tu@empresa.com"></div>
+  </div>
+</section>
+
+<!-- 4. SOLUCIÓN - GRIS CLARO -->
+<section class="sol" id="sol">
+  <div class="si">
+    <div class="sh">
+      <h2>No vendemos actividades.<br><em>Resolvemos los problemas</em><br>que esas actividades atacan.</h2>
+      <p class="sintro">Cuatro pilares de desarrollo humano, cada uno dise&ntilde;ado para impactar un indicador espec&iacute;fico de salud organizacional. El empleado elige. RR.HH. monitorea. La empresa retiene.</p>
+    </div>
+    <div class="pils">
+      <div class="pil">
+        <div class="piico" style="background:#FEE8E0;">&#x1F525;</div>
+        <div class="pitag" style="color:#B84A2F;">Pakini &middot; Activaci&oacute;n</div>
+        <h3>Movimiento que reactiva</h3>
+        <p>Sesiones de baile y movimiento grupal que rompen el sedentarismo y suben la energ&iacute;a del equipo.</p>
+        <div class="pires"><strong>Impacto:</strong> -40% ausentismo por fatiga</div>
+      </div>
+      <div class="pil">
+        <div class="piico" style="background:#E0F2FE;">&#x1F30A;</div>
+        <div class="pitag" style="color:#2D6A4F;">Musewi &middot; Regulaci&oacute;n</div>
+        <h3>Calma que recupera</h3>
+        <p>Yoga, meditaci&oacute;n y respiraci&oacute;n que regulan el sistema nervioso y reducen el cortisol acumulado.</p>
+        <div class="pires"><strong>Impacto:</strong> -31% s&iacute;ntomas de burnout</div>
+      </div>
+      <div class="pil">
+        <div class="piico" style="background:#E8F5E9;">&#x1F33F;</div>
+        <div class="pitag" style="color:#2D6A4F;">Kuxtal &middot; Prevenci&oacute;n</div>
+        <h3>Salud que previene</h3>
+        <p>Movilidad, terapias y mantenimiento corporal antes de que el problema llegue a la cl&iacute;nica.</p>
+        <div class="pires"><strong>Impacto:</strong> $3 retorno por $1 invertido</div>
+      </div>
+      <div class="pil">
+        <div class="piico" style="background:#FEF9E7;">&#x1F3D4;&#xFE0F;</div>
+        <div class="pitag" style="color:#B88A00;">Nejnemi &middot; Cohesi&oacute;n</div>
+        <h3>Aventura que une</h3>
+        <p>Tours y deportes extremos en El Salvador que crean v&iacute;nculos reales entre &aacute;reas.</p>
+        <div class="pires"><strong>Impacto:</strong> 5x retenci&oacute;n con amigos en el trabajo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- CÓMO FUNCIONA PARA EL COLABORADOR -->
+<section class="flujo" id="flujo">
+  <div class="flujo-i">
+    <div class="seo"><div class="dot"></div><div class="ey" style="color:var(--K);">C&oacute;mo funciona</div></div>
+    <h2>Simple para el colaborador.<br><em>Invisible para RR.HH.</em></h2>
+    <p class="flujo-sub">Desde que la empresa activa el plan, el colaborador tiene control total de su bienestar.</p>
+    <div class="flujo-steps">
+      <div class="fstep">
+        <div class="fstep-n">01</div>
+        <span class="fstep-ico">&#x1F50D;</span>
+        <h3>Explora las actividades</h3>
+        <p>El colaborador entra a la plataforma, ve todas las actividades disponibles por categor&iacute;a, horario y disciplina &mdash; en menos de 2 minutos.</p>
+        <span class="fstep-tag tag-live">Disponible hoy</span>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">02</div>
+        <span class="fstep-ico">&#x1F4C5;</span>
+        <h3>Reserva en 2 clics</h3>
+        <p>Elige su actividad, confirma su lugar y coordina directamente con el instructor por WhatsApp. Sin formularios complicados, sin aprobaciones.</p>
+        <span class="fstep-tag tag-live">Disponible hoy</span>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">03</div>
+        <span class="fstep-ico">&#x1F514;</span>
+        <h3>Recibe recordatorios</h3>
+        <p>El sistema notifica al colaborador antes de su actividad por WhatsApp &mdash; para que no olvide su tiempo de bienestar en medio de la semana laboral.</p>
+        <span class="fstep-tag tag-soon">Pr&oacute;ximamente</span>
+      </div>
+      <div class="fstep">
+        <div class="fstep-n">04</div>
+        <span class="fstep-ico">&#x1F31F;</span>
+        <h3>Descubre nuevas actividades</h3>
+        <p>Bas&aacute;ndose en lo que ha hecho antes, el sistema recomienda pr&oacute;ximas experiencias que se adaptan a sus intereses y disponibilidad.</p>
+        <span class="fstep-tag tag-soon">Pr&oacute;ximamente</span>
+      </div>
+    </div>
+    <p class="flujo-nota"><strong>Para la empresa:</strong> RR.HH. activa el plan, ve los reportes de participaci&oacute;n y no gestiona nada m&aacute;s. El sistema trabaja solo.</p>
+  </div>
+</section>
+
+<!-- 5. TESTIMONIOS - BLANCO -->
+<section class="test" id="test">
+  <div class="ti">
+    <div class="th">
+      <h2>Lo que dicen<br><em>quienes ya se mueven.</em></h2>
+      <div class="cnav">
+        <button class="cnb" onclick="moverCarr(-1)">&#x2190;</button>
+        <button class="cnb" onclick="moverCarr(1)">&#x2192;</button>
+      </div>
+    </div>
+    <div class="cw"><div class="ct" id="ct">
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"Ten&iacute;a a&ntilde;os sin hacer ejercicio. Empec&eacute; con las sesiones porque estaban en el horario de la empresa y no ten&iacute;a que ir lejos. Ahora voy dos veces por semana."</blockquote><div class="ta"><div class="tav">KM</div><div><div class="tnm">Karen M.</div><div class="tcg">Asistente administrativa &middot; San Salvador</div></div></div></div>
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"Lo que m&aacute;s me gust&oacute; fue que no era una actividad donde te juzgan. La sesi&oacute;n es una forma de soltar lo del d&iacute;a, no de agregar m&aacute;s presi&oacute;n."</blockquote><div class="ta"><div class="tav">RA</div><div><div class="tnm">Roberto A.</div><div class="tcg">Analista financiero &middot; Santa Ana</div></div></div></div>
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"El tour al volc&aacute;n fue lo mejor que hicimos como equipo en a&ntilde;os. No fue una din&aacute;mica forzada &mdash; fue una experiencia real donde todos llegamos juntos."</blockquote><div class="ta"><div class="tav">PL</div><div><div class="tnm">Paola L.</div><div class="tcg">Gerente de proyectos &middot; San Salvador</div></div></div></div>
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"Dos meses de sesiones y ya duermo mejor, llego al trabajo menos tenso y tengo m&aacute;s energ&iacute;a. No esperaba eso."</blockquote><div class="ta"><div class="tav">DS</div><div><div class="tnm">Diego S.</div><div class="tcg">Desarrollador &middot; San Salvador</div></div></div></div>
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"Me sorprendi&oacute; lo f&aacute;cil que fue reservar. Sin formularios complicados. Solo funciona."</blockquote><div class="ta"><div class="tav">MA</div><div><div class="tnm">Mar&iacute;a A.</div><div class="tcg">Coordinadora &middot; Soyapango</div></div></div></div>
+      <div class="tc"><div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div><blockquote>"Antes pensaba que el bienestar corporativo era un lujo de empresas grandes. Ejekat Nemi lo hace accesible."</blockquote><div class="ta"><div class="tav">JC</div><div><div class="tnm">Jorge C.</div><div class="tcg">Due&ntilde;o de empresa &middot; 18 colaboradores</div></div></div></div>
+    </div></div>
+    <div class="cdots" id="cdots"></div>
+  </div>
+</section>
+
+<!-- 6. DIFERENCIADORES - GRIS OSCURO -->
+<section class="dif" id="dif">
+  <div class="di">
+    <div class="seo"><div class="dot" style="background:var(--K);"></div><div class="ey" style="color:var(--K);">Por qu&eacute; elegirnos</div></div>
+    <h2>No somos un directorio.<br><em>Somos un sistema gestionado.</em></h2>
+    <div class="dg">
+      <div class="ditem"><div class="dn">01</div><h3>Instructores locales verificados</h3><p>Cada gu&iacute;a tiene nombre, n&uacute;mero y horario concreto en El Salvador. No son perfiles de internet.</p><div class="dvs"><strong>Versus:</strong> Plataformas donde no sabes qui&eacute;n llega</div></div>
+      <div class="ditem"><div class="dn">02</div><h3>RR.HH. no gestiona nada</h3><p>El colaborador reserva solo. RR.HH. activa el plan y ve reportes. Sin correos de coordinaci&oacute;n.</p><div class="dvs"><strong>Versus:</strong> Programas donde RR.HH. coordina cada reserva</div></div>
+      <div class="ditem"><div class="dn">03</div><h3>Sin contrato anual</h3><p>Mes a mes. Si al mes decides que no funciona, cancelas sin penalidades.</p><div class="dvs"><strong>Versus:</strong> Contratos de 12 meses obligatorios</div></div>
+      <div class="ditem"><div class="dn">04</div><h3>4 disciplinas en una plataforma</h3><p>Baile, regulaci&oacute;n, salud corporal y aventura &mdash; todo en un acceso. No 4 proveedores.</p><div class="dvs"><strong>Versus:</strong> M&uacute;ltiples contratos y facturas separadas</div></div>
+      <div class="ditem"><div class="dn">05</div><h3>Desde 1 colaborador</h3><p>No necesitas 100 empleados para acceder. Desde una persona, el plan se activa.</p><div class="dvs"><strong>Versus:</strong> Programas enterprise con m&iacute;nimo 100</div></div>
+      <div class="ditem"><div class="dn">06</div><h3>Reportes de participaci&oacute;n</h3><p>Ves qu&eacute; disciplinas usa tu equipo y el nivel de activaci&oacute;n por &aacute;rea. ROI medible.</p><div class="dvs"><strong>Versus:</strong> Beneficios opacos sin datos de uso</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. PRECIOS - GRIS CLARO -->
+<section class="prec" id="prec">
+  <div class="prei">
+    <div class="seo" style="justify-content:center;"><div class="dot" style="background:var(--T);"></div><div class="ey" style="color:var(--T);">Planes corporativos</div></div>
+    <h2>Precio por colaborador.<br><em>Sin sorpresas.</em></h2>
+    <p class="psub">El empleado accede sin ver ning&uacute;n costo &mdash; es su beneficio, no su gasto.</p>
+    <div class="pg">
+      <div class="plan">
+        <div class="ptipo">Plan individual</div>
+        <div class="pprecio"><sup>$</sup>30<sub>/colaborador &middot; mes</sub></div>
+        <p class="pdesc">1 sesi&oacute;n o experiencia al mes. Ideal para empezar.</p>
+        <ul class="pfeats">
+          <li class="pfeat">1 actividad al mes por colaborador</li>
+          <li class="pfeat">Todas las disciplinas disponibles</li>
+          <li class="pfeat">Reserva directa &mdash; sin gesti&oacute;n de RR.HH.</li>
+          <li class="pfeat">Reporte mensual de participaci&oacute;n</li>
+          <li class="pfeat">Sin contrato anual</li>
+        </ul>
+        <button class="pbtn" onclick="abrirPanel('wa');document.getElementById('cont').scrollIntoView({behavior:'smooth'});">Consultar por WhatsApp</button>
+      </div>
+      <div class="plan star">
+        <div class="pbadge">M&aacute;s elegido</div>
+        <div class="ptipo">Plan 2x1</div>
+        <div class="pprecio"><sup>$</sup>60<sub>/colaborador &middot; mes</sub></div>
+        <p class="pdesc">2 sesiones al mes. El doble de impacto al mejor precio.</p>
+        <ul class="pfeats">
+          <li class="pfeat">2 actividades al mes por colaborador</li>
+          <li class="pfeat">Puede combinar disciplinas</li>
+          <li class="pfeat">Reserva directa &mdash; sin gesti&oacute;n de RR.HH.</li>
+          <li class="pfeat">Reporte detallado por &aacute;rea</li>
+          <li class="pfeat">Sin contrato anual</li>
+          <li class="pfeat">Acceso preferencial a nuevas experiencias</li>
+        </ul>
+        <button class="pbtn" onclick="abrirPanel('wa');document.getElementById('cont').scrollIntoView({behavior:'smooth'});">Consultar por WhatsApp</button>
+      </div>
+    </div>
+    <div class="pahorro">
+      <span class="pahtxt">Precio p&uacute;blico: <s>$45/sesi&oacute;n</s></span>
+      <span class="pahtxt">Con plan corporativo: <strong style="color:var(--K);">$30</strong></span>
+      <span class="pahnum">Ahorro: $15/sesi&oacute;n</span>
+    </div>
+    <p class="pnota">Sin m&iacute;nimo de colaboradores &middot; Se activa en menos de 24h &middot; Factura disponible</p>
+  </div>
+</section>
+
+<!-- 8. FAQ - OSCURO -->
+<section class="faq" id="faq">
+  <div class="fqi">
+    <div class="seo"><div class="dot"></div><div class="ey" style="color:var(--K);">Preguntas frecuentes</div></div>
+    <h2>Lo que normalmente<br><em>preguntan antes de decidir.</em></h2>
+    <p class="fsub">Si no est&aacute; aqu&iacute;, escribenos. Respondemos en menos de 2 horas.</p>
+    <div id="fql"></div>
+  </div>
+</section>
+
+<!-- 9. CONTACTO - BLANCO -->
+<section class="cont" id="cont">
+  <div class="coi">
+    <div class="coh">
+      <div class="seo" style="justify-content:center;"><div class="dot" style="background:var(--T);"></div><div class="ey" style="color:var(--T);">Hablemos</div></div>
+      <h2>&iquest;C&oacute;mo quieres<br><em>conversar con nosotros?</em></h2>
+      <p class="cosub">Elige la opci&oacute;n que te resulte m&aacute;s c&oacute;moda.</p>
+    </div>
+    <div class="copts">
+      <div class="cop" id="cop-f" onclick="abrirPanel('form')">
+        <div class="copi">&#x1F4CB;</div>
+        <div class="copt">Cu&eacute;ntanos sobre tu empresa</div>
+        <p class="copd">Llena el formulario y te contactamos.</p>
+        <span class="copb bs">Respuesta en 24h</span>
+      </div>
+      <div class="cop" id="cop-w" onclick="abrirPanel('wa')">
+        <div class="copi">&#x1F4AC;</div>
+        <div class="copt">Escribenos por WhatsApp</div>
+        <p class="copd">Conversaci&oacute;n directa. La opci&oacute;n m&aacute;s r&aacute;pida.</p>
+        <span class="copb bf">Respuesta en menos de 2h</span>
+      </div>
+    </div>
+    <div class="panel" id="pf">
+      <div id="fi">
+        <div class="fr">
+          <div class="fg"><label>Nombre completo</label><input type="text" id="fn" placeholder="Tu nombre"></div>
+          <div class="fg"><label>Correo corporativo</label><input type="email" id="fe" placeholder="tu@empresa.com"></div>
         </div>
-        <div class="form-row">
-          <div class="form-g"><label>Empresa</label><input type="text" id="f-empresa" placeholder="Nombre de tu empresa"></div>
-          <div class="form-g"><label>WhatsApp</label><input type="tel" id="f-wa" placeholder="+503 7000 0000"></div>
+        <div class="fr">
+          <div class="fg"><label>Empresa</label><input type="text" id="fep" placeholder="Nombre de tu empresa"></div>
+          <div class="fg"><label>WhatsApp</label><input type="tel" id="fw" placeholder="+503 7000 0000"></div>
         </div>
-        <div class="form-row">
-          <div class="form-g"><label>Cargo</label>
-            <select id="f-cargo"><option value="">Selecciona...</option><option>Gerente de RR.HH.</option><option>Director de Operaciones</option><option>Dueño / CEO</option><option>Otro cargo directivo</option></select>
-          </div>
-          <div class="form-g"><label>Número de colaboradores</label>
-            <select id="f-col"><option value="">Selecciona...</option><option>1 – 10</option><option>11 – 30</option><option>31 – 60</option><option>61 – 100</option></select>
-          </div>
+        <div class="fr">
+          <div class="fg"><label>Cargo</label><select id="fc"><option value="">Selecciona...</option><option>Gerente de RR.HH.</option><option>Director de Operaciones</option><option>Due&ntilde;o / CEO</option><option>Otro cargo directivo</option></select></div>
+          <div class="fg"><label>N&uacute;mero de colaboradores</label><select id="fcol"><option value="">Selecciona...</option><option>1 &ndash; 10</option><option>11 &ndash; 30</option><option>31 &ndash; 60</option><option>61 &ndash; 100</option></select></div>
         </div>
-        <div class="form-g"><label>¿Cuál es tu mayor reto con el equipo?</label>
-          <select id="f-reto"><option value="">Selecciona...</option><option>Alta rotación de personal</option><option>Burnout y fatiga crónica</option><option>Falta de cohesión entre áreas</option><option>Ausentismo médico elevado</option><option>Clima laboral deteriorado</option><option>Mejorar el beneficio laboral</option></select>
-        </div>
-        <button class="btn-send" onclick="enviarForm()">Enviar → que me contacten</button>
-        <p class="form-nota">No compartimos tu información con terceros.</p>
-        <p id="f-err"></p>
+        <div class="fg"><label>&iquest;Cu&aacute;l es tu mayor reto con el equipo?</label><select id="fr2"><option value="">Selecciona...</option><option>Alta rotaci&oacute;n de personal</option><option>Burnout y fatiga cr&oacute;nica</option><option>Falta de cohesi&oacute;n entre &aacute;reas</option><option>Ausentismo m&eacute;dico elevado</option><option>Quiero mejorar el beneficio laboral</option></select></div>
+        <button class="benv" onclick="enviarForm()">Enviar y que me contacten &rarr;</button>
+        <p class="fnota">No compartimos tu informaci&oacute;n. Respondemos en menos de 24 horas h&aacute;biles.</p>
+        <p class="ferr" id="ferr"></p>
       </div>
-      <div class="form-suc" id="form-suc">
-        <div class="form-suc-ico">🌬️</div>
-        <h4>Recibimos tu solicitud.</h4>
-        <p>Te contactaremos en menos de 24 horas hábiles para conversar sobre cómo Ejekat Nemi puede funcionar para tu equipo.</p>
-      </div>
+      <div class="fsuc" id="fsuc"><div class="fsuc-i">&#x1F32C;&#xFE0F;</div><h3>Recibimos tu solicitud.</h3><p>Te contactaremos en menos de 24 horas h&aacute;biles para conversar sobre c&oacute;mo Ejekat Nemi puede funcionar para tu equipo.</p></div>
     </div>
-    <div class="panel-wa" id="panel-wa">
-      <div class="wa-ico">💬</div>
-      <div class="wa-t">Conversación por WhatsApp</div>
-      <div class="wa-preview">Hola, vi Ejekat Nemi y me interesa saber cómo puede funcionar para mi empresa. ¿Podemos conversar?</div>
-      <a class="btn-wa" href="https://wa.me/19298304133?text=Hola%2C%20vi%20Ejekat%20Nemi%20y%20me%20interesa%20saber%20c%C3%B3mo%20puede%20funcionar%20para%20mi%20empresa.%20%C2%BFPodemos%20conversar%3F" target="_blank">Abrir WhatsApp →</a>
-      <p class="wa-sub">Respondemos en menos de 2 horas · Lunes a sábado</p>
+    <div class="pwa" id="pw">
+      <div class="wai">&#x1F4AC;</div>
+      <div class="wat">Conversaci&oacute;n directa por WhatsApp</div>
+      <div class="wam">Hola, vi Ejekat Nemi y me interesa saber c&oacute;mo puede funcionar para mi empresa. &iquest;Podemos conversar?</div>
+      <a class="bwab" href="https://wa.me/19298304133?text=Hola%2C%20vi%20Ejekat%20Nemi%20y%20me%20interesa%20saber%20c%C3%B3mo%20puede%20funcionar%20para%20mi%20empresa.%20%C2%BFPodemos%20conversar%3F" target="_blank">Abrir WhatsApp &rarr;</a>
+      <p class="was">Respondemos en menos de 2 horas &middot; Lunes a s&aacute;bado</p>
     </div>
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
 <footer>
-  <div class="foot-brand">Ejekat <span>Nemi</span></div>
-  <div class="foot-txt">Plataforma de Bienestar Corporativo · El Salvador<br>administrador@ejekatnemi.com · ejekatnemi.com</div>
-  <div class="foot-links">
-    <a href="portal.html">Portal empleado</a>
-    <a href="guias.html">Para instructores</a>
-    <a href="explorar.html">Explorar</a>
+  <div class="fi2">
+    <div class="fbn">Ejekat <span>Nemi</span></div>
+    <div class="ftxt">Plataforma de Bienestar Corporativo &middot; El Salvador<br>administrador@ejekatnemi.com &middot; ejekatnemi.com</div>
+    <div class="flinks"><a href="portal.html">Portal empleado</a><a href="guias.html">Instructores</a><a href="explorar.html">Explorar</a></div>
   </div>
 </footer>
 
 <script data-cfasync="false">
-// ── Nav scroll ──
-var nav = document.getElementById('nav');
-window.addEventListener('scroll',function(){
-  nav.classList.toggle('scrolled', window.scrollY > 50);
-});
+// Nav
+window.addEventListener('scroll',function(){document.getElementById('nav').style.backdropFilter=window.scrollY>50?'blur(20px)':'blur(16px)';});
 
-// ── Reveal on scroll ──
-var observer = new IntersectionObserver(function(entries){
-  entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold:.1});
-document.querySelectorAll('.reveal').forEach(function(el){ observer.observe(el); });
-
-// ── Pilares ──
-function switchPilar(p){
-  document.querySelectorAll('.ptab').forEach(function(t){t.classList.remove('on');});
-  document.querySelectorAll('.pilar-panel').forEach(function(x){x.classList.remove('on');});
-  document.querySelector('.ptab[onclick*="'+p+'"]').classList.add('on');
-  document.getElementById('panel-'+p).classList.add('on');
-}
-
-// ── Carrusel ──
-var cp=0, perView=window.innerWidth<768?1:3;
-var cards=document.querySelectorAll('.test-card');
-var pages=Math.ceil(cards.length/perView);
-
-function renderDots(){
-  var d=document.getElementById('carr-dots'); d.innerHTML='';
-  for(var i=0;i<pages;i++){
-    var b=document.createElement('button');
-    b.className='carr-dot'+(i===0?' on':'');
-    b.setAttribute('data-i',i);
-    b.onclick=function(){irA(+this.dataset.i);};
-    d.appendChild(b);
-  }
-}
-function irA(n){
-  cp=Math.max(0,Math.min(n,pages-1));
-  document.getElementById('carr-track').style.transform='translateX(-'+(cp*100)+'%)';
-  document.querySelectorAll('.carr-dot').forEach(function(b,i){b.classList.toggle('on',i===cp);});
-}
-function moverCarr(d){irA((cp+d+pages)%pages);}
+// Carrusel
+var cp=0,cper=window.innerWidth<768?1:3,ctotal=6;
+function renderDots(){var d=document.getElementById('cdots');if(!d)return;var pgs=Math.ceil(ctotal/cper);d.innerHTML='';for(var i=0;i<pgs;i++){var b=document.createElement('button');b.className='cdot'+(i===0?' on':'');b.setAttribute('data-i',i);b.onclick=function(){goTo(parseInt(this.getAttribute('data-i')));};d.appendChild(b);}}
+function goTo(p){var pgs=Math.ceil(ctotal/cper);cp=Math.max(0,Math.min(p,pgs-1));document.getElementById('ct').style.transform='translateX(-'+(cp*100/cper*cper)+'%)';document.querySelectorAll('.cdot').forEach(function(b,i){b.classList.toggle('on',i===cp);});}
+function moverCarr(d){var pgs=Math.ceil(ctotal/cper);goTo((cp+d+pgs)%pgs);}
 setInterval(function(){moverCarr(1);},5500);
 renderDots();
-window.addEventListener('resize',function(){
-  perView=window.innerWidth<768?1:3;
-  pages=Math.ceil(cards.length/perView);
-  renderDots(); irA(0);
-});
+window.addEventListener('resize',function(){cper=window.innerWidth<768?1:3;renderDots();goTo(0);});
 
-// ── FAQ ──
+// FAQ
 var FAQS=[
-  {q:'¿Cuánto cuesta?',a:'Los planes comienzan desde $30 USD por colaborador al mes con acceso a una sesión. El plan 2x1 es $60 por colaborador al mes con acceso a dos experiencias. Sin costo de activación ni contrato anual.'},
-  {q:'¿RR.HH. tiene que coordinar cada actividad?',a:'No. Ese es el punto central. RR.HH. activa el plan, los empleados reservan solos por WhatsApp con el instructor, y RR.HH. solo ve los reportes de participación. Sin correos de coordinación.'},
-  {q:'¿Tenemos que firmar un contrato anual?',a:'No. Funciona mes a mes. Si al mes decides que no es para tu empresa, cancelas sin penalidades. Queremos que continúes porque ves resultados.'},
-  {q:'¿Qué pasa si solo tenemos 5 empleados?',a:'Perfecto. Diseñado para empresas de 1 a 100 personas. Sin mínimo. En equipos pequeños el impacto se siente más rápido porque todos se conocen.'},
-  {q:'¿Qué pasa si mis empleados no lo usan?',a:'En el primer mes hacemos un proceso de activación con tu equipo de RR.HH. para comunicar el beneficio correctamente. Las empresas que siguen el proceso tienen más del 70% de participación en los primeros 30 días.'},
-  {q:'¿Los instructores son confiables?',a:'Cada instructor pasa por verificación de identidad, historial de práctica y evaluación inicial antes de aparecer en la plataforma. Las reseñas de los colaboradores son públicas y visibles.'},
-  {q:'¿Puedo ver si mis empleados están usando el beneficio?',a:'Sí. El panel de gestión para RR.HH. muestra participación por área, disciplinas más usadas y nivel de activación por mes.'},
+  {q:'&iquest;Cu&aacute;nto cuesta?',a:'Los planes comienzan desde $30 USD por colaborador al mes (plan individual) y $60 para el plan 2x1. Sin costo de activaci&oacute;n ni contrato anual.'},
+  {q:'&iquest;Qu&eacute; pasa si mis empleados no lo usan?',a:'En el primer mes hacemos un proceso de activaci&oacute;n con tu equipo de RR.HH. Las empresas que siguen el proceso tienen m&aacute;s del 70% de participaci&oacute;n activa en los primeros 30 d&iacute;as.'},
+  {q:'&iquest;Tenemos que firmar un contrato anual?',a:'No. Funciona mes a mes. Si al mes decides que no es para tu empresa, cancelas sin penalidades.'},
+  {q:'&iquest;RR.HH. tiene que coordinar cada actividad?',a:'No. RR.HH. activa el plan, los empleados reservan solos, y RR.HH. solo ve los reportes de participaci&oacute;n.'},
+  {q:'&iquest;Los instructores son confiables?',a:'Cada instructor pasa por verificaci&oacute;n de identidad e historial antes de aparecer en la plataforma. Las rese&ntilde;as de los colaboradores son p&uacute;blicas.'},
+  {q:'&iquest;Puedo empezar con solo 1 colaborador?',a:'S&iacute;. No hay m&iacute;nimo de colaboradores. Puedes empezar con una persona y escalar cuando quieras.'},
+  {q:'&iquest;Qu&eacute; pasa si un empleado se lesiona?',a:'Todos los instructores operan bajo su propia responsabilidad profesional. Para actividades de alto riesgo, el gu&iacute;a informa los requisitos de seguridad antes.'},
 ];
-document.getElementById('faq-lista').innerHTML=FAQS.map(function(f,i){
-  return '<div class="faq-item"><div class="faq-q" onclick="toggleFaq('+i+')"><span class="faq-qt">'+f.q+'</span><i class="faq-ico" id="fi'+i+'">+</i></div><div class="faq-a" id="fa'+i+'"><p>'+f.a+'</p></div></div>';
-}).join('');
-function toggleFaq(i){
-  var a=document.getElementById('fa'+i),ic=document.getElementById('fi'+i);
-  var o=a.classList.contains('open');
-  document.querySelectorAll('.faq-a').forEach(function(x){x.classList.remove('open');});
-  document.querySelectorAll('.faq-ico').forEach(function(x){x.classList.remove('open');});
-  if(!o){a.classList.add('open');ic.classList.add('open');}
+document.getElementById('fql').innerHTML=FAQS.map(function(f,i){return '<div class="fi"><div class="fq" onclick="tFaq('+i+')"><span class="fqt">'+f.q+'</span><span class="fic" id="fic'+i+'">+</span></div><div class="fa" id="fa'+i+'"><p>'+f.a+'</p></div></div>';}).join('');
+function tFaq(i){var a=document.getElementById('fa'+i),ic=document.getElementById('fic'+i),op=a.classList.contains('op');document.querySelectorAll('.fa').forEach(function(x){x.classList.remove('op');});document.querySelectorAll('.fic').forEach(function(x){x.classList.remove('op');});if(!op){a.classList.add('op');ic.classList.add('op');}}
+
+// Contacto
+function abrirPanel(t){
+  ['pf','pw'].forEach(function(id){document.getElementById(id).classList.remove('on');});
+  ['cop-f','cop-w'].forEach(function(id){document.getElementById(id).classList.remove('on');});
+  if(t==='form'){document.getElementById('pf').classList.add('on');document.getElementById('cop-f').classList.add('on');}
+  else{document.getElementById('pw').classList.add('on');document.getElementById('cop-w').classList.add('on');}
 }
 
-// ── Contacto 2 clics ──
-function abrirPanel(tipo){
-  document.getElementById('panel-form').classList.remove('on');
-  document.getElementById('panel-wa').classList.remove('on');
-  document.getElementById('cop-form').classList.remove('on');
-  document.getElementById('cop-wa').classList.remove('on');
-  document.getElementById('cop-'+tipo).classList.add('on');
-  document.getElementById('panel-'+tipo).classList.add('on');
-  setTimeout(function(){document.getElementById('contacto').scrollIntoView({behavior:'smooth',block:'nearest'});},100);
-}
-
-// ── Formulario ──
-var WK='https://ejekatnemi-leads.mauricio-ardon.workers.dev/';
+// Formulario
+var WKR='https://ejekatnemi-leads.mauricio-ardon.workers.dev/';
 async function enviarForm(){
-  var n=document.getElementById('f-nombre').value.trim();
-  var e=document.getElementById('f-email').value.trim();
-  var em=document.getElementById('f-empresa').value.trim();
-  var err=document.getElementById('f-err');
+  var n=document.getElementById('fn').value.trim();
+  var e=document.getElementById('fe').value.trim();
+  var ep=document.getElementById('fep').value.trim();
+  var err=document.getElementById('ferr');
   err.style.display='none';
-  if(!n||!e||!em){err.textContent='Completa nombre, correo y empresa.';err.style.display='block';return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent='Correo inválido.';err.style.display='block';return;}
-  var btn=document.querySelector('.btn-send');
-  btn.textContent='Enviando...';btn.disabled=true;
+  if(!n||!e||!ep){err.textContent='Completa nombre, correo y empresa.';err.style.display='block';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){err.textContent='Correo inv&aacute;lido.';err.style.display='block';return;}
+  var btn=document.querySelector('.benv');btn.textContent='Enviando...';btn.disabled=true;
   try{
-    await fetch(WK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
-      nombre:n,email:e,negocio:em,
-      whatsapp:document.getElementById('f-wa').value.trim(),
-      servicio:document.getElementById('f-reto').value||'Bienestar corporativo',
-      colaboradores:document.getElementById('f-col').value||'No especificado',
-      camino:'B2B Corporativo',
-      nivel_experiencia:document.getElementById('f-cargo').value,
-      origen:'landing_b2b_v3',tipo_usuario:'Empresa B2B'
-    })});
-    document.getElementById('form-inner').style.display='none';
-    document.getElementById('form-suc').style.display='block';
-  }catch(er){
-    err.textContent='Error al enviar. Escríbenos por WhatsApp.';err.style.display='block';
-    btn.textContent='Enviar → que me contacten';btn.disabled=false;
-  }
+    await fetch(WKR,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({nombre:n,email:e,negocio:ep,whatsapp:document.getElementById('fw').value.trim(),servicio:document.getElementById('fr2').value||'Bienestar corporativo',colaboradores:document.getElementById('fcol').value||'No especificado',camino:'B2B Corporativo',nivel_experiencia:document.getElementById('fc').value,origen:'landing_b2b_v3',tipo_usuario:'Empresa B2B'})});
+    document.getElementById('fi').style.display='none';document.getElementById('fsuc').style.display='block';
+  }catch(ex){err.textContent='Error al enviar. Escr&iacute;benos por WhatsApp.';err.style.display='block';btn.textContent='Enviar y que me contacten \u2192';btn.disabled=false;}
 }
 </script>
 </body>

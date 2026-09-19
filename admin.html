@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin | Ejekat Nemi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:16px;}
+body{font-family:'DM Sans',sans-serif;background:#F5F4F1;color:#1A1A1A;min-height:100vh;}
+:root{
+  --v:#0D1B14;--K:#E9A824;--T:#B84A2F;--Tl:#D4623D;
+  --G:#F5F4F1;--W:#FFFFFF;--bd:#E0DED9;--txt2:#666;
+}
+input,select,textarea,button{font-family:'DM Sans',sans-serif;}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--v);}
+.login-box{background:#fff;padding:2.5rem 2rem;width:100%;max-width:380px;}
+.login-logo{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--v);margin-bottom:.2rem;}
+.login-logo span{color:var(--T);}
+.login-sub{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt2);margin-bottom:2rem;}
+.login-label{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);display:block;margin-bottom:.35rem;}
+.login-input{width:100%;border:1px solid var(--bd);padding:.7rem .9rem;font-size:.9375rem;margin-bottom:1rem;transition:border-color .2s;}
+.login-input:focus{outline:none;border-color:var(--v);}
+.login-btn{width:100%;background:var(--v);color:#fff;border:none;padding:.8rem;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.login-btn:hover{background:#1E3A2A;}
+.login-err{font-size:.82rem;color:var(--T);margin-top:.5rem;display:none;}
+
+/* TOPBAR */
+.topbar{background:var(--v);padding:.75rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.tb-logo{font-family:'Fraunces',serif;font-size:1rem;color:#F4ECD6;}
+.tb-logo span{color:var(--K);}
+.tb-logo small{font-size:.48rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(244,236,214,.4);display:block;}
+.tb-right{display:flex;align-items:center;gap:1rem;}
+.tb-user{font-size:.78rem;color:rgba(244,236,214,.6);}
+.tb-logout{font-size:.72rem;color:rgba(244,236,214,.5);background:none;border:1px solid rgba(244,236,214,.15);padding:.3rem .8rem;cursor:pointer;transition:all .2s;}
+.tb-logout:hover{border-color:rgba(244,236,214,.5);color:#F4ECD6;}
+.tb-view{font-size:.72rem;color:var(--K);background:none;border:1px solid rgba(233,168,36,.3);padding:.3rem .8rem;cursor:pointer;text-decoration:none;transition:all .2s;}
+.tb-view:hover{background:rgba(233,168,36,.1);}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 53px);}
+.sidebar{background:#fff;border-right:1px solid var(--bd);padding:1.5rem 0;}
+.sidebar-section{padding:0 1rem 1rem;}
+.sidebar-label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--txt2);padding:.5rem 1rem;margin-bottom:.25rem;}
+.sidebar-item{display:flex;align-items:center;gap:.6rem;padding:.6rem 1rem;font-size:.875rem;cursor:pointer;border-radius:4px;margin:0 .5rem;transition:all .2s;color:#333;border:none;background:none;width:calc(100% - 1rem);text-align:left;}
+.sidebar-item:hover{background:var(--G);}
+.sidebar-item.active{background:#0D1B14;color:#fff;}
+.sidebar-item .ico{font-size:1rem;width:20px;text-align:center;}
+.sidebar-stat{background:var(--G);padding:.75rem 1rem;margin:0 .5rem .4rem;font-size:.8rem;color:var(--txt2);}
+.sidebar-stat strong{color:#1A1A1A;font-size:1.1rem;display:block;}
+
+/* MAIN */
+.main{padding:2rem;}
+.page{display:none;}
+.page.active{display:block;}
+.page-title{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:300;color:var(--v);margin-bottom:.3rem;}
+.page-sub{font-size:.875rem;color:var(--txt2);margin-bottom:2rem;}
+
+/* SAVE BAR */
+.save-bar{background:var(--K);padding:.7rem 1.5rem;display:none;align-items:center;justify-content:space-between;position:sticky;top:53px;z-index:90;}
+.save-bar.visible{display:flex;}
+.save-msg{font-size:.82rem;font-weight:500;color:var(--v);}
+.save-btn{background:var(--v);color:#fff;border:none;padding:.5rem 1.2rem;font-size:.78rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.save-btn:hover{background:#1E3A2A;}
+.discard-btn{background:none;border:1px solid rgba(13,27,20,.3);color:var(--v);padding:.5rem 1rem;font-size:.78rem;cursor:pointer;margin-right:.5rem;}
+
+/* TABLAS */
+.table-actions{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;flex-wrap:wrap;gap:.75rem;}
+.search-input{border:1px solid var(--bd);padding:.55rem .9rem;font-size:.875rem;width:260px;background:#fff;}
+.search-input:focus{outline:none;border-color:var(--v);}
+.btn-add{background:var(--v);color:#fff;border:none;padding:.55rem 1.2rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;gap:.4rem;transition:background .2s;}
+.btn-add:hover{background:#1E3A2A;}
+.filter-row{display:flex;gap:.4rem;flex-wrap:wrap;}
+.filter-btn{font-size:.75rem;padding:.3rem .8rem;border:1px solid var(--bd);background:#fff;cursor:pointer;border-radius:100px;transition:all .2s;}
+.filter-btn.on{background:var(--v);border-color:var(--v);color:#fff;}
+
+/* CARDS CATÁLOGO */
+.catalog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1rem;}
+.cat-card{background:#fff;border:1px solid var(--bd);overflow:hidden;transition:box-shadow .2s;}
+.cat-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.08);}
+.cat-card-img{height:160px;position:relative;overflow:hidden;background:#E5E3E0;}
+.cat-card-img img{width:100%;height:100%;object-fit:cover;}
+.cat-card-img-overlay{position:absolute;top:.5rem;right:.5rem;display:flex;gap:.3rem;}
+.img-edit-btn{background:rgba(0,0,0,.7);color:#fff;border:none;padding:.3rem .6rem;font-size:.7rem;cursor:pointer;border-radius:4px;transition:background .2s;}
+.img-edit-btn:hover{background:rgba(0,0,0,.9);}
+.cat-card-body{padding:.9rem 1rem;}
+.cat-cam{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:.18rem .55rem;border-radius:100px;font-weight:500;display:inline-block;margin-bottom:.5rem;}
+.cam-pakini{background:#FAECE7;color:#B84A2F;}
+.cam-nejnemi{background:#E1F5EE;color:#0D6B4A;}
+.cam-musewi{background:#E3F5EE;color:#0A5C40;}
+.cam-kuxtal{background:#FEF9E7;color:#8A6800;}
+.cat-name{font-family:'Fraunces',serif;font-size:1rem;font-style:italic;color:#1A1A1A;margin-bottom:.3rem;}
+.cat-desc{font-size:.78rem;color:var(--txt2);line-height:1.5;margin-bottom:.75rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;}
+.cat-meta{display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.75rem;}
+.cat-pill{font-size:.65rem;background:var(--G);padding:.18rem .5rem;border-radius:100px;color:#555;}
+.cat-footer{display:flex;gap:.4rem;border-top:1px solid var(--bd);padding-top:.75rem;}
+.btn-edit{flex:1;background:var(--v);color:#fff;border:none;padding:.48rem;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-edit:hover{background:#1E3A2A;}
+.btn-toggle{padding:.48rem .7rem;border:1px solid var(--bd);background:#fff;font-size:.72rem;cursor:pointer;transition:all .2s;color:#555;}
+.btn-toggle.active{background:#E1F5EE;border-color:#5AAA80;color:#0D6B4A;}
+.btn-toggle.inactive{background:#FEE2E2;border-color:#F87171;color:#DC2626;}
+.cat-inactive{opacity:.5;}
+
+/* MODAL EDICIÓN */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:200;display:none;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.on{display:flex;}
+.modal{background:#fff;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;}
+.modal-header{padding:1.2rem 1.5rem;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;background:#fff;z-index:10;}
+.modal-title{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:300;color:var(--v);}
+.modal-close{background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--txt2);padding:.2rem;}
+.modal-body{padding:1.5rem;}
+.modal-footer{padding:1rem 1.5rem;border-top:1px solid var(--bd);display:flex;gap:.5rem;justify-content:flex-end;position:sticky;bottom:0;background:#fff;}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;}
+.form-row.full{grid-template-columns:1fr;}
+.fg{margin-bottom:1rem;}
+.fg label{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--txt2);margin-bottom:.35rem;}
+.fg input,.fg select,.fg textarea{width:100%;border:1px solid var(--bd);padding:.65rem .9rem;font-size:.9375rem;background:#fff;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--v);}
+.fg textarea{resize:vertical;min-height:80px;line-height:1.6;}
+.fg-hint{font-size:.72rem;color:var(--txt2);margin-top:.3rem;}
+
+/* IMG PREVIEW */
+.img-preview-box{border:1px solid var(--bd);padding:.75rem;background:var(--G);display:flex;gap:.75rem;align-items:flex-start;}
+.img-thumb{width:80px;height:80px;object-fit:cover;border:1px solid var(--bd);flex-shrink:0;background:#E5E3E0;}
+.img-url-wrap{flex:1;}
+.img-url-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);margin-bottom:.3rem;}
+.img-source-btns{display:flex;gap:.3rem;margin-top:.4rem;flex-wrap:wrap;}
+.img-src-btn{font-size:.68rem;padding:.25rem .6rem;border:1px solid var(--bd);background:#fff;cursor:pointer;border-radius:4px;transition:all .2s;color:#555;}
+.img-src-btn:hover{border-color:var(--v);color:var(--v);}
+
+/* PROVEEDORES */
+.prov-card{background:#fff;border:1px solid var(--bd);padding:1rem;display:grid;grid-template-columns:3fr 1fr 1fr auto;gap:1rem;align-items:center;margin-bottom:.5rem;}
+.prov-name{font-size:.9375rem;font-weight:500;color:#1A1A1A;}
+.prov-cam{font-size:.72rem;color:var(--txt2);}
+.prov-contact{font-size:.78rem;color:var(--txt2);}
+.prov-status{font-size:.72rem;padding:.22rem .6rem;border-radius:100px;text-align:center;}
+.st-activo{background:#D1FAE5;color:#065F46;}
+.st-pendiente{background:#FEF3C7;color:#92400E;}
+.st-inactivo{background:#FEE2E2;color:#DC2626;}
+
+/* BOTONES GENERALES */
+.btn-primary{background:var(--v);color:#fff;border:none;padding:.65rem 1.4rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .2s;}
+.btn-primary:hover{background:#1E3A2A;}
+.btn-secondary{background:#fff;color:#1A1A1A;border:1px solid var(--bd);padding:.65rem 1.4rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.btn-secondary:hover{border-color:#1A1A1A;}
+.btn-danger{background:#DC2626;color:#fff;border:none;padding:.65rem 1.4rem;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+
+/* NOTIF */
+.notif{position:fixed;bottom:1.5rem;right:1.5rem;background:#1A1A1A;color:#fff;padding:.75rem 1.2rem;font-size:.82rem;border-radius:4px;z-index:500;display:none;align-items:center;gap:.5rem;}
+.notif.on{display:flex;}
+.notif.ok{background:#065F46;}
+.notif.err{background:#DC2626;}
+
+/* DASHBOARD */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;}
+.stat-box{background:#fff;border:1px solid var(--bd);padding:1.2rem;}
+.stat-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;color:var(--v);line-height:1;}
+.stat-lbl{font-size:.72rem;color:var(--txt2);margin-top:.3rem;text-transform:uppercase;letter-spacing:.08em;}
+.stat-box.highlight{background:var(--v);border-color:var(--v);}
+.stat-box.highlight .stat-num{color:var(--K);}
+.stat-box.highlight .stat-lbl{color:rgba(244,236,214,.6);}
+.activity-log{background:#fff;border:1px solid var(--bd);padding:1.2rem;}
+.log-title{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);margin-bottom:1rem;}
+.log-item{display:flex;align-items:center;gap:.75rem;padding:.6rem 0;border-bottom:1px solid var(--bd);font-size:.82rem;}
+.log-item:last-child{border-bottom:none;}
+.log-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{display:none;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .prov-card{grid-template-columns:1fr 1fr;gap:.5rem;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="login-wrap">
+  <div class="login-box">
+    <div class="login-logo">Ejekat <span>Nemi</span></div>
+    <div class="login-sub">Panel de Administración</div>
+    <label class="login-label" for="login-user">Usuario / Username</label>
+    <input class="login-input" id="login-user" type="text" placeholder="admin" autocomplete="username">
+    <label class="login-label" for="login-pass">Contraseña / Password</label>
+    <input class="login-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+    <button class="login-btn" onclick="doLogin()">Ingresar / Log in</button>
+    <p class="login-err" id="login-err">Credenciales incorrectas / Incorrect credentials</p>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" style="display:none;">
+
+  <div class="topbar">
+    <div class="tb-logo">Ejekat <span>Nemi</span><small>Panel de Administración</small></div>
+    <div class="tb-right">
+      <span class="tb-user" id="tb-user"></span>
+      <a class="tb-view" href="explorar.html" target="_blank">Ver catálogo →</a>
+      <button class="tb-logout" onclick="doLogout()">Salir</button>
+    </div>
+  </div>
+
+  <div class="layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-label">Menú / Menu</div>
+      <button class="sidebar-item active" onclick="showPage('dashboard')"><span class="ico">&#128202;</span> Dashboard</button>
+      <button class="sidebar-item" onclick="showPage('catalogo')"><span class="ico">&#127981;</span> Catálogo / Catalog</button>
+      <button class="sidebar-item" onclick="showPage('proveedores')"><span class="ico">&#128101;</span> Proveedores / Providers</button>
+      <button class="sidebar-item" onclick="showPage('configuracion')"><span class="ico">&#9881;</span> Configuración</button>
+
+      <div style="margin-top:1.5rem;">
+        <div class="sidebar-label">Estado / Status</div>
+        <div class="sidebar-stat"><strong id="sb-total">0</strong> Actividades activas</div>
+        <div class="sidebar-stat"><strong id="sb-prov">0</strong> Proveedores</div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- DASHBOARD -->
+      <div class="page active" id="page-dashboard">
+        <div class="page-title">Dashboard</div>
+        <div class="page-sub">Vista general del catálogo / Catalog overview</div>
+        <div class="stats-grid">
+          <div class="stat-box highlight">
+            <div class="stat-num" id="d-total">0</div>
+            <div class="stat-lbl">Actividades totales</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" id="d-pakini">0</div>
+            <div class="stat-lbl">Pakini — Baile</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" id="d-nejnemi">0</div>
+            <div class="stat-lbl">Nejnemi — Aventura</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num" id="d-musewi">0</div>
+            <div class="stat-lbl">Musewi + Kuxtal</div>
+          </div>
+        </div>
+        <div class="activity-log">
+          <div class="log-title">Actividades por camino / Activities by path</div>
+          <div id="dash-list"></div>
+        </div>
+      </div>
+
+      <!-- CATÁLOGO -->
+      <div class="page" id="page-catalogo">
+        <div class="page-title">Catálogo de Actividades</div>
+        <div class="page-sub">Edita imagen, descripción, horario y proveedor de cada actividad.</div>
+        <div class="table-actions">
+          <div class="filter-row" id="filter-row">
+            <button class="filter-btn on" data-c="todos" onclick="filtrarCatalog('todos')">Todas</button>
+            <button class="filter-btn" data-c="pakini" onclick="filtrarCatalog('pakini')">&#128293; Pakini</button>
+            <button class="filter-btn" data-c="nejnemi" onclick="filtrarCatalog('nejnemi')">&#127956; Nejnemi</button>
+            <button class="filter-btn" data-c="musewi" onclick="filtrarCatalog('musewi')">&#127754; Musewi</button>
+            <button class="filter-btn" data-c="kuxtal" onclick="filtrarCatalog('kuxtal')">&#127807; Kuxtal</button>
+          </div>
+          <button class="btn-add" onclick="guardarTodo()">&#128190; Guardar cambios</button>
+        </div>
+        <div class="catalog-grid" id="catalog-grid"></div>
+      </div>
+
+      <!-- PROVEEDORES -->
+      <div class="page" id="page-proveedores">
+        <div class="page-title">Proveedores / Providers</div>
+        <div class="page-sub">Gestiona la red de proveedores de Ejekat Nemi por camino.</div>
+        <div class="table-actions">
+          <input class="search-input" type="text" placeholder="Buscar proveedor..." oninput="buscarProv(this.value)">
+          <button class="btn-add" onclick="abrirModalProv(null)">+ Agregar proveedor</button>
+        </div>
+        <div id="prov-list"></div>
+      </div>
+
+      <!-- CONFIGURACIÓN -->
+      <div class="page" id="page-configuracion">
+        <div class="page-title">Configuración / Settings</div>
+        <div class="page-sub">Gestión de usuarios y seguridad.</div>
+        <div style="background:#fff;border:1px solid var(--bd);padding:1.5rem;max-width:480px;">
+          <div class="fg">
+            <label>Contraseña admin actual / Current admin password</label>
+            <input type="password" id="cfg-pass-old" placeholder="Contraseña actual">
+          </div>
+          <div class="fg">
+            <label>Nueva contraseña / New password</label>
+            <input type="password" id="cfg-pass-new" placeholder="Nueva contraseña (mín. 8 caracteres)">
+          </div>
+          <div class="fg">
+            <label>Confirmar nueva contraseña / Confirm</label>
+            <input type="password" id="cfg-pass-confirm" placeholder="Repetir nueva contraseña">
+          </div>
+          <button class="btn-primary" onclick="cambiarPassword()">Actualizar contraseña</button>
+          <p style="font-size:.78rem;color:var(--txt2);margin-top:.75rem;">Los cambios se guardan en este navegador. / Changes are saved locally.</p>
+        </div>
+        <div style="background:#fff;border:1px solid var(--bd);padding:1.5rem;max-width:480px;margin-top:1rem;">
+          <div style="font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--txt2);margin-bottom:.75rem;">Acciones / Actions</div>
+          <button class="btn-secondary" onclick="exportarDatos()" style="margin-right:.5rem;">&#128190; Exportar JSON</button>
+          <button class="btn-secondary" onclick="importarDatos()">&#128228; Importar JSON</button>
+          <p style="font-size:.72rem;color:var(--txt2);margin-top:.75rem;">Exporta el catálogo completo como JSON para respaldo o migración a Fase 2.</p>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- MODAL EDICIÓN ACTIVIDAD -->
+<div class="modal-overlay" id="modal-act">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-act-title">Editar actividad</div>
+      <button class="modal-close" onclick="cerrarModal('modal-act')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ea-id">
+      <div class="form-row">
+        <div class="fg">
+          <label>Nombre (ES)</label>
+          <input type="text" id="ea-nombre">
+        </div>
+        <div class="fg">
+          <label>Camino / Path</label>
+          <select id="ea-camino">
+            <option value="pakini">&#128293; Pakini — Baile</option>
+            <option value="nejnemi">&#127956; Nejnemi — Aventura</option>
+            <option value="musewi">&#127754; Musewi — Calma</option>
+            <option value="kuxtal">&#127807; Kuxtal — Salud</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="fg">
+          <label>Descripción (ES)</label>
+          <textarea id="ea-desc" rows="3"></textarea>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="fg">
+          <label>Description (EN)</label>
+          <textarea id="ea-desc-en" rows="3" placeholder="English description (optional)"></textarea>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Días disponibles / Days</label>
+          <input type="text" id="ea-dias" placeholder="Ej: Lunes a Jueves">
+        </div>
+        <div class="fg">
+          <label>Horario / Schedule</label>
+          <input type="text" id="ea-horario" placeholder="Ej: 8:00pm – 9:00pm">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Lugar / Location</label>
+          <input type="text" id="ea-lugar" placeholder="Ej: San Salvador">
+        </div>
+        <div class="fg">
+          <label>Duración / Duration</label>
+          <input type="text" id="ea-duracion" placeholder="Ej: 60 min">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Emoji</label>
+          <input type="text" id="ea-emoji" placeholder="&#128131;">
+        </div>
+        <div class="fg">
+          <label>Transporte incluido / Transport</label>
+          <select id="ea-transporte">
+            <option value="false">No</option>
+            <option value="true">Sí — incluido</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="fg">
+          <label>Mensaje WhatsApp pre-escrito</label>
+          <textarea id="ea-wa" rows="2" placeholder="Hola Mauricio, vi Ejekat Nemi y quiero reservar..."></textarea>
+        </div>
+      </div>
+      <div class="fg">
+        <label>Proveedor asignado / Assigned provider</label>
+        <select id="ea-proveedor">
+          <option value="">Sin asignar (coordinado internamente)</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Estado / Status</label>
+        <select id="ea-status">
+          <option value="activo">Activo — visible en catálogo</option>
+          <option value="inactivo">Inactivo — oculto del catálogo</option>
+          <option value="proximamente">Próximamente — visible pero sin reserva</option>
+        </select>
+      </div>
+      <!-- IMAGEN -->
+      <div class="fg">
+        <label>Imagen de la actividad / Activity image</label>
+        <div class="img-preview-box">
+          <img id="ea-img-thumb" class="img-thumb" src="" alt="">
+          <div class="img-url-wrap">
+            <div class="img-url-label">URL de la imagen</div>
+            <input type="text" id="ea-img" placeholder="https://images.unsplash.com/..." style="margin-top:.3rem;font-size:.82rem;padding:.5rem;" oninput="previewImg()">
+            <div class="fg-hint">Unsplash: libre uso comercial. Puedes subir a Cloudinary o Imgur y pegar la URL.</div>
+            <div class="img-source-btns">
+              <a href="https://unsplash.com/s/photos/salsa-dance" target="_blank" class="img-src-btn">&#127757; Unsplash</a>
+              <a href="https://cloudinary.com" target="_blank" class="img-src-btn">&#9729; Cloudinary</a>
+              <a href="https://imgur.com/upload" target="_blank" class="img-src-btn">&#128247; Imgur</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-danger" onclick="eliminarActividad()" style="margin-right:auto;">Eliminar</button>
+      <button class="btn-secondary" onclick="cerrarModal('modal-act')">Cancelar</button>
+      <button class="btn-primary" onclick="guardarActividad()">Guardar actividad</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL PROVEEDOR -->
+<div class="modal-overlay" id="modal-prov">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-prov-title">Proveedor</div>
+      <button class="modal-close" onclick="cerrarModal('modal-prov')">&#10005;</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="ep-id">
+      <div class="form-row">
+        <div class="fg">
+          <label>Nombre del proveedor</label>
+          <input type="text" id="ep-nombre" placeholder="Nombre del proveedor">
+        </div>
+        <div class="fg">
+          <label>Camino / Path</label>
+          <select id="ep-camino">
+            <option value="pakini">Pakini — Baile</option>
+            <option value="nejnemi">Nejnemi — Aventura</option>
+            <option value="musewi">Musewi — Calma</option>
+            <option value="kuxtal">Kuxtal — Salud</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>WhatsApp</label>
+          <input type="tel" id="ep-wa" placeholder="+503 7000 0000">
+        </div>
+        <div class="fg">
+          <label>Email</label>
+          <input type="email" id="ep-email" placeholder="contacto@proveedor.com">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="fg">
+          <label>Sitio web / Instagram</label>
+          <input type="text" id="ep-web" placeholder="https://...">
+        </div>
+        <div class="fg">
+          <label>Estado / Status</label>
+          <select id="ep-status">
+            <option value="pendiente">Pendiente — por contactar</option>
+            <option value="contactado">Contactado — esperando respuesta</option>
+            <option value="activo">Activo — acuerdo firmado</option>
+            <option value="inactivo">Inactivo</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row full">
+        <div class="fg">
+          <label>Notas internas / Internal notes</label>
+          <textarea id="ep-notas" rows="3" placeholder="Detalles del acuerdo, condiciones, contacto..."></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn-danger" onclick="eliminarProveedor()" style="margin-right:auto;">Eliminar</button>
+      <button class="btn-secondary" onclick="cerrarModal('modal-prov')">Cancelar</button>
+      <button class="btn-primary" onclick="guardarProveedor()">Guardar proveedor</button>
+    </div>
+  </div>
+</div>
+
+<!-- NOTIFICACIÓN -->
+<div class="notif" id="notif"></div>
+
+<script>
+/* ═══════════════════════════════════
+   DATOS POR DEFECTO (se sobrescriben con localStorage)
+═══════════════════════════════════ */
+var DEFAULT_ACTIVIDADES = [
+  {id:'salsa-grupal',c:'pakini',e:'&#128131;',status:'activo',proveedor:'',
+   n:'Salsa — Sesión Grupal',
+   d:'Aprende los movimientos elegantes de la Salsa en grupo. Sin importar tu nivel, en pocas sesiones dominarás los pasos para brillar en cualquier fiesta o celebración de fin de año.',
+   d_en:'Learn elegant Salsa movements in a group setting. Regardless of your level, in just a few sessions you will master the steps to shine at any party or year-end celebration.',
+   img:'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=700&q=82&fit=crop',
+   di:'Lunes a Jueves',h:'8:00pm – 9:00pm',lu:'San Salvador',du:'60 min',tr:false,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar la Sesión Grupal de Salsa. ¿Tienen disponibilidad esta semana?'},
+  {id:'bachata-grupal',c:'pakini',e:'&#127926;',status:'activo',proveedor:'',
+   n:'Bachata — Sesión Grupal',
+   d:'Vive el ritmo y la sensibilidad de la Bachata en un ambiente grupal y relajado. Aprende a moverte con soltura y prepárate para reuniones y fiestas del año.',
+   d_en:'Experience the rhythm and sensibility of Bachata in a relaxed group setting. Learn to move with ease and get ready for any social gathering.',
+   img:'https://images.unsplash.com/photo-1547153760-18fc86324498?w=700&q=82&fit=crop',
+   di:'Lunes a Jueves',h:'8:00pm – 9:00pm',lu:'San Salvador',du:'60 min',tr:false,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar la Sesión Grupal de Bachata. ¿Hay lugares disponibles?'},
+  {id:'individual',c:'pakini',e:'&#128378;',status:'activo',proveedor:'',
+   n:'Clase Individual — Salsa o Bachata',
+   d:'Sesión 1 a 1 adaptada completamente a tu ritmo y objetivos. Avance garantizado. Disponible presencial o en línea.',
+   d_en:'1-on-1 session fully adapted to your pace and goals. Guaranteed progress. Available in-person or online.',
+   img:'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=82&fit=crop',
+   di:'Lun–Jue · Sáb–Dom',h:'Lun–Jue 8pm · Sáb–Dom 8am–5pm',lu:'San Salvador / En línea',du:'60 min',tr:false,
+   wa:'Hola Mauricio, vi Ejekat Nemi y me interesa una Clase Individual. ¿Cómo coordino mi primera sesión?'},
+  {id:'2x1',c:'pakini',e:'&#128293;',status:'activo',proveedor:'',
+   n:'2x1 — Salsa & Bachata',
+   d:'Domina los dos ritmos latinos más populares en un solo paquete. El combo ideal para llegar con confianza a cualquier pista de baile.',
+   d_en:'Master the two most popular Latin rhythms in one package. The perfect combo to confidently hit any dance floor.',
+   img:'https://images.unsplash.com/photo-1545959570-a94084071b5d?w=700&q=82&fit=crop',
+   di:'Lunes a Jueves',h:'8:00pm – 10:00pm',lu:'San Salvador',du:'120 min',tr:false,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero el paquete 2x1 de Salsa y Bachata. ¿Cómo funciona?'},
+  {id:'volcan',c:'nejnemi',e:'&#127755;',status:'activo',proveedor:'',
+   n:'Tour Volcán Santa Ana + Cerro Verde',
+   d:'Asciende al volcán activo más alto de El Salvador. Desde el cráter verás la laguna esmeralda y el Lago de Coatepeque. Transporte y guía certificado incluidos.',
+   d_en:'Climb the highest active volcano in El Salvador. From the crater you will see the emerald lagoon and Lake Coatepeque. Transport and certified guide included.',
+   img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=82&fit=crop',
+   di:'Sábados y Domingos',h:'Salida 5:30am · Regreso ~3:00pm',lu:'Santa Ana, El Salvador',du:'8–9 horas',tr:true,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar el Tour al Volcán Santa Ana. ¿Hay lugares este fin de semana?'},
+  {id:'coatepeque',c:'nejnemi',e:'&#128167;',status:'activo',proveedor:'',
+   n:'Tour Lago Coatepeque + Playa El Tunco',
+   d:'Un día entre las aguas termales del lago más hermoso de El Salvador y la playa volcánica de El Tunco. Gastronomía local y descanso activo. Transporte incluido.',
+   d_en:'A day between the thermal waters of El Salvador\'s most beautiful lake and El Tunco volcanic beach. Local food and active rest. Transport included.',
+   img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=82&fit=crop',
+   di:'Sábados y Domingos',h:'Salida 6:00am · Regreso ~5:00pm',lu:'Coatepeque + La Libertad',du:'10–11 horas',tr:true,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero ir al Tour Lago Coatepeque y El Tunco. ¿Hay cupo?'},
+  {id:'suchitoto',c:'nejnemi',e:'&#127963;',status:'activo',proveedor:'',
+   n:'Tour Cultural Suchitoto',
+   d:'El pueblo colonial más auténtico de El Salvador. Iglesia colonial, Lago Suchitlán, murales, artesanías y gastronomía local. Transporte incluido.',
+   d_en:'El Salvador\'s most authentic colonial town. Colonial church, Lake Suchitlán, murals, crafts and local food. Transport included.',
+   img:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=82&fit=crop',
+   di:'Sábados y Domingos',h:'Salida 7:00am · Regreso ~4:00pm',lu:'Suchitoto, Cuscatlán',du:'8 horas',tr:true,
+   wa:'Hola Mauricio, vi Ejekat Nemi y me interesa el Tour de Suchitoto. ¿Tienen salida este domingo?'},
+  {id:'extremos',c:'nejnemi',e:'&#129666;',status:'activo',proveedor:'',
+   n:'Deportes Extremos — Canopy · Rapel · Bungee',
+   d:'Adrenalina pura en entornos naturales. Equipo de seguridad certificado y guía especializado incluidos. Ideal para equipos que quieren romper límites.',
+   d_en:'Pure adrenaline in natural settings. Certified safety equipment and specialized guide included. Perfect for teams that want to push their limits.',
+   img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=700&q=82&fit=crop',
+   di:'Sábados y Domingos',h:'Salida 7:00am · Regreso ~1:00pm',lu:'El Salvador',du:'3–4 horas',tr:true,
+   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar deportes extremos. ¿Qué opciones tienen?'},
+  {id:'yoga-grupal',c:'musewi',e:'&#129496;',status:'activo',proveedor:'',
+   n:'Yoga — Sesión Grupal',
+   d:'Posturas, respiración y relajación en grupo para soltar la tensión de la semana. Mejora la postura, reduce el estrés y devuelve la claridad mental. Para todos los niveles.',
+   d_en:'Postures, breathing and relaxation in a group setting. Improve posture, reduce stress and regain mental clarity. All levels welcome.',
+   img:'https://images.unsplash.com/photo-1545389336-cf090694435e?w=700&q=82&fit=crop',
+   di:'Sábados',h:'9:00am – 11:00am',lu:'San Salvador',du:'120 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y me interesa la sesión grupal de Yoga del sábado. ¿Hay lugares disponibles?'},
+  {id:'meditacion',c:'musewi',e:'&#129504;',status:'activo',proveedor:'',
+   n:'Meditación — Sesión Grupal',
+   d:'Aprende técnicas de meditación aplicables en tu vida diaria — antes del trabajo, en momentos de estrés o al final del día. Herramientas reales, no solo relajación.',
+   d_en:'Learn meditation techniques applicable in daily life — before work, during stressful moments or at the end of the day. Real tools, not just relaxation.',
+   img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&q=82&fit=crop',
+   di:'Lunes y Miércoles',h:'7:00am – 8:00am',lu:'San Salvador / En línea',du:'60 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y quiero participar en meditación. ¿Cómo me uno?'},
+  {id:'respiracion',c:'musewi',e:'&#127807;',status:'activo',proveedor:'',
+   n:'Respiración & Regulación',
+   d:'Técnicas de respiración consciente para reducir la ansiedad, mejorar el sueño y recuperar la concentración. Una herramienta que llevas contigo a todas partes.',
+   d_en:'Conscious breathing techniques to reduce anxiety, improve sleep and regain focus. A tool you carry everywhere.',
+   img:'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=82&fit=crop',
+   di:'Martes y Jueves',h:'6:30am – 7:15am',lu:'En línea',du:'45 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y me interesa la sesión de respiración. ¿Cómo me inscribo?'},
+  {id:'masaje',c:'kuxtal',e:'&#128591;',status:'activo',proveedor:'',
+   n:'Masaje Terapéutico',
+   d:'Sesión de masoterapia para liberar la tensión muscular acumulada por horas de trabajo. Alivia el dolor de espalda, cuello y hombros con técnicas profesionales.',
+   d_en:'Massage therapy session to release muscle tension accumulated from hours of work. Relieves back, neck and shoulder pain with professional techniques.',
+   img:'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=700&q=82&fit=crop',
+   di:'Lunes a Sábado',h:'Por cita · Horario flexible',lu:'San Salvador',du:'45–60 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y quiero agendar un masaje terapéutico. ¿Qué disponibilidad tienen?'},
+  {id:'fisioterapia',c:'kuxtal',e:'&#129328;',status:'activo',proveedor:'',
+   n:'Movilidad & Fisioterapia',
+   d:'Rutina de movilidad articular, estiramiento y fortalecimiento postural. Para personas que pasan muchas horas sentadas y quieren prevenir lesiones.',
+   d_en:'Joint mobility, stretching and postural strengthening routine. For people who spend long hours seated and want to prevent injuries.',
+   img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=82&fit=crop',
+   di:'Lunes a Viernes',h:'Por cita · 7:00am – 7:00pm',lu:'San Salvador',du:'45 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y me interesa fisioterapia. ¿Cómo agendo?'},
+  {id:'bienestar-mental',c:'kuxtal',e:'&#129302;',status:'activo',proveedor:'',
+   n:'Taller de Bienestar Mental',
+   d:'Espacio grupal guiado por profesional sobre estrés laboral, límites y salud emocional. Sin etiquetas clínicas. Solo herramientas prácticas para funcionar mejor.',
+   d_en:'Group space guided by a professional covering work stress, boundaries and emotional health. No clinical labels. Just practical tools to function better.',
+   img:'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=700&q=82&fit=crop',
+   di:'Viernes',h:'5:00pm – 6:30pm',lu:'San Salvador / En línea',du:'90 min',tr:false,
+   wa:'Hola, vi Ejekat Nemi y me interesa el taller de bienestar mental. ¿Hay cupo?'},
+];
+
+var DEFAULT_PROVEEDORES = [
+  {id:'prov-1',nombre:'Latins Dance Company',c:'pakini',wa:'+503 (IG: @latinsdancecompany)',email:'',web:'latins.dance',status:'pendiente',notas:'Academia fundada 2015, San Salvador. Salsa y Bachata todos los niveles.'},
+  {id:'prov-2',nombre:'Balaré Academia de Baile',c:'pakini',wa:'+503 (IG: @balareacademy)',email:'',web:'balareacademy.com',status:'pendiente',notas:'San Salvador y Santa Tecla. 20 años experiencia.'},
+  {id:'prov-3',nombre:'Shanti Yoga El Salvador',c:'musewi',wa:'+503 (web: shantiyogasv.com)',email:'',web:'shantiyogasv.com',status:'pendiente',notas:'Talleres para empresas. BeSport Km 12.5, Nuevo Cuscatlán.'},
+  {id:'prov-4',nombre:'Meditación El Salvador',c:'musewi',wa:'+503 (web: meditacionelsalvador.org)',email:'',web:'meditacionelsalvador.org',status:'pendiente',notas:'Programas para empresas e instituciones. Instructores certificados.'},
+  {id:'prov-5',nombre:'Centro THERA',c:'kuxtal',wa:'+503 (web: centrothera.com)',email:'',web:'centrothera.com',status:'pendiente',notas:'Fisioterapia para empresas. Masajes, meditación, terapia ocupacional.'},
+  {id:'prov-6',nombre:'El Salvador Turismo',c:'nejnemi',wa:'+503 (web: elsalvadorturismo.com.sv)',email:'',web:'elsalvadorturismo.com.sv',status:'pendiente',notas:'Tours volcanes, cultural y aventura. Grupo Amate.'},
+  {id:'prov-7',nombre:'Apaneca Zipline Adventures',c:'nejnemi',wa:'+503 (FB: Apaneca Canopy)',email:'',web:'',status:'pendiente',notas:'Canopy más largo CA, 2.5km, 13 tramos. $35/persona.'},
+  {id:'prov-8',nombre:'Mauricio Ardón (interno)',c:'pakini',wa:'+1 (929) 830-4133',email:'administrador@ejekatnemi.com',web:'ejekatnemi.com',status:'activo',notas:'Fundador. Instructor de Salsa/Bachata y guía de tours. Proveedor principal activo.'},
+];
+
+var DEFAULT_USERS = [
+  {user:'admin',pass:'ejekatnemi2025',rol:'Administrador'},
+  {user:'mauricio',pass:'nemi2025',rol:'Fundador'},
+];
+
+/* ═══════════════════════════════════
+   ESTADO
+═══════════════════════════════════ */
+var SESSION = null;
+var ACTIVIDADES = [];
+var PROVEEDORES = [];
+var USERS = [];
+var FILTER_CAT = 'todos';
+var EDIT_ACT_ID = null;
+var EDIT_PROV_ID = null;
+
+/* ═══════════════════════════════════
+   INIT
+═══════════════════════════════════ */
+function init(){
+  ACTIVIDADES = JSON.parse(localStorage.getItem('en_actividades') || 'null') || DEFAULT_ACTIVIDADES;
+  PROVEEDORES = JSON.parse(localStorage.getItem('en_proveedores') || 'null') || DEFAULT_PROVEEDORES;
+  USERS       = JSON.parse(localStorage.getItem('en_users')       || 'null') || DEFAULT_USERS;
+  SESSION     = JSON.parse(sessionStorage.getItem('en_session')   || 'null');
+  if(SESSION){ mostrarApp(); } else { document.getElementById('login-wrap').style.display='flex'; }
+}
+
+/* ═══════════════════════════════════
+   AUTH
+═══════════════════════════════════ */
+function doLogin(){
+  var u=document.getElementById('login-user').value.trim();
+  var p=document.getElementById('login-pass').value;
+  var match=USERS.find(function(x){return x.user===u&&x.pass===p;});
+  if(match){
+    SESSION={user:u,rol:match.rol};
+    sessionStorage.setItem('en_session',JSON.stringify(SESSION));
+    mostrarApp();
+  } else {
+    document.getElementById('login-err').style.display='block';
+  }
+}
+document.getElementById('login-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+
+function doLogout(){
+  sessionStorage.removeItem('en_session');
+  SESSION=null;
+  document.getElementById('app').style.display='none';
+  document.getElementById('login-wrap').style.display='flex';
+  document.getElementById('login-pass').value='';
+}
+
+function mostrarApp(){
+  document.getElementById('login-wrap').style.display='none';
+  document.getElementById('app').style.display='block';
+  document.getElementById('tb-user').textContent=SESSION.rol+': '+SESSION.user;
+  actualizarSidebar();
+  renderDashboard();
+}
+
+/* ═══════════════════════════════════
+   NAVEGACIÓN
+═══════════════════════════════════ */
+function showPage(p){
+  document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
+  document.querySelectorAll('.sidebar-item').forEach(function(x){x.classList.remove('active');});
+  document.getElementById('page-'+p).classList.add('active');
+  document.querySelectorAll('.sidebar-item').forEach(function(b){
+    if(b.textContent.toLowerCase().includes(p.substring(0,4)))b.classList.add('active');
+  });
+  if(p==='catalogo') renderCatalog();
+  if(p==='proveedores') renderProveedores();
+  if(p==='dashboard') renderDashboard();
+}
+
+/* ═══════════════════════════════════
+   DASHBOARD
+═══════════════════════════════════ */
+function renderDashboard(){
+  var activas=ACTIVIDADES.filter(function(a){return a.status==='activo';});
+  document.getElementById('d-total').textContent=activas.length;
+  document.getElementById('d-pakini').textContent=activas.filter(function(a){return a.c==='pakini';}).length;
+  document.getElementById('d-nejnemi').textContent=activas.filter(function(a){return a.c==='nejnemi';}).length;
+  document.getElementById('d-musewi').textContent=activas.filter(function(a){return a.c==='musewi'||a.c==='kuxtal';}).length;
+  var log=document.getElementById('dash-list');
+  var colores={pakini:'#B84A2F',nejnemi:'#2D6A4F',musewi:'#3D8A65',kuxtal:'#E9A824'};
+  log.innerHTML=ACTIVIDADES.map(function(a){
+    return '<div class="log-item"><div class="log-dot" style="background:'+(colores[a.c]||'#888')+'"></div>'+
+      '<span style="flex:1">'+a.n+'</span>'+
+      '<span style="font-size:.72rem;color:var(--txt2)">'+a.c+'</span>'+
+      '<span style="font-size:.72rem;padding:.15rem .5rem;border-radius:100px;background:'+(a.status==='activo'?'#D1FAE5':'#FEE2E2')+';color:'+(a.status==='activo'?'#065F46':'#DC2626')+'">'+a.status+'</span>'+
+    '</div>';
+  }).join('');
+  actualizarSidebar();
+}
+
+function actualizarSidebar(){
+  var n=ACTIVIDADES.filter(function(a){return a.status==='activo';}).length;
+  document.getElementById('sb-total').textContent=n;
+  document.getElementById('sb-prov').textContent=PROVEEDORES.length;
+}
+
+/* ═══════════════════════════════════
+   CATÁLOGO
+═══════════════════════════════════ */
+function filtrarCatalog(c){
+  FILTER_CAT=c;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-c')===c);});
+  renderCatalog();
+}
+
+function renderCatalog(){
+  var lista=FILTER_CAT==='todos'?ACTIVIDADES:ACTIVIDADES.filter(function(a){return a.c===FILTER_CAT;});
+  var camCss={pakini:'cam-pakini',nejnemi:'cam-nejnemi',musewi:'cam-musewi',kuxtal:'cam-kuxtal'};
+  var camLbl={pakini:'Pakini',nejnemi:'Nejnemi',musewi:'Musewi',kuxtal:'Kuxtal'};
+  var g=document.getElementById('catalog-grid');
+  g.innerHTML=lista.map(function(a){
+    var prov=PROVEEDORES.find(function(p){return p.id===a.proveedor;});
+    return '<div class="cat-card'+(a.status!=='activo'?' cat-inactive':'')+'">'+
+      '<div class="cat-card-img">'+
+        '<img src="'+a.img+'" alt="'+a.n+'" onerror="this.src=\'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=60\'" loading="lazy">'+
+        '<div class="cat-card-img-overlay">'+
+          '<button class="img-edit-btn" onclick="abrirModalAct(\''+a.id+'\')" title="Editar imagen">&#128247; Img</button>'+
+          '<button class="img-edit-btn" onclick="abrirModalAct(\''+a.id+'\')" title="Editar">&#9998;</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="cat-card-body">'+
+        '<span class="cat-cam '+(camCss[a.c]||'')+'">'+(camLbl[a.c]||a.c)+'</span>'+
+        '<div class="cat-name">'+a.e+' '+a.n+'</div>'+
+        '<div class="cat-desc">'+a.d+'</div>'+
+        '<div class="cat-meta">'+
+          '<span class="cat-pill">'+a.di+'</span>'+
+          '<span class="cat-pill">'+a.h+'</span>'+
+          '<span class="cat-pill">'+a.lu+'</span>'+
+          (a.tr?'<span class="cat-pill" style="background:#E1F5EE;color:#065F46">&#128652; Transporte</span>':'')+
+          (prov?'<span class="cat-pill" style="background:#EDE9FE;color:#5B21B6">&#128101; '+prov.nombre+'</span>':'')+
+        '</div>'+
+        '<div class="cat-footer">'+
+          '<button class="btn-edit" onclick="abrirModalAct(\''+a.id+'\')">Editar / Edit</button>'+
+          '<button class="btn-toggle '+(a.status==='activo'?'active':'inactive')+'" onclick="toggleStatus(\''+a.id+'\')">'+(a.status==='activo'?'&#128994; Activo':'&#128308; Inactivo')+'</button>'+
+        '</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+}
+
+function toggleStatus(id){
+  var a=ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a)return;
+  a.status=a.status==='activo'?'inactivo':'activo';
+  guardarLocalStorage();
+  renderCatalog();
+  actualizarSidebar();
+  notif('Estado actualizado / Status updated','ok');
+}
+
+/* MODAL EDICIÓN ACTIVIDAD */
+function abrirModalAct(id){
+  var a=ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a)return;
+  EDIT_ACT_ID=id;
+  document.getElementById('modal-act-title').textContent='Editar: '+a.n;
+  document.getElementById('ea-id').value=a.id;
+  document.getElementById('ea-nombre').value=a.n;
+  document.getElementById('ea-camino').value=a.c;
+  document.getElementById('ea-desc').value=a.d;
+  document.getElementById('ea-desc-en').value=a.d_en||'';
+  document.getElementById('ea-dias').value=a.di;
+  document.getElementById('ea-horario').value=a.h;
+  document.getElementById('ea-lugar').value=a.lu;
+  document.getElementById('ea-duracion').value=a.du;
+  document.getElementById('ea-emoji').value=a.e;
+  document.getElementById('ea-transporte').value=String(a.tr);
+  document.getElementById('ea-wa').value=a.wa||'';
+  document.getElementById('ea-status').value=a.status||'activo';
+  document.getElementById('ea-img').value=a.img;
+  document.getElementById('ea-img-thumb').src=a.img;
+  // Proveedores en el select
+  var sel=document.getElementById('ea-proveedor');
+  sel.innerHTML='<option value="">Sin asignar (coordinado internamente)</option>'+
+    PROVEEDORES.map(function(p){return '<option value="'+p.id+'"'+(a.proveedor===p.id?' selected':'')+'>'+p.nombre+' ('+p.c+')</option>';}).join('');
+  abrirModal('modal-act');
+}
+
+function previewImg(){
+  var url=document.getElementById('ea-img').value.trim();
+  if(url) document.getElementById('ea-img-thumb').src=url;
+}
+
+function guardarActividad(){
+  var id=document.getElementById('ea-id').value;
+  var a=ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a)return;
+  a.n=document.getElementById('ea-nombre').value.trim();
+  a.c=document.getElementById('ea-camino').value;
+  a.d=document.getElementById('ea-desc').value.trim();
+  a.d_en=document.getElementById('ea-desc-en').value.trim();
+  a.di=document.getElementById('ea-dias').value.trim();
+  a.h=document.getElementById('ea-horario').value.trim();
+  a.lu=document.getElementById('ea-lugar').value.trim();
+  a.du=document.getElementById('ea-duracion').value.trim();
+  a.e=document.getElementById('ea-emoji').value.trim();
+  a.tr=document.getElementById('ea-transporte').value==='true';
+  a.wa=document.getElementById('ea-wa').value.trim();
+  a.status=document.getElementById('ea-status').value;
+  a.img=document.getElementById('ea-img').value.trim();
+  a.proveedor=document.getElementById('ea-proveedor').value;
+  guardarLocalStorage();
+  cerrarModal('modal-act');
+  renderCatalog();
+  renderDashboard();
+  notif('Actividad guardada / Activity saved','ok');
+}
+
+function eliminarActividad(){
+  if(!confirm('¿Eliminar esta actividad? / Delete this activity?'))return;
+  ACTIVIDADES=ACTIVIDADES.filter(function(x){return x.id!==EDIT_ACT_ID;});
+  guardarLocalStorage();
+  cerrarModal('modal-act');
+  renderCatalog();
+  renderDashboard();
+  notif('Actividad eliminada / Activity deleted','ok');
+}
+
+/* ═══════════════════════════════════
+   PROVEEDORES
+═══════════════════════════════════ */
+function renderProveedores(filtro){
+  var lista=filtro
+    ?PROVEEDORES.filter(function(p){return p.nombre.toLowerCase().includes(filtro.toLowerCase());})
+    :PROVEEDORES;
+  var stCss={activo:'st-activo',pendiente:'st-pendiente',contactado:'st-pendiente',inactivo:'st-inactivo'};
+  var g=document.getElementById('prov-list');
+  g.innerHTML=lista.map(function(p){
+    return '<div class="prov-card">'+
+      '<div><div class="prov-name">'+p.nombre+'</div><div class="prov-cam">'+p.c+' &middot; '+p.wa+'</div></div>'+
+      '<div class="prov-contact" style="font-size:.78rem">'+p.web+'</div>'+
+      '<div><span class="prov-status '+(stCss[p.status]||'')+'">'+p.status+'</span></div>'+
+      '<button class="btn-edit" style="padding:.4rem .8rem;font-size:.72rem" onclick="abrirModalProv(\''+p.id+'\')">Editar</button>'+
+    '</div>';
+  }).join('') || '<p style="color:var(--txt2);padding:1rem">No hay proveedores / No providers found</p>';
+}
+
+function buscarProv(v){ renderProveedores(v); }
+
+function abrirModalProv(id){
+  EDIT_PROV_ID=id;
+  var p=id?PROVEEDORES.find(function(x){return x.id===id;}):null;
+  document.getElementById('modal-prov-title').textContent=p?'Editar proveedor':'Nuevo proveedor';
+  document.getElementById('ep-id').value=p?p.id:'';
+  document.getElementById('ep-nombre').value=p?p.nombre:'';
+  document.getElementById('ep-camino').value=p?p.c:'pakini';
+  document.getElementById('ep-wa').value=p?p.wa:'';
+  document.getElementById('ep-email').value=p?p.email:'';
+  document.getElementById('ep-web').value=p?p.web:'';
+  document.getElementById('ep-status').value=p?p.status:'pendiente';
+  document.getElementById('ep-notas').value=p?p.notas:'';
+  abrirModal('modal-prov');
+}
+
+function guardarProveedor(){
+  var id=document.getElementById('ep-id').value;
+  var datos={
+    id:id||'prov-'+Date.now(),
+    nombre:document.getElementById('ep-nombre').value.trim(),
+    c:document.getElementById('ep-camino').value,
+    wa:document.getElementById('ep-wa').value.trim(),
+    email:document.getElementById('ep-email').value.trim(),
+    web:document.getElementById('ep-web').value.trim(),
+    status:document.getElementById('ep-status').value,
+    notas:document.getElementById('ep-notas').value.trim(),
+  };
+  if(id){
+    var idx=PROVEEDORES.findIndex(function(x){return x.id===id;});
+    if(idx>=0)PROVEEDORES[idx]=datos; else PROVEEDORES.push(datos);
+  } else {
+    PROVEEDORES.push(datos);
+  }
+  guardarLocalStorage();
+  cerrarModal('modal-prov');
+  renderProveedores();
+  actualizarSidebar();
+  notif('Proveedor guardado / Provider saved','ok');
+}
+
+function eliminarProveedor(){
+  if(!confirm('¿Eliminar este proveedor?'))return;
+  PROVEEDORES=PROVEEDORES.filter(function(x){return x.id!==EDIT_PROV_ID;});
+  guardarLocalStorage();
+  cerrarModal('modal-prov');
+  renderProveedores();
+  actualizarSidebar();
+  notif('Proveedor eliminado','ok');
+}
+
+/* ═══════════════════════════════════
+   CONFIGURACIÓN
+═══════════════════════════════════ */
+function cambiarPassword(){
+  var old=document.getElementById('cfg-pass-old').value;
+  var n=document.getElementById('cfg-pass-new').value;
+  var c=document.getElementById('cfg-pass-confirm').value;
+  var u=USERS.find(function(x){return x.user===SESSION.user&&x.pass===old;});
+  if(!u){notif('Contraseña actual incorrecta / Wrong current password','err');return;}
+  if(n.length<8){notif('Mínimo 8 caracteres / Minimum 8 characters','err');return;}
+  if(n!==c){notif('Las contraseñas no coinciden / Passwords do not match','err');return;}
+  u.pass=n;
+  guardarLocalStorage();
+  notif('Contraseña actualizada / Password updated','ok');
+  document.getElementById('cfg-pass-old').value='';
+  document.getElementById('cfg-pass-new').value='';
+  document.getElementById('cfg-pass-confirm').value='';
+}
+
+function exportarDatos(){
+  var data={actividades:ACTIVIDADES,proveedores:PROVEEDORES,exportado:new Date().toISOString()};
+  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='ejekatnemi-catalogo-'+new Date().toISOString().split('T')[0]+'.json';
+  a.click();
+  notif('Exportado correctamente / Exported successfully','ok');
+}
+
+function importarDatos(){
+  var input=document.createElement('input');
+  input.type='file';input.accept='.json';
+  input.onchange=function(e){
+    var r=new FileReader();
+    r.onload=function(ev){
+      try{
+        var d=JSON.parse(ev.target.result);
+        if(d.actividades){ACTIVIDADES=d.actividades;}
+        if(d.proveedores){PROVEEDORES=d.proveedores;}
+        guardarLocalStorage();
+        renderDashboard();
+        notif('Importado correctamente / Imported successfully','ok');
+      }catch(ex){notif('Error al importar / Import error','err');}
+    };
+    r.readAsText(e.target.files[0]);
+  };
+  input.click();
+}
+
+/* ═══════════════════════════════════
+   GUARDAR TODO
+═══════════════════════════════════ */
+function guardarTodo(){
+  guardarLocalStorage();
+  notif('Catálogo guardado. Los cambios se reflejan en explorar.html.','ok');
+}
+
+function guardarLocalStorage(){
+  localStorage.setItem('en_actividades',JSON.stringify(ACTIVIDADES));
+  localStorage.setItem('en_proveedores',JSON.stringify(PROVEEDORES));
+  localStorage.setItem('en_users',JSON.stringify(USERS));
+}
+
+/* MODALES */
+function abrirModal(id){document.getElementById(id).classList.add('on');document.body.style.overflow='hidden';}
+function cerrarModal(id){document.getElementById(id).classList.remove('on');document.body.style.overflow='';}
+document.getElementById('modal-act').addEventListener('click',function(e){if(e.target===this)cerrarModal('modal-act');});
+document.getElementById('modal-prov').addEventListener('click',function(e){if(e.target===this)cerrarModal('modal-prov');});
+
+/* NOTIF */
+function notif(msg,tipo){
+  var n=document.getElementById('notif');
+  n.textContent=msg;n.className='notif on '+(tipo||'');
+  setTimeout(function(){n.classList.remove('on');},3000);
+}
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){cerrarModal('modal-act');cerrarModal('modal-prov');}
+});
+
+init();
+</script>
+</body>
+</html>

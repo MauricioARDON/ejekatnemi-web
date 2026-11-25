@@ -502,155 +502,96 @@ input,select,textarea,button{font-family:'DM Sans',sans-serif;}
 /* ═══════════════════════════════════
    DATOS POR DEFECTO (se sobrescriben con localStorage)
 ═══════════════════════════════════ */
-var DEFAULT_ACTIVIDADES = [
-  {id:'salsa-grupal',c:'pakini',e:'&#128131;',status:'activo',proveedor:'',
-   n:'Salsa — Sesión Grupal',
-   d:'Aprende los movimientos elegantes de la Salsa en grupo. Sin importar tu nivel, en pocas sesiones dominarás los pasos para brillar en cualquier fiesta o celebración de fin de año.',
-   d_en:'Learn elegant Salsa movements in a group setting. Regardless of your level, in just a few sessions you will master the steps to shine at any party or year-end celebration.',
-   img:'https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?w=700&q=82&fit=crop',
-   di:'Lunes a Jueves',h:'8:00pm – 9:00pm',lu:'San Salvador',du:'60 min',tr:false,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar la Sesión Grupal de Salsa. ¿Tienen disponibilidad esta semana?'},
-  {id:'bachata-grupal',c:'pakini',e:'&#127926;',status:'activo',proveedor:'',
-   n:'Bachata — Sesión Grupal',
-   d:'Vive el ritmo y la sensibilidad de la Bachata en un ambiente grupal y relajado. Aprende a moverte con soltura y prepárate para reuniones y fiestas del año.',
-   d_en:'Experience the rhythm and sensibility of Bachata in a relaxed group setting. Learn to move with ease and get ready for any social gathering.',
-   img:'https://images.unsplash.com/photo-1547153760-18fc86324498?w=700&q=82&fit=crop',
-   di:'Lunes a Jueves',h:'8:00pm – 9:00pm',lu:'San Salvador',du:'60 min',tr:false,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar la Sesión Grupal de Bachata. ¿Hay lugares disponibles?'},
-  {id:'individual',c:'pakini',e:'&#128378;',status:'activo',proveedor:'',
-   n:'Clase Individual — Salsa o Bachata',
-   d:'Sesión 1 a 1 adaptada completamente a tu ritmo y objetivos. Avance garantizado. Disponible presencial o en línea.',
-   d_en:'1-on-1 session fully adapted to your pace and goals. Guaranteed progress. Available in-person or online.',
-   img:'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=82&fit=crop',
-   di:'Lun–Jue · Sáb–Dom',h:'Lun–Jue 8pm · Sáb–Dom 8am–5pm',lu:'San Salvador / En línea',du:'60 min',tr:false,
-   wa:'Hola Mauricio, vi Ejekat Nemi y me interesa una Clase Individual. ¿Cómo coordino mi primera sesión?'},
-  {id:'2x1',c:'pakini',e:'&#128293;',status:'activo',proveedor:'',
-   n:'2x1 — Salsa & Bachata',
-   d:'Domina los dos ritmos latinos más populares en un solo paquete. El combo ideal para llegar con confianza a cualquier pista de baile.',
-   d_en:'Master the two most popular Latin rhythms in one package. The perfect combo to confidently hit any dance floor.',
-   img:'https://images.unsplash.com/photo-1545959570-a94084071b5d?w=700&q=82&fit=crop',
-   di:'Lunes a Jueves',h:'8:00pm – 10:00pm',lu:'San Salvador',du:'120 min',tr:false,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero el paquete 2x1 de Salsa y Bachata. ¿Cómo funciona?'},
-  {id:'volcan',c:'nejnemi',e:'&#127755;',status:'activo',proveedor:'',
-   n:'Tour Volcán Santa Ana + Cerro Verde',
-   d:'Asciende al volcán activo más alto de El Salvador. Desde el cráter verás la laguna esmeralda y el Lago de Coatepeque. Transporte y guía certificado incluidos.',
-   d_en:'Climb the highest active volcano in El Salvador. From the crater you will see the emerald lagoon and Lake Coatepeque. Transport and certified guide included.',
-   img:'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=700&q=82&fit=crop',
-   di:'Sábados y Domingos',h:'Salida 5:30am · Regreso ~3:00pm',lu:'Santa Ana, El Salvador',du:'8–9 horas',tr:true,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar el Tour al Volcán Santa Ana. ¿Hay lugares este fin de semana?'},
-  {id:'coatepeque',c:'nejnemi',e:'&#128167;',status:'activo',proveedor:'',
-   n:'Tour Lago Coatepeque + Playa El Tunco',
-   d:'Un día entre las aguas termales del lago más hermoso de El Salvador y la playa volcánica de El Tunco. Gastronomía local y descanso activo. Transporte incluido.',
-   d_en:'A day between the thermal waters of El Salvador\'s most beautiful lake and El Tunco volcanic beach. Local food and active rest. Transport included.',
-   img:'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=700&q=82&fit=crop',
-   di:'Sábados y Domingos',h:'Salida 6:00am · Regreso ~5:00pm',lu:'Coatepeque + La Libertad',du:'10–11 horas',tr:true,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero ir al Tour Lago Coatepeque y El Tunco. ¿Hay cupo?'},
-  {id:'suchitoto',c:'nejnemi',e:'&#127963;',status:'activo',proveedor:'',
-   n:'Tour Cultural Suchitoto',
-   d:'El pueblo colonial más auténtico de El Salvador. Iglesia colonial, Lago Suchitlán, murales, artesanías y gastronomía local. Transporte incluido.',
-   d_en:'El Salvador\'s most authentic colonial town. Colonial church, Lake Suchitlán, murals, crafts and local food. Transport included.',
-   img:'https://images.unsplash.com/photo-1539650116574-75c0c6d73f6e?w=700&q=82&fit=crop',
-   di:'Sábados y Domingos',h:'Salida 7:00am · Regreso ~4:00pm',lu:'Suchitoto, Cuscatlán',du:'8 horas',tr:true,
-   wa:'Hola Mauricio, vi Ejekat Nemi y me interesa el Tour de Suchitoto. ¿Tienen salida este domingo?'},
-  {id:'extremos',c:'nejnemi',e:'&#129666;',status:'activo',proveedor:'',
-   n:'Deportes Extremos — Canopy · Rapel · Bungee',
-   d:'Adrenalina pura en entornos naturales. Equipo de seguridad certificado y guía especializado incluidos. Ideal para equipos que quieren romper límites.',
-   d_en:'Pure adrenaline in natural settings. Certified safety equipment and specialized guide included. Perfect for teams that want to push their limits.',
-   img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?w=700&q=82&fit=crop',
-   di:'Sábados y Domingos',h:'Salida 7:00am · Regreso ~1:00pm',lu:'El Salvador',du:'3–4 horas',tr:true,
-   wa:'Hola Mauricio, vi Ejekat Nemi y quiero reservar deportes extremos. ¿Qué opciones tienen?'},
-  {id:'yoga-grupal',c:'musewi',e:'&#129496;',status:'activo',proveedor:'',
-   n:'Yoga — Sesión Grupal',
-   d:'Posturas, respiración y relajación en grupo para soltar la tensión de la semana. Mejora la postura, reduce el estrés y devuelve la claridad mental. Para todos los niveles.',
-   d_en:'Postures, breathing and relaxation in a group setting. Improve posture, reduce stress and regain mental clarity. All levels welcome.',
-   img:'https://images.unsplash.com/photo-1545389336-cf090694435e?w=700&q=82&fit=crop',
-   di:'Sábados',h:'9:00am – 11:00am',lu:'San Salvador',du:'120 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y me interesa la sesión grupal de Yoga del sábado. ¿Hay lugares disponibles?'},
-  {id:'meditacion',c:'musewi',e:'&#129504;',status:'activo',proveedor:'',
-   n:'Meditación — Sesión Grupal',
-   d:'Aprende técnicas de meditación aplicables en tu vida diaria — antes del trabajo, en momentos de estrés o al final del día. Herramientas reales, no solo relajación.',
-   d_en:'Learn meditation techniques applicable in daily life — before work, during stressful moments or at the end of the day. Real tools, not just relaxation.',
-   img:'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=700&q=82&fit=crop',
-   di:'Lunes y Miércoles',h:'7:00am – 8:00am',lu:'San Salvador / En línea',du:'60 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y quiero participar en meditación. ¿Cómo me uno?'},
-  {id:'respiracion',c:'musewi',e:'&#127807;',status:'activo',proveedor:'',
-   n:'Respiración & Regulación',
-   d:'Técnicas de respiración consciente para reducir la ansiedad, mejorar el sueño y recuperar la concentración. Una herramienta que llevas contigo a todas partes.',
-   d_en:'Conscious breathing techniques to reduce anxiety, improve sleep and regain focus. A tool you carry everywhere.',
-   img:'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=700&q=82&fit=crop',
-   di:'Martes y Jueves',h:'6:30am – 7:15am',lu:'En línea',du:'45 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y me interesa la sesión de respiración. ¿Cómo me inscribo?'},
-  {id:'masaje',c:'kuxtal',e:'&#128591;',status:'activo',proveedor:'',
-   n:'Masaje Terapéutico',
-   d:'Sesión de masoterapia para liberar la tensión muscular acumulada por horas de trabajo. Alivia el dolor de espalda, cuello y hombros con técnicas profesionales.',
-   d_en:'Massage therapy session to release muscle tension accumulated from hours of work. Relieves back, neck and shoulder pain with professional techniques.',
-   img:'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=700&q=82&fit=crop',
-   di:'Lunes a Sábado',h:'Por cita · Horario flexible',lu:'San Salvador',du:'45–60 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y quiero agendar un masaje terapéutico. ¿Qué disponibilidad tienen?'},
-  {id:'fisioterapia',c:'kuxtal',e:'&#129328;',status:'activo',proveedor:'',
-   n:'Movilidad & Fisioterapia',
-   d:'Rutina de movilidad articular, estiramiento y fortalecimiento postural. Para personas que pasan muchas horas sentadas y quieren prevenir lesiones.',
-   d_en:'Joint mobility, stretching and postural strengthening routine. For people who spend long hours seated and want to prevent injuries.',
-   img:'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=82&fit=crop',
-   di:'Lunes a Viernes',h:'Por cita · 7:00am – 7:00pm',lu:'San Salvador',du:'45 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y me interesa fisioterapia. ¿Cómo agendo?'},
-  {id:'bienestar-mental',c:'kuxtal',e:'&#129302;',status:'activo',proveedor:'',
-   n:'Taller de Bienestar Mental',
-   d:'Espacio grupal guiado por profesional sobre estrés laboral, límites y salud emocional. Sin etiquetas clínicas. Solo herramientas prácticas para funcionar mejor.',
-   d_en:'Group space guided by a professional covering work stress, boundaries and emotional health. No clinical labels. Just practical tools to function better.',
-   img:'https://images.unsplash.com/photo-1573497620053-ea5300f94f21?w=700&q=82&fit=crop',
-   di:'Viernes',h:'5:00pm – 6:30pm',lu:'San Salvador / En línea',du:'90 min',tr:false,
-   wa:'Hola, vi Ejekat Nemi y me interesa el taller de bienestar mental. ¿Hay cupo?'},
-];
+var SB_URL = 'https://auvlpdnqbtwfeemsuyti.supabase.co';       // ej: https://xxxx.supabase.co
+var SB_KEY = 'sb_publishable_rlHDivmGW97YSNacioxvzQ_llfUeKBN';  // empieza con eyJ...
 
-var DEFAULT_PROVEEDORES = [
-  {id:'prov-1',nombre:'Latins Dance Company',c:'pakini',wa:'+503 (IG: @latinsdancecompany)',email:'',web:'latins.dance',status:'pendiente',notas:'Academia fundada 2015, San Salvador. Salsa y Bachata todos los niveles.'},
-  {id:'prov-2',nombre:'Balaré Academia de Baile',c:'pakini',wa:'+503 (IG: @balareacademy)',email:'',web:'balareacademy.com',status:'pendiente',notas:'San Salvador y Santa Tecla. 20 años experiencia.'},
-  {id:'prov-3',nombre:'Shanti Yoga El Salvador',c:'musewi',wa:'+503 (web: shantiyogasv.com)',email:'',web:'shantiyogasv.com',status:'pendiente',notas:'Talleres para empresas. BeSport Km 12.5, Nuevo Cuscatlán.'},
-  {id:'prov-4',nombre:'Meditación El Salvador',c:'musewi',wa:'+503 (web: meditacionelsalvador.org)',email:'',web:'meditacionelsalvador.org',status:'pendiente',notas:'Programas para empresas e instituciones. Instructores certificados.'},
-  {id:'prov-5',nombre:'Centro THERA',c:'kuxtal',wa:'+503 (web: centrothera.com)',email:'',web:'centrothera.com',status:'pendiente',notas:'Fisioterapia para empresas. Masajes, meditación, terapia ocupacional.'},
-  {id:'prov-6',nombre:'El Salvador Turismo',c:'nejnemi',wa:'+503 (web: elsalvadorturismo.com.sv)',email:'',web:'elsalvadorturismo.com.sv',status:'pendiente',notas:'Tours volcanes, cultural y aventura. Grupo Amate.'},
-  {id:'prov-7',nombre:'Apaneca Zipline Adventures',c:'nejnemi',wa:'+503 (FB: Apaneca Canopy)',email:'',web:'',status:'pendiente',notas:'Canopy más largo CA, 2.5km, 13 tramos. $35/persona.'},
-  {id:'prov-8',nombre:'Mauricio Ardón (interno)',c:'pakini',wa:'+1 (929) 830-4133',email:'administrador@ejekatnemi.com',web:'ejekatnemi.com',status:'activo',notas:'Fundador. Instructor de Salsa/Bachata y guía de tours. Proveedor principal activo.'},
-];
-
+// ============================================================
+// DATOS POR DEFECTO (fallback si Supabase no responde)
+// ============================================================
 var DEFAULT_USERS = [
   {user:'admin',pass:'ejekatnemi2025',rol:'Administrador'},
   {user:'mauricio',pass:'nemi2025',rol:'Fundador'},
 ];
 
-/* ═══════════════════════════════════
-   ESTADO
-═══════════════════════════════════ */
-var SESSION = null;
+// ============================================================
+// ESTADO
+// ============================================================
+var SESSION     = null;
 var ACTIVIDADES = [];
 var PROVEEDORES = [];
-var USERS = [];
-var FILTER_CAT = 'todos';
-var EDIT_ACT_ID = null;
+var RESERVAS    = [];
+var USERS       = [];
+var FILTER_CAT  = 'todos';
+var EDIT_ACT_ID  = null;
 var EDIT_PROV_ID = null;
+var SB_LISTO    = false;
 
-/* ═══════════════════════════════════
-   INIT
-═══════════════════════════════════ */
-function init(){
-  ACTIVIDADES = JSON.parse(localStorage.getItem('en_actividades') || 'null') || DEFAULT_ACTIVIDADES;
-  PROVEEDORES = JSON.parse(localStorage.getItem('en_proveedores') || 'null') || DEFAULT_PROVEEDORES;
-  USERS       = JSON.parse(localStorage.getItem('en_users')       || 'null') || DEFAULT_USERS;
-  SESSION     = JSON.parse(sessionStorage.getItem('en_session')   || 'null');
-  if(SESSION){ mostrarApp(); } else { document.getElementById('login-wrap').style.display='flex'; }
+// ============================================================
+// HELPERS SUPABASE
+// ============================================================
+var SB_HEADERS = {
+  'apikey': SB_KEY,
+  'Authorization': 'Bearer ' + SB_KEY,
+  'Content-Type': 'application/json',
+  'Prefer': 'return=representation'
+};
+
+async function sbGet(tabla, params){
+  var url = SB_URL + '/rest/v1/' + tabla + (params ? '?' + params : '');
+  var r = await fetch(url, {headers: SB_HEADERS});
+  if(!r.ok) throw new Error('GET ' + tabla + ' ' + r.status);
+  return r.json();
 }
 
-/* ═══════════════════════════════════
-   AUTH
-═══════════════════════════════════ */
+async function sbInsert(tabla, datos){
+  var r = await fetch(SB_URL + '/rest/v1/' + tabla, {
+    method: 'POST',
+    headers: Object.assign({}, SB_HEADERS, {'Prefer':'return=representation'}),
+    body: JSON.stringify(datos)
+  });
+  if(!r.ok) throw new Error('POST ' + tabla + ' ' + r.status);
+  return r.json();
+}
+
+async function sbUpdate(tabla, id, datos){
+  var r = await fetch(SB_URL + '/rest/v1/' + tabla + '?id=eq.' + id, {
+    method: 'PATCH',
+    headers: SB_HEADERS,
+    body: JSON.stringify(datos)
+  });
+  if(!r.ok) throw new Error('PATCH ' + tabla + ' ' + r.status);
+  return r.json();
+}
+
+async function sbDelete(tabla, id){
+  var r = await fetch(SB_URL + '/rest/v1/' + tabla + '?id=eq.' + id, {
+    method: 'DELETE',
+    headers: SB_HEADERS
+  });
+  if(!r.ok) throw new Error('DELETE ' + tabla + ' ' + r.status);
+  return true;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+async function init(){
+  USERS   = JSON.parse(localStorage.getItem('en_users') || 'null') || DEFAULT_USERS;
+  SESSION = JSON.parse(sessionStorage.getItem('en_session') || 'null');
+  if(SESSION){ await mostrarApp(); }
+  else { document.getElementById('login-wrap').style.display='flex'; }
+}
+
+// ============================================================
+// AUTH
+// ============================================================
 function doLogin(){
-  var u=document.getElementById('login-user').value.trim();
-  var p=document.getElementById('login-pass').value;
-  var match=USERS.find(function(x){return x.user===u&&x.pass===p;});
+  var u = document.getElementById('login-user').value.trim();
+  var p = document.getElementById('login-pass').value;
+  var match = USERS.find(function(x){return x.user===u && x.pass===p;});
   if(match){
-    SESSION={user:u,rol:match.rol};
-    sessionStorage.setItem('en_session',JSON.stringify(SESSION));
+    SESSION = {user:u, rol:match.rol};
+    sessionStorage.setItem('en_session', JSON.stringify(SESSION));
     mostrarApp();
   } else {
     document.getElementById('login-err').style.display='block';
@@ -660,78 +601,186 @@ document.getElementById('login-pass').addEventListener('keydown',function(e){if(
 
 function doLogout(){
   sessionStorage.removeItem('en_session');
-  SESSION=null;
+  SESSION = null;
   document.getElementById('app').style.display='none';
   document.getElementById('login-wrap').style.display='flex';
   document.getElementById('login-pass').value='';
 }
 
-function mostrarApp(){
+async function mostrarApp(){
   document.getElementById('login-wrap').style.display='none';
   document.getElementById('app').style.display='block';
-  document.getElementById('tb-user').textContent=SESSION.rol+': '+SESSION.user;
+  document.getElementById('tb-user').textContent = SESSION.rol + ': ' + SESSION.user;
+  mostrarLoading(true, 'Conectando con Supabase...');
+  await cargarTodo();
+  mostrarLoading(false);
   actualizarSidebar();
   renderDashboard();
 }
 
-/* ═══════════════════════════════════
-   NAVEGACIÓN
-═══════════════════════════════════ */
+function mostrarLoading(show, msg){
+  var el = document.getElementById('sb-loading');
+  if(!el) return;
+  el.style.display = show ? 'flex' : 'none';
+  if(msg) el.querySelector('span').textContent = msg;
+}
+
+// ============================================================
+// CARGA INICIAL DESDE SUPABASE
+// ============================================================
+async function cargarTodo(){
+  try {
+    var [acts, provs, reservas] = await Promise.all([
+      sbGet('actividades', 'order=camino,orden&select=*'),
+      sbGet('proveedores',  'order=nombre&select=*'),
+      sbGet('reservas',     'order=created_at.desc&limit=50&select=*')
+    ]);
+    ACTIVIDADES = acts.map(mapActividad);
+    PROVEEDORES = provs.map(mapProveedor);
+    RESERVAS    = reservas;
+    SB_LISTO    = true;
+    notif('Datos cargados desde Supabase (' + ACTIVIDADES.length + ' actividades)', 'ok');
+  } catch(err) {
+    console.error('Supabase error:', err);
+    notif('Error conectando con Supabase. Verifica SB_URL y SB_KEY.', 'err');
+    SB_LISTO = false;
+  }
+}
+
+// Mapear fila de Supabase al formato interno del admin
+function mapActividad(r){
+  return {
+    id:       r.id,
+    c:        r.camino ? r.camino.toLowerCase() : 'pakini',
+    e:        r.emoji || '',
+    n:        r.nombre || '',
+    n_en:     r.nombre_en || '',
+    d:        r.descripcion || '',
+    d_en:     r.descripcion_en || '',
+    img:      r.imagen_url || '',
+    di:       r.dias || '',
+    h:        r.horario || '',
+    lu:       r.ubicacion || '',
+    du:       r.duracion || '',
+    tr:       r.transporte || false,
+    wa:       r.whatsapp_msg || '',
+    proveedor:r.proveedor_id || '',
+    status:   r.estado || 'activo',
+    orden:    r.orden || 0
+  };
+}
+
+function mapProveedor(r){
+  return {
+    id:     r.id,
+    nombre: r.nombre || '',
+    c:      r.camino ? r.camino.toLowerCase() : 'pakini',
+    wa:     r.whatsapp || '',
+    email:  r.email || '',
+    web:    r.web || '',
+    status: r.estado || 'pendiente',
+    notas:  r.notas || ''
+  };
+}
+
+// Mapear formato interno al formato de Supabase
+function mapActividadToSB(a){
+  return {
+    id:             a.id,
+    camino:         a.c.charAt(0).toUpperCase() + a.c.slice(1),
+    emoji:          a.e,
+    nombre:         a.n,
+    nombre_en:      a.n_en || null,
+    descripcion:    a.d,
+    descripcion_en: a.d_en || null,
+    imagen_url:     a.img,
+    dias:           a.di,
+    horario:        a.h,
+    ubicacion:      a.lu,
+    duracion:       a.du,
+    transporte:     a.tr,
+    whatsapp_msg:   a.wa,
+    proveedor_id:   a.proveedor || null,
+    estado:         a.status,
+    orden:          a.orden || 0
+  };
+}
+
+function mapProveedorToSB(p){
+  return {
+    id:       p.id,
+    nombre:   p.nombre,
+    camino:   p.c.charAt(0).toUpperCase() + p.c.slice(1),
+    whatsapp: p.wa,
+    email:    p.email || null,
+    web:      p.web || null,
+    estado:   p.status,
+    notas:    p.notas || null
+  };
+}
+
+// ============================================================
+// NAVEGACIÓN
+// ============================================================
 function showPage(p){
   document.querySelectorAll('.page').forEach(function(x){x.classList.remove('active');});
   document.querySelectorAll('.sidebar-item').forEach(function(x){x.classList.remove('active');});
   document.getElementById('page-'+p).classList.add('active');
   document.querySelectorAll('.sidebar-item').forEach(function(b){
-    if(b.textContent.toLowerCase().includes(p.substring(0,4)))b.classList.add('active');
+    if(b.textContent.toLowerCase().includes(p.substring(0,4))) b.classList.add('active');
   });
-  if(p==='catalogo') renderCatalog();
+  if(p==='catalogo')   renderCatalog();
   if(p==='proveedores') renderProveedores();
   if(p==='dashboard') renderDashboard();
+  if(p==='reservas')  renderReservas();
 }
 
-/* ═══════════════════════════════════
-   DASHBOARD
-═══════════════════════════════════ */
+// ============================================================
+// DASHBOARD
+// ============================================================
 function renderDashboard(){
-  var activas=ACTIVIDADES.filter(function(a){return a.status==='activo';});
-  document.getElementById('d-total').textContent=activas.length;
-  document.getElementById('d-pakini').textContent=activas.filter(function(a){return a.c==='pakini';}).length;
-  document.getElementById('d-nejnemi').textContent=activas.filter(function(a){return a.c==='nejnemi';}).length;
-  document.getElementById('d-musewi').textContent=activas.filter(function(a){return a.c==='musewi'||a.c==='kuxtal';}).length;
-  var log=document.getElementById('dash-list');
-  var colores={pakini:'#B84A2F',nejnemi:'#2D6A4F',musewi:'#3D8A65',kuxtal:'#E9A824'};
-  log.innerHTML=ACTIVIDADES.map(function(a){
+  var activas = ACTIVIDADES.filter(function(a){return a.status==='activo';});
+  document.getElementById('d-total').textContent   = activas.length;
+  document.getElementById('d-pakini').textContent  = activas.filter(function(a){return a.c==='pakini';}).length;
+  document.getElementById('d-nejnemi').textContent = activas.filter(function(a){return a.c==='nejnemi';}).length;
+  document.getElementById('d-musewi').textContent  = activas.filter(function(a){return a.c==='musewi'||a.c==='kuxtal';}).length;
+  var log = document.getElementById('dash-list');
+  var colores = {pakini:'#B84A2F',nejnemi:'#2D6A4F',musewi:'#3D8A65',kuxtal:'#E9A824'};
+  log.innerHTML = ACTIVIDADES.map(function(a){
     return '<div class="log-item"><div class="log-dot" style="background:'+(colores[a.c]||'#888')+'"></div>'+
       '<span style="flex:1">'+a.n+'</span>'+
       '<span style="font-size:.72rem;color:var(--txt2)">'+a.c+'</span>'+
       '<span style="font-size:.72rem;padding:.15rem .5rem;border-radius:100px;background:'+(a.status==='activo'?'#D1FAE5':'#FEE2E2')+';color:'+(a.status==='activo'?'#065F46':'#DC2626')+'">'+a.status+'</span>'+
     '</div>';
   }).join('');
+  // Contador reservas
+  var dr = document.getElementById('d-reservas');
+  if(dr) dr.textContent = RESERVAS.length;
   actualizarSidebar();
 }
 
 function actualizarSidebar(){
-  var n=ACTIVIDADES.filter(function(a){return a.status==='activo';}).length;
-  document.getElementById('sb-total').textContent=n;
-  document.getElementById('sb-prov').textContent=PROVEEDORES.length;
+  var n = ACTIVIDADES.filter(function(a){return a.status==='activo';}).length;
+  document.getElementById('sb-total').textContent = n;
+  document.getElementById('sb-prov').textContent  = PROVEEDORES.length;
 }
 
-/* ═══════════════════════════════════
-   CATÁLOGO
-═══════════════════════════════════ */
+// ============================================================
+// CATÁLOGO
+// ============================================================
 function filtrarCatalog(c){
-  FILTER_CAT=c;
-  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-c')===c);});
+  FILTER_CAT = c;
+  document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.toggle('on', b.getAttribute('data-c')===c);});
   renderCatalog();
 }
 
 function renderCatalog(){
-  var lista=FILTER_CAT==='todos'?ACTIVIDADES:ACTIVIDADES.filter(function(a){return a.c===FILTER_CAT;});
-  var camCss={pakini:'cam-pakini',nejnemi:'cam-nejnemi',musewi:'cam-musewi',kuxtal:'cam-kuxtal'};
-  var camLbl={pakini:'Pakini',nejnemi:'Nejnemi',musewi:'Musewi',kuxtal:'Kuxtal'};
-  var g=document.getElementById('catalog-grid');
-  g.innerHTML=lista.map(function(a){
-    var prov=PROVEEDORES.find(function(p){return p.id===a.proveedor;});
+  var lista = FILTER_CAT==='todos' ? ACTIVIDADES : ACTIVIDADES.filter(function(a){return a.c===FILTER_CAT;});
+  var camCss = {pakini:'cam-pakini',nejnemi:'cam-nejnemi',musewi:'cam-musewi',kuxtal:'cam-kuxtal'};
+  var camLbl = {pakini:'Pakini',nejnemi:'Nejnemi',musewi:'Musewi',kuxtal:'Kuxtal'};
+  var g = document.getElementById('catalog-grid');
+  g.innerHTML = lista.map(function(a){
+    var prov = PROVEEDORES.find(function(p){return p.id===a.proveedor;});
     return '<div class="cat-card'+(a.status!=='activo'?' cat-inactive':'')+'">'+
       '<div class="cat-card-img">'+
         '<img src="'+a.img+'" alt="'+a.n+'" onerror="this.src=\'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&q=60\'" loading="lazy">'+
@@ -760,94 +809,106 @@ function renderCatalog(){
   }).join('');
 }
 
-function toggleStatus(id){
-  var a=ACTIVIDADES.find(function(x){return x.id===id;});
-  if(!a)return;
-  a.status=a.status==='activo'?'inactivo':'activo';
-  guardarLocalStorage();
-  renderCatalog();
-  actualizarSidebar();
-  notif('Estado actualizado / Status updated','ok');
+async function toggleStatus(id){
+  var a = ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a) return;
+  var nuevo = a.status==='activo' ? 'inactivo' : 'activo';
+  try {
+    await sbUpdate('actividades', id, {estado: nuevo});
+    a.status = nuevo;
+    renderCatalog();
+    actualizarSidebar();
+    notif('Estado actualizado / Status updated','ok');
+  } catch(e){
+    notif('Error al actualizar estado: ' + e.message, 'err');
+  }
 }
 
-/* MODAL EDICIÓN ACTIVIDAD */
+// MODAL EDICION ACTIVIDAD
 function abrirModalAct(id){
-  var a=ACTIVIDADES.find(function(x){return x.id===id;});
-  if(!a)return;
-  EDIT_ACT_ID=id;
-  document.getElementById('modal-act-title').textContent='Editar: '+a.n;
-  document.getElementById('ea-id').value=a.id;
-  document.getElementById('ea-nombre').value=a.n;
-  document.getElementById('ea-camino').value=a.c;
-  document.getElementById('ea-desc').value=a.d;
-  document.getElementById('ea-desc-en').value=a.d_en||'';
-  document.getElementById('ea-dias').value=a.di;
-  document.getElementById('ea-horario').value=a.h;
-  document.getElementById('ea-lugar').value=a.lu;
-  document.getElementById('ea-duracion').value=a.du;
-  document.getElementById('ea-emoji').value=a.e;
-  document.getElementById('ea-transporte').value=String(a.tr);
-  document.getElementById('ea-wa').value=a.wa||'';
-  document.getElementById('ea-status').value=a.status||'activo';
-  document.getElementById('ea-img').value=a.img;
-  document.getElementById('ea-img-thumb').src=a.img;
-  // Proveedores en el select
-  var sel=document.getElementById('ea-proveedor');
-  sel.innerHTML='<option value="">Sin asignar (coordinado internamente)</option>'+
+  var a = ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a) return;
+  EDIT_ACT_ID = id;
+  document.getElementById('modal-act-title').textContent = 'Editar: '+a.n;
+  document.getElementById('ea-id').value       = a.id;
+  document.getElementById('ea-nombre').value   = a.n;
+  document.getElementById('ea-camino').value   = a.c;
+  document.getElementById('ea-desc').value     = a.d;
+  document.getElementById('ea-desc-en').value  = a.d_en||'';
+  document.getElementById('ea-dias').value     = a.di;
+  document.getElementById('ea-horario').value  = a.h;
+  document.getElementById('ea-lugar').value    = a.lu;
+  document.getElementById('ea-duracion').value = a.du;
+  document.getElementById('ea-emoji').value    = a.e;
+  document.getElementById('ea-transporte').value = String(a.tr);
+  document.getElementById('ea-wa').value       = a.wa||'';
+  document.getElementById('ea-status').value   = a.status||'activo';
+  document.getElementById('ea-img').value      = a.img;
+  document.getElementById('ea-img-thumb').src  = a.img;
+  var sel = document.getElementById('ea-proveedor');
+  sel.innerHTML = '<option value="">Sin asignar (coordinado internamente)</option>'+
     PROVEEDORES.map(function(p){return '<option value="'+p.id+'"'+(a.proveedor===p.id?' selected':'')+'>'+p.nombre+' ('+p.c+')</option>';}).join('');
   abrirModal('modal-act');
 }
 
 function previewImg(){
-  var url=document.getElementById('ea-img').value.trim();
-  if(url) document.getElementById('ea-img-thumb').src=url;
+  var url = document.getElementById('ea-img').value.trim();
+  if(url) document.getElementById('ea-img-thumb').src = url;
 }
 
-function guardarActividad(){
-  var id=document.getElementById('ea-id').value;
-  var a=ACTIVIDADES.find(function(x){return x.id===id;});
-  if(!a)return;
-  a.n=document.getElementById('ea-nombre').value.trim();
-  a.c=document.getElementById('ea-camino').value;
-  a.d=document.getElementById('ea-desc').value.trim();
-  a.d_en=document.getElementById('ea-desc-en').value.trim();
-  a.di=document.getElementById('ea-dias').value.trim();
-  a.h=document.getElementById('ea-horario').value.trim();
-  a.lu=document.getElementById('ea-lugar').value.trim();
-  a.du=document.getElementById('ea-duracion').value.trim();
-  a.e=document.getElementById('ea-emoji').value.trim();
-  a.tr=document.getElementById('ea-transporte').value==='true';
-  a.wa=document.getElementById('ea-wa').value.trim();
-  a.status=document.getElementById('ea-status').value;
-  a.img=document.getElementById('ea-img').value.trim();
-  a.proveedor=document.getElementById('ea-proveedor').value;
-  guardarLocalStorage();
-  cerrarModal('modal-act');
-  renderCatalog();
-  renderDashboard();
-  notif('Actividad guardada / Activity saved','ok');
+async function guardarActividad(){
+  var id = document.getElementById('ea-id').value;
+  var a  = ACTIVIDADES.find(function(x){return x.id===id;});
+  if(!a) return;
+  a.n       = document.getElementById('ea-nombre').value.trim();
+  a.c       = document.getElementById('ea-camino').value;
+  a.d       = document.getElementById('ea-desc').value.trim();
+  a.d_en    = document.getElementById('ea-desc-en').value.trim();
+  a.di      = document.getElementById('ea-dias').value.trim();
+  a.h       = document.getElementById('ea-horario').value.trim();
+  a.lu      = document.getElementById('ea-lugar').value.trim();
+  a.du      = document.getElementById('ea-duracion').value.trim();
+  a.e       = document.getElementById('ea-emoji').value.trim();
+  a.tr      = document.getElementById('ea-transporte').value==='true';
+  a.wa      = document.getElementById('ea-wa').value.trim();
+  a.status  = document.getElementById('ea-status').value;
+  a.img     = document.getElementById('ea-img').value.trim();
+  a.proveedor = document.getElementById('ea-proveedor').value;
+  try {
+    await sbUpdate('actividades', id, mapActividadToSB(a));
+    cerrarModal('modal-act');
+    renderCatalog();
+    renderDashboard();
+    notif('Actividad guardada en Supabase / Saved to Supabase','ok');
+  } catch(e){
+    notif('Error al guardar: ' + e.message, 'err');
+  }
 }
 
-function eliminarActividad(){
-  if(!confirm('¿Eliminar esta actividad? / Delete this activity?'))return;
-  ACTIVIDADES=ACTIVIDADES.filter(function(x){return x.id!==EDIT_ACT_ID;});
-  guardarLocalStorage();
-  cerrarModal('modal-act');
-  renderCatalog();
-  renderDashboard();
-  notif('Actividad eliminada / Activity deleted','ok');
+async function eliminarActividad(){
+  if(!confirm('¿Eliminar esta actividad? / Delete this activity?')) return;
+  try {
+    await sbDelete('actividades', EDIT_ACT_ID);
+    ACTIVIDADES = ACTIVIDADES.filter(function(x){return x.id!==EDIT_ACT_ID;});
+    cerrarModal('modal-act');
+    renderCatalog();
+    renderDashboard();
+    notif('Actividad eliminada / Activity deleted','ok');
+  } catch(e){
+    notif('Error al eliminar: ' + e.message, 'err');
+  }
 }
 
-/* ═══════════════════════════════════
-   PROVEEDORES
-═══════════════════════════════════ */
+// ============================================================
+// PROVEEDORES
+// ============================================================
 function renderProveedores(filtro){
-  var lista=filtro
-    ?PROVEEDORES.filter(function(p){return p.nombre.toLowerCase().includes(filtro.toLowerCase());})
-    :PROVEEDORES;
-  var stCss={activo:'st-activo',pendiente:'st-pendiente',contactado:'st-pendiente',inactivo:'st-inactivo'};
-  var g=document.getElementById('prov-list');
-  g.innerHTML=lista.map(function(p){
+  var lista = filtro
+    ? PROVEEDORES.filter(function(p){return p.nombre.toLowerCase().includes(filtro.toLowerCase());})
+    : PROVEEDORES;
+  var stCss = {activo:'st-activo',pendiente:'st-pendiente',contactado:'st-pendiente',inactivo:'st-inactivo'};
+  var g = document.getElementById('prov-list');
+  g.innerHTML = lista.map(function(p){
     return '<div class="prov-card">'+
       '<div><div class="prov-name">'+p.nombre+'</div><div class="prov-cam">'+p.c+' &middot; '+p.wa+'</div></div>'+
       '<div class="prov-contact" style="font-size:.78rem">'+p.web+'</div>'+
@@ -860,129 +921,140 @@ function renderProveedores(filtro){
 function buscarProv(v){ renderProveedores(v); }
 
 function abrirModalProv(id){
-  EDIT_PROV_ID=id;
-  var p=id?PROVEEDORES.find(function(x){return x.id===id;}):null;
-  document.getElementById('modal-prov-title').textContent=p?'Editar proveedor':'Nuevo proveedor';
-  document.getElementById('ep-id').value=p?p.id:'';
-  document.getElementById('ep-nombre').value=p?p.nombre:'';
-  document.getElementById('ep-camino').value=p?p.c:'pakini';
-  document.getElementById('ep-wa').value=p?p.wa:'';
-  document.getElementById('ep-email').value=p?p.email:'';
-  document.getElementById('ep-web').value=p?p.web:'';
-  document.getElementById('ep-status').value=p?p.status:'pendiente';
-  document.getElementById('ep-notas').value=p?p.notas:'';
+  EDIT_PROV_ID = id;
+  var p = id ? PROVEEDORES.find(function(x){return x.id===id;}) : null;
+  document.getElementById('modal-prov-title').textContent = p ? 'Editar proveedor' : 'Nuevo proveedor';
+  document.getElementById('ep-id').value     = p ? p.id     : '';
+  document.getElementById('ep-nombre').value = p ? p.nombre : '';
+  document.getElementById('ep-camino').value = p ? p.c      : 'pakini';
+  document.getElementById('ep-wa').value     = p ? p.wa     : '';
+  document.getElementById('ep-email').value  = p ? p.email  : '';
+  document.getElementById('ep-web').value    = p ? p.web    : '';
+  document.getElementById('ep-status').value = p ? p.status : 'pendiente';
+  document.getElementById('ep-notas').value  = p ? p.notas  : '';
   abrirModal('modal-prov');
 }
 
-function guardarProveedor(){
-  var id=document.getElementById('ep-id').value;
-  var datos={
-    id:id||'prov-'+Date.now(),
-    nombre:document.getElementById('ep-nombre').value.trim(),
-    c:document.getElementById('ep-camino').value,
-    wa:document.getElementById('ep-wa').value.trim(),
-    email:document.getElementById('ep-email').value.trim(),
-    web:document.getElementById('ep-web').value.trim(),
-    status:document.getElementById('ep-status').value,
-    notas:document.getElementById('ep-notas').value.trim(),
+async function guardarProveedor(){
+  var id = document.getElementById('ep-id').value;
+  var datos = {
+    id:     id || 'prov-' + Date.now(),
+    nombre: document.getElementById('ep-nombre').value.trim(),
+    c:      document.getElementById('ep-camino').value,
+    wa:     document.getElementById('ep-wa').value.trim(),
+    email:  document.getElementById('ep-email').value.trim(),
+    web:    document.getElementById('ep-web').value.trim(),
+    status: document.getElementById('ep-status').value,
+    notas:  document.getElementById('ep-notas').value.trim(),
   };
-  if(id){
-    var idx=PROVEEDORES.findIndex(function(x){return x.id===id;});
-    if(idx>=0)PROVEEDORES[idx]=datos; else PROVEEDORES.push(datos);
-  } else {
-    PROVEEDORES.push(datos);
+  try {
+    if(id){
+      await sbUpdate('proveedores', id, mapProveedorToSB(datos));
+      var idx = PROVEEDORES.findIndex(function(x){return x.id===id;});
+      if(idx>=0) PROVEEDORES[idx]=datos; else PROVEEDORES.push(datos);
+    } else {
+      await sbInsert('proveedores', mapProveedorToSB(datos));
+      PROVEEDORES.push(datos);
+    }
+    cerrarModal('modal-prov');
+    renderProveedores();
+    actualizarSidebar();
+    notif('Proveedor guardado en Supabase / Saved to Supabase','ok');
+  } catch(e){
+    notif('Error al guardar proveedor: ' + e.message, 'err');
   }
-  guardarLocalStorage();
-  cerrarModal('modal-prov');
-  renderProveedores();
-  actualizarSidebar();
-  notif('Proveedor guardado / Provider saved','ok');
 }
 
-function eliminarProveedor(){
-  if(!confirm('¿Eliminar este proveedor?'))return;
-  PROVEEDORES=PROVEEDORES.filter(function(x){return x.id!==EDIT_PROV_ID;});
-  guardarLocalStorage();
-  cerrarModal('modal-prov');
-  renderProveedores();
-  actualizarSidebar();
-  notif('Proveedor eliminado','ok');
+async function eliminarProveedor(){
+  if(!confirm('¿Eliminar este proveedor?')) return;
+  try {
+    await sbDelete('proveedores', EDIT_PROV_ID);
+    PROVEEDORES = PROVEEDORES.filter(function(x){return x.id!==EDIT_PROV_ID;});
+    cerrarModal('modal-prov');
+    renderProveedores();
+    actualizarSidebar();
+    notif('Proveedor eliminado','ok');
+  } catch(e){
+    notif('Error al eliminar: ' + e.message, 'err');
+  }
 }
 
-/* ═══════════════════════════════════
-   CONFIGURACIÓN
-═══════════════════════════════════ */
+// ============================================================
+// RESERVAS (nueva sección)
+// ============================================================
+function renderReservas(){
+  var g = document.getElementById('reservas-list');
+  if(!g) return;
+  if(!RESERVAS.length){
+    g.innerHTML = '<p style="color:var(--txt2);padding:1rem">No hay reservas aun.</p>';
+    return;
+  }
+  var stColors = {nueva:'#E9A824',confirmada:'#065F46',cancelada:'#DC2626'};
+  g.innerHTML = RESERVAS.map(function(r){
+    var fecha = r.created_at ? r.created_at.substring(0,10) : '';
+    return '<div class="prov-card">'+
+      '<div>'+
+        '<div class="prov-name">'+r.nombre+'</div>'+
+        '<div class="prov-cam">'+r.actividad_nombre+' &middot; '+r.empresa+'</div>'+
+      '</div>'+
+      '<div style="font-size:.78rem;color:var(--txt2)">'+fecha+'</div>'+
+      '<div>'+
+        '<span class="prov-status" style="background:'+(stColors[r.estado]||'#888')+'22;color:'+(stColors[r.estado]||'#888')+'">'+r.estado+'</span>'+
+      '</div>'+
+      '<div style="font-size:.78rem;color:var(--txt2)">'+(r.personas||1)+' persona(s)</div>'+
+    '</div>';
+  }).join('');
+}
+
+// ============================================================
+// CONFIGURACION
+// ============================================================
 function cambiarPassword(){
-  var old=document.getElementById('cfg-pass-old').value;
-  var n=document.getElementById('cfg-pass-new').value;
-  var c=document.getElementById('cfg-pass-confirm').value;
-  var u=USERS.find(function(x){return x.user===SESSION.user&&x.pass===old;});
-  if(!u){notif('Contraseña actual incorrecta / Wrong current password','err');return;}
-  if(n.length<8){notif('Mínimo 8 caracteres / Minimum 8 characters','err');return;}
-  if(n!==c){notif('Las contraseñas no coinciden / Passwords do not match','err');return;}
-  u.pass=n;
-  guardarLocalStorage();
-  notif('Contraseña actualizada / Password updated','ok');
-  document.getElementById('cfg-pass-old').value='';
-  document.getElementById('cfg-pass-new').value='';
-  document.getElementById('cfg-pass-confirm').value='';
+  var old = document.getElementById('cfg-pass-old').value;
+  var n   = document.getElementById('cfg-pass-new').value;
+  var c   = document.getElementById('cfg-pass-confirm').value;
+  var u   = USERS.find(function(x){return x.user===SESSION.user && x.pass===old;});
+  if(!u){notif('Contrasena actual incorrecta / Wrong current password','err');return;}
+  if(n.length<8){notif('Minimo 8 caracteres / Minimum 8 characters','err');return;}
+  if(n!==c){notif('Las contrasenas no coinciden / Passwords do not match','err');return;}
+  u.pass = n;
+  localStorage.setItem('en_users', JSON.stringify(USERS));
+  notif('Contrasena actualizada / Password updated','ok');
+  document.getElementById('cfg-pass-old').value = '';
+  document.getElementById('cfg-pass-new').value = '';
+  document.getElementById('cfg-pass-confirm').value = '';
 }
 
-function exportarDatos(){
-  var data={actividades:ACTIVIDADES,proveedores:PROVEEDORES,exportado:new Date().toISOString()};
-  var blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
-  var a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='ejekatnemi-catalogo-'+new Date().toISOString().split('T')[0]+'.json';
+async function exportarDatos(){
+  var data = {actividades:ACTIVIDADES, proveedores:PROVEEDORES, reservas:RESERVAS, exportado:new Date().toISOString()};
+  var blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  var a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'ejekatnemi-backup-' + new Date().toISOString().split('T')[0] + '.json';
   a.click();
   notif('Exportado correctamente / Exported successfully','ok');
 }
 
-function importarDatos(){
-  var input=document.createElement('input');
-  input.type='file';input.accept='.json';
-  input.onchange=function(e){
-    var r=new FileReader();
-    r.onload=function(ev){
-      try{
-        var d=JSON.parse(ev.target.result);
-        if(d.actividades){ACTIVIDADES=d.actividades;}
-        if(d.proveedores){PROVEEDORES=d.proveedores;}
-        guardarLocalStorage();
-        renderDashboard();
-        notif('Importado correctamente / Imported successfully','ok');
-      }catch(ex){notif('Error al importar / Import error','err');}
-    };
-    r.readAsText(e.target.files[0]);
-  };
-  input.click();
+async function recargarDatos(){
+  mostrarLoading(true, 'Recargando desde Supabase...');
+  await cargarTodo();
+  mostrarLoading(false);
+  renderDashboard();
+  notif('Datos actualizados desde Supabase','ok');
 }
 
-/* ═══════════════════════════════════
-   GUARDAR TODO
-═══════════════════════════════════ */
-function guardarTodo(){
-  guardarLocalStorage();
-  notif('Catálogo guardado. Los cambios se reflejan en explorar.html.','ok');
-}
-
-function guardarLocalStorage(){
-  localStorage.setItem('en_actividades',JSON.stringify(ACTIVIDADES));
-  localStorage.setItem('en_proveedores',JSON.stringify(PROVEEDORES));
-  localStorage.setItem('en_users',JSON.stringify(USERS));
-}
-
-/* MODALES */
+// MODALES
 function abrirModal(id){document.getElementById(id).classList.add('on');document.body.style.overflow='hidden';}
 function cerrarModal(id){document.getElementById(id).classList.remove('on');document.body.style.overflow='';}
 document.getElementById('modal-act').addEventListener('click',function(e){if(e.target===this)cerrarModal('modal-act');});
 document.getElementById('modal-prov').addEventListener('click',function(e){if(e.target===this)cerrarModal('modal-prov');});
 
-/* NOTIF */
+// NOTIF
 function notif(msg,tipo){
-  var n=document.getElementById('notif');
-  n.textContent=msg;n.className='notif on '+(tipo||'');
-  setTimeout(function(){n.classList.remove('on');},3000);
+  var n = document.getElementById('notif');
+  n.textContent = msg;
+  n.className = 'notif on ' + (tipo||'');
+  setTimeout(function(){n.classList.remove('on');},4000);
 }
 
 document.addEventListener('keydown',function(e){
@@ -990,6 +1062,14 @@ document.addEventListener('keydown',function(e){
 });
 
 init();
+
 </script>
+
+<!-- LOADING SUPABASE -->
+<div id="sb-loading" style="display:none;position:fixed;inset:0;background:rgba(13,27,20,.85);z-index:9999;align-items:center;justify-content:center;flex-direction:column;gap:1rem;">
+  <div style="width:40px;height:40px;border:3px solid rgba(233,168,36,.3);border-top-color:#E9A824;border-radius:50%;animation:spin .8s linear infinite;"></div>
+  <span style="color:#F4ECD6;font-size:.875rem;font-family:DM Sans,sans-serif;"></span>
+</div>
+<style>@keyframes spin{to{transform:rotate(360deg);}}</style>
 </body>
 </html>
